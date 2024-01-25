@@ -66,10 +66,22 @@ export default function Section1() {
           <div className="col-lg-6 col-md-12 col-12 second-div">
             <div className="row">
               <div className="col-lg-4 col-md-4 col-5 img-first-border">
-                <img src={a} alt="img" width="100%" height="100%"  className="img-fluid"/>
+                <img
+                  src={a}
+                  alt="img"
+                  width="100%"
+                  height="100%"
+                  className="img-fluid"
+                />
               </div>
               <div className="col-lg-4  col-md-4 col-5 img-second-border">
-                <img src={b} alt="img" width="100%" height="100%"  className="img-fluid"/>
+                <img
+                  src={b}
+                  alt="img"
+                  width="100%"
+                  height="100%"
+                  className="img-fluid"
+                />
               </div>
             </div>
             {/* <div className="row">
@@ -208,11 +220,11 @@ const Root = styled.section`
       border: none;
       .img-first-border {
         margin: 50px 0 0 10px;
-        height:180px;
+        height: 180px;
       }
       .img-second-border {
         margin: 20px 0 0 37px;
-        height:180px;
+        height: 180px;
       }
     }
 
@@ -221,12 +233,8 @@ const Root = styled.section`
     }
   }
 
-@media (min-width: 567px) and (max-width: 992px){
-  .second-div {
-      /* .img-first-border {
-        margin: 50px 0 0 10px;
-        
-      } */
+  @media (min-width: 567px) and (max-width: 992px) {
+    .second-div {
       .img-second-border {
         margin: 55px 0 0 97px;
         
@@ -236,8 +244,4 @@ const Root = styled.section`
 
 
 }
-
-
-
-
 `;
