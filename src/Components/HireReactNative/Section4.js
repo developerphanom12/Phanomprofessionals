@@ -18,7 +18,9 @@ export default function Section4() {
           <div className="col-lg-2 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-1 col-md-12 col-12"></div>
+
+          <div className="col-lg-5 col-md-12 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -32,7 +34,7 @@ export default function Section4() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-5 col-md-12 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -46,9 +48,12 @@ export default function Section4() {
               </div>
             </div>
           </div>
+          <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-1 col-md-12 col-12"></div>
+
+          <div className="col-lg-5 col-md-12 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -61,7 +66,7 @@ export default function Section4() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-5 col-md-12 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -75,9 +80,12 @@ export default function Section4() {
               </div>
             </div>
           </div>
+          <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-1 col-md-12 col-12"></div>
+
+          <div className="col-lg-5 col-md-12 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -90,7 +98,7 @@ export default function Section4() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-5 col-md-12 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -104,6 +112,7 @@ export default function Section4() {
               </div>
             </div>
           </div>
+          <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
       </div>
     </Root>
@@ -135,7 +144,7 @@ const Root = styled.section`
     .block_div {
       word-spacing: 1px;
       letter-spacing: 0.1px;
-      padding:30px 20px 40px 20px;
+      padding: 0px 0px 40px 0px;
       display: flex;
       /* gap: 20px; */
       border: 1px solid #147888;
@@ -163,7 +172,7 @@ const Root = styled.section`
         font-weight: bold;
         line-height: 1.2em;
       }
-      .tag_text{
+      .tag_text {
         padding: 10px 0px;
       }
     }

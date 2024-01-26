@@ -10,9 +10,9 @@ import Home from './Components/Home/Home';
 function App() {
   return (
     <div  >
-      {/* <HireReactNative /> */}
+      <HireReactNative />
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        {/* <Route path='/' element={<Home/>}/> */}
         {/* <Route path='/home' element={<VettingProcess />}/> */}
      </Routes>
     </div>
