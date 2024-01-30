@@ -8,11 +8,16 @@ import HireReactNative from './Components/HireReactNative/HireReactNative';
 import Home from './Components/Home/Home';
 import HirePpcExpert from './Components/HirePpcExpert/HirePpcExpert';
 import HireSeoExpert from './Components/HireSeoExpert/HireSeoExpert';
+import HirePA from './Components/HirePA/HirePA';
+import HireWebDesigner from './Components/HireWebDesigner/HireWebDesigner';
+import HireUiuxDesigner from './Components/HireUiuxDesigner/HireUiuxDesigner';
+import HireGraphic from './Components/HireGraphic/HireGraphic';
+import HireReactJs from './Components/HireReactJs/HireReactJs';
 
 function App() {
   return (
     <div  >
-      <HireSeoExpert />
+      <HireReactJs />
       <Routes>
         {/* <Route path='/' element={<Home/>}/> */}
         {/* <Route path='/home' element={<VettingProcess />}/> */}
