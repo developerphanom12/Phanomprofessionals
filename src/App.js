@@ -13,11 +13,12 @@ import HireWebDesigner from './Components/HireWebDesigner/HireWebDesigner';
 import HireUiuxDesigner from './Components/HireUiuxDesigner/HireUiuxDesigner';
 import HireGraphic from './Components/HireGraphic/HireGraphic';
 import HireReactJs from './Components/HireReactJs/HireReactJs';
+import HireNodejs from './Components/HireNodeJs/HireNodejs';
 
 function App() {
   return (
     <div  >
-      <HireReactJs />
+      <HireNodejs />
       <Routes>
         {/* <Route path='/' element={<Home/>}/> */}
         {/* <Route path='/home' element={<VettingProcess />}/> */}
