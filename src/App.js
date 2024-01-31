@@ -14,11 +14,18 @@ import HireUiuxDesigner from './Components/HireUiuxDesigner/HireUiuxDesigner';
 import HireGraphic from './Components/HireGraphic/HireGraphic';
 import HireReactJs from './Components/HireReactJs/HireReactJs';
 import HireNodejs from './Components/HireNodeJs/HireNodejs';
+import HireLaravel from './Components/HireLaravel/HireLaravel';
+import HireShopify from './Components/HireShopify/HireShopify';
+import HirePHP from './Components/HirePHP/HirePHP';
+import HireWordPress from './Components/HireWordPress/HireWordPress';
+import HireAndroid from './Components/HireAndroid/HireAndroid';
+import HireSoftware from './Components/HireSoftware/HireSoftware';
+import HireMobileApp from './Components/HireMobileApp/HireMobileApp';
 
 function App() {
   return (
     <div  >
-      <HireNodejs />
+      <HireMobileApp />
       <Routes>
         {/* <Route path='/' element={<Home/>}/> */}
         {/* <Route path='/home' element={<VettingProcess />}/> */}
