@@ -1,0 +1,268 @@
+import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { FcList } from "react-icons/fc";
+import { FaUserCircle } from "react-icons/fa";
+import { IoIosArrowDown } from "react-icons/io";
+import russia from "../MainLayouts/pictures/Russia.png";
+import canada from "../MainLayouts/pictures/canada.png";
+import us from "../MainLayouts/pictures/unitedstates.png";
+import maxico from "../MainLayouts/pictures/maxico.jpg";
+import china from "../MainLayouts/pictures/china.png";
+import { EXCHANGE_URLS } from "../URLS";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import cogoToast from "cogo-toast";
+
+export default function Navbar() {
+  const [activePop, setActivePop] = useState(false);
+  const [isListOpen, setIsListOpen] = useState(false);
+  const [profile, setProfile] = useState({}); 
+
+ 
+
+   
+
+ 
+
+  return (
+    <Root>
+       
+      
+        <div
+          className="profile"
+          onClick={() => {
+            setIsListOpen(!isListOpen);
+          }}
+        >
+          <FaUserCircle />
+          <div>
+            {profile?.username ? profile.username : "Unknown"}{" "}
+            <IoIosArrowDown />
+          </div>
+          <div className={isListOpen ? "option_list" : "off"}>
+            <p>
+              <Link to="/profile">Profile Details</Link>
+            </p>
+            <p>
+              <Link to="/changepass">Change Password</Link>
+            </p>
+          </div>
+        </div>
+       
+
+      <div
+        className="menu"
+        onClick={() => {
+          setActivePop(true);
+        }}
+      >
+        <FcList />
+      </div>
+      <div
+        className={activePop ? "pop_nav" : "no_pop"}
+        onClick={() => {
+          setActivePop(false);
+        }}
+      >
+        <div className="opt_btn">
+          {" "}
+          <img src={russia} alt="img" />
+        </div>
+        <div className="opt_btn">
+          {" "}
+          <img src={canada} alt="img" />
+        </div>
+        <div className="opt_btn">
+          {" "}
+          <img src={us} alt="img" />
+        </div>
+        <div className="opt_btn">
+          {" "}
+          <img src={maxico} alt="img" />
+        </div>
+        <div className="opt_btn">
+          {" "}
+          <img src={china} alt="img" />
+        </div>
+      </div>
+   
+    </Root>
+  );
+}
+
+const Root = styled.section`
+  display: flex;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  padding: 10px;
+  width: 90%;
+  background-color: #fff;
+  justify-content: space-between;
+  box-shadow: 1px 1px 5px 1px lightgray;
+  padding-left: 80px;
+  @media (max-width: 788px) {
+    padding-left: 60px;
+  }
+  .flags {
+    display: flex;
+    margin: 10px 0px;
+    gap: 7px;
+    padding: 5px;
+    @media (max-width: 1020px) {
+      display: none;
+    }
+
+    > div {
+      height: 98%;
+      align-items: center;
+      display: flex;
+      border-radius: 10px;
+      padding: 6px 10px;
+      text-align: center;
+      gap: 10px;
+      P {
+        color: #999;
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        align-items: center;
+        display: flex;
+        margin: 0;
+        font-weight: 700;
+      }
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+    }
+  }
+  .profile {
+    display: flex;
+    padding: 10px;
+    margin: 5px;
+    gap: 7px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+    &:hover {
+      box-shadow: 4px 4px 5px gray;
+    }
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+    > div {
+      text-align: center;
+      font-size: 13px;
+      svg {
+        width: 13px;
+        height: 13px;
+      }
+    }
+
+    .option_list {
+      background-color: #f8f8f8;
+      z-index: 1;
+      left: -33px;
+      top: 110%;
+      position: absolute;
+      width: 170px;
+      border: 1px solid #f8f8f8;
+      box-shadow: 1px 1px 4px 1px gray;
+      text-decoration: none;
+      p {
+        margin: 0;
+        padding: 5px;
+        &:hover {
+          background-color: white;
+        }
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+    .off {
+      display: none;
+    }
+  }
+  .notification {
+    display: flex;
+    justify-content: right;
+    font-size: 25px;
+    background-color: transparent;
+    cursor: pointer;
+    align-items: flex-end;
+    margin-right: 5px;
+    .details {
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      height: 200px;
+    }
+  }
+  .menu {
+    @media (max-width: 1020px) {
+      display: block;
+      padding-right: 10px;
+      justify-content: left;
+    }
+  }
+  .menu {
+    @media (min-width: 1022px) {
+      display: none;
+    }
+  }
+
+  .pop_nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    height: 400px;
+    width: 100%;
+    background: #ff7f50;
+    .notification {
+      display: flex;
+      flex-direction: column;
+      font-size: 25px;
+      margin-left: 10px;
+    }
+  }
+  .no_pop {
+    display: none;
+  }
+  img {
+    background: none;
+    color: black;
+    border-color: transparent;
+    font-size: larger;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    img:hover {
+      background-color: rgb(249, 147, 45);
+      color: #ffffff;
+    }
+  }
+  ul.closed {
+    display: none;
+  }
+
+  ul.open {
+    display: block;
+    -webkit-overflow-scrolling-y: scroll;
+  }
+  .option_list {
+    position: relative;
+    display: inline-block;
+  }
+`;

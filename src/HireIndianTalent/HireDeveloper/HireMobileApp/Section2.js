@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import tag1 from "../Images/tag1.png";
-import tag2 from "../Images/tag2.png";
-import tag3 from "../Images/tag3.png";
-import tag4 from "../Images/tag4.png";
+import tag1 from "../../../Components/Images/tag1.png";
+import tag2 from "../../../Components/Images/tag2.png";
+import tag3 from "../../../Components/Images/tag3.png";
+import tag4 from "../../../Components/Images/tag4.png";
 import { IoIosArrowRoundForward } from "react-icons/io";
 
 export default function Section2() {
@@ -127,10 +127,10 @@ const Root = styled.section`
     flex-direction: column;
     flex: 1;
     .span_div {
-      padding: 17px 45px 17px 45px;
+      padding: 7px;
     }
     .span_div2 {
-      padding: 17px 5px 17px 5px;
+      padding: 7px;
     }
     span {
       text-align: center;
@@ -138,7 +138,7 @@ const Root = styled.section`
       color: white;
       font-size: 14px;
       letter-spacing: 1.1px;
-      padding: 7px;
+      padding: 12px;
       border-radius: 10px;
       border: none;
       margin-bottom: 20px;

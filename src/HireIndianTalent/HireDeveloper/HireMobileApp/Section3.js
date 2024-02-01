@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import svgg from "../Images/svg.svg";
+import svgg from "../../../Components/Images/svg.svg";
 
 export default function Section3() {
   return (
