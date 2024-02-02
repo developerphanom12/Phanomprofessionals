@@ -192,6 +192,7 @@ const Root = styled.section`
   }
 
   @media (max-width: 567px) {
+    padding: 70px 10px;
     .first-div {
       padding: 0 0 0 10px;
       .first-content {
@@ -201,7 +202,7 @@ const Root = styled.section`
         font-size: 35px;
       }
       .circle {
-        width: 26%;
+        width: 20%;
         margin: -28% 0 0 0;
       }
       .btn-content {
@@ -219,5 +220,21 @@ const Root = styled.section`
     .row {
       margin-right: 0;
     }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px){
+    padding: 70px 10px;
+  
+ 
+
+ .first-div{
+  .circle {
+    width: 10%;
+}
+
+ .paragraph {
+    padding-top: 30px;
+}
+ } 
   }
 `;

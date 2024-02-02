@@ -249,6 +249,18 @@ const Root = styled.section`
       transition: all 0.2s linear;
     }
   }
+
+ @media (max-width: 567px) {
+  padding: 0px 10px;
+
+}
+
+@media (min-width: 567px) and (max-width: 992px){
+  padding: 0px 10px;
+}
+
 `;
+
+
 
 export default Section4;

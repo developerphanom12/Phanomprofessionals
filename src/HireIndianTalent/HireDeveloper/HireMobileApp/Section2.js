@@ -22,9 +22,9 @@ export default function Section2() {
         <div className="row">
           <div className="col-lg-5 col-md-12 col-12">
             <div className="row">
-              <div className="col-lg-5 col-md-12 col-12">
+              <div className="col-lg-5 col-md-5 col-12">
                 <div className="segment">
-                  <img src={tag1} alt="img" />
+                  <img src={tag1} alt="img" className="image-fluid"/>
                   <span>Sharе Your Vision</span>
                   <p>
                     Lеt us know your nееds, and we'll engage with you to truly
@@ -32,10 +32,10 @@ export default function Section2() {
                   </p>
                 </div>
               </div>
-              <div className="col-lg-2 col-md-12 col-12 arrow">
+              <div className="col-lg-2 col-md-2 col-12 arrow">
                 <IoIosArrowRoundForward />
               </div>
-              <div className="col-lg-5 col-md-12 col-12">
+              <div className="col-lg-5 col-md-5 col-12">
                 <div className="segment">
                   <img src={tag2} alt="img" />
                   <span className="span_div">Meet Your Ideal Matches</span>
@@ -53,7 +53,7 @@ export default function Section2() {
           </div>
           <div className="col-lg-5 col-md-12 col-12">
             <div className="row">
-              <div className="col-lg-5 col-md-12 col-12">
+              <div className="col-lg-5 col-md-5 col-12">
                 <div className="segment">
                   <img src={tag3} alt="img" />
                   <span>Effortlеss Intеrviеws</span>
@@ -64,11 +64,11 @@ export default function Section2() {
                 </div>
               </div>
 
-              <div className="col-lg-2 col-md-12 col-12 arrow">
+              <div className="col-lg-2 col-md-2 col-12 arrow">
                 {" "}
                 <IoIosArrowRoundForward />
               </div>
-              <div className="col-lg-5 col-md-12 col-12">
+              <div className="col-lg-5 col-md-5 col-12">
                 <div className="segment">
                   <img src={tag4} alt="img" />
                   <span className="span_div2">Trust In Your Dеcision</span>
@@ -127,10 +127,10 @@ const Root = styled.section`
     flex-direction: column;
     flex: 1;
     .span_div {
-      padding: 7px;
+      /* padding: 17px 45px 17px 45px; */
     }
     .span_div2 {
-      padding: 7px;
+      padding: 17px 5px 17px 5px;
     }
     span {
       text-align: center;
@@ -138,7 +138,7 @@ const Root = styled.section`
       color: white;
       font-size: 14px;
       letter-spacing: 1.1px;
-      padding: 12px;
+      padding: 7px;
       border-radius: 10px;
       border: none;
       margin-bottom: 20px;
@@ -147,5 +147,36 @@ const Root = styled.section`
       color: #6e6e6e;
       line-height: 1.7em;
     }
+  }
+
+  @media (max-width: 567px) {
+    .iMafVm .text_area {
+    padding: 20px 0px! important;
+   
+}
+
+ .arrow {
+    padding-top:45px;
+    transform: rotate(90deg);
+}
+
+.segment img, svg {
+    height: 350px;
+    width: 350px;
+    margin-top: -70px;
+}
+  }
+
+  @media (min-width: 567px) and (max-width: 992px){
+
+   .text_area {
+    padding: 20px 0px! important;
+}
+
+.container .arrow :nth-child(2){
+
+  display:none;
+}
+
   }
 `;

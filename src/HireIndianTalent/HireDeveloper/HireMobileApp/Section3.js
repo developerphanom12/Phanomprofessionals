@@ -167,4 +167,19 @@ const Root = styled.section`
       }
     }
   }
+  @media (max-width: 567px) {
+
+     .block_main .block_div {
+    padding: 0px 3px 40px 0px! important;
+  }
+}
+
+
+@media (min-width: 567px) and (max-width: 992px){
+  .block_main .block_div {
+    padding: 0px 3px 40px 0px! important;
+  }
+
+
+}
 `;
