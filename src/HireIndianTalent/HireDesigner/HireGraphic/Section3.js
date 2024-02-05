@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import number from "../Images/numbring.png";
+import number from "../../../Components/Images/numbring.png";
 
 export default function Section3() {
   return (
@@ -20,18 +20,17 @@ export default function Section3() {
                 selected Phanom Professionals for their graphic design
                 requirements
               </span>
-              <br/>
-
+              <br />
             </div>
-              <span className="span_btn" data-aos="fade-up">
-                HIRE YOUR DREAM TEAM
-              </span>
+            <span className="span_btn" data-aos="fade-up">
+              HIRE YOUR DREAM TEAM
+            </span>
           </div>
-          <div className="col-lg-2  col-md-12 col-12 img_sec">
+          <div className="col-lg-2  col-md-4 col-4 img_sec">
             <h1>How ?</h1>
             <img src={number} alt="img" />
           </div>
-          <div className="col-lg-5  col-md-12 col-12 segment">
+          <div className="col-lg-5  col-md-8 col-8 segment-two">
             <div className="mini_div">
               <p>Sound Technical Foundation</p>
               <span>
@@ -97,6 +96,79 @@ const Root = styled.section`
         color: #6e6e6e;
         margin: 30px 0px;
       }
+    }
+  }
+
+  .segment-two {
+    margin-top: 80px;
+    padding: 60px 10px 10px 10px;
+    margin-top: 80px;
+    padding: 60px 10px 10px 10px;
+    .span_btn {
+      margin: 20px 20px;
+      text-align: center;
+      background-color: #147888;
+      color: white;
+      font-size: 14px;
+      letter-spacing: 1.1px;
+      padding: 15px;
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 20px;
+    }
+    .mini_div {
+      padding: 20px;
+      margin-bottom: 20px;
+      p {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      span {
+        font-size: 17px;
+        color: #6e6e6e;
+        margin: 30px 0px;
+      }
+    }
+  }
+  @media (max-width: 567px) {
+    .segment {
+      margin-top: 0px;
+      padding: 0px 10px 10px 10px;
+
+      .mini_div {
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .span_btn {
+        margin: 20px 10px;
+      }
+    }
+    h1 {
+      padding: 19px 0 0 18px;
+    }
+    .segment-two {
+      .mini_div {
+        padding: 0;
+      }
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    .segment {
+      margin-top: 20px;
+      padding: 0px 10px 10px 10px;
+
+      .mini_div {
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .span_btn {
+        margin: 20px 10px;
+      }
+    }
+
+    h1 {
+      padding: 19px 0 0 18px;
     }
   }
 `;

@@ -145,4 +145,20 @@ const Root = styled.section`
       }
     }
   }
+
+  @media (max-width: 567px) {
+  .text_area {
+   padding: 0; 
+    
+}
+ .block_main {
+    flex: unset; 
+}
+
+  }
+
+  @media (max-width: 567px) {
+
+    
+  }
 `;

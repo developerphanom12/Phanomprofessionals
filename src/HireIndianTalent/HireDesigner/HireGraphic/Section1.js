@@ -29,12 +29,15 @@ export default function Section1() {
             </div>
             <span className="display">
               <span className="first-content">Discover the top-tier </span>
-              <span className="second-content"> graphic design </span> 
+              <span className="second-content"> graphic design </span>
               <span className="first-content">talent</span>
             </span>
             <div className="circle"></div>
             <p className="paragraph">
-            Dеlight in having us as your dеdicatеd partnеr for discovеring, comparing, and collaborating with еxcеptional graphic dеsignеrs. Expеct stunning dеsigns that еmbody your vision, craftеd by passionate minds fueled by creativity and a love for coffee
+              Dеlight in having us as your dеdicatеd partnеr for discovеring,
+              comparing, and collaborating with еxcеptional graphic dеsignеrs.
+              Expеct stunning dеsigns that еmbody your vision, craftеd by
+              passionate minds fueled by creativity and a love for coffee
             </p>
           </div>
           <div className="col-lg-6 col-md-12 col-12 second-div">
@@ -185,16 +188,18 @@ const Root = styled.section`
   }
 
   @media (max-width: 567px) {
+    padding: 30px 10px;
+
     .first-div {
       padding: 0 0 0 10px;
       .first-content {
-        font-size: 35px;
+        font-size: 33px;
       }
       .second-content {
         font-size: 35px;
       }
       .circle {
-        width: 26%;
+        width: 20%;
         margin: -28% 0 0 0;
       }
       .btn-content {
@@ -211,6 +216,26 @@ const Root = styled.section`
 
     .row {
       margin-right: 0;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding: 30px 10px;
+
+    .first-div {
+      .circle {
+        width: 10%;
+      }
+      .first-content {
+        font-size: 39px;
+      }
+      .second-content {
+        font-size: 39px;
+      }
+
+      .paragraph {
+        padding-top: 40px;
+      }
     }
   }
 `;

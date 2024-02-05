@@ -11,7 +11,7 @@ import { Route, Routes } from 'react-router-dom';
 // import HirePA from './HireIndianTalent/HireDigitalMarketing/HirePA/HirePA';
 // import HireWebDesigner from './HireIndianTalent/HireDesigner/HireWebDesigner/HireWebDesigner';
 // import HireUiuxDesigner from './HireIndianTalent/HireDesigner/HireUiuxDesigner/HireUiuxDesigner';
-// import HireGraphic from './HireIndianTalent/HireDesigner/HireGraphic/HireGraphic';
+import HireGraphic from './HireIndianTalent/HireDesigner/HireGraphic/HireGraphic';
 // import HireReactJs from './HireIndianTalent/HireDeveloper/HireReactJs/HireReactJs';
 // import HireNodejs from './HireIndianTalent/HireDeveloper/HireNodeJs/HireNodejs';
 // import HireLaravel from './HireIndianTalent/HireDeveloper/HireLaravel/HireLaravel';
@@ -20,12 +20,12 @@ import { Route, Routes } from 'react-router-dom';
 // import HireWordPress from './HireIndianTalent/HireDeveloper/HireWordPress/HireWordPress';
 // import HireAndroid from './HireIndianTalent/HireDeveloper/HireAndroid/HireAndroid';
 // import HireSoftware from './HireIndianTalent/HireDeveloper/HireSoftware/HireSoftware';
-import HireMobileApp from './HireIndianTalent/HireDeveloper/HireMobileApp/HireMobileApp';
+// import HireMobileApp from './HireIndianTalent/HireDeveloper/HireMobileApp/HireMobileApp';
 
 function App() {
   return (
-    <div  >
-      <HireMobileApp />
+    <div >
+      <HireGraphic/>
       <Routes>
         {/* <Route path='/' element={<Home/>}/> */}
         {/* <Route path='/home' element={<VettingProcess />}/> */}
