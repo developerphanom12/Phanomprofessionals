@@ -12,8 +12,9 @@ export default function Section6() {
             className="col-lg-8 col-md-12 col-12 text_div"
             data-aos="fade-up"
           >
-            <span>Services for </span>
-            <span className="text">React Native </span> <span>Apps</span>
+            <span>How is </span>
+            <span className="text"> hiring Indian talent so </span>{" "}
+            <span> incredibly simple with Phanom Professionals?</span>
           </div>
           <div className="col-lg-2 col-md-12 col-12"></div>
         </div>
@@ -30,8 +31,11 @@ export default function Section6() {
                   extremely alluring benefits.
                 </span>
                 <span>
-                  1) Completely Remote Position 2) Exposure to a Global Company
-                  Culture 3) Opportunities for High Earnings
+                  <ul>
+                    <li> Completely Remote Position</li>{" "}
+                    <li> Exposure to a Global Company Culture</li>
+                    <li>Opportunities for High Earnings</li>
+                  </ul>
                 </span>
               </div>
             </div>
@@ -61,7 +65,9 @@ export default function Section6() {
               <div className="tag_text">
                 <p>Phanom Professionals Match</p>
                 <span>
-                Through our skill matchmaking process, we match the job requirements with the candidates, making sure that only the most qualified candidate is selected. (Our first interview select ratio is 70%.)
+                  Through our skill matchmaking process, we match the job
+                  requirements of the clients so that they get the most
+                  qualified expert from us.
                 </span>
               </div>
             </div>
@@ -74,13 +80,13 @@ export default function Section6() {
               <div className="tag_text">
                 <p>Phanom Manage</p>
                 <span>
-                All employment contracts, payroll, IT support, HR support, and other related tasks are handled by us.
+                  All employment contracts, payroll, IT support, HR support, and
+                  other related tasks are handled by us.
                 </span>
               </div>
             </div>
           </div>
         </div>
-     
       </div>
     </Root>
   );

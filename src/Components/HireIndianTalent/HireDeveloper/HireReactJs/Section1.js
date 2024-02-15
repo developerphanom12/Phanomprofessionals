@@ -29,10 +29,10 @@ export default function Section1() {
             </div>
             <span className="display">
               <span className="first-content">
-                Hire Full-time, Deeply Vetted{" "}
+              Hire
               </span>
               <span className="second-content"> ReactJS Developers </span>
-              <span className="first-content"> in 48 Hours!</span>
+              <span className="first-content"> for your projects!</span>
             </span>
             <div className="circle"></div>
             <p className="paragraph">

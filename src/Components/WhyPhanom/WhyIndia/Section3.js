@@ -21,21 +21,23 @@ import ind18 from "../../../Components/Images/ind18.png";
 import ind19 from "../../../Components/Images/ind19.png";
 import ind20 from "../../../Components/Images/ind20.png";
 
-
 export default function Section3() {
   return (
     <Root>
       <div className="container">
-      <div className="row">
+        <div className="row">
           <div className="col-lg-1 col-md-12 col-12"></div>
 
           <div className="col-lg-10 col-md-12 col-12 text_area">
             <span>India is home to many </span>{" "}
             <span className="text"> gifted people </span>
             <span>who are already changing the world.</span>
+         
             <p>
-            Indians currently manage a number of the largest corporations in the world.
+              Indians currently manage a number of the largest corporations in
+              the world. Here are a few illustrations.
             </p>
+           
           </div>
           <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
@@ -117,34 +119,34 @@ export default function Section3() {
   );
 }
 const Root = styled.section`
-font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans", sans-serif;
 
-.text_area {
-  margin-bottom: 30px;
-  padding: 20px 50px;
-  text-align: center;
-  .text {
-    color: #147888;
-    font-weight: bold;
-    font-size: 35px;
-    line-height: 1.3em;
-  }
-  span {
-    font-weight: bold;
-    font-size: 35px;
-    line-height: 1.3em;
-  }
-  p {
+  .text_area {
+    margin-bottom: 30px;
+    padding: 20px 50px;
     text-align: center;
-    color: #6e6e6e;
-    padding: 20px;
-    word-spacing: 1px;
+    .text {
+      color: #147888;
+      font-weight: bold;
+      font-size: 35px;
+      line-height: 1.3em;
+    }
+    span {
+      font-weight: bold;
+      font-size: 35px;
+      line-height: 1.3em;
+    }
+    p {
+      text-align: center;
+      color: #6e6e6e;
+      padding: 20px;
+      word-spacing: 1px;
+    }
   }
-}
-.segment{
+  .segment {
     width: 19.67%;
-}
-img{
+  }
+  img {
     width: 200px;
-}
+  }
 `;

@@ -20,8 +20,9 @@ export default function Section7() {
       <div className="container">
         <div className="row pt-4">
           <div className="col-lg-12 col-md-12 col-12 text">
-            <div>
-              <h3>
+            <h4>Ask a Question</h4>
+            <div id="arrow_1">
+              <h5>
                 Is it difficult to communicate with Indian talent?
                 {isArrowRightVisible && (
                   <FaArrowDown onClick={handleArrowRightClick} />
@@ -29,7 +30,7 @@ export default function Section7() {
                 {isArrowDownVisible && (
                   <FaArrowRight onClick={handleArrowDownClick} />
                 )}
-              </h3>
+              </h5>
               {isArrowRightVisible && (
                 <p>
                   Only those who pass the AI-powered communication
@@ -39,8 +40,8 @@ export default function Section7() {
                 </p>
               )}
             </div>
-            <div>
-              <h3>
+            <div id="arrow_2">
+              <h5>
                 Is a time zone difference anticipated?
                 {isArrowRightVisible && (
                   <FaArrowDown onClick={handleArrowRightClick} />
@@ -48,7 +49,7 @@ export default function Section7() {
                 {isArrowDownVisible && (
                   <FaArrowRight onClick={handleArrowDownClick} />
                 )}
-              </h3>
+              </h5>
               {isArrowRightVisible && (
                 <p>
                   Indian talent is incredibly adaptive and flexible, allowing
@@ -57,8 +58,8 @@ export default function Section7() {
                 </p>
               )}
             </div>
-            <div>
-              <h3>
+            <div id="arrow_3">
+              <h5>
                 Can we still hire if we don't have a legal entity in India?
                 {isArrowRightVisible && (
                   <FaArrowDown onClick={handleArrowRightClick} />
@@ -66,7 +67,7 @@ export default function Section7() {
                 {isArrowDownVisible && (
                   <FaArrowRight onClick={handleArrowDownClick} />
                 )}
-              </h3>
+              </h5>
               {isArrowRightVisible && (
                 <p>
                   Yes, we do cover that section. In India, a company will not be
@@ -89,7 +90,7 @@ const Root = styled.section`
     margin: 50px 0px;
     padding: 10px;
     background-color: #fff;
-    h3 {
+    h5 {
       display: flex;
       justify-content: space-between;
       padding: 10px;

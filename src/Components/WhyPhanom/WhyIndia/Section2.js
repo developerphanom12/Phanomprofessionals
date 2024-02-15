@@ -127,7 +127,8 @@ export default function Section2() {
                   <span>
                     Because of this, the companies have a responsibility to
                     provide better packages, alluring bonuses, and extra perks
-                    and benefits.
+                    and benefits.which is now so widespread that businesses no
+                    longer have a competitive advantage from it.
                   </span>{" "}
                 </div>
               </div>
@@ -137,21 +138,10 @@ export default function Section2() {
                 </div>
                 <div>
                   <span>
-                    which is now so widespread that businesses no longer have a
-                    competitive advantage from it. Due to its abundance of
-                    talent and status as a developing nation, India pays its
-                    talent far less than developed nations do.
-                  </span>
-                </div>
-              </div>
-              <div className="mini_block">
-                <div>
-                  <FaCheck />
-                </div>
-                <div className="border-bottom">
-                  <span>
-                    Because of this, hiring talent from India is a dream come
-                    true for businesses looking to pay fairly.{" "}
+                    Due to its abundance of talent and status as a developing
+                    nation, India pays its talent far less than developed
+                    nations do. Because of this, hiring talent from India is a
+                    dream come true for businesses looking to pay fairly.
                   </span>
                 </div>
               </div>
@@ -198,19 +188,19 @@ const Root = styled.section`
       gap: 20px;
       border: 1px solid #dadada;
       border-radius: 30px;
-      &:hover{
+      &:hover {
         background-color: #dadada4f;
       }
-      p{
+      p {
         font-size: 25px;
         font-weight: bold;
         margin: 0;
       }
       .mini_block {
         display: flex;
-        .border-bottom{
-            padding-bottom: 30px;
-            border-bottom: 1px solid #dadada;
+        .border-bottom {
+          padding-bottom: 30px;
+          border-bottom: 1px solid #dadada;
         }
         svg {
           color: #147888;

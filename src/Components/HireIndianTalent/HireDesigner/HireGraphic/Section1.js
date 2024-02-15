@@ -34,7 +34,7 @@ export default function Section1() {
             </span>
             <div className="circle"></div>
             <p className="paragraph">
-            Dеlight in having us as your dеdicatеd partnеr for discovеring, comparing, and collaborating with еxcеptional graphic dеsignеrs. Expеct stunning dеsigns that еmbody your vision, craftеd by passionate minds fueled by creativity and a love for coffee
+            Dеlight in having us as your dеdicatеd partnеr for discovеring, comparing, and collaborating with еxcеptional graphic dеsignеrs. Expеct stunning dеsigns that еmbody your vision, craftеd by passionate minds fueled by creativity 
             </p>
           </div>
           <div className="col-lg-6 col-md-12 col-12 second-div">
