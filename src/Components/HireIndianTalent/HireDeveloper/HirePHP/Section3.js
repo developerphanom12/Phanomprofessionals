@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import svgg from "../../../Components/Images/svg.svg";
 
-export default function Section6() {
+export default function Section3() {
   return (
     <Root>
       <div className="container">
@@ -12,8 +12,9 @@ export default function Section6() {
             className="col-lg-8 col-md-12 col-12 text_div"
             data-aos="fade-up"
           >
-            <span>Services for </span>
-            <span className="text">React Native </span> <span>Apps</span>
+            <span>Employ </span>
+            <span className="text">PHP Developers </span>{" "}
+            <span>to Take Advantage of These Excellent Services</span>
           </div>
           <div className="col-lg-2 col-md-12 col-12"></div>
         </div>
@@ -24,14 +25,10 @@ export default function Section6() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Phanom’s Source</p>
+                <p>Personalized PHP Web Application</p>
                 <span>
-                  We draw talented people from India by offering the top 3
-                  extremely alluring benefits.
-                </span>
-                <span>
-                  1) Completely Remote Position 2) Exposure to a Global Company
-                  Culture 3) Opportunities for High Earnings
+                  Employ a PHP programmer to build a custom PHP web application
+                  that is reliable, easy to use, and highly valued.
                 </span>
               </div>
             </div>
@@ -42,11 +39,10 @@ export default function Section6() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Phanom Professionals Vet</p>
+                <p>Upgrades & Migrations for PHP</p>
                 <span>
-                  We use our stringent vetting process to assess each
-                  candidate's technical aptitude, behavioral skills, and
-                  language skills.
+                  To start integrating and updating your current Python,.NET, or
+                  Node.js application to PHP, hire a professional PHP developer.
                 </span>
               </div>
             </div>
@@ -59,9 +55,11 @@ export default function Section6() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Phanom Professionals Match</p>
+                <p>Whole-Stack PHP Programming</p>
                 <span>
-                Through our skill matchmaking process, we match the job requirements with the candidates, making sure that only the most qualified candidate is selected. (Our first interview select ratio is 70%.)
+                  Our PHP programmers' proficiency with web architecture and
+                  system infrastructure allows them to create high-performance
+                  web apps.
                 </span>
               </div>
             </div>
@@ -72,15 +70,37 @@ export default function Section6() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Phanom Manage</p>
+                <p>Content Management System Development</p>
                 <span>
-                All employment contracts, payroll, IT support, HR support, and other related tasks are handled by us.
+                  Global IT giants across many industries and verticals rely on
+                  our offshore PHP developers for exceptional Ecommerce
+                  solutions and CMS development services
                 </span>
               </div>
             </div>
           </div>
         </div>
-     
+
+        <div className="row">
+          <div className="col-lg-6 col-md-12 col-12 block_main">
+            <div className="block_div">
+              <div>
+                <img src={svgg} alt="img" />
+              </div>
+              <div className="tag_text">
+                <p>Continuous Upkeep and Administration</p>
+                <span>
+                  Our PHP programmers offer you go-to solutions for any task,
+                  including regular maintenance, post-deployment query
+                  resolution, and data migration.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 col-md-12 col-12 block_main">
+            
+          </div>
+        </div>
       </div>
     </Root>
   );
@@ -90,7 +110,7 @@ const Root = styled.section`
 
   .text_div {
     margin-bottom: 0.7em;
-    padding: 20px 30px;
+    padding: 30px;
     text-align: center;
     .text {
       color: #147888;
@@ -111,7 +131,7 @@ const Root = styled.section`
     .block_div {
       word-spacing: 1px;
       letter-spacing: 0.1px;
-      padding: 0px 0px 30px 0px;
+      padding: 0px 0px 40px 0px;
       display: flex;
       border: 1px solid #147888;
       border-radius: 20px;

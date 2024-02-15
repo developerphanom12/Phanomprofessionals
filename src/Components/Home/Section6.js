@@ -115,6 +115,7 @@ const Root = styled.section`
     border-radius: 30px;
     padding: 30px 37px 0 40px;
     color: #147888;
+    margin: 5px;
     &:hover{background-color:#F3F3F3;
     transition:1s}
     h5 {

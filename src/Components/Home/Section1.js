@@ -84,14 +84,6 @@ export default function Section1() {
                 />
               </div>
             </div>
-            {/* <div className="row">
-              <div className="col-lg-4  svg-img">
-              <img src={cc} alt="img" width="90%" height="90%" />
-              </div>
-              <div className="col-lg-4 ">
-               
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
@@ -102,9 +94,13 @@ const Root = styled.section`
   font-family: "DM Sans", sans-serif;
   background-color: #ffffffd4;
 
+  :nth-child(1) {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
   .first-div {
     border: none;
-    /* height: 500px; */
     padding: 100px 0 0 50px;
     .first-content {
       font-size: 45px;
@@ -227,21 +223,13 @@ const Root = styled.section`
         height: 180px;
       }
     }
-
-    .row {
-      margin-right: 0;
-    }
   }
 
   @media (min-width: 567px) and (max-width: 992px) {
     .second-div {
       .img-second-border {
         margin: 55px 0 0 97px;
-        
-      } 
-
+      }
+    }
   }
-
-
-}
 `;

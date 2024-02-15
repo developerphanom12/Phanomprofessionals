@@ -18,7 +18,7 @@ export default function Section3() {
                 <div className="col-lg-2 col-md-5"></div>
                 <div className="col-lg-3 col-md-3 col-5 ">
                   <div className="image-circle">
-                    <h4>G</h4>
+                    <h5>G</h5>
                     <p>4.8 Rating</p>
                   </div>
                 </div>
@@ -26,11 +26,7 @@ export default function Section3() {
               </div>
 
               <div class="col-lg-6">
-                {/* <video width="320" height="240" poster="../Images/e.jpg" controls>
-                 <source src="movie.mp4" type="video/mp4"/>
-  
-   
-                </video> */}
+               
               </div>
             </div>
           </div>
@@ -108,9 +104,9 @@ const Root = styled.section`
       background-color: #5cd4b9;
       border-radius: 67px;
       margin-top: -115px;
-      h4 {
+      h5 {
         color: white;
-        padding-top: 30px;
+        padding-top: 25px;
         font-weight: 700;
         font-size: 34px;
       }

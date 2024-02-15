@@ -1,56 +1,188 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FcList } from "react-icons/fc";
-import { FaUserCircle } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
-import russia from "../MainLayouts/pictures/Russia.png";
-import canada from "../MainLayouts/pictures/canada.png";
-import us from "../MainLayouts/pictures/unitedstates.png";
-import maxico from "../MainLayouts/pictures/maxico.jpg";
-import china from "../MainLayouts/pictures/china.png";
-import { EXCHANGE_URLS } from "../URLS";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import cogoToast from "cogo-toast";
+import { IoIosArrowDown } from "react-icons/io";
+import logo from "../Images/logo_final_web.webp";
 
 export default function Navbar() {
   const [activePop, setActivePop] = useState(false);
   const [isListOpen, setIsListOpen] = useState(false);
-  const [profile, setProfile] = useState({}); 
+  const [isListOpen2, setIsListOpen2] = useState(false);
+  const [isListOpen3, setIsListOpen3] = useState(false);
+  const [isListOpen4, setIsListOpen4] = useState(false);
+  const [isListOpen5, setIsListOpen5] = useState(false);
 
- 
+  const handleMouseEnter = () => {
+    setIsListOpen(true);
+  };
 
-   
+  const handleMouseLeave = () => {
+    setIsListOpen(false);
+  };
+  const handleMouseEnter2 = () => {
+    setIsListOpen2(true);
+  };
 
- 
+  const handleMouseLeave2 = () => {
+    setIsListOpen2(false);
+  };
+  const handleMouseEnter3 = () => {
+    setIsListOpen3(true);
+  };
+
+  const handleMouseLeave3 = () => {
+    setIsListOpen3(false);
+  };
+  const handleMouseEnter4 = () => {
+    setIsListOpen4(true);
+  };
+
+  const handleMouseLeave4 = () => {
+    setIsListOpen4(false);
+  };
+  const handleMouseEnter5 = () => {
+    setIsListOpen5(true);
+  };
+
+  const handleMouseLeave5 = () => {
+    setIsListOpen5(false);
+  };
 
   return (
     <Root>
-       
-      
+      <div className="logo_img">
+        <img src={logo} alt="img" />
+      </div>
+      <div className="main_nav_bar">
         <div
           className="profile"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          id="whyPhanom"
           onClick={() => {
             setIsListOpen(!isListOpen);
           }}
         >
-          <FaUserCircle />
-          <div>
-            {profile?.username ? profile.username : "Unknown"}{" "}
-            <IoIosArrowDown />
-          </div>
+          Why Phanom
+          <IoIosArrowDown />
           <div className={isListOpen ? "option_list" : "off"}>
             <p>
-              <Link to="/profile">Profile Details</Link>
+              <Link to="/howitworks">How It Works</Link>
             </p>
             <p>
-              <Link to="/changepass">Change Password</Link>
+              <Link to="/vettingprocess">Vetting Process </Link>
+            </p>
+            <p>
+              {" "}
+              <Link to="/whyindia">Why India</Link>
             </p>
           </div>
         </div>
-       
-
+        <div className="profile">
+          Services <IoIosArrowDown />
+        </div>
+        <div
+          className="profile"
+          onMouseEnter={handleMouseEnter2}
+          onMouseLeave={handleMouseLeave2}
+          id="hireIndianTalent"
+          onClick={() => {
+            setIsListOpen2(!isListOpen2);
+          }}
+        >
+          Hire Indian Talent <IoIosArrowDown />
+          <div className={isListOpen2 ? "option_list_list" : "off"}>
+            <div
+              className="mini_option_list"
+              id="hireDM"
+              onMouseEnter={handleMouseEnter3}
+              onMouseLeave={handleMouseLeave3}
+              onClick={() => {
+                setIsListOpen3(!isListOpen3);
+              }}
+            >
+              Hire Digital Markitng <IoIosArrowDown />
+              <div className={isListOpen3 ? "option_list2" : "off"}>
+                <p>
+                  <Link to="/hireppc">Hire PPC Expert</Link>
+                </p>
+                <p>
+                  <Link to="/hireseo">Hire SEO Expert </Link>
+                </p>
+                <p>
+                  <Link to="/hirepa">Hire Programmatic Advertisement</Link>
+                </p>
+              </div>
+            </div>
+            <div
+              id="hireD"
+              className="mini_option_list"
+              onMouseEnter={handleMouseEnter4}
+              onMouseLeave={handleMouseLeave4}
+            >
+              Hire Designer <IoIosArrowDown />
+              <div className={isListOpen4 ? "option_list3" : "off"}>
+                <p>
+                  <Link to="/hiregraphic">Hire Graphic Designer</Link>
+                </p>
+                <p>
+                  <Link to="/hireuiux">Hire UI/UX Designer </Link>
+                </p>
+                <p>
+                  <Link to="/hireweb">Hire Web Designer</Link>
+                </p>
+              </div>
+            </div>
+            <div
+              id="hireDeveloper"
+              className="mini_option_list"
+              onMouseEnter={handleMouseEnter5}
+              onMouseLeave={handleMouseLeave5}
+            >
+              Hire Developer <IoIosArrowDown />
+              <div className={isListOpen5 ? "option_list4" : "off"}>
+                <p>
+                  <Link to="/hirereact">Hire ReactJs Developer</Link>
+                </p>
+                <p>
+                  <Link to="/hirenode">Hire NodeJs Developer </Link>
+                </p>
+                <p>
+                  <Link to="/hirelaravel">Hire Laravel Developer</Link>
+                </p>
+                <p>
+                  <Link to="/hireshopify">Hire Shopify Developer</Link>
+                </p>
+                <p>
+                  <Link to="/hirephp">Hire PHP Developer</Link>
+                </p>
+                <p>
+                  <Link to="/hirewordpress">Hire WordPress Developer</Link>
+                </p>
+                <p>
+                  <Link to="/hirereactnative">Hire React Native Developer</Link>
+                </p>
+                <p>
+                  <Link to="/hireandroid">Hire Android Developer</Link>
+                </p>
+                <p>
+                  <Link to="/hireios">Hire IOS Developer</Link>
+                </p>
+                <p>
+                  <Link to="/hiresoftware">Hire SoftWare Developer</Link>
+                </p>
+                <p>
+                  <Link to="/hiremobile">Hire Mobile App Developer</Link>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="profile">Branding</div>
+        <div className="profile">Our Portfolio</div>
+        <div className="profile">Contact Us</div>
+      </div>
       <div
         className="menu"
         onClick={() => {
@@ -64,148 +196,135 @@ export default function Navbar() {
         onClick={() => {
           setActivePop(false);
         }}
-      >
-        <div className="opt_btn">
-          {" "}
-          <img src={russia} alt="img" />
-        </div>
-        <div className="opt_btn">
-          {" "}
-          <img src={canada} alt="img" />
-        </div>
-        <div className="opt_btn">
-          {" "}
-          <img src={us} alt="img" />
-        </div>
-        <div className="opt_btn">
-          {" "}
-          <img src={maxico} alt="img" />
-        </div>
-        <div className="opt_btn">
-          {" "}
-          <img src={china} alt="img" />
-        </div>
-      </div>
-   
+      ></div>
     </Root>
   );
 }
 
 const Root = styled.section`
+  border-bottom: 1px solid lightgray;
+  flex-wrap: wrap;
   display: flex;
-  align-items: center;
   flex: 1;
   height: 100%;
   padding: 10px;
-  width: 90%;
+  width: 100%;
   background-color: #fff;
-  justify-content: space-between;
+  justify-content: space-around;
   box-shadow: 1px 1px 5px 1px lightgray;
-  padding-left: 80px;
-  @media (max-width: 788px) {
-    padding-left: 60px;
-  }
-  .flags {
+  .logo_img {
     display: flex;
-    margin: 10px 0px;
-    gap: 7px;
-    padding: 5px;
-    @media (max-width: 1020px) {
-      display: none;
-    }
-
-    > div {
-      height: 98%;
-      align-items: center;
-      display: flex;
-      border-radius: 10px;
-      padding: 6px 10px;
-      text-align: center;
-      gap: 10px;
-      P {
-        color: #999;
-        font-family: "Roboto", sans-serif;
-        font-size: 16px;
-        align-items: center;
-        display: flex;
-        margin: 0;
-        font-weight: 700;
-      }
-      img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-      }
-    }
-  }
-  .profile {
-    display: flex;
-    padding: 10px;
-    margin: 5px;
-    gap: 7px;
     justify-content: center;
     align-items: center;
-    position: relative;
-    cursor: pointer;
-    border-radius: 20px;
-    background-color: #f8f8f8;
-    &:hover {
-      box-shadow: 4px 4px 5px gray;
+    img {
+      width: 200px;
+      padding: 0px 15px;
     }
-    svg {
-      width: 25px;
-      height: 25px;
-    }
-    > div {
-      text-align: center;
-      font-size: 13px;
-      svg {
-        width: 13px;
-        height: 13px;
+  }
+  .main_nav_bar {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: "Lato", Sans-serif;
+    .profile {
+      display: flex;
+      font-size: 15px;
+      color: #000000;
+      padding: 15px;
+      margin: 5px;
+      gap: 7px;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        color: #147888;
       }
-    }
 
-    .option_list {
-      background-color: #f8f8f8;
-      z-index: 1;
-      left: -33px;
-      top: 110%;
-      position: absolute;
-      width: 170px;
-      border: 1px solid #f8f8f8;
-      box-shadow: 1px 1px 4px 1px gray;
-      text-decoration: none;
-      p {
-        margin: 0;
-        padding: 5px;
-        &:hover {
-          background-color: white;
+      > div {
+        font-size: 14px;
+        svg {
+          width: 13px;
+          height: 13px;
         }
       }
-      a {
+      .option_list_list {
+        left: -23px;
+        top: 100%;
+        position: absolute;
+        .mini_option_list {
+          padding: 10px;
+          p {
+            margin: 0;
+            padding: 20px;
+            &:hover {
+              background-color: #0093ab;
+            }
+          }
+        }
+      }
+      .option_list {
+        left: -23px;
+        top: 100%;
+        position: absolute;
+      }
+      .option_list2 {
+        right: -170px;
+        top: 0;
+        position: absolute;
+      }
+      .option_list3 {
+        right: -170px;
+        top: 50%;
+        position: absolute;
+      }
+      .option_list4 {
+        right: -170px;
+        top: 70%;
+        position: absolute;
+      }
+
+      .option_list,
+      .option_list_list,
+      .option_list2,
+      .option_list3,
+      .option_list4 {
+        z-index: 1;
         text-decoration: none;
-        color: black;
+        min-width: 220px;
+        border: 1px solid #147888;
+        background-color: #147888;
+        color: #fff;
+        p {
+          margin: 0;
+          padding: 15px;
+          &:hover {
+            background-color: #0093ab;
+          }
+        }
+        a {
+          text-decoration: none;
+          color: white;
+        }
+      }
+
+      .off {
+        display: none;
       }
     }
-    .off {
-      display: none;
-    }
   }
-  .notification {
-    display: flex;
-    justify-content: right;
-    font-size: 25px;
-    background-color: transparent;
-    cursor: pointer;
-    align-items: flex-end;
-    margin-right: 5px;
-    .details {
-      display: flex;
-      flex-direction: column;
-      width: 400px;
-      height: 200px;
+  /* .profile:hover .option_list,
+  .profile:hover .option_list_list,
+  .profile:hover .option_list2,
+  .profile:hover .option_list3,
+  .profile:hover .option_list4 {
+    opacity: 1;
+    transform: translateY(0);
+    &:hover {
+      transition: opacity 0.3s, transform 0.3s;
+      opacity: 0;
+      transform: translateY(10px);
     }
-  }
+  } */
   .menu {
     @media (max-width: 1020px) {
       display: block;
@@ -228,31 +347,11 @@ const Root = styled.section`
     height: 400px;
     width: 100%;
     background: #ff7f50;
-    .notification {
-      display: flex;
-      flex-direction: column;
-      font-size: 25px;
-      margin-left: 10px;
-    }
   }
   .no_pop {
     display: none;
   }
-  img {
-    background: none;
-    color: black;
-    border-color: transparent;
-    font-size: larger;
-    padding: 8px;
-    border-radius: 10px;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    img:hover {
-      background-color: rgb(249, 147, 45);
-      color: #ffffff;
-    }
-  }
+
   ul.closed {
     display: none;
   }

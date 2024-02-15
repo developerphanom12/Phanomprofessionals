@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import svgg from "../../../Components/Images/svg.svg";
 
-export default function Section6() {
+export default function Section4() {
   return (
     <Root>
       <div className="container">
@@ -24,14 +24,11 @@ export default function Section6() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Phanom’s Source</p>
+                <p>Managing Ads</p>
                 <span>
-                  We draw talented people from India by offering the top 3
-                  extremely alluring benefits.
-                </span>
-                <span>
-                  1) Completely Remote Position 2) Exposure to a Global Company
-                  Culture 3) Opportunities for High Earnings
+                  Hire an AdWords consultant to help you choose the ideal ad
+                  management channel to increase conversion rates and realize
+                  the full potential of your business.
                 </span>
               </div>
             </div>
@@ -42,11 +39,11 @@ export default function Section6() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Phanom Professionals Vet</p>
+                <p>Localized Marketing</p>
                 <span>
-                  We use our stringent vetting process to assess each
-                  candidate's technical aptitude, behavioral skills, and
-                  language skills.
+                  When it comes to efficient marketing, native advertisements
+                  are a popular choice among consumers and our personal
+                  favorite.
                 </span>
               </div>
             </div>
@@ -59,9 +56,12 @@ export default function Section6() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Phanom Professionals Match</p>
+                <p>Advertisement Remarketing</p>
                 <span>
-                Through our skill matchmaking process, we match the job requirements with the candidates, making sure that only the most qualified candidate is selected. (Our first interview select ratio is 70%.)
+                  Who better to serve your ads to than those who already have
+                  faith in your company and its offerings? Employ Google AdWords
+                  specialists to make sure your retargeting has a personalized
+                  touch.
                 </span>
               </div>
             </div>
@@ -72,15 +72,49 @@ export default function Section6() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Phanom Manage</p>
+                <p>Management of Video Ads</p>
                 <span>
-                All employment contracts, payroll, IT support, HR support, and other related tasks are handled by us.
+                  Using YouTube's video ads, businesses of any size can improve
+                  their sales and global recognition.
                 </span>
               </div>
             </div>
           </div>
         </div>
-     
+
+        <div className="row">
+          <div className="col-lg-6 col-md-12 col-12 block_main">
+            <div className="block_div">
+              <div>
+                <img src={svgg} alt="img" />
+              </div>
+              <div className="tag_text">
+                <p>PPC Audits</p>
+                <span>
+                  Did you just lose your ranking due to a Google penalty, or are
+                  you trying to find ways to make your ads perform better?
+                  Engage the best PPC consultants for AdWords that are
+                  available.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 col-md-12 col-12 block_main">
+            <div className="block_div">
+              <div>
+                <img src={svgg} alt="img" />
+              </div>
+              <div className="tag_text">
+                <p>Social Media Promotion</p>
+                <span>
+                  Every business is different, and selecting the right social
+                  media platforms is part of that. We can help you with YouTube,
+                  Facebook, LinkedIn, Twitter, and Instagram.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </Root>
   );
@@ -90,7 +124,7 @@ const Root = styled.section`
 
   .text_div {
     margin-bottom: 0.7em;
-    padding: 20px 30px;
+    padding:30px;
     text-align: center;
     .text {
       color: #147888;
@@ -111,7 +145,7 @@ const Root = styled.section`
     .block_div {
       word-spacing: 1px;
       letter-spacing: 0.1px;
-      padding: 0px 0px 30px 0px;
+      padding: 0px 0px 40px 0px;
       display: flex;
       border: 1px solid #147888;
       border-radius: 20px;

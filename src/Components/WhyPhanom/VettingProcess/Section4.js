@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import centerpic from "../Images/Boyspic.png";
+import centerpic from "../../../Components/Images/Boyspic.png";
 
 export default function Section4() {
   return (

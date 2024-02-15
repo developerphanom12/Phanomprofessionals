@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import dna from "../Images/dna.png";
+import dna from "../../../Components/Images/dna.png";
 
 export default function Section2() {
   return (

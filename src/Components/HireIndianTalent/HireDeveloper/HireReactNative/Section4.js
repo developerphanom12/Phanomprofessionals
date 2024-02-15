@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import svgg from "../../../Components/Images/svg.svg";
 
-export default function Section6() {
+export default function Section4() {
   return (
     <Root>
       <div className="container">
@@ -18,69 +18,102 @@ export default function Section6() {
           <div className="col-lg-2 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-1 col-md-12 col-12"></div>
+
+          <div className="col-lg-5 col-md-12 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Phanom’s Source</p>
+                <p>Consultation for React Native Apps</p>
                 <span>
-                  We draw talented people from India by offering the top 3
-                  extremely alluring benefits.
-                </span>
-                <span>
-                  1) Completely Remote Position 2) Exposure to a Global Company
-                  Culture 3) Opportunities for High Earnings
+                  Use our professional React Native developers for full-provider
+                  help.
                 </span>
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-5 col-md-12 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Phanom Professionals Vet</p>
+                <p>React Native App Development</p>
                 <span>
-                  We use our stringent vetting process to assess each
-                  candidate's technical aptitude, behavioral skills, and
-                  language skills.
+                  Success testimonies of delivering React Native app improvement
+                  offerings for iOS and Android.
                 </span>
               </div>
             </div>
           </div>
+          <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-1 col-md-12 col-12"></div>
+
+          <div className="col-lg-5 col-md-12 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Phanom Professionals Match</p>
+                <p>React Native UI/UX Development</p>
                 <span>
-                Through our skill matchmaking process, we match the job requirements with the candidates, making sure that only the most qualified candidate is selected. (Our first interview select ratio is 70%.)
+                  Create innovative reviews with our UI/UX improvement team.
                 </span>
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-5 col-md-12 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Phanom Manage</p>
+                <p>React Native QA and Testing:</p>
                 <span>
-                All employment contracts, payroll, IT support, HR support, and other related tasks are handled by us.
+                  Thorough testing guarantees the most suitable efficiency and
+                  overall performance.
                 </span>
               </div>
             </div>
           </div>
+          <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
-     
+        <div className="row">
+          <div className="col-lg-1 col-md-12 col-12"></div>
+
+          <div className="col-lg-5 col-md-12 col-12 block_main">
+            <div className="block_div">
+              <div>
+                <img src={svgg} alt="img" />
+              </div>
+              <div className="tag_text">
+                <p>Support and preservation for React Native</p>
+                <span>
+                  Keep your application up to date with brand-new tendencies.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-5 col-md-12 col-12 block_main">
+            <div className="block_div">
+              <div>
+                <img src={svgg} alt="img" />
+              </div>
+              <div className="tag_text">
+                <p>React Native Migration & Upgradation</p>
+                <span>
+                  Use our enterprise-leading expertise to seamlessly circulate
+                  and update your apps.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-1 col-md-12 col-12"></div>
+        </div>
       </div>
     </Root>
   );
@@ -111,8 +144,9 @@ const Root = styled.section`
     .block_div {
       word-spacing: 1px;
       letter-spacing: 0.1px;
-      padding: 0px 0px 30px 0px;
+      padding: 0px 0px 40px 0px;
       display: flex;
+      /* gap: 20px; */
       border: 1px solid #147888;
       border-radius: 20px;
       &:hover {

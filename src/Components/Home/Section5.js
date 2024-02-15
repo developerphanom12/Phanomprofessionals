@@ -9,7 +9,6 @@ export default function Section5() {
       <div className="container-fluid mt-5">
         <div className="row">
           <div className="col-lg-8 col-md-8 col-8 bg-opacity">
-            {/* <div className=""> */}
             <div className="content">
               <div className="row">
                 <div className="col-lg-7 col-12" data-aos="fade-up">
@@ -29,14 +28,13 @@ export default function Section5() {
                   <button>get a quotation</button>
                 </div>
 
-
-               <div className="col-lg-5  col-12 overlap-div">
+                <div className="col-lg-5  col-12 overlap-div">
                   <div className="row">
                     <div className="col-lg-1 col-md-2">
                       <RiAlarmWarningFill />
                     </div>
                     <div className="col-lg-10 col-md-10">
-                        <p>Get proper In-House Expertise for your projects</p>
+                      <p>Get proper In-House Expertise for your projects</p>
                     </div>
                   </div>
                   <div className="row">
@@ -44,7 +42,7 @@ export default function Section5() {
                       <RiAlarmWarningFill />
                     </div>
                     <div className="col-lg-10 col-md-10">
-                        <p>Rely on us to get the best 24/7 Support</p>
+                      <p>Rely on us to get the best 24/7 Support</p>
                     </div>
                   </div>
                   <div className="row">
@@ -52,7 +50,7 @@ export default function Section5() {
                       <RiAlarmWarningFill />
                     </div>
                     <div className="col-lg-10 col-md-10">
-                        <p>Get Proven Track Records of our success</p>
+                      <p>Get Proven Track Records of our success</p>
                     </div>
                   </div>
                   <div className="row">
@@ -60,7 +58,7 @@ export default function Section5() {
                       <RiAlarmWarningFill />
                     </div>
                     <div className="col-lg-10 col-md-10">
-                        <p>Explore to get Cost-Effective Brilliance</p>
+                      <p>Explore to get Cost-Effective Brilliance</p>
                     </div>
                   </div>
                   <div className="row">
@@ -68,7 +66,7 @@ export default function Section5() {
                       <RiAlarmWarningFill />
                     </div>
                     <div className="col-lg-10 col-md-10">
-                        <p>Meet our Dedicated Project Manager</p>
+                      <p>Meet our Dedicated Project Manager</p>
                     </div>
                   </div>
                   <div className="row">
@@ -76,13 +74,10 @@ export default function Section5() {
                       <RiAlarmWarningFill />
                     </div>
                     <div className="col-lg-10 col-md-10">
-                        <p>Meet our Dedicated Project Manager</p>
+                      <p>Meet our Dedicated Project Manager</p>
                     </div>
                   </div>
-                </div> 
-
-
-
+                </div>
               </div>
             </div>
             {/* </div> */}
@@ -96,17 +91,6 @@ export default function Section5() {
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
   background-color: #ffffffd4;
-  /* .fixed-img{
-    border:1px solid black;
-    height:600px;
-    background-image:url(${f});
-    background-size:100% 100%;
-    background-color:black;
-    opacity:;
-    background-attachment:fixed;
-    background-repeat:no-repeat;
-    
-} */
 
   .bg-opacity {
     position: relative;
@@ -188,73 +172,77 @@ const Root = styled.section`
       height: 40px;
       color: #ffffff;
     }
-    p{
-        color:#FFFFFFD4;
-        padding:10px 0 0 10px;
-        margin-bottom:20px
+    p {
+      color: #ffffffd4;
+      padding: 10px 0 0 10px;
+      margin-bottom: 20px;
     }
   }
 
-  @media (max-width: 567px){
-.bg-opacity {
-    padding-top: 40px;
-    padding-left: 10px; 
+  @media (max-width: 567px) {
+    .bg-opacity {
+      padding-top: 40px;
+      padding-left: 10px;
+    }
+
+    .choose-content {
+      font-size: 15px;
+    }
+
+    .white-content {
+      font-size: 21px;
+    }
+    .colored-content {
+      font-size: 21px;
+    }
+    button {
+      padding: 15px 33px;
+    }
+
+    .overlap-div {
+      background-color: #147888;
+      width: 82%;
+      height: 200px;
+      border-radius: 30px;
+      margin-left: 80%;
+      position: absolute;
+      top: -30px;
+      padding: 8px 0 0 12px;
+      svg{
+      display: none;
+      }
+      p{
+        margin: 0;
+        padding: 4px;
+        font-size: 10px;
+      }
+    }
   }
 
- .choose-content {
-    font-size: 15px;
-}
-
-  .white-content {
-    font-size: 21px;
-}
-.colored-content {
-    font-size: 21px;
-}
- button {
-    padding: 15px 33px;
-}
-
-.overlap-div {
-    /* margin-left: 0; 
-     position: unset; */
-     display:none
-
-}
-
-/* .overlap-div {
-    padding: 23px 0 0 10px;
-} */
-}
-
-
-@media (min-width: 567px) and (max-width: 992px){
-  .bg-opacity {
-     padding-left:10px;
-     padding-right:60px;
-}
-
-  .choose-content {
-    font-size: 15px;
-}
-
-  .white-content {
-    font-size: 21px;
-}
-.colored-content {
-    font-size: 21px;
-}
-
-.overlap-div {
-    padding: 23px 0 0 10px;
-    height:390px;
-    margin-left:93%;
-    p{
-      font-size:13px
+  @media (min-width: 567px) and (max-width: 992px) {
+    .bg-opacity {
+      padding-left: 10px;
+      padding-right: 60px;
     }
-}
 
-}
+    .choose-content {
+      font-size: 15px;
+    }
+
+    .white-content {
+      font-size: 21px;
+    }
+    .colored-content {
+      font-size: 21px;
+    }
+
+    .overlap-div {
+      padding: 23px 0 0 10px;
+      height: 390px;
+      margin-left: 82%;
+      p {
+        font-size: 13px;
+      }
+    }
+  }
 `;
-
-

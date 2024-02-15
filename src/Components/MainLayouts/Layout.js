@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import Navbar from "./Navbar";
-import PreNav from "./PreNav";
-import { useSelector } from "react-redux";
-import SideBar from "./SideBar";
+import PostNav from "./PostNav";
+
+
 
 export default function Layout({ children }) {
   return (
     <Root>
       <div className="top_bar">
         <Navbar />
+        {/* <PostNav/> */}
       </div>
       <div className="main_body">{children}</div>
     </Root>
@@ -17,21 +18,20 @@ export default function Layout({ children }) {
 
 const Root = styled.section`
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   height: 100%;
 
   .main_bar {
     display: flex;
-    flex-direction: column;
-    flex: 1;
     width: 100%;
     overflow: hidden;
 
     .top_bar {
       background: #ffffff;
       display: flex;
-      /* position: sticky; */
-      height: 70px;
+      position: sticky;
+      height: 120px;
       background-image: linear-gradient(
         to bottom right,
         #c6a5ffc7,
@@ -42,7 +42,7 @@ const Root = styled.section`
       width: 100%;
     }
     .main_body {
-      height: 90%;
+      height: 85%;
       width: 100%;
     }
   }

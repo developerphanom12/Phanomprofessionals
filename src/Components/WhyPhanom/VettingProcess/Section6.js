@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import chainpic from "../Images/chainimg.png";
+import chainpic from "../../../Components/Images/chainimg.png";
 
 export default function Section6() {
   return (

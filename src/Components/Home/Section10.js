@@ -121,12 +121,12 @@ const Root = styled.section`
 @media (min-width: 567px) and (max-width: 992px){
   .first-div {
   padding: 10px 0 0 10px;
+  text-align: center;
   .circle {
     width: 10%;
-    margin: -4% 0 0 0;
+    margin: -4% 0 0 10%;
 }
   }
-
    .second-div {
     padding: 0 0 0 10px;
 }

@@ -32,6 +32,9 @@ const Root = styled.section`
   iframe{
     border-radius: 10px;
   }
+  @media (max-width:576px){
+    width: fit-content;
+  } 
   .text_div {
     margin-bottom: 30px;
     padding: 20px 50px 30px 50px;
