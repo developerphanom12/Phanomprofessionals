@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import tag1 from "../../../Components/Images/tag1.png";
-import tag2 from "../../../Components/Images/tag2.png";
-import tag3 from "../../../Components/Images/tag3.png";
+import tag1 from "../../../Images/tag1.png";
+import tag2 from "../../../Images/tag2.png";
+import tag3 from "../../../Images/tag3.png";
 
 export default function Section2() {
   return (

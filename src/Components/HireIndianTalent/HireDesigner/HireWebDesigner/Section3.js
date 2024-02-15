@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import listimg from "../../../Components/Images/lists.png";
+import listimg from "../../../Images/lists.png";
 
 export default function Section3() {
   return (

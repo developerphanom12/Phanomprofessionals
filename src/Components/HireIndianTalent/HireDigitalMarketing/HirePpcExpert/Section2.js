@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import number from "../../../Components/Images/numbring.png";
+import number from "../../../Images/numbring.png";
 
 export default function Section2() {
   return (
