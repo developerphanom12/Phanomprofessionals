@@ -23,6 +23,7 @@ import Layout from "./Components/MainLayouts/Layout";
 import VettingProcess from "./Components/WhyPhanom/VettingProcess/VettingProcess";
 import HirePpcExpert from "./Components/HireIndianTalent/HireDigitalMarketing/HirePpcExpert/HirePpcExpert";
 import HireSeoExpert from "./Components/HireIndianTalent/HireDigitalMarketing/HireSeoExpert/HireSeoExpert";
+import InnerPages from "./Components/InnerPages/InnerPages";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
     <div>
       <Layout>
         <Routes>
+          <Route path="innerpages" element={<InnerPages/>} />
           <Route path="/" element={<Home />} />
           <Route path="/vettingprocess" element={<VettingProcess />} />
           <Route path="/hiremobile" element={<HireMobileApp />} />

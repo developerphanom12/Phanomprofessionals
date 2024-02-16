@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { FcList } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import logo from "../Images/logo_final_web.webp";
 
@@ -12,7 +12,7 @@ export default function Navbar() {
   const [isListOpen3, setIsListOpen3] = useState(false);
   const [isListOpen4, setIsListOpen4] = useState(false);
   const [isListOpen5, setIsListOpen5] = useState(false);
-
+  const navigate = useNavigate();
   const handleMouseEnter = () => {
     setIsListOpen(true);
   };
@@ -51,7 +51,12 @@ export default function Navbar() {
 
   return (
     <Root>
-      <div className="logo_img">
+      <div
+        className="logo_img"
+        onClick={() => {
+          navigate("/innerpages");
+        }}
+      >
         <img src={logo} alt="img" />
       </div>
       <div className="main_nav_bar">

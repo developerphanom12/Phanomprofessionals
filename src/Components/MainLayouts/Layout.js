@@ -2,8 +2,6 @@ import styled from "styled-components";
 import Navbar from "./Navbar";
 import PostNav from "./PostNav";
 
-
-
 export default function Layout({ children }) {
   return (
     <Root>
@@ -25,6 +23,7 @@ const Root = styled.section`
   .main_bar {
     display: flex;
     width: 100%;
+    height: 100%;
     overflow: hidden;
 
     .top_bar {
