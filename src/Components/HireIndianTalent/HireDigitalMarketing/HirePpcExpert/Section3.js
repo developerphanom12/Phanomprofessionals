@@ -16,10 +16,6 @@ export default function Section3() {
             <span>How can I hire </span>{" "}
             <span className="text"> Google Ads specialists </span>
             <span>using Phanom Professionals?</span>
-            <p>
-              Indians currently manage a number of the largest corporations in
-              the world.
-            </p>
           </div>
           <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
@@ -44,9 +40,9 @@ export default function Section3() {
                   <img src={tag2} alt="img" />
                   <span className="span_div">Evaluation</span>
                   <p>
-                    Based on the shared job description, we will match the
-                    best-fit profile or profiles and share within 48 business
-                    hours.
+                    Based on the shared job description, we will provide you the
+                    best-fit profile or profiles and share in less than 48
+                    business hours.
                   </p>
                 </div>
               </div>
@@ -62,8 +58,8 @@ export default function Section3() {
                   <img src={tag3} alt="img" />
                   <span>Conversation And Shortlist</span>
                   <p>
-                    You select the eligible candidates, and we schedule
-                    interviews around your schedule.
+                    We provide you with the best experts to shortlist for your
+                    project or assignments.
                   </p>
                 </div>
               </div>

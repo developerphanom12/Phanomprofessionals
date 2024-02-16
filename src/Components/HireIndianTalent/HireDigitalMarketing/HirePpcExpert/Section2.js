@@ -14,9 +14,9 @@ export default function Section2() {
                 and culturally appropriate PPC specialist?
               </p>
               <span>
-                We make sure your company gets the best candidate by screening
-                over 200,000 applicants for behavioral, linguistic, and
-                technical skills.
+                We make sure your company gets the best candidate or the best
+                PPC specialist that we have in our in-house expert team that is
+                more than 200+ employees on the floor.
               </span>
             </div>
           </div>
@@ -26,7 +26,7 @@ export default function Section2() {
           </div>
           <div className="col-lg-5  col-md-12 col-12 segment">
             <div className="mini_div">
-              <p>Sturdy Technical Foundation</p>
+              <p>Study Technical Foundation</p>
               <span>
                 through technical assessments created for the job role in
                 compliance with international standards.

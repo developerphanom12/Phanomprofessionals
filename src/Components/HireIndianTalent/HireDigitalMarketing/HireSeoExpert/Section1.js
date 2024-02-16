@@ -29,7 +29,7 @@ export default function Section1() {
             </div>
             <span className="display">
               <span className="first-content">Hire </span>
-              <span className="second-content">Professional SEO </span>
+              <span className="second-content">Professional SEO</span>
             </span>
             <div className="circle"></div>
             <span className="first-content">Experts </span>

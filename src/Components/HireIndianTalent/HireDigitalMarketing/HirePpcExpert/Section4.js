@@ -12,8 +12,8 @@ export default function Section4() {
             className="col-lg-8 col-md-12 col-12 text_div"
             data-aos="fade-up"
           >
-            <span>Services for </span>
-            <span className="text">React Native </span> <span>Apps</span>
+            <span>Our SEM consultants </span>
+            <span className="text">and  </span> <span>PPC experts can help you with</span>
           </div>
           <div className="col-lg-2 col-md-12 col-12"></div>
         </div>

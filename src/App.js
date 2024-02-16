@@ -2,13 +2,10 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import HirePA from "./Components/HireIndianTalent/HireDigitalMarketing/HirePA/HirePA";
-import HirePpcExpert from "./Components/HireIndianTalent/HireDigitalMarketing/HirePpcExpert/HirePpcExpert";
-import HireSeoExpert from "./Components/HireIndianTalent/HireDigitalMarketing/HireSeoExpert/HireSeoExpert";
 import HireIOS from "./Components/HireIndianTalent/HireDeveloper/HireIOS/HireIOS";
 import HireReactNative from "./Components/HireIndianTalent/HireDeveloper/HireReactNative/HireReactNative";
 import WhyIndia from "./Components/WhyPhanom/WhyIndia/WhyIndia";
 import HowItWorks from "./Components/WhyPhanom/HowItWorks/HowItWorks";
-import VettingProcess from "./Components/WhyPhanom/VettingProcess/VettingProcess";
 import HireWebDesigner from "./Components/HireIndianTalent/HireDesigner/HireWebDesigner/HireWebDesigner";
 import HireUiuxDesigner from "./Components/HireIndianTalent/HireDesigner/HireUiuxDesigner/HireUiuxDesigner";
 import HireGraphic from "./Components/HireIndianTalent/HireDesigner/HireGraphic/HireGraphic";
@@ -23,6 +20,9 @@ import HireSoftware from "./Components/HireIndianTalent/HireDeveloper/HireSoftwa
 import HireMobileApp from "./Components/HireIndianTalent/HireDeveloper/HireMobileApp/HireMobileApp";
 import Home from "./Components/Home/Home";
 import Layout from "./Components/MainLayouts/Layout";
+import VettingProcess from "./Components/WhyPhanom/VettingProcess/VettingProcess";
+import HirePpcExpert from "./Components/HireIndianTalent/HireDigitalMarketing/HirePpcExpert/HirePpcExpert";
+import HireSeoExpert from "./Components/HireIndianTalent/HireDigitalMarketing/HireSeoExpert/HireSeoExpert";
 
 
 function App() {
