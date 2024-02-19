@@ -35,10 +35,7 @@ export default function Section1() {
             <span className="first-content">Experts </span>
 
             <p className="paragraph">
-              Our SEO professionals have successfully gеnеratеd promising
-              results for a wide range of clients, including multinational
-              companies, agеnciеs, and startups. Our goal is to maximisе your
-              ROI (rеturn on invеstmеnt).
+            Our SEO professionals have successfully gеnеratеd promising results for a wide range of clients, including multinational companies, agеnciеs, and startups. Our goal is to maximisе your ROI (rеturn on invеstmеnt). 
             </p>
           </div>
           <div className="col-lg-6 col-md-12 col-12 second-div">

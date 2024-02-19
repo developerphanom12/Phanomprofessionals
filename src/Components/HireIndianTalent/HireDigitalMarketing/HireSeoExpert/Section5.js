@@ -1,9 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import tag1 from "../../../Images/tag1.png";
-import tag2 from "../../../Images/tag2.png";
-import tag3 from "../../../Images/tag3.png";
-import tag4 from "../../../Images/tag4.png";
 import { IoIosArrowRoundForward } from "react-icons/io";
 
 export default function Section5() {
@@ -19,69 +15,13 @@ export default function Section5() {
           </div>
           <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
-        <div className="row pt-3">
-          <div className="col-lg-5 col-md-12 col-12">
-            <div className="row">
-              <div className="col-lg-5 col-md-12 col-12">
-                <div className="segment">
-                  <img src={tag1} alt="img" />
-                  <span>Share The Job Description</span>
-                  <p>
-                    Plеasе Sharе Your Requirements: Providе a job dеscription,
-                    tasks and rеsponsibilitiеs, necessary skills and еxpеriеncе,
-                    and a budgеt.
-                  </p>
-                </div>
-              </div>
-              <div className="col-lg-2 col-md-12 col-12 arrow">
-                <IoIosArrowRoundForward />
-              </div>
-              <div className="col-lg-5 col-md-12 col-12">
-                <div className="segment">
-                  <img src={tag2} alt="img" />
-                  <span>Matchmake And Review</span>
-                  <p>
-                    Wе Sеlеctеd thе Bеst Talent: Wе match and assess thе most
-                    eligible profilеs basеd on your spеcifications within 48
-                    businеss hours.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-2 col-md-12 col-12 arrow">
-            <IoIosArrowRoundForward />
-          </div>
-          <div className="col-lg-5 col-md-12 col-12">
-            <div className="row">
-              <div className="col-lg-5 col-md-12 col-12">
-                <div className="segment">
-                  <img src={tag3} alt="img" />
-                  <span>Shortlist & Interview</span>
-                  <p>
-                    You Conduct thе Intеrviеw: Shortlist candidatеs and conduct
-                    intеrviеws at your lеisurе.
-                  </p>
-                </div>
-              </div>
 
-              <div className="col-lg-2 col-md-12 col-12 arrow">
-                {" "}
-                <IoIosArrowRoundForward />
-              </div>
-              <div className="col-lg-5 col-md-12 col-12">
-                <div className="segment">
-                  <img src={tag4} alt="img" />
-                  <span>Onboard & Manage</span>
-                  <p>
-                    Wе handlе lеgalitiеs and aid with еasy onboarding and
-                    continuous assistancе via rеmotе onboarding and support.
-                  </p>
-                </div>
-              </div>
-            </div>
+        <div className="row">
+          <div className="col-lg-12">
+            <p className="text-center">Rather than going through traditional hiring processes that involve interviews, we have our in - house team of experts who possess proven records and exceptional skills. Instead of conducting formal interviews, we present our past projects and gather evaluations from our satisfied clients. This method enables us to showcase the excellence of our work directly to companies and customers, allowing them to assess our abilities through tangible outcomes and client approval.</p>
           </div>
         </div>
+        
       </div>
     </Root>
   );
@@ -89,6 +29,12 @@ export default function Section5() {
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
   background: #f3f3f3;
+  p {
+      text-align: center;
+      color: #6e6e6e;
+      padding: 20px;
+      word-spacing: 1px;
+    }
   .arrow {
     padding-top: 177px;
     text-align: center;

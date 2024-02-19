@@ -27,18 +27,15 @@ export default function Section1() {
               </button>
               <button>Vetting Process</button>
             </div>
-            <span className="first-content">Phanom Profеssionals</span>
-            <span className="second-content">Talent Network is</span>
+            <span className="first-content">Phanom Professional's Talent Network is</span>
+            <span className="second-content">India's biggest </span>
             <br />
             <div className="circle"></div>
-            <span className="second-content"> India's</span>
-            <span className="first-content">
-              biggest community of pinnacle professionals.
-            </span>
+            <span className="second-content"> </span>
+            <span className="first-content">community of pinnacle professionals.</span>
             <p className="paragraph">
-              Phanom Professionals is a large network of highly qualifiеd
-              workers in India. Wе еnsurе that thеy arе just as good as pеoplе
-              who work for multinational corporations all around thе world.
+            Phanom Professionals is a large network of highly qualifiеd workers in India. We ensure that they are just as good as pеoplе who work for multinational corporations all around thе world.
+
             </p>
           </div>
           <div className="col-lg-6 col-md-12 col-12 second-div">

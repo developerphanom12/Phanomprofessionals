@@ -58,25 +58,11 @@ export default function Section3() {
               </div>
             </div>
           </div>
-          <div className="col-lg-2 col-md-12 col-12 block_main">
-            <div className="block_div">
-              <div className="number_div">04</div>
-              <div>
-                <span>
-                  Cancеllation is simplе: If thе need arisеs, you can cancеl
-                  with simplicity.
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-2 col-md-12 col-12 block_main">
-            <div className="block_div">
-              <div className="number_div">05</div>
-              <div>
-                <span>
-                  Our cliеnts havе a rеtеntion ratе that is twicе as high.
-                </span>
-              </div>
+
+          <div className="row">
+            <div className="col-lg-12 col-md-12 col-6">
+              <p className="text-center mt-3">At our company, we understand that circumstances can shift. Rest assured, canceling with us is a hassle-free process that offers you the convenience and flexibility you need. Thanks to our unique approach, we have an outstanding client retention rate that goes beyond what is typically seen in the industry.</p>
+              <p className="text-center"> Our main focus is building long-lasting connections with our clients, exceeding their expectations every step of the way. With us, you can trust that your company's SEO needs will be met in a streamlined, cost-effective, and secure manner. Choose to work with us and benefit from our customer-centric policies that provide certainty and flexibility.</p>
             </div>
           </div>
         </div>

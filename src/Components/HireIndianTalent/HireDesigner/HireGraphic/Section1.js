@@ -30,7 +30,7 @@ export default function Section1() {
             <span className="display">
               <span className="first-content">Discover the top-tier </span>
               <span className="second-content"> graphic design </span> 
-              <span className="first-content">talent</span>
+              <span className="first-content"> talent</span>
             </span>
             <div className="circle"></div>
             <p className="paragraph">

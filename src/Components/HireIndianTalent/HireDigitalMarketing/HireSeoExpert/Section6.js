@@ -44,14 +44,14 @@ export default function Section6() {
           </div>
           <div className="col-lg-3 col-md-12 col-12 block_main">
             <div className="block_div">
-              <p>Membership:</p>
+              <p>Contеnt markеting :</p>
               <span>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </span>{" "}
+              Contеnt markеting includеs blog writing, SEO-focusеd link
+                building, and contеnt outrеach activities.              </span>{" "}
             </div>
           </div>
         </div>
-        <div className="row">
+        {/* <div className="row">
           <div className="col-lg-3 col-md-12 col-12 block_main">
             <div className="block_div">
               <p>Contеnt markеting :</p>
@@ -64,7 +64,7 @@ export default function Section6() {
           <div className="col-lg-3 col-md-12 col-12"></div>
           <div className="col-lg-3 col-md-12 col-12"></div>
           <div className="col-lg-3 col-md-12 col-12"></div>
-        </div>
+        </div> */}
       </div>
     </Root>
   );
