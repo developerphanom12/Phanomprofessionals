@@ -9,36 +9,42 @@ export default function Page1() {
   return (
     <Pageone>
       <h2>
-        Welcome back,Developerbuddy <IoHandRight />
+        Welcome back, Developerbuddy <IoHandRight />
       </h2>
       <div className="sections">
         <div className="sub_section">
-          <div>RECOMMENDED FOR YOU</div>
+          <div className="text_area">RECOMMENDED FOR YOU</div>
           <div className="mini_sub_div">
-            <div>
-              {" "}
-              <img src={b1} alt="img" />
-            </div>
-            <div>
-              <p>Get matched with freelancers</p>
-              <span>Create a brief and get a custom offers.</span>
+            <div className="mini_sub">
+              <div>
+                {" "}
+                <img src={b1} alt="img" />
+              </div>
+              <div>
+                <p>Get matched with freelancers</p>
+                <span>Create a brief and get a custom offers.</span>
+              </div>
             </div>
             <div>
               <button>Create a brief</button>
             </div>
           </div>
         </div>
+
         <div className="sub_section">
-          <div>BUSINESS RECOMMENDATIONS </div>
+          <div className="text_area">BUSINESS RECOMMENDATIONS </div>
           <div className="mini_sub_div">
-            <div>
-              {" "}
-              <img src={b2} alt="img" />
+            <div className="mini_sub">
+              <div>
+                {" "}
+                <img src={b2} alt="img" />
+              </div>
+              <div>
+                <p>Tailor Phanom to your needs</p>
+                <span>Tell us a bit about your business.</span>
+              </div>
             </div>
-            <div>
-              <p>Tailor Phanom to your needs</p>
-              <span>Tell us a bit about your business.</span>
-            </div>
+
             <div>
               <button>Add your info</button>
             </div>
@@ -50,14 +56,16 @@ export default function Page1() {
 }
 
 const Pageone = styled.section`
+  font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
   margin: 40px 40px 0px 40px;
   background-image: url(${BannerDesktop});
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 20px;
+  padding: 30px 20px;
   border-radius: 20px;
   h2 {
     color: #fff;
+    font-weight: 700;
     svg {
       color: #ffbb00;
       transform: rotate(-30deg);
@@ -66,33 +74,54 @@ const Pageone = styled.section`
   .sections {
     display: flex;
     width: 100%;
+    padding: 10px;
     justify-content: space-around;
     .sub_section {
       display: flex;
+      width: 48%;
+      border-radius: 10px;
       flex-direction: column;
       backdrop-filter: blur(10px);
       color: #fff;
       padding: 10px;
-      /* background-color: lightgray; */
+      background-color: #ffffff26;
+      .text_area {
+        font-size: 12px;
+        font-weight: 500;
+      }
       .mini_sub_div {
         display: flex;
         justify-content: space-around;
-        img {
-          width: 50px;
-          height: 50px;
-          padding: 5px;
+        .mini_sub {
+          display: flex;
         }
         > div {
+          img {
+            width: 60px;
+            height: 60px;
+            padding: 5px;
+          }
           padding: 5px;
           p {
             margin: 0px;
+            font-weight: 600;
+            line-height: 24px;
+            font-size:16px;
           }
-          button{
+          span {
+            font-size: 14px;
+            font-weight: 400;
+
+          }
+          button {
             padding: 10px;
             border-radius: 10px;
-            border: 2px solid white;
-            background-color:transparent;
+            border: 1px solid white;
+            background-color: transparent;
             color: #fff;
+            &:hover {
+              background-color: #ffffff26;
+            }
           }
         }
       }
