@@ -61,7 +61,7 @@ const Pageone = styled.section`
   background-image: url(${BannerDesktop});
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 30px 20px;
+  padding: 40px 20px 20px 20px;
   border-radius: 20px;
   h2 {
     color: #fff;
@@ -75,7 +75,7 @@ const Pageone = styled.section`
     display: flex;
     width: 100%;
     padding: 10px;
-    justify-content: space-around;
+    justify-content: space-between;
     .sub_section {
       display: flex;
       width: 48%;
@@ -87,11 +87,12 @@ const Pageone = styled.section`
       background-color: #ffffff26;
       .text_area {
         font-size: 12px;
-        font-weight: 500;
+        padding: 10px;
+        font-weight: 600;
       }
       .mini_sub_div {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         .mini_sub {
           display: flex;
         }
