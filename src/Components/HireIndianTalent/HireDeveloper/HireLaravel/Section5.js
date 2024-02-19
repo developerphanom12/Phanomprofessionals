@@ -19,8 +19,7 @@ const Section5 = () => {
             <div className="col-lg-12 col-md-12 col-12 segment">
               <div className="que">
                 <h4>
-                  Why would you hire a professional Laravеl Developers from
-                  Phantom Professionals?
+                Why would you choose a professional Laravеl Dеvеlopеrs from Phantom Professionals?
                 </h4>
                 <button
                   type="button"
@@ -32,11 +31,8 @@ const Section5 = () => {
                 </button>
               </div>
               <div id="demo1" className="collapse show">
-                At Phanom Profеssionals, our employees incorporate thе qualities
-                that set us apart. Our developers are known for their rеlеntlеss
-                dedication, rigorous work еthic, unwavеring passion and strong
-                lеadеrship abilitiеs. Choosing Phanom Professionals mеans having
-                an abovе-avеragе workforcе.
+              At Phanom Profеssionals, our employees incorporate thе qualities that set us apart. Our developers are known for their dedication, rigorous work еthic, unwavеring passion and strong lеadеrship abilitiеs. Choosing Phanom Professionals means having an above-average workforcе. 
+
               </div>
             </div>
           </div>
@@ -54,17 +50,14 @@ const Section5 = () => {
                 </button>
               </div>
               <div id="demo2" className="collapse show2">
-                Many individual Laravel developers can work with you. However,
-                you need to choose the one that offers the most returns. Phanom
-                Profеssionals protect client and talent interests to pursue
-                long-term marketing.
+              Many individual Laravel developers can work with you. However, you need to choose the one that offers the most returns. Phanom Profеssionals protect client and talent interests to pursue long-term marketing.
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-lg-12 col-md-12 col-12 segment">
               <div className="que">
-                <h4>What is the cost of hiring Laravel developers?</h4>
+                <h4>What is the cost of choosing our top In-house expertise for  Laravel developers?</h4>
                 <button
                   type="button"
                   className="btn btn-primary"
@@ -75,9 +68,7 @@ const Section5 = () => {
                 </button>
               </div>
               <div id="demo3" className="collapse show3">
-                Hiring a full-time job from this Laravel developer will cost you
-                around $1500 per month, depending on the skills and knowledge of
-                the candidate.
+              Our top In house team expertise with this Laravel developer will cost you around $1500 per month, depending on the skills and knowledge of the candidate.
               </div>
             </div>
           </div>
@@ -85,8 +76,8 @@ const Section5 = () => {
             <div className="col-lg-12 col-md-12 col-12 segment">
               <div className="que">
                 <h4>
-                  Is it possible to convert an existing PHP website into a
-                  Laravel PHP app?
+                Is it possible to convert an existing PHP website into a Laravel PHP app?
+
                 </h4>
                 <button
                   type="button"
@@ -98,9 +89,7 @@ const Section5 = () => {
                 </button>
               </div>
               <div id="demo4" className="collapse show4">
-                Your database migration script will not work when migrating
-                legacy PHP applications. Use the Laravel Migrations Generator
-                module to create a migration script from an existing database.
+              Your database migration script will not work when migrating legacy PHP applications. Use the Laravel Migrations Generator module to create a migration script from an existing database.
               </div>
             </div>
           </div>
@@ -121,9 +110,7 @@ const Section5 = () => {
                 </button>
               </div>
               <div id="demo5" className="collapse show5">
-                When we talk about PHP frameworks, one common name that comes up
-                is Laravel. It is a simple, straightforward, and scalable
-                open-source MVC-based PHP web framework.
+              When we talk about PHP frameworks, one common name that comes up is Laravel. It is a simple, straightforward, and scalable open-source MVC-based PHP web framework.
               </div>
             </div>
           </div>
@@ -131,8 +118,7 @@ const Section5 = () => {
             <div className="col-lg-12 col-md-12 col-12 segment">
               <div className="que">
                 <h4>
-                  What are the benefits of hiring Phanom Profеssionals
-                  developers?
+                What are the benefits of choosing Phanom Profеssionals developers?
                 </h4>
                 <button
                   type="button"
@@ -144,10 +130,7 @@ const Section5 = () => {
                 </button>
               </div>
               <div id="demo6" className="collapse show6">
-                Hire Laravel developers from Phanom Profеssionals to provide a
-                more efficient way to approach your business activities. Our
-                talented curators do the foundational work, freeing you from
-                time-consuming work and post-hire staff.
+              Hire Laravel developers from Phanom Profеssionals to provide a more efficient way to approach your business activities. Our talented curators do the foundational work, freeing you from time-consuming work and post-hire staff.
               </div>
             </div>
           </div>
@@ -155,8 +138,7 @@ const Section5 = () => {
             <div className="col-lg-12 col-md-12 col-12 segment">
               <div className="que">
                 <h4>
-                  Can I hire a Laravel developer to use Uplers in less than 48
-                  hours?
+                Can I choose a Laravel developer to use Phantom Professionalsin less than 48 hours?
                 </h4>
                 <button
                   type="button"
@@ -168,10 +150,7 @@ const Section5 = () => {
                 </button>
               </div>
               <div id="demo7" className="collapse show6">
-                Yes, you can hire a Laravel developer in 48 hours through Phanom
-                Profеssionals remote hiring. You can start personal interviews
-                as soon as you express your qualifications, and hire top
-                professionals in less than two weeks.
+              Yes, you can hire a Laravel developer in less than 48 hours at Phanom Profеssionals. We have the right experts to help you get Laravel development with cost-effective solutions. 
               </div>
             </div>
           </div>
@@ -194,6 +173,26 @@ const Section5 = () => {
               </div>
             </div>
           </div>
+
+          <div className="row">
+            <div className="col-lg-12 col-md-12 col-12 segment">
+              <div className="que">
+                <h4>What makes Phanom Profеssionals Laravel developers different?</h4>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#demo8"
+                >
+                  <IoMdArrowDropdown />
+                </button>
+              </div>
+              <div id="demo9" className="collapse show6">
+              Our Phanom Profеssionals Laravel professionals provide high-quality Laravel programming services and we have the qualified team to do the tasks on time.
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </Root>

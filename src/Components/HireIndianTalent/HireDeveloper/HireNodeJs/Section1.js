@@ -28,7 +28,7 @@ export default function Section1() {
               <button>Hire Nodejs Developer</button>
             </div>
             <span className="display">
-              <span className="first-content">Employ</span>
+              <span className="first-content">Hire</span>
               <span className="second-content"> Nodе.js developers </span>
               <span className="first-content"> remotely</span>
             </span>

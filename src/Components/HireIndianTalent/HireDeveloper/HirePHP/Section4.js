@@ -58,7 +58,7 @@ export default function Section4() {
           >
             <h4>Security and Compliance</h4>
             <p>
-              Keep your facts secure with Phanom\'s international facts safety
+              Keep your facts secure with Phanom's international facts safety
               and compliance standards.
             </p>
           </div>

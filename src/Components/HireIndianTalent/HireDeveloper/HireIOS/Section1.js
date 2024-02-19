@@ -30,12 +30,11 @@ export default function Section1() {
             <span className="display">
               <span className="first-content">Employ</span>
               <span className="second-content"> iOS Developers </span>
-              <span className="first-content"> Create Skilled Mobile Apps.</span>
+              <span className="first-content"> to Create Skilled Mobile Apps.</span>
             </span>
             <div className="circle"></div>
             <p className="paragraph">
-            Choosing Phanom Professionals for iOS developers means more than еxpеrtisе; it’s sеcuring a dedicated team mеmbеr committed to dеlivеring quality work with provеn tеchnical and intеrpеrsonal skills.
-            </p>
+            Choosing Phanom Professionals for iOS developers means more than еxpеrtisе; it's sеcuring a dedicated team mеmbеr committed to dеlivеring quality work with provеn tеchnical and intеrpеrsonal skills.             </p>
           </div>
           <div className="col-lg-6 col-md-12 col-12 second-div">
             <div className="form_div">

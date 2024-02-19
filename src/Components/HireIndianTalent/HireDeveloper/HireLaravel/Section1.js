@@ -17,7 +17,8 @@ export default function Section1() {
     <Root>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 first-div"
+          <div
+            className="col-lg-6 col-md-12 col-12 first-div"
             data-aos="fade-up"
           >
             <div className="button_div">
@@ -28,10 +29,10 @@ export default function Section1() {
             </div>
             <span className="display">
               <span className="first-content">Skilled</span>
-              <span className="second-content"> Laravel Developers </span>
+              <span className="second-content"> Phanom professionals for </span>
               <span className="first-content">
                 {" "}
-                for Hire at Up to 50% Cost Advantage
+                Laravel development, offering up to 50% cost advantage
               </span>
             </span>
             <div className="circle"></div>

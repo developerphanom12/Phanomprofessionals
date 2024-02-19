@@ -28,7 +28,7 @@ export default function Section1() {
               <button>Hire Shopify Developer</button>
             </div>
             <span className="display">
-              <span className="first-content">Hire a </span>
+              <span className="first-content">Choose a </span>
               <span className="second-content"> Shopify Expert </span>
               <span className="first-content">
                 to build your E-commerce store
@@ -36,11 +36,10 @@ export default function Section1() {
             </span>
             <div className="circle"></div>
             <p className="paragraph">
-              Hiring a Shopify professional can transform your e-commerce store.
-              Companies like yours have seen a 10X increase in the speed and
-              efficiency of hiring thanks to our platform. Join the 350+
-              organizations and businesses worldwide that have used the help of
-              our top Shopify developers.
+              Choosing a Shopify Phanom professional can transform your
+              e-commerce store. Directly connect with our team and we serve you
+              with the best services with Shopify experts to make e-commerce
+              stores and help you in flourishing your business.
             </p>
           </div>
           <div className="col-lg-6 col-md-12 col-12 second-div">

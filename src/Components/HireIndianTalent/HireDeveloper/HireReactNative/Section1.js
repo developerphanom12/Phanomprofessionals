@@ -37,8 +37,7 @@ export default function Section1() {
             </span>
             <div className="circle"></div>
             <p className="paragraph">
-            Fееl thе nееd for skilled React Native Developers? Worry not. Wе comprehend your urgency. Connect with on-demand professionals promptly to effectively address your organization’s needs.
-            </p>
+            Fееl thе nееd for skilled React Native Developers? Worry not. Wе comprehend your urgency. Connect with on-demand professionals promptly to effectively address your organization's needs</p>
           </div>
           <div className="col-lg-6 col-md-12 col-12 second-div">
             <div className="form_div">

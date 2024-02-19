@@ -14,17 +14,16 @@ export default function Section2() {
             <span>Why should </span>
             <span className="text"> Laravel developers </span>{" "}
             <span> use Phanom Profеssionals?</span>
-            <p>
-              Higher engagement, lower cost: Offer higher employee engagement
-              for the benefit of a 40% cost reduction. Our comprehensive testing
+            <p className="mt-3">
+              Higher engagement, lower cost: Offer higher engagement services
+              for the benefit of a 50% cost reduction. Our comprehensive testing
               program assures that you are with experienced people who can
               deliver fast results.
             </p>
-            <p>
-              Global Brands believes: Join Phanom Profеssionals. Our high
-              ratings for Clutch, TrustPilot, and GoodFirms speak for
-              themselves. Our network has over one million LinkedIn followers
-              and is trusted by global brands.
+            <p >
+              Global Brands believes: Join Phanom Profеssionals. Our team of
+              professionals helps in giving you best services and in engaging
+              excellence and growth in your business
             </p>
           </div>
         </div>

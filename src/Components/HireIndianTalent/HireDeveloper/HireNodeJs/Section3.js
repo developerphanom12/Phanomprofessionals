@@ -13,7 +13,7 @@ export default function Section3() {
             data-aos="fade-up"
           >
             <span>Employ </span>
-            <span className="text">Phanom Professionals </span>{" "}
+            <span className="text">Phanom Professional's </span>{" "}
             <span> full-stack Nodе.js developer</span>
           </div>
           <div className="col-lg-2 col-md-12 col-12"></div>

@@ -15,7 +15,7 @@ export default function Section2() {
           <div className="col-lg-10 col-md-12 col-12 text_area">
             <span>How to Usе </span>{" "}
             <span className="text"> Phanom Professionals</span>
-            <span>to Hire Nodе.js Developers</span>
+            <span> to Hire Nodе.js Developers</span>
           </div>
           <div className="col-lg-1 col-md-12 col-12"></div>
         </div>

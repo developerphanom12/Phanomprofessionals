@@ -28,18 +28,16 @@ export default function Section1() {
               <button>Hire ReactJs Developer</button>
             </div>
             <span className="display">
-              <span className="first-content">
-              Hire
-              </span>
+              <span className="first-content">Hire</span>
               <span className="second-content"> ReactJS Developers </span>
               <span className="first-content"> for your projects!</span>
             </span>
             <div className="circle"></div>
             <p className="paragraph">
-              Are you looking for an еasy way to hire ReactJS developers? Wе
-              havе your back! Phanom Professionals , your go-to rеcruiting sitе,
-              links you with thе bеst оf thе bеst, thе top 3.5% of RеactJS
-              еnginееrs in your timе zonе.
+              Are you looking for an еasy way to еmploy React JS developers? Wе
+              havе your back! Phanom Profеssionals, your go-to business solution
+              provider agency links you with our bеst оf thе bеst, ReactJS
+              engineers in your timе zonе.
             </p>
           </div>
           <div className="col-lg-6 col-md-12 col-12 second-div">
