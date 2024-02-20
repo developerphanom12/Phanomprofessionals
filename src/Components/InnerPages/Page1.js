@@ -4,11 +4,13 @@ import BannerDesktop from "../Images/BannerDesktop.png";
 import { IoHandRight } from "react-icons/io5";
 import b1 from "../Images/button1.webp";
 import b2 from "../Images/button2.webp";
+import { useNavigate } from "react-router-dom";
 
 export default function Page1() {
+  const navigate = useNavigate()
   return (
     <Pageone>
-      <h2>
+      <h2 onClick={navigate("/internalpage")}>
         Welcome back, Developerbuddy <IoHandRight />
       </h2>
       <div className="sections">
