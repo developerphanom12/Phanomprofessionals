@@ -22,7 +22,7 @@ export default function Section2() {
         <div className="row">
           <div className="col-lg-5 col-md-12 col-12">
             <div className="row">
-              <div className="col-lg-5 col-md-12 col-12 segment_main">
+              <div className="col-lg-5 col-md-5 col-12 segment_main">
                 <div className="segment">
                   <img src={tag1} alt="img" />
                   <span>Divеrsе Portfolios:</span>
@@ -31,10 +31,10 @@ export default function Section2() {
                   </p>
                 </div>
               </div>
-              <div className="col-lg-2 col-md-12 col-12 arrow">
+              <div className="col-lg-2 col-md-2 col-12 arrow">
                 <IoIosArrowRoundForward />
               </div>
-              <div className="col-lg-5 col-md-12 col-12 segment_main">
+              <div className="col-lg-5 col-md-5 col-12 segment_main">
                 <div className="segment">
                   <img src={tag2} alt="img" />
                   <span>Connеct with thе experts:</span>
@@ -44,12 +44,27 @@ export default function Section2() {
               </div>
             </div>
           </div>
-          <div className="col-lg-2 col-md-12 col-12 arrow">
+
+
+
+
+
+          <div className="col-lg-2 col-md-12 col-12 arrow pad-hide">
             <IoIosArrowRoundForward />
           </div>
+
+
+
+
+
+
+
+
+
+
           <div className="col-lg-5 col-md-12 col-12">
             <div className="row">
-              <div className="col-lg-5 col-md-12 col-12 segment_main">
+              <div className="col-lg-5 col-md-5 col-12 segment_main">
                 <div className="segment">
                   <img src={tag3} alt="img" />
                   <span>Savе Big: </span>
@@ -60,11 +75,11 @@ export default function Section2() {
                 </div>
               </div>
 
-              <div className="col-lg-2 col-md-12 col-12 arrow">
+              <div className="col-lg-2 col-md-2 col-12 arrow">
                 {" "}
                 <IoIosArrowRoundForward />
               </div>
-              <div className="col-lg-5 col-md-12 col-12 segment_main">
+              <div className="col-lg-5 col-md-5 col-12 segment_main">
                 <div className="segment">
                   <img src={tag4} alt="img" />
                   <span>Timе Zonе (Local) Convеniеncе:</span>
@@ -81,7 +96,7 @@ export default function Section2() {
         <div className="row">
           <div className="col-lg-5 col-md-12 col-12">
             <div className="row">
-              <div className="col-lg-5 col-md-12 col-12 segment_main">
+              <div className="col-lg-5 col-md-5 col-12 segment_main">
                 <div className="segment">
                   <img src={tag1} alt="img" />
                   <span>Contract Clarity: </span>
@@ -90,10 +105,10 @@ export default function Section2() {
                   </p>
                 </div>
               </div>
-              <div className="col-lg-2 col-md-12 col-12 arrow">
+              <div className="col-lg-2 col-md-2 col-12 arrow">
                 <IoIosArrowRoundForward />
               </div>
-              <div className="col-lg-5 col-md-12 col-12 segment_main">
+              <div className="col-lg-5 col-md-5 col-12 segment_main">
                 <div className="segment">
                   <img src={tag2} alt="img" />
                   <span>Cancеllation with Flеxibility:</span>
@@ -175,5 +190,35 @@ const Root = styled.section`
       color: #6e6e6e;
       line-height: 1.7em;
     }
+  }
+
+  @media (max-width: 567px){
+    .text_area {
+    padding: 20px 18px;  
+}
+.segment {
+    align-items: center;
+}
+
+.arrow {
+    padding-top:10px;
+    transform: rotate(90deg);
+}
+
+
+
+  }
+
+@media(min-width: 567px) and (max-width: 992px){
+  .text_area {
+    padding: 20px 0;  
+}
+ .segment {
+    align-items: center;
+}
+
+.pad-hide{
+  display:none;
+}
   }
 `;

@@ -5,7 +5,7 @@ import svgg from "../../../Images/svg.svg";
 export default function Section2() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div
             className="col-lg-12 col-md-12 col-12 text_div"
@@ -38,7 +38,7 @@ export default function Section2() {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -52,7 +52,7 @@ export default function Section2() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -69,7 +69,7 @@ export default function Section2() {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -84,7 +84,7 @@ export default function Section2() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -101,7 +101,7 @@ export default function Section2() {
         </div>
 
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -115,7 +115,7 @@ export default function Section2() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -136,10 +136,11 @@ export default function Section2() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
+  padding: 0 70px;
 
   .text_div {
-    margin-bottom: 0.7em;
-    padding: 30px;
+    margin-top:20px;
+    margin-bottom:0.7em;
     text-align: center;
     .text {
       color: #147888;
@@ -191,5 +192,21 @@ const Root = styled.section`
         padding: 10px 0px;
       }
     }
+    
+  }
+
+  
+  @media (max-width: 567px) {
+    padding:0 10px;
+
+     .block_main {
+    margin-top: 20px;
+}
+
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding:0;
+
   }
 `;

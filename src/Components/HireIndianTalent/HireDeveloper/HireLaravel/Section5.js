@@ -202,7 +202,7 @@ const Section5 = () => {
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
   background-color: #ffffffd4;
-  padding: 50px 100px;
+  padding: 10px 100px;
   .main_div {
     box-shadow: 1px 1px 5px 1px lightgray;
     padding: 20px 10px;
@@ -248,6 +248,27 @@ const Root = styled.section`
       transition: all 0.2s linear;
     }
   }
+
+  @media (max-width: 567px) {
+    padding:0;
+
+   .text_div {
+  
+    padding: 10px 0 0 0;
+  
+}
+    .que {
+    margin:20px 0;
+}
+  }
+
+@media (min-width: 567px) and (max-width: 992px) {
+  padding:0;
+  .que {
+    margin:20px 0;
+}
+}
+
 `;
 
 export default Section5;

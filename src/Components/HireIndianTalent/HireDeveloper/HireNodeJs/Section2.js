@@ -22,17 +22,17 @@ export default function Section2() {
         <div className="row">
           <div className="col-lg-5 col-md-12 col-12">
             <div className="row">
-              <div className="col-lg-5 col-md-12 col-12">
+              <div className="col-lg-5 col-md-5 col-12">
                 <div className="segment">
                   <img src={tag1} alt="img" />
                   <span>Stеp 1</span>
                   <p>Share your requirements.</p>
                 </div>
               </div>
-              <div className="col-lg-2 col-md-12 col-12 arrow">
+              <div className="col-lg-2 col-md-2 col-12 arrow">
                 <IoIosArrowRoundForward />
               </div>
-              <div className="col-lg-5 col-md-12 col-12">
+              <div className="col-lg-5 col-md-5 col-12">
                 <div className="segment">
                   <img src={tag2} alt="img" />
                   <span>Stеp 2</span>
@@ -44,12 +44,16 @@ export default function Section2() {
               </div>
             </div>
           </div>
-          <div className="col-lg-2 col-md-12 col-12 arrow">
+
+
+          <div className="col-lg-2 col-md-12 col-12 arrow pad_hide">
             <IoIosArrowRoundForward />
           </div>
+
+
           <div className="col-lg-5 col-md-12 col-12">
             <div className="row">
-              <div className="col-lg-5 col-md-12 col-12">
+              <div className="col-lg-5 col-md-5 col-12">
                 <div className="segment">
                   <img src={tag3} alt="img" />
                   <span>Stеp 3</span>
@@ -57,11 +61,11 @@ export default function Section2() {
                 </div>
               </div>
 
-              <div className="col-lg-2 col-md-12 col-12 arrow">
+              <div className="col-lg-2 col-md-2 col-12 arrow">
                 {" "}
                 <IoIosArrowRoundForward />
               </div>
-              <div className="col-lg-5 col-md-12 col-12">
+              <div className="col-lg-5 col-md-5 col-12">
                 <div className="segment">
                   <img src={tag4} alt="img" />
                   <span>Stеp 4</span>
@@ -137,4 +141,34 @@ const Root = styled.section`
 
     }
   }
+
+  @media (max-width: 567px) {
+    .text_area {
+    padding: 20px 0;
+  }
+  .segment img, svg {
+    height: 200px;
+    object-fit: contain;
+}
+ .arrow {
+    padding-top: 20px;
+    transform: rotate(90deg);
+}
+
+}
+
+@media (min-width: 567px) and (max-width: 992px) {
+  .text_area {
+    padding: 20px 0;
+  }
+  
+  .segment img, svg {
+    height: 200px;
+    object-fit: contain;
+}
+.pad_hide{
+  display:none;
+}
+
+}
 `;

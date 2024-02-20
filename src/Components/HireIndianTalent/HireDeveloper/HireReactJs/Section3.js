@@ -227,6 +227,33 @@ const Root = styled.section`
       }
     }
   }
+
+  @media (max-width: 567px){
+   padding:0; 
+
+   .text_div {
+    padding: 0;  
+}
+
+ .que {
+    margin-top: 20px;
+}
+  }
+
+  @media(min-width: 567px) and (max-width: 992px){
+    padding:0; 
+
+    .text_div {
+    padding: 0;  
+}
+.que {
+    margin-top: 20px;
+}
+
+  }
+
+
+
 `;
 
 export default Section3;
