@@ -46,7 +46,6 @@ export default function Page1() {
                 <span>Tell us a bit about your business.</span>
               </div>
             </div>
-
             <div>
               <button>Add your info</button>
             </div>

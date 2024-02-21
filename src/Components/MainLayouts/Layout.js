@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Navbar from "./Navbar";
 import PostNav from "./PostNav";
+import Footer from "./Footer";
 
 export default function Layout({ children }) {
   return (
@@ -10,6 +11,9 @@ export default function Layout({ children }) {
         {/* <PostNav/> */}
       </div>
       <div className="main_body">{children}</div>
+      <div>
+      <Footer />
+      </div>
     </Root>
   );
 }
