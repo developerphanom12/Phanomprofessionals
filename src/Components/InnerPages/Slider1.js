@@ -16,7 +16,7 @@ export default function Slider1() {
     slidesToScroll: 1,
   };
   return (
-    <Sliderr>
+    <Sliderrrs>
       <Slider {...settings}>
         <div>
           <img className="img" src={imggg} alt="img" />
@@ -49,11 +49,18 @@ export default function Slider1() {
           <h5>Rating</h5>
         </div>
       </div>
-    </Sliderr>
+    </Sliderrrs>
   );
 }
-const Sliderr = styled.section`
+const Sliderrrs = styled.section`
   /* background-color: red; */
+  
+  > div {
+    width: 298px;
+    .img {
+      border-radius: 10px;
+    }
+  }
   .czlJOl {
     margin: 0px !important;
   }
@@ -72,25 +79,27 @@ const Sliderr = styled.section`
     }
   }
   .img {
-    width: 250px;
-    height: 200px;
+    width: 278px !important;
+    height: 170px !important;
   }
   margin: 20px;
   .slick-slide.slick-active.slick-current {
-    width: 250px !important;
-    height: 200px !important;
+    width: 285px !important;
+    height: 170px !important;
   }
   .gvNmJZ .slick-slider.slick-initialized {
     display: flex;
-    width: 250px !important;
-    height: 200px !important;
+    width: 285px !important;
+    height: 170px !important;
+    position: absolute;
   }
   .slick-list {
-    width: 250px;
-    height: 200px;
+    width: 285px;
+    height: 170px;
   }
   .slick-track {
     display: flex;
+    height: 170px;
   }
   button.slick-arrow.slick-prev {
     color: black !important;
@@ -98,23 +107,24 @@ const Sliderr = styled.section`
     height: 30px !important;
     z-index: 1;
     position: relative;
-    top: 147px;
-    left: 0px;
+    top: 114px !important;
+    left: 0px !important;
     background: lightgray;
     border-radius: 100px;
     svg {
       width: 30px;
-      height: 30px;    
+      height: 30px;
     }
   }
-  button.slick-arrow.slick-next {
+  button.slick-arrow.slick-next,
+  .iFipJE .slick-next:before {
     color: black !important;
     width: 30px !important;
     height: 30px !important;
     z-index: 1;
     position: relative;
-    top: -85px;
-    left: 221px;
+    top: -85px !important;
+    left: 248px !important;
     background: lightgray;
     border-radius: 100px;
     svg {
@@ -132,13 +142,9 @@ const Sliderr = styled.section`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  /* .bbVzjQ .slick-prev:before, .bbVzjQ .slick-next:before {
-    font-family: "slick";
-    font-size: 30px;
-    line-height: 1;
-    opacity: 0.75;
-    color: white;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-} */
+  .slick-next:before {
+    /* position: relative;
+    top: -85px!important;
+    left: 221px!important; */
+  }
 `;

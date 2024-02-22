@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { IoMan } from "react-icons/io5";
 import {
   FaFacebook,
   FaInstagram,
@@ -101,25 +102,31 @@ export default function Footer() {
           <h4>Phanom</h4> <p>Phanom International Ltd.2024</p>
         </div>
         <div className="social_media">
-          <FaInstagram /> <IoLogoLinkedin /> <FaFacebook /> <FaPinterest />{" "}
-          <FaXTwitter />
-        </div>
-        <div>
+          <ul>
+            <li>
+              {" "}
+              <FaInstagram /> <IoLogoLinkedin /> <FaFacebook /> <FaPinterest />{" "}
+              <FaXTwitter />
+            </li>
+          </ul>
           <button>
             <MdLanguage />
             English
           </button>
           <button>
-          <MdOutlineCurrencyRupee />
+            <MdOutlineCurrencyRupee />
             INR
           </button>
+          <div className="human_icon">
+            <IoMan />
+          </div>
         </div>
       </div>
     </Root>
   );
 }
 const Root = styled.section`
-  padding: 40px 20px;
+  padding: 30px 20px;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
   @media (max-width: 567px) {
     padding: 30px 10px;
@@ -161,9 +168,12 @@ const Root = styled.section`
   .footer_base {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     border-top: 1px solid lightgray;
-    padding: 20px 0px;
+    padding: 20px 20px 0px;
+    @media (max-width: 576px) {
+      flex-direction: column;
+    }
     .logoo {
       display: flex;
       h4 {
@@ -171,16 +181,48 @@ const Root = styled.section`
         color: #74767e;
       }
       p {
-        padding: 0px 10px;
         display: flex;
         align-items: center;
         color: #74767e;
-        margin: 0;
+        margin: 0px 0px 0px 24px;
+        font-size: 14px;
       }
     }
     .social_media {
       display: flex;
       color: #74767e;
+      align-items: center;
+
+      ul {
+        list-style: none;
+        padding-right: 20px;
+        margin: 0;
+        @media (max-width: 576px) {
+          padding: 0px;
+        }
+      }
+      svg {
+        width: 20px;
+        height: 20px;
+        margin: 10px;
+      }
+      button {
+        border: none;
+        background-color: white;
+        font-size: 15px;
+        color: #74767e;
+        font-weight: 600;
+        svg {
+          width: 16px;
+          height: 16px;
+          margin: 2px 2px 3px 2px;
+        }
+      }
+      .human_icon {
+        border: 1px solid #74767e;
+        border-radius: 50px;
+        margin-left: 10px;
+      }
     }
   }
 `;
