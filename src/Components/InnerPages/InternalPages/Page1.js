@@ -17,9 +17,12 @@ export default function Page1() {
     <Root>
       <div className="main_section">
         <div className="main_barr">
-          <div>
-            <IoHomeOutline /> / Graphics & Design / Website Design / Website
-            UI/UX Design
+          <div className="path_value">
+            <a>
+              <IoHomeOutline />
+            </a>{" "}
+            <p>/</p> <a>Graphics & Design</a> <p>/</p> <a>Website Design</a>{" "}
+            <p>/</p> <a>Website UI/UX Design</a>
           </div>
           <div className="heading_point">
             <h2>I will create innovative website design or website mockup</h2>
@@ -30,6 +33,7 @@ export default function Page1() {
             </div>
             <div className="pro_detail">
               <p>NameOfPerson</p>
+              <span>Top Rated</span>
             </div>
           </div>
           <div>Sliders</div>
@@ -125,16 +129,40 @@ const Root = styled.section`
       display: flex;
       flex-direction: column;
       margin-right: 100px;
+      .path_value {
+        font-size: 14px;
+        display: flex;
+        gap: 8px;
+        margin-bottom: 32px;
+        p {
+          color: #62646a;
+          margin: 0px;
+        }
+        a {
+          color: #222325;
+          cursor: pointer;
+        }
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
       .heading_point {
         padding: 0px 0px 16px;
+        h2 {
+          overflow-wrap: break-word;
+          padding-bottom: 16px;
+          color: #404145;
+          font-weight: 700;
+        }
       }
       .profile_contain {
         display: flex;
         gap: 20px;
         .pro_img {
           img {
-            width: 40px;
-            height: 40px;
+            width: 64px;
+            height: 64px;
             border-radius: 50px;
           }
         }
@@ -143,6 +171,21 @@ const Root = styled.section`
           align-items: center;
           p {
             margin: 0;
+            color: #404145;
+            cursor: pointer;
+            font-weight: 700;
+            margin-right: 8px;
+            font-size: 18px;
+            line-height: 26px;
+            border-right: 1px solid #62646a70;
+            padding: 0px 5px;
+          }
+          span {
+            color: #99501b;
+            line-height: 21px;
+            font-weight: 600;
+            font-size: 14px;
+
           }
         }
       }
