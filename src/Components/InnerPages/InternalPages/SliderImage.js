@@ -3,11 +3,11 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import imggg from "../Images/k.webp";
-import banner from "../Images/BannerDesktop.png";
-import profile from "../Images/button1.webp";
+import imggg from "../../Images/ind18.png";
+import banner from "../../Images/ind20.png";
 
-export default function Slider1() {
+
+export default function SliderImage() {
   var settings = {
     dots: false,
     infinite: true,
@@ -16,7 +16,7 @@ export default function Slider1() {
     slidesToScroll: 1,
   };
   return (
-    <Sliderrrs>
+    <Sliderimage>
       <Slider {...settings}>
         <div>
           <img className="img" src={imggg} alt="img" />
@@ -37,24 +37,12 @@ export default function Slider1() {
           <img className="img" src={banner} alt="img" />
         </div>
       </Slider>
-      <div className="footer">
-        <div className="profile_footer">
-          <img src={profile} alt="img" />
-          <h6>name</h6>
-        </div>
-        <div>
-          <p>description</p>
-        </div>
-        <div>
-          <h5>Rating</h5>
-        </div>
-      </div>
-    </Sliderrrs>
+    </Sliderimage>
   );
 }
-const Sliderrrs = styled.section`
+const Sliderimage = styled.section`
   > div {
-    width: 298px;
+    width: 598px;
     .img {
       border-radius: 10px;
     }
@@ -62,72 +50,53 @@ const Sliderrrs = styled.section`
   .czlJOl {
     margin: 0px !important;
   }
-  .footer {
-    display: flex;
-    flex-direction: column;
-    .profile_footer {
-      display: flex;
-      h6 {
-        padding: 10px;
-      }
-      img {
-        width: 30px;
-        height: 30px;
-      }
-    }
-  }
+
   .img {
-    width: 278px !important;
-    height: 170px !important;
+    width: 598px !important;
+    height: 250px !important;
   }
   margin: 20px;
   .slick-slide.slick-active.slick-current {
-    width: 285px !important;
-    height: 170px !important;
+    width: 598px !important;
+    height: 250px !important;
   }
   .gvNmJZ .slick-slider.slick-initialized {
     display: flex;
-    width: 285px !important;
-    height: 170px !important;
+    width: 598px !important;
+    height: 250px !important;
     position: absolute;
   }
   .slick-list {
-    width: 285px;
-    height: 170px;
+    width: 598px;
+    height: 250px;
   }
   .slick-track {
     display: flex;
-    height: 170px;
+    height: 250px;
   }
   button.slick-arrow.slick-prev {
     color: black !important;
-    width: 30px !important;
-    height: 30px !important;
+    width: 50px !important;
+    height: 50px !important;
     z-index: 1;
-    position: relative;
-    top: 114px !important;
-    left: 0px !important;
     background: lightgray;
     border-radius: 100px;
     svg {
-      width: 30px;
-      height: 30px;
+      width: 50px;
+      height: 50px;
     }
   }
   button.slick-arrow.slick-next,
   .iFipJE .slick-next:before {
     color: black !important;
-    width: 30px !important;
-    height: 30px !important;
+    width: 50px !important;
+    height: 50px !important;
     z-index: 1;
-    position: relative;
-    top: -85px !important;
-    left: 248px !important;
     background: lightgray;
     border-radius: 100px;
     svg {
-      width: 30px;
-      height: 30px;
+      width: 50px;
+      height: 50px;
     }
   }
   .slick-prev:before,

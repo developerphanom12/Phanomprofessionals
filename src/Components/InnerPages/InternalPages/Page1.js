@@ -2,6 +2,7 @@ import React from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import styled from "styled-components";
 import pro from "../../Images/Boyspic.png";
+import { HiOutlineTrophy } from "react-icons/hi2";
 import {
   IoIosMenu,
   IoMdHeart,
@@ -12,8 +13,8 @@ import { FaCheck, FaRegClock, FaShareAlt } from "react-icons/fa";
 import { SlOptions } from "react-icons/sl";
 import { TbRefresh } from "react-icons/tb";
 import { FaArrowRightLong } from "react-icons/fa6";
-import Slider1 from "../Slider1";
-
+import SliderImage from "./SliderImage";
+import SliderText from "./SliderText";
 
 export default function Page1() {
   return (
@@ -50,13 +51,16 @@ export default function Page1() {
           </div>
           <div className="slider_div">
             <p>
-              People keep coming back! amirkhan1996 has an exceptional number of
-              repeat buyers.
+              <HiOutlineTrophy /> People keep coming back! amirkhan1996 has an
+              exceptional number of repeat buyers.
             </p>
-            {/* <Slider1 /> */}
-            
+            <SliderImage />
           </div>
-          <div>Loved about slider</div>
+          <div className="about_slider">
+            <p>What people loved about this seller</p>
+            <button>See all reviews</button>
+            <SliderText />
+          </div>
           <div>
             <h5> About this gig</h5>
             <p>
@@ -222,7 +226,40 @@ const Root = styled.section`
       }
       .slider_div {
         p {
+          display: flex;
+          align-items: center;
           font-weight: 600;
+          margin: 0;
+          padding: 10px;
+          gap: 10px;
+          svg {
+            width: 20px;
+            height: 20px;
+            color: darkgrey;
+          }
+        }
+      }
+      .about_slider {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-bottom: 25px;
+        p {
+          font-size: 20px;
+          line-height: 28px;
+          font-weight: 700;
+          margin: 0;
+        }
+        button {
+          border: none;
+          background-color: white;
+          border-bottom: 1px solid #fff;
+          font-weight: 600;
+          color: #212529;
+          height: 23px;
+          &:hover {
+            border-bottom: 1px solid #212529;
+          }
         }
       }
     }
@@ -231,6 +268,7 @@ const Root = styled.section`
       display: flex;
       flex-direction: column;
       width: 100%;
+      position: sticky;
       .upper_side {
         display: flex;
         padding: 0px 0px 16px;
