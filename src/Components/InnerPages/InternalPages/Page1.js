@@ -6,11 +6,14 @@ import {
   IoIosMenu,
   IoMdHeart,
   IoMdInformationCircleOutline,
+  IoMdStar,
 } from "react-icons/io";
 import { FaCheck, FaRegClock, FaShareAlt } from "react-icons/fa";
 import { SlOptions } from "react-icons/sl";
 import { TbRefresh } from "react-icons/tb";
 import { FaArrowRightLong } from "react-icons/fa6";
+import Slider1 from "../Slider1";
+
 
 export default function Page1() {
   return (
@@ -32,11 +35,27 @@ export default function Page1() {
               <img src={pro} alt="img" />
             </div>
             <div className="pro_detail">
-              <p>NameOfPerson</p>
-              <span>Top Rated</span>
+              <div>
+                {" "}
+                <p>Name</p>
+                <span>Top Rated</span>
+              </div>
+              <div>
+                <p>
+                  <IoMdStar /> 5.0
+                </p>
+                <label>20 Orders in Queue</label>
+              </div>
             </div>
           </div>
-          <div>Sliders</div>
+          <div className="slider_div">
+            <p>
+              People keep coming back! amirkhan1996 has an exceptional number of
+              repeat buyers.
+            </p>
+            {/* <Slider1 /> */}
+            
+          </div>
           <div>Loved about slider</div>
           <div>
             <h5> About this gig</h5>
@@ -168,25 +187,42 @@ const Root = styled.section`
         }
         .pro_detail {
           display: flex;
-          align-items: center;
-          p {
-            margin: 0;
-            color: #404145;
-            cursor: pointer;
-            font-weight: 700;
-            margin-right: 8px;
-            font-size: 18px;
-            line-height: 26px;
-            border-right: 1px solid #62646a70;
-            padding: 0px 5px;
+          flex-direction: column;
+          justify-content: center;
+          padding: 0px 5px;
+          > div {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            p {
+              margin: 0;
+              color: #404145;
+              cursor: pointer;
+              font-weight: 700;
+              margin-right: 8px;
+              font-size: 18px;
+              line-height: 26px;
+              border-right: 1px solid #62646a70;
+              padding: 0px 5px;
+            }
+            span {
+              color: #99501b;
+              line-height: 21px;
+              font-weight: 600;
+              font-size: 14px;
+              background-color: #ffecd1;
+              padding: 0px 5px;
+              border-radius: 5px;
+            }
+            label {
+              font-size: 13px;
+            }
           }
-          span {
-            color: #99501b;
-            line-height: 21px;
-            font-weight: 600;
-            font-size: 14px;
-
-          }
+        }
+      }
+      .slider_div {
+        p {
+          font-weight: 600;
         }
       }
     }
