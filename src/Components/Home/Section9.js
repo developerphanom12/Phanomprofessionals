@@ -244,6 +244,11 @@ const Root = styled.section`
     
 }
 
+.first-row .blog-content {
+    padding-top: 80px;
+
+}
+
 .row {
       margin-right: 0;
     }
@@ -255,5 +260,11 @@ const Root = styled.section`
     margin:20px 0 20px 0;
 }
 }
+ .first-row .paragraph {
+ padding:0;
+}
+.row {
+      margin-right: 0;
+    }
 }
 `;

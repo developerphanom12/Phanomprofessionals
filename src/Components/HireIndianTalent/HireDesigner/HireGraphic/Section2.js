@@ -70,7 +70,7 @@ export default function Section2() {
             </p>
           </div>
 
-          <div className="col-lg-4 col-md-6 col-12 service-section-five">
+          <div className="col-lg-4 col-md-12 col-12 service-section-five">
             <h4>Ad Dеsign:</h4>
             <p>
               Dеvеlopmеnt of visually appealing and persuasive advertisements
@@ -97,10 +97,11 @@ const Root = styled.section`
   }
   .paragraph {
     text-align: center;
+    padding-top: 20px;
   }
   .first-div {
     border: none;
-    padding-top: 50px;
+    /* padding-top: 50px; */
     text-align: center;
     .colored-content {
       font-size: 35px;
@@ -167,30 +168,44 @@ const Root = styled.section`
   }
 
   @media (max-width: 567px) {
-    .service-section-one {
-      padding: 20px 0px 0 12px;
-      margin-top: 30px;
-      height: 180px;
-      .black-content {
-        font-size: 30px;
-      }
-      .colored-content {
-        font-size: 30px;
-      }
+    .service-section-one,
+    .service-section-two,
+    .service-section-three,
+    .service-section-four,
+    .service-section-five,
+    .service-section-six {
+      height: 200px;
+      padding: 0 30px 0 30px;
+      border-right: 1px solid #dadada;
+      border-bottom: 1px solid #dadada;
+      margin-bottom: 20px;
+      margin-top:0;
     }
-
-    .service-section-three {
-      margin-top: 8px;
-    }
-
     .row {
       margin-right: 0;
     }
   }
 
   @media (min-width: 567px) and (max-width: 992px) {
-    .service-section-three {
-      margin-top: 8px;
+    .service-section-one,
+    .service-section-two,
+    .service-section-three,
+    .service-section-four,
+    .service-section-five,
+    .service-section-six {
+      height: 200px;
+      padding: 0 30px 0 30px;
+      
     }
+
+     .service-section-three {
+    border-bottom: unset;
+    
+}
+.service-section-four{
+  border-bottom:1px solid #dadada
+}
+
+    
   }
 `;

@@ -21,7 +21,7 @@ export default function Section2() {
         <div className="row">
           <div className="col-lg-5 col-md-12 col-12">
             <div className="row">
-              <div className="col-lg-5 col-md-12 col-12">
+              <div className="col-lg-5 col-md-5 col-12">
                 <div className="segment">
                   <img src={tag1} alt="img" />
                   <span>Sharе Your Vision</span>
@@ -31,10 +31,10 @@ export default function Section2() {
                   </p>
                 </div>
               </div>
-              <div className="col-lg-2 col-md-12 col-12 arrow">
+              <div className="col-lg-2 col-md-2 col-12 arrow">
                 <IoIosArrowRoundForward />
               </div>
-              <div className="col-lg-5 col-md-12 col-12">
+              <div className="col-lg-5 col-md-5 col-12">
                 <div className="segment">
                   <img src={tag2} alt="img" />
                   <span className="span_div">
@@ -49,12 +49,12 @@ export default function Section2() {
               </div>
             </div>
           </div>
-          <div className="col-lg-2 col-md-12 col-12 arrow">
+          <div className="col-lg-2 col-md-12 col-12 arrow hide_pad">
             <IoIosArrowRoundForward />
           </div>
           <div className="col-lg-5 col-md-12 col-12">
             <div className="row">
-              <div className="col-lg-5 col-md-12 col-12">
+              <div className="col-lg-5 col-md-5 col-12">
                 <div className="segment">
                   <img src={tag3} alt="img" />
                   <span>24/7 Support service</span>
@@ -66,11 +66,11 @@ export default function Section2() {
                 </div>
               </div>
 
-              <div className="col-lg-2 col-md-12 col-12 arrow">
+              <div className="col-lg-2 col-md-2 col-12 arrow">
                 {" "}
                 <IoIosArrowRoundForward />
               </div>
-              <div className="col-lg-5 col-md-12 col-12">
+              <div className="col-lg-5 col-md-5 col-12">
                 <div className="segment">
                   <img src={tag4} alt="img" />
                   <span className="span_div2">Trust in Your Dеcision</span>
@@ -150,4 +150,33 @@ const Root = styled.section`
       line-height: 1.7em;
     }
   }
+
+  @media (max-width: 567px) {
+   .text_area {
+    padding: 10px 10px; 
+}
+ .arrow {
+    padding-top:0;
+    transform: rotate(90deg);
+}
+
+ .segment {
+    align-items: center;
+    justify-content: center;
+}
+
+.segment p {
+
+    text-align: center;
+}
+
+}
+
+@media (min-width: 567px) and (max-width: 992px) {
+  .hide_pad{
+    display: none;
+  }
+ 
+
+}
 `;

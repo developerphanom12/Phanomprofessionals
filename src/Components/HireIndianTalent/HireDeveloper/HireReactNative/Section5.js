@@ -5,14 +5,14 @@ import styled from "styled-components";
 export default function Section5() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div
             className="col-lg-12 col-md-12 col-12 text_div"
             data-aos="fade-up"
           >
             <span>The </span>
-            <span className="text">Phantom Professionals </span>{" "}
+            <span className="text">Phanom Professionals </span>{" "}
             <span>Advantage</span>
             <p className="mt-3">
             Our in - house excellent React Native developers at Phanom Professionals to unlock unmatched brilliance in cellular app enhancement. With a wealth of knowledge, our expert professionals provide top-notch solutions catered to your unique needs. Our website builders are dedicated to delivering programs for the modern day, with an emphasis on innovation, performance, and cooperative dialogue.
@@ -98,4 +98,11 @@ const Root = styled.section`
   .service-section-five {
     margin-bottom: 40px;
   }
+
+  @media (max-width: 567px) {
+  .text_div {
+   padding:0 20px; 
+}
+
+}
 `;

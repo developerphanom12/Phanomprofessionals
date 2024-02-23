@@ -5,7 +5,7 @@ import svgg from "../../../Images/svg.svg";
 export default function Section3() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-2 col-md-12 col-12"></div>
           <div
@@ -25,7 +25,7 @@ export default function Section3() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>In-House Expertise:</p>
+                <p>In-House Expertise</p>
                 <span>
                   Step into a realm of creativity and innovation with our
                   powerhouse team of 50+.
@@ -39,7 +39,7 @@ export default function Section3() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>24/7 Support:</p>
+                <p>24/7 Support</p>
                 <span>
                   Our support ensures that assistance is just a message away,
                   anytime you need it.
@@ -55,7 +55,7 @@ export default function Section3() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Proven Track Records:</p>
+                <p>Proven Track Records</p>
                 <span>
                   Our track record is a symphony of success stories, showcasing
                   our commitment to excellence and the achievements of our
@@ -70,7 +70,7 @@ export default function Section3() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Cost-Effective Brilliance:</p>
+                <p>Cost-Effective Brilliance</p>
                 <span>
                   We deliver cost-effective solutions that maximize the value of
                   your investment.
@@ -87,7 +87,7 @@ export default function Section3() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Dedicated Project Manager:</p>
+                <p>Dedicated Project Manager</p>
                 <span>
                   A dedicated project manager ensures streamlined communication
                   and a singular focus on your project's success.
@@ -101,7 +101,7 @@ export default function Section3() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>Delivery On Time:</p>
+                <p>Delivery On Time</p>
                 <span>
                   With us, timelines aren't just promises; they are commitments.
                   Your project will be delivered on time, every time.
@@ -116,6 +116,7 @@ export default function Section3() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
+  padding:0 50px;
 
   .text_div {
     margin-bottom: 0.7em;
@@ -171,5 +172,21 @@ const Root = styled.section`
         padding: 10px 0px;
       }
     }
+  }
+
+  @media (max-width: 567px) {
+    padding:0;
+
+ .text_div {
+    padding: 20px;
+
+}
+
+
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding:0;
+
   }
 `;

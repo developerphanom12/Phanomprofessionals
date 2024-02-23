@@ -170,7 +170,24 @@ const Root = styled.section`
   }
 
   @media (max-width: 567px) {
-    .service-section-one {
+ .first-div {
+   padding-top:30px;
+ 
+}
+    .service-section-one,
+    .service-section-two,
+    .service-section-three,
+    .service-section-four,
+    .service-section-five,
+    .service-section-six {
+      height:auto;
+      padding: 0 30px 0 30px;
+      border-right: 1px solid #dadada;
+      border-bottom: 1px solid #dadada;
+      margin-bottom: 20px;
+      margin-top:30px;
+    }
+    /* .service-section-one {
       padding: 20px 0px 0 12px;
       margin-top: 30px;
       height:180px;
@@ -184,7 +201,7 @@ const Root = styled.section`
 
   .service-section-three {
     margin-top: 8px;
-}
+} */
 
 .row {
       margin-right: 0;

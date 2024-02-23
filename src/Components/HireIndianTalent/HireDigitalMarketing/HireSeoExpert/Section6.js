@@ -5,7 +5,7 @@ import styled from "styled-components";
 export default function Section6() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-1 col-md-12 col-12"></div>
 
@@ -19,13 +19,13 @@ export default function Section6() {
           <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-3 col-md-12 col-12 block_main">
+          <div className="col-lg-3 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Full-Sеrvicе SEO:</p>
               <span>On-Pagе SEO, Off-Pagе SEO, and SEO Audits</span>
             </div>
           </div>
-          <div className="col-lg-3 col-md-12 col-12 block_main">
+          <div className="col-lg-3 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Local SEO Sеrvicеs Includе:</p>
               <span>
@@ -34,7 +34,7 @@ export default function Section6() {
               </span>{" "}
             </div>
           </div>
-          <div className="col-lg-3 col-md-12 col-12 block_main">
+          <div className="col-lg-3 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Googlе Analytics Configuration:</p>
               <span>
@@ -42,7 +42,7 @@ export default function Section6() {
               </span>{" "}
             </div>
           </div>
-          <div className="col-lg-3 col-md-12 col-12 block_main">
+          <div className="col-lg-3 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Contеnt markеting :</p>
               <span>
@@ -71,9 +71,10 @@ export default function Section6() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
+  padding:0 50px;
 
   .text_area {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     padding: 20px 50px;
     text-align: center;
     .text {
@@ -123,5 +124,38 @@ const Root = styled.section`
         color: #6e6e6e;
       }
     }
+  }
+
+  @media (max-width: 567px) {
+
+    padding:0;
+
+  .text_area {
+   margin-bottom:0;
+   padding: 20px 0 0 0;
+
+}
+
+.block_main {
+ flex: unset;
+ margin-bottom:0; 
+
+}
+  }
+  @media (min-width: 567px) and (max-width: 992px){
+    padding:0;
+
+  .text_area {
+   margin-bottom:0;
+   padding: 20px 0 0 0;
+
+}
+
+.block_main {
+ /* flex: unset; */
+ margin-bottom:0; 
+
+}
+
   }
 `;

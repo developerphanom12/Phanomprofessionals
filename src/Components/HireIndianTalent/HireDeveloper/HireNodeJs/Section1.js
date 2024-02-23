@@ -5,7 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaPlay } from "react-icons/fa6";
 
-export default function Section1() {
+export default function Section1(){
   useEffect(() => {
     AOS.init({
       disable: "phone",
@@ -191,7 +191,7 @@ const Root = styled.section`
   @media (max-width: 567px) {
     padding: 20px 0;
     .first-div {
-      padding: 0 0 0 10px;
+      padding:10px;
       .first-content {
         font-size: 35px;
       }

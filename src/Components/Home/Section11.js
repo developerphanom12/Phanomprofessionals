@@ -228,7 +228,7 @@ const Root = styled.section`
 
   .bg-color {
     background-color: #147888;
-    margin-top: 50px;
+    margin-top: 20px;
   }
   .first-col {
     padding: 50px 0 50px 30px;
@@ -398,11 +398,14 @@ const Root = styled.section`
         width: 95%;
       }
       button {
-        margin: 15px 0 0 40px;
+        margin: 15px 0 0 25px;
       }
    label {
     font-size: 10px;
     
+}
+ select {  
+    width: 50%;
 }
     }
 
@@ -423,8 +426,13 @@ const Root = styled.section`
       }
     }
 
-    .row {
+     /* .row {
       margin-right: 0;
+      margin-left:0;
+    }  */
+    :nth-child(1) {
+      margin-right: 0px;
+      margin-left: 0px;
     }
   }
 
@@ -444,6 +452,10 @@ const Root = styled.section`
       button {
         margin: 15px 0 0 10px;
       }
+
+      select {  
+    width: 50%;
+    }
     }
 
     .second-col {
@@ -463,6 +475,9 @@ const Root = styled.section`
         height: 350px;
       }
     }
-
+    :nth-child(1) {
+      margin-right: 0px;
+      margin-left: 0px;
+    }
   }
 `;

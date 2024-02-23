@@ -5,6 +5,17 @@ export default function Section4() {
   return (
     <Root>
       <div className="container">
+      <div className="row">
+          <div className="col-lg-12 col-md-12 col-12 text_area">
+            <span>Choose our In-house Expertise </span>{" "}
+            <span className="text"> Graphic Designer </span>
+            <span>Team - Brilliant and Culturally Appropriate?</span>
+            <p>
+            Our In - House Expertise (team of 50+) provides 24/7 support services with a proven track record for the services provided. Join our customers who have selected Phanom Professionals for their graphic design requirements.
+            </p>
+          </div>
+        </div>
+
         <div className="row">
           <div className="col-lg-12 col-md-12 col-12 text_area">
             <span>Empowering Developers: </span>{" "}
@@ -22,7 +33,7 @@ export default function Section4() {
         </div>
 
         <div className="row">
-          <div className="col-lg-4 col-md-12 col-12 block_main">
+          <div className="col-lg-4 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Structurеd Grids for Efficiеncy:</p>
               <span>
@@ -33,7 +44,7 @@ export default function Section4() {
               </span>
             </div>
           </div>
-          <div className="col-lg-4 col-md-12 col-12 block_main">
+          <div className="col-lg-4 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Embracе Rеgular Shapеs:</p>
               <span>
@@ -59,7 +70,7 @@ export default function Section4() {
         </div>
 
         <div className="row">
-          <div className="col-lg-4 col-md-12 col-12 block_main">
+          <div className="col-lg-4 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Strict Alignmеnt and Consistеncy:</p>
               <span>
@@ -70,7 +81,7 @@ export default function Section4() {
               </span>
             </div>
           </div>
-          <div className="col-lg-4 col-md-12 col-12 block_main">
+          <div className="col-lg-4 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Harmony in Wеbsitе and Mobilе Dеsign:</p>
               <span>
@@ -144,5 +155,26 @@ const Root = styled.section`
         color: #6e6e6e;
       }
     }
+  }
+  @media (max-width: 567px){
+   .text_area {
+    padding:5px;  
+    margin-bottom:0;
+}
+ .block_main {
+   flex: unset; 
+}
+
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    .text_area {
+    padding:5px;  
+    margin-bottom:0;
+}
+  .block_main {
+   flex: unset; 
+}
+
   }
 `;

@@ -5,7 +5,7 @@ import svgg from "../../../Images/svg.svg";
 export default function Section2() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-2 col-md-12 col-12"></div>
           <div
@@ -132,6 +132,7 @@ export default function Section2() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
+  padding: 0 100px;
 
   .text_div {
     margin-bottom: 0.7em;
@@ -156,7 +157,7 @@ const Root = styled.section`
     .block_div {
       word-spacing: 1px;
       letter-spacing: 0.1px;
-      padding: 0px 0px 40px 0px;
+      padding: 0 10px 40px 0;
       display: flex;
       border: 1px solid #147888;
       border-radius: 20px;
@@ -187,5 +188,28 @@ const Root = styled.section`
         padding: 10px 0px;
       }
     }
+  }
+
+  @media (max-width: 567px) {
+    padding:0;
+
+   .text_div {
+     padding:0; 
+}
+
+ .block_main .block_div {
+    padding: 0 10px 10px 0;
+
+}
+
+  }
+
+  @media (min-width: 567px) and (max-width: 992px){
+    padding:0;
+    .block_main .block_div {
+    padding: 0 10px 10px 0;
+
+}
+
   }
 `;

@@ -287,6 +287,7 @@ const Root = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top:20px;
     h4 {
       font-family: "Roboto", Sans-serif;
       font-size: 18px;
@@ -305,6 +306,22 @@ const Root = styled.section`
       transition: all 0.2s linear;
     }
   }
+
+  
+@media (max-width: 567px) {
+padding:0  
+}
+
+@media (min-width: 567px) and (max-width: 992px) {
+  padding:0;
+
+.main_div {
+    padding: 40px 10px;
+}
+
+}
 `;
+
+
 
 export default Section4;

@@ -157,4 +157,24 @@ const Root = styled.section`
     margin-bottom: 40px;
     border-top: 1px solid #dadada;
   }
+
+  @media (max-width: 567px) {
+ .text_div {
+    padding:10px;
+}
+ .service-section-one {
+    margin-top:0; 
+}
+
+}
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    .text_div {
+    padding:10px;
+}
+ .service-section-one {
+    margin-top:0; 
+}
+
+  }
 `;

@@ -15,7 +15,7 @@ export default function Section3() {
                 <img src={d} alt="img" width="100%" height="100%"  className="image-fluid"/>
               </div>
               <div className="row">
-                <div className="col-lg-2 col-md-5"></div>
+                <div className="col-lg-2 col-md-5 col-4"></div>
                 <div className="col-lg-3 col-md-3 col-5 ">
                   <div className="image-circle">
                     <h5>G</h5>
@@ -97,7 +97,7 @@ const Root = styled.section`
     text-align: center;
     img {
       border-radius: 20px;
-      margin-left: 10px;
+      margin-left: 20px;
     }
     .image-circle {
       height: 126px;
@@ -138,7 +138,7 @@ const Root = styled.section`
       height: 85px;
       background-color: #5cd4b9;
       border-radius: 50px;
-      margin: -14% 0 0 -3%;
+      margin: -14% 0 0 0;
     }
     .paragraph {
       font-size: 17px;
@@ -169,6 +169,9 @@ const Root = styled.section`
     .first-div {
       padding: 0px 24px 0 0px;
     }
+ .first-div img {
+    margin-left: 25px;
+}
     
  .second-div {
     padding-top: 10px;
@@ -197,8 +200,9 @@ const Root = styled.section`
 
   
 @media (min-width: 567px) and (max-width: 992px){
+  
  .first-div {
-  padding: 50px 0 0 0px;
+  padding: 50px 0 0 20px;
   
    .image-circle {
     height: 159px;
@@ -207,6 +211,13 @@ const Root = styled.section`
 }
 }
 
+.first-div img {
+    margin-left: 1px;
+}
+
+.row {
+      margin-right: 0;
+    }
 }
   
 `;

@@ -5,7 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaPlay } from "react-icons/fa6";
 
-export default function Section1() {
+export default function Section1(){
   useEffect(() => {
     AOS.init({
       disable: "phone",
@@ -27,15 +27,14 @@ export default function Section1() {
               </button>
               <button>Vetting Process</button>
             </div>
-            <span className="first-content">Phanom Professional's Talent Network is</span>
-            <span className="second-content">India's biggest </span>
-            <br />
+            <span className="display">
+              <span className="first-content">Phanom Professional's Talent Network is </span>
+              <span className="second-content">India's biggest </span>
+              <span className="first-content"> community of pinnacle professionals.</span>
+            </span>
             <div className="circle"></div>
-            <span className="second-content"> </span>
-            <span className="first-content">community of pinnacle professionals.</span>
             <p className="paragraph">
-            Phanom Professionals is a large network of highly qualifiеd workers in India. We ensure that they are just as good as pеoplе who work for multinational corporations all around thе world.
-
+              Phanom Professionals is a large network of highly qualifiеd workers in India. We ensure that they are just as good as pеoplе who work for multinational corporations all around thе world.
             </p>
           </div>
           <div className="col-lg-6 col-md-12 col-12 second-div">
@@ -63,15 +62,20 @@ export default function Section1() {
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
   background-color: #ffffffd4;
-  padding: 50px 100px;
+  padding: 70px 100px;
+
   .first-div {
     border: none;
     padding-right: 25px;
+    /* .display {
+      display: flex;
+    } */
     .first-content {
       display: flex;
       font-size: 45px;
       font-weight: bold;
       line-height: 1.3em;
+      margin-right: 10px;
     }
     .second-content {
       font-size: 45px;
@@ -82,15 +86,15 @@ const Root = styled.section`
     .circle {
       width: 14%;
       height: 71px;
+      margin: -15% 0 0 0;
       background-color: #5cd4b9;
       border-radius: 50px;
-      margin: -11% 0 0 0;
     }
 
     .paragraph {
       font-size: 17px;
       color: #6e6e6e;
-      padding-top: 30px;
+      padding-top: 10px;
     }
     .button_div {
       margin-bottom: 20px;
@@ -129,7 +133,6 @@ const Root = styled.section`
   .second-div {
     border: none;
     .form_div {
-      height: 470px;
       background: #f3f3f3;
       padding: 50px;
       border-radius: 30px;
@@ -141,6 +144,7 @@ const Root = styled.section`
         margin-right: calc(-15px / 2);
         margin-bottom: 15px;
         gap: 15px;
+        width: 100%;
         input {
           font-size: 17px;
           line-height: 1.3em;
@@ -149,12 +153,13 @@ const Root = styled.section`
           border-color: var(--e-global-color-2d6a869);
           border-radius: 30px;
           padding: 17px;
-          width: 209px;
+          width: 48%;
         }
         select {
-          width: 209px;
+          width: 48%;
           background-color: #ffffff;
           border: none;
+          padding: 17px;
           border-color: var(--e-global-color-2d6a869);
           border-radius: 30px;
           color: gray;
@@ -163,7 +168,7 @@ const Root = styled.section`
       .button_box_div {
         width: 100%;
         button {
-        width: 100%;
+          width: 100%;
 
           color: #ffffff;
           flex-basis: 100%;
@@ -182,8 +187,9 @@ const Root = styled.section`
   }
 
   @media (max-width: 567px) {
+    padding: 20px 0;
     .first-div {
-      padding: 0 0 0 10px;
+      padding:10px;
       .first-content {
         font-size: 35px;
       }
@@ -191,8 +197,8 @@ const Root = styled.section`
         font-size: 35px;
       }
       .circle {
-        width: 26%;
-        margin: -28% 0 0 0;
+        width: 19%;
+        margin: -15% 0 0 0;
       }
       .btn-content {
         padding: 15px 0px;
@@ -204,10 +210,42 @@ const Root = styled.section`
 
     .second-div {
       border: none;
+      .form_div {
+        padding: 30px;
+        .form_field {
+          input {
+            width: 100%;
+            font-size: 14px;
+          }
+          select {
+            width: 100%;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .second-div .form_div .form_field {
+      flex-wrap: unset;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding: 20px 0;
+    .circle {
+      width: 10%;
     }
 
-    .row {
-      margin-right: 0;
-    }
+  .first-div {
+
+    .first-content {
+    display:unset;
+  }
+    .circle {
+    width: 10%;
+    margin: -7% 0 0 0;
+   
+  }
+
+  }
   }
 `;

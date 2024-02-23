@@ -106,4 +106,15 @@ const Root = styled.section`
       font-weight: 400;
     }
   }
+  @media (max-width: 567px) {
+    padding:20px;
+ .text h3 {
+     padding:0;
+}
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding:20px;
+
+  }
 `;

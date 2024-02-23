@@ -7,12 +7,12 @@ export default function Section3() {
     <Root>
       <div className="container">
         <div className="row">
-          <div className="col-lg-2 col-md-12 col-12"></div>
-          <div className="col-lg-8 col-md-12 col-12 text_div">
+          <div className="col-lg-1 col-md-12 col-12"></div>
+          <div className="col-lg-10 col-md-12 col-12 text_div">
             <span>Services Provide by </span>
             <span className="text">Phanom</span> <span>Professionals:</span>
           </div>
-          <div className="col-lg-2 col-md-12 col-12"></div>
+          <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
         <div className="row">
           <div className="col-lg-4 col-md-12 col-12 img_div">
@@ -131,5 +131,30 @@ const Root = styled.section`
         font-weight: bold;
       }
     }
+  }
+  
+  @media (max-width: 567px) {
+ .text_div {
+     padding: 0;
+ }
+ .segment {
+  padding:0;
+}
+.img_div {
+    display: none;
+}
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    .text_div {
+     padding: 0;
+ }
+ .segment {
+  padding:0;
+}
+ .img_div {
+    display: none;
+}
+
   }
 `;

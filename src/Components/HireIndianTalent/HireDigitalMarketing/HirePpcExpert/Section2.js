@@ -20,13 +20,13 @@ export default function Section2() {
               </span>
             </div>
           </div>
-          <div className="col-lg-2  col-md-12 col-12">
+          <div className="col-lg-2  col-md-3 col-4">
             <h1>How ?</h1>
             <img src={number} alt="img" />
           </div>
-          <div className="col-lg-5  col-md-12 col-12 segment">
+          <div className="col-lg-5  col-md-9 col-8 segment">
             <div className="mini_div">
-              <p>Study Technical Foundation</p>
+              <p>Sturdy Technical Foundation</p>
               <span>
                 through technical assessments created for the job role in
                 compliance with international standards.
@@ -76,4 +76,23 @@ const Root = styled.section`
       }
     }
   }
+
+  
+  @media (max-width: 567px) {
+ .segment {
+    margin-top:0;
+    padding: 0
+}
+}
+@media (min-width: 567px) and (max-width: 992px) {
+.segment {
+  margin-top:0;
+    padding:45px 10px 10px 10px;
+}
+ img, svg {
+    vertical-align: middle;
+    height: 400px;
+    margin-left: 20px;
+}
+}
 `;

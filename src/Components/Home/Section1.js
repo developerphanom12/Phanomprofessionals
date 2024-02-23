@@ -226,6 +226,9 @@ const Root = styled.section`
   }
 
   @media (min-width: 567px) and (max-width: 992px) {
+  .first-div {
+    padding: 0 0 0 10px;
+}
     .second-div {
       .img-second-border {
         margin: 55px 0 0 97px;

@@ -4,8 +4,8 @@ import styled from "styled-components";
 export default function Section4() {
   return (
     <Root>
-      <div className="container">
-        <div className="row pt-4">
+      <div className="container-fluid">
+        <div className="row pt-5">
           <div className="col-lg-4 col-md-12 col-12 text_area">
             <span>Why are </span> <span className="text">Indians </span>
             <span>
@@ -67,6 +67,7 @@ export default function Section4() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
+padding:0 50px;
 
   .text_area {
     margin-bottom: 30px;
@@ -103,5 +104,43 @@ const Root = styled.section`
       word-spacing: 1px;
       line-height: 1.7em;
     }
+}
+
+@media (max-width: 567px) {
+  padding:0;
+  .pt-5 {
+ padding-top:0;
+}
+.text_area  {
+   margin-bottom:0;
+
+}
+ .text_area p {
+    padding-bottom:0;
+
+}
+ .segment {
+    padding: 20px 0px 20px 0px;
+}
+
+}
+
+@media (min-width: 567px) and (max-width: 992px){
+  padding:0;
+  .pt-5 {
+ padding-top:0;
+}
+.text_area  {
+   margin-bottom:0;
+
+}
+ .text_area p {
+    padding-bottom:0;
+
+}
+ .segment {
+    padding: 20px 0px 20px 0px;
+}
+
 }
 `;

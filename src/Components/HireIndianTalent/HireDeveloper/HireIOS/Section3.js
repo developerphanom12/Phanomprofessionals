@@ -164,7 +164,7 @@ const Section3 = () => {
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
   background-color: #ffffffd4;
-  padding: 50px 100px;
+  padding: 0 100px;
   .text_div {
     margin-bottom: 0.7em;
     padding: 30px;
@@ -185,6 +185,7 @@ const Root = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top:20px;
     button {
       background-color: transparent;
       color: #147888;
@@ -194,6 +195,24 @@ const Root = styled.section`
         height: 25px;
       }
     }
+  }
+
+  @media (max-width: 567px) {
+    padding:0;
+.text_div {
+    padding:0;
+}
+
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding:0;
+    .text_div {
+    padding:0;
+    p{
+      margin-top:20px;
+    }
+}
   }
 `;
 

@@ -5,7 +5,7 @@ import styled from "styled-components";
 export default function Section4() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div
             className="col-lg-12 col-md-12 col-12 text_div"
@@ -62,7 +62,7 @@ export default function Section4() {
               and compliance standards.
             </p>
           </div>
-          <div className="col-lg-4 col-md-12 col-12 service-section-five"></div>
+          <div className="col-lg-4 col-md-12 col-12"></div>
         </div>
       </div>
     </Root>
@@ -70,6 +70,7 @@ export default function Section4() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
+  padding: 0 50px;
 
   .text_div {
     margin-bottom: 0.7em;
@@ -140,5 +141,22 @@ const Root = styled.section`
   }
   .service-section-five {
     margin-bottom: 40px;
+  }
+
+  @media (max-width: 567px) {
+    padding:0;
+
+   .text_div {
+     padding:0; 
+}
+ .service-section-four {
+    margin-bottom:0; 
+}
+
+  }
+
+  @media (min-width: 567px) and (max-width: 992px){
+    padding:0;
+
   }
 `;

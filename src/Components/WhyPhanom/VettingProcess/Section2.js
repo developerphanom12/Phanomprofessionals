@@ -52,7 +52,7 @@ export default function Section2() {
 
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         {/* <div className="row">
           <div className="col-lg-12 col-md-12 col-12 text">
             <h3>
@@ -271,4 +271,13 @@ const Root = styled.section`
       margin: 0px 20px;
     }
   }
+
+  
+  @media (max-width: 567px) {
+     padding: 20px;
+  }
+  @media (min-width: 567px) and (max-width: 992px){
+    padding: 20px;
+  }
+
 `;

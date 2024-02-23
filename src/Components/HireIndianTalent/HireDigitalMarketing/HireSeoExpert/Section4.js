@@ -5,7 +5,7 @@ import number from "../../../Images/numbring.png";
 export default function Section4() {
   return (
     <Root>
-      <div className="container mt-5">
+      <div className="container-fluid mt-3">
         <div className="row">
           <div className="col-lg-2 col-md-12 col-12"></div>
           <div className="col-lg-8  col-md-12 col-12">
@@ -32,7 +32,7 @@ export default function Section4() {
               </span>
             </div>
           </div>
-          <div className="col-lg-2  col-md-12 col-12 ">
+          <div className="col-lg-2  col-md-3 col-12 pad_hide">
             <img src={number} alt="img" />
           </div>
           <div className="col-lg-5  col-md-12 col-12 segment">
@@ -67,6 +67,7 @@ export default function Section4() {
   );
 }
 const Root = styled.section`
+  padding: 0 50px;
   .h1_tag {
     justify-content: center;
     display: flex;
@@ -93,6 +94,38 @@ const Root = styled.section`
         color: #6e6e6e;
         padding-top: 30px;
       }
+    }
+  }
+  @media (max-width: 567px) {
+    padding: 0;
+    .segment {
+      margin-top: 0;
+      padding: 0;
+    }
+    .pad_hide {
+      display: none;
+    }
+
+    .segment .mini_div {
+      margin-bottom: 0;
+      padding: 15px 20px;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding: 0;
+
+    .pad_hide {
+      display: none;
+    }
+
+    .segment {
+      margin-top: 0;
+      padding: 0;
+    }
+    .segment .mini_div {
+      margin-bottom: 0;
+      padding: 15px 20px;
     }
   }
 `;

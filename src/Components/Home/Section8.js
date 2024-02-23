@@ -150,7 +150,10 @@ const Root = styled.section`
 
 @media (min-width: 567px) and (max-width: 992px) {
   .first-col {
-    padding: 10% 0 0 2%;
+    padding: 5% 0 0 2%;
+}
+ .second-col {
+    padding: 5% 0 0 2%;
 }
 
 .second-col .image-circle {
@@ -162,7 +165,9 @@ const Root = styled.section`
   .circle {
     width: 12%;}
 }
-
+.row {
+      margin-right: 0;
+    }
 
 }
 `;

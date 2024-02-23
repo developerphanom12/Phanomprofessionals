@@ -5,7 +5,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 export default function Section5() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-1 col-md-12 col-12"></div>
           <div className="col-lg-10 col-md-12 col-12 text_area">
@@ -29,6 +29,7 @@ export default function Section5() {
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
   background: #f3f3f3;
+  padding:0 50px;
   p {
       text-align: center;
       color: #6e6e6e;
@@ -89,5 +90,25 @@ const Root = styled.section`
       color: #6e6e6e;
       line-height: 1.7em;
     }
+  }
+
+  @media (max-width: 567px) {
+    padding:0;
+  .text_area {
+    padding: 10px;
+ }
+ p {
+ padding: 0; 
+}
+  }
+  @media (min-width: 567px) and (max-width: 992px){
+      padding:0;
+  .text_area {
+    padding: 10px;
+ }
+ p {
+ padding: 0; 
+}
+  
   }
 `;

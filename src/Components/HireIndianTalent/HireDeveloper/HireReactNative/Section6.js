@@ -17,7 +17,7 @@ export default function Section6() {
   };
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row pt-4">
           <div className="col-lg-12 col-md-12 col-12 text">
             <h3>
@@ -61,6 +61,7 @@ export default function Section6() {
 }
 const Root = styled.section`
   background-color: #dadada;
+  padding:0 50px;
   .text {
     margin: 50px 0px;
     padding: 10px;
@@ -83,5 +84,14 @@ const Root = styled.section`
       font-size: 15px;
       padding: 10px;
     }
+  }
+
+@media (max-width: 567px) {
+    padding: 0 10px;
+
+   .text span {
+    padding: 0;
+}
+
   }
 `;

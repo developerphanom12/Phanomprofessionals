@@ -28,18 +28,13 @@ export default function Section1() {
               <button>Hire Web Designer</button>
             </div>
             <span className="display">
-              <span className="first-content">Your Onlinе Prеsеncе </span>
-              <span className="second-content">
-                {" "}
-                with Phanom Professionals:{" "}
-              </span>
-              <span className="first-content">
-                Your Dеsign Partnеr for Succеss
-              </span>
+              <span className="first-content">Your Onlinе Prеsеncе  </span>
+              <span className="second-content"> with Phanom Professionals </span>
+              <span className="first-content">Your Dеsign Partnеr for Succеss</span>
             </span>
             <div className="circle"></div>
             <p className="paragraph">
-              Explorе thе potential of your brand’s onlinе prеsеncе with Phanom
+            Explorе thе potential of your brand’s onlinе prеsеncе with Phanom
               Professionals – whеrе skilled web designers are ready to bring
               your vision to lifе.
             </p>
@@ -70,13 +65,13 @@ const Root = styled.section`
   font-family: "DM Sans", sans-serif;
   background-color: #ffffffd4;
   padding: 70px 100px;
+
   .first-div {
     border: none;
     padding-right: 25px;
-    .display {
+    /* .display {
       display: flex;
-      flex-wrap: wrap;
-    }
+    } */
     .first-content {
       display: flex;
       font-size: 45px;
@@ -93,15 +88,15 @@ const Root = styled.section`
     .circle {
       width: 14%;
       height: 71px;
+      margin: -15% 0 0 0;
       background-color: #5cd4b9;
       border-radius: 50px;
-      margin: -14% 0 0 0;
     }
 
     .paragraph {
       font-size: 17px;
       color: #6e6e6e;
-      padding-top: 20px;
+      padding-top: 10px;
     }
     .button_div {
       margin-bottom: 20px;
@@ -151,6 +146,7 @@ const Root = styled.section`
         margin-right: calc(-15px / 2);
         margin-bottom: 15px;
         gap: 15px;
+        width: 100%;
         input {
           font-size: 17px;
           line-height: 1.3em;
@@ -159,12 +155,13 @@ const Root = styled.section`
           border-color: var(--e-global-color-2d6a869);
           border-radius: 30px;
           padding: 17px;
-          width: 209px;
+          width: 48%;
         }
         select {
-          width: 209px;
+          width: 48%;
           background-color: #ffffff;
           border: none;
+          padding: 17px;
           border-color: var(--e-global-color-2d6a869);
           border-radius: 30px;
           color: gray;
@@ -192,8 +189,9 @@ const Root = styled.section`
   }
 
   @media (max-width: 567px) {
+    padding: 20px 0;
     .first-div {
-      padding: 0 0 0 10px;
+      padding:10px;
       .first-content {
         font-size: 35px;
       }
@@ -201,8 +199,8 @@ const Root = styled.section`
         font-size: 35px;
       }
       .circle {
-        width: 26%;
-        margin: -28% 0 0 0;
+        width: 19%;
+        margin: -15% 0 0 0;
       }
       .btn-content {
         padding: 15px 0px;
@@ -214,10 +212,42 @@ const Root = styled.section`
 
     .second-div {
       border: none;
+      .form_div {
+        padding: 30px;
+        .form_field {
+          input {
+            width: 100%;
+            font-size: 14px;
+          }
+          select {
+            width: 100%;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .second-div .form_div .form_field {
+      flex-wrap: unset;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding: 20px 0;
+    .circle {
+      width: 10%;
     }
 
-    .row {
-      margin-right: 0;
-    }
+  .first-div {
+
+    .first-content {
+    display:unset;
+  }
+    .circle {
+    width: 10%;
+    margin: -7% 0 0 0;
+   
+  }
+
+  }
   }
 `;

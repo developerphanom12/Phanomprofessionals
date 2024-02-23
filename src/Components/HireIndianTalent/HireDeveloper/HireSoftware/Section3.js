@@ -244,6 +244,7 @@ const Root = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top:20px;
     button {
       background-color: transparent;
       color: #147888;
@@ -253,6 +254,22 @@ const Root = styled.section`
         height: 25px;
       }
     }
+  }
+
+  @media (max-width: 567px) {
+     .text_div {
+     padding: 0;  
+}
+    padding:0;
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    .text_div {
+     padding: 0;  
+}
+    padding:0;
+  }
+
   }
 `;
 

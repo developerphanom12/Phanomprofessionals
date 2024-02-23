@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Section3 = () => {
   return (
     <Root>
-      <div className="container mt-3  ">
+      <div className="container-fluid mt-3  ">
         <div className="row">
           <div className="col-lg-2 col-md-12 col-12"></div>
           <div
@@ -121,7 +121,7 @@ const Section3 = () => {
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
   background-color: #ffffffd4;
-  padding: 50px 100px;
+  padding: 0 100px;
   .text_div {
     margin-bottom: 0.7em;
     padding: 30px;
@@ -160,6 +160,33 @@ const Root = styled.section`
         height: 25px;
       }
     }
+  }
+
+ @media (max-width: 567px) {
+    padding:0;
+    
+   .text_div {
+    padding: 0;
+    
+}
+.que {
+    margin: 20px 0;
+}
+  }
+
+
+ @media (min-width: 567px) and (max-width: 992px) {
+    padding:0;
+    
+    .text_div {
+     padding: 0;
+     
+ }
+ .que {
+     margin: 20px 0;
+ }
+   }
+
   }
 `;
 

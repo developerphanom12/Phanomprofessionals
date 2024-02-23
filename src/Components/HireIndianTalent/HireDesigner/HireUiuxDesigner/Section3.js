@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Section3() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-1 col-md-12 col-12"></div>
 
@@ -17,7 +17,7 @@ export default function Section3() {
         </div>
 
         <div className="row">
-          <div className="col-lg-4 col-md-12 col-12 block_main">
+          <div className="col-lg-4 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>UI/UX Design and Development:</p>
               <span>
@@ -26,7 +26,7 @@ export default function Section3() {
               </span>
             </div>
           </div>
-          <div className="col-lg-4 col-md-12 col-12 block_main">
+          <div className="col-lg-4 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Mockups Dеsigning:</p>
               <span>
@@ -49,7 +49,7 @@ export default function Section3() {
         </div>
 
         <div className="row">
-          <div className="col-lg-4 col-md-12 col-12 block_main">
+          <div className="col-lg-4 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>IT Architecture Dеvеlopmеnt:</p>
               <span>
@@ -59,7 +59,7 @@ export default function Section3() {
               </span>
             </div>
           </div>
-          <div className="col-lg-4 col-md-12 col-12 block_main">
+          <div className="col-lg-4 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>UI/UX Consulting Sеrvicеs:</p>
               <span>
@@ -94,6 +94,7 @@ export default function Section3() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
+  padding:0 50px;
 
   .text_area {
     margin-bottom: 30px;
@@ -143,5 +144,27 @@ const Root = styled.section`
 
       }
     }
+  }
+  @media (max-width: 567px) {
+    padding:0;
+ .text_area {
+    padding: 10px 5px;
+    margin-bottom:0;
+  }
+ .block_main {
+  flex:unset; 
+}
+
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding:0;
+    .text_area {
+      padding: 10px 5px;
+    margin-bottom:0;
+  }
+  .block_main {
+  flex:unset; 
+}
   }
 `;

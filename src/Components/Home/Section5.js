@@ -8,7 +8,7 @@ export default function Section5() {
     <Root>
       <div className="container-fluid mt-5">
         <div className="row">
-          <div className="col-lg-8 col-md-8 col-8 bg-opacity">
+          <div className="col-lg-8 col-md-8 col-10 bg-opacity">
             <div className="content">
               <div className="row">
                 <div className="col-lg-7 col-12" data-aos="fade-up">
@@ -82,7 +82,7 @@ export default function Section5() {
             </div>
             {/* </div> */}
           </div>
-          <div className="col-lg-4  col-md-4 col-4 bg-color"></div>
+          <div className="col-lg-4  col-md-4 col-2 bg-color"></div>
         </div>
       </div>
     </Root>
@@ -181,23 +181,14 @@ const Root = styled.section`
 
   @media (max-width: 567px) {
     .bg-opacity {
-      padding-top: 40px;
+      padding-top: 25px;
       padding-left: 10px;
     }
+  .overlap-div {
+    display: none;
+}
 
-    .choose-content {
-      font-size: 15px;
-    }
-
-    .white-content {
-      font-size: 21px;
-    }
-    .colored-content {
-      font-size: 21px;
-    }
-    button {
-      padding: 15px 33px;
-    }
+   
 
     .overlap-div {
       background-color: #147888;
@@ -239,7 +230,7 @@ const Root = styled.section`
     .overlap-div {
       padding: 23px 0 0 10px;
       height: 390px;
-      margin-left: 82%;
+      margin-left: 100%;
       p {
         font-size: 13px;
       }

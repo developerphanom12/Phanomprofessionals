@@ -5,7 +5,7 @@ import svgg from "../../../Images/svg.svg";
 export default function Section4() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-2 col-md-12 col-12"></div>
           <div
@@ -72,7 +72,7 @@ export default function Section4() {
                 <img src={svgg} alt="img" />
               </div>
               <div className="tag_text">
-                <p>React Native QA and Testing:</p>
+                <p>React Native QA and Testing</p>
                 <span>
                   Thorough testing guarantees the most suitable efficiency and
                   overall performance.

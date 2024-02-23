@@ -65,7 +65,7 @@ export default function Section1() {
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
   background-color: #ffffffd4;
-  padding: 70px 100px;
+  padding: 70px 100px 20px 100px;
 
   .first-div {
     border: none;

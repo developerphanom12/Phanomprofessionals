@@ -5,7 +5,7 @@ import styled from "styled-components";
 export default function Section2() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-1 col-md-12 col-12"></div>
 
@@ -104,6 +104,7 @@ export default function Section2() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
+  padding:0 50px;
 
   .text_area {
     margin-bottom: 30px;
@@ -164,5 +165,21 @@ const Root = styled.section`
         }
       }
     }
+  }
+@media (max-width: 567px) {
+    padding:0;
+
+.text_area {
+     padding:0;
+     margin-bottom:0;
+}
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding:0;
+    .text_area {
+     padding:0;
+     margin-bottom:0;
+}
   }
 `;

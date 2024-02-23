@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Section3() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-2 col-md-12 col-12"></div>
           <div
@@ -17,7 +17,7 @@ export default function Section3() {
           <div className="col-lg-2 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-2 col-md-12 col-12 block_main1">
+          <div className="col-lg-2 col-md-6 col-12 block_main1">
             <div className="block_div1">
               <div className="number_div1">01</div>
               <div>
@@ -31,7 +31,7 @@ export default function Section3() {
               </div>
             </div>
           </div>
-          <div className="col-lg-2 col-md-12 col-12 block_main">
+          <div className="col-lg-2 col-md-6 col-12 block_main">
             <div className="block_div">
               <div className="number_div">02</div>
               <div>
@@ -60,7 +60,7 @@ export default function Section3() {
           </div>
 
           <div className="row">
-            <div className="col-lg-12 col-md-12 col-6">
+            <div className="col-lg-12 col-md-12 col-12">
               <p className="text-center mt-3">At our company, we understand that circumstances can shift. Rest assured, canceling with us is a hassle-free process that offers you the convenience and flexibility you need. Thanks to our unique approach, we have an outstanding client retention rate that goes beyond what is typically seen in the industry.</p>
               <p className="text-center"> Our main focus is building long-lasting connections with our clients, exceeding their expectations every step of the way. With us, you can trust that your company's SEO needs will be met in a streamlined, cost-effective, and secure manner. Choose to work with us and benefit from our customer-centric policies that provide certainty and flexibility.</p>
             </div>
@@ -72,6 +72,7 @@ export default function Section3() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
+  padding: 0 50px;
 
   .text_div {
     margin-bottom: 0.7em;
@@ -161,5 +162,26 @@ const Root = styled.section`
         line-height: 1.2em;
       }
     }
+  }
+
+  @media (max-width: 567px) {
+    padding:0;
+   .block_main1 {
+    flex: unset; 
+}
+ .block_main {
+  flex: unset; 
+}
+
+  }
+  @media (min-width: 567px) and (max-width: 992px){
+    padding:0;
+    .block_main1 {
+    flex: unset; 
+}
+ .block_main {
+  flex: unset; 
+}
+
   }
 `;

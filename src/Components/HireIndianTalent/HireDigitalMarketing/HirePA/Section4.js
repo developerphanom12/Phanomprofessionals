@@ -317,4 +317,16 @@ const Root = styled.section`
       margin: 0px 20px;
     }
   }
+
+  
+  @media (max-width: 567px) {
+    padding: 20px;
+
+
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding: 20px;
+
+  }
 `;

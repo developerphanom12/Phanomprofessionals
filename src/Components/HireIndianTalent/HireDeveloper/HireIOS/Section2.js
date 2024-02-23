@@ -24,7 +24,7 @@ export default function Section2() {
           <div className="col-lg-2 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-3 col-md-12 col-12 block_main1">
+          <div className="col-lg-3 col-md-6 col-12 block_main1">
             <div className="block_div1">
               <div>
                 <p>Select an iOS Developer from Phantom Professionals</p>
@@ -35,7 +35,7 @@ export default function Section2() {
               </div>
             </div>
           </div>
-          <div className="col-lg-3 col-md-12 col-12 block_main">
+          <div className="col-lg-3 col-md-6 col-12 block_main">
             <div className="block_div">
               <div className="number_div">01</div>
               <div>
@@ -65,7 +65,7 @@ export default function Section2() {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-3 col-md-12 col-12 block_main">
+          <div className="col-lg-3 col-md-6 col-12 block_main">
             <div className="block_div">
               <div className="number_div">03</div>
               <div>
@@ -79,7 +79,7 @@ export default function Section2() {
               </div>
             </div>
           </div>
-          <div className="col-lg-3 col-md-12 col-12 block_main">
+          <div className="col-lg-3 col-md-6 col-12 block_main">
             <div className="block_div">
               <div className="number_div">04</div>
               <div>
@@ -191,4 +191,26 @@ const Root = styled.section`
       }
     }
   }
+
+  @media (max-width: 567px) {
+  .text_div {
+    padding: 10px;
+    p {
+    margin-top: 20px;
+}
+}
+ .block_main {
+ flex: unset; 
+}
+}
+
+@media (min-width: 567px) and (max-width: 992px) {
+ .block_main1 {
+  flex: unset;
+}
+ .block_main {
+  flex: unset;
+}
+
+}
 `;

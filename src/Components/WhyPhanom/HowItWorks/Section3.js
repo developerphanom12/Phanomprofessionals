@@ -5,10 +5,10 @@ import listimg from "../../../Components/Images/lists.png";
 export default function Section3() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
-          <div className="col-lg-2 col-md-12 col-12"></div>
-          <div className="col-lg-8 col-md-12 col-12 text_div">
+          <div className="col-lg-1 col-md-12 col-12"></div>
+          <div className="col-lg-10 col-md-12 col-12 text_div">
             <span>Hiring </span>
             <span className="text">Indian skills</span>{" "}
             <span>
@@ -19,14 +19,14 @@ export default function Section3() {
               Professionals sources, vets, suits, and manages skills for you.
             </p>
           </div>
-          <div className="col-lg-2 col-md-12 col-12"></div>
+          <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
         <div className="row">
           <div className="section_setup">
-            <div className="col-lg-4 col-md-4 col-12 img_div">
+            <div className="col-lg-4 col-md-4 col-12 mob_hide">
               <img src={listimg} alt="img" />
             </div>
-            <div className="col-lg-8 col-md-8 col-12 description">
+            <div className="col-lg-8 col-md-12 col-12 description">
               <div className="segmentt">
                 <h5>1. Share process description</h5>
                 <p className="span_div">
@@ -89,6 +89,7 @@ export default function Section3() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
+  padding: 0 50px;
 
   .text_div {
     margin-bottom: 0.7em;
@@ -119,8 +120,12 @@ const Root = styled.section`
       text-align: center;
       img {
         width: 30%;
+        /* margin-left:80px; */
       }
     }
+    .mob_hide {
+    padding-left: 100px;
+}
     .description {
       .segmentt {
         padding: 17px 0px;
@@ -152,37 +157,36 @@ const Root = styled.section`
     }
   }
   @media (max-width: 576px) {
-    .section_setup {
-      width: fit-content;
-      .img_div {
-        width: 30%;
-        img {
-          margin-top: 50px;
-          height: 60%;
-        }
-      }
-      .description {
-        width: 70%;
-        .segmentt {
-          padding: 8px;
-          width: 100%;
-          h5 {
-            font-size: 10px;
-            margin: 0;
-          }
-          .span_div {
-            font-size: 8px;
-            word-spacing: 1px;
-            /* background-color: red; */
-            padding: 0px;
-            margin: 0px !important;
-          }
-          h6 {
-            font-size: 8px;
-            margin: 2px;
-          }
-        }
-      }
+    padding: 0;
+    .section_setup .mob_hide {
+      display: none;
+    }
+
+    .text_div {
+      margin-bottom: 0;
+      padding: 0;
+    }
+    .section_setup .description .segmentt {
+      padding: 0;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding: 0;
+    .section_setup .mob_hide {
+      display: none;
+    }
+
+    .text_div {
+      margin-bottom: 0;
+      padding: 10px;
+    }
+ .text_div p {
+    padding: 20px 0px 10px 0;
+   
+}
+    .section_setup .description .segmentt {
+      padding: 0;
     }
   }
 `;

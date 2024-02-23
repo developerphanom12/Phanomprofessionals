@@ -130,6 +130,9 @@ const Root = styled.section`
    .second-div {
     padding: 0 0 0 10px;
 }
+.row {
+      margin-right: 0;
+    }
 }
 `;
 

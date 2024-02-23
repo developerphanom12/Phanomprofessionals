@@ -228,7 +228,6 @@ const Root = styled.section`
 
   .bg-color {
     background-color: #147888;
-    margin-top: 50px;
   }
   .first-col {
     padding: 50px 0 50px 30px;

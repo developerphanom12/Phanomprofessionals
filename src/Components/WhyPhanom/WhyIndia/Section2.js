@@ -5,7 +5,7 @@ import styled from "styled-components";
 export default function Section2() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-1 col-md-12 col-12"></div>
 
@@ -23,7 +23,7 @@ export default function Section2() {
           <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-4 col-md-12 col-12 block_main">
+          <div className="col-lg-4 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Superpowerful Talent</p>
               <div className="mini_block">
@@ -62,7 +62,7 @@ export default function Section2() {
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-md-12 col-12 block_main">
+          <div className="col-lg-4 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Quality Talent</p>
               <div className="mini_block">
@@ -154,10 +154,11 @@ export default function Section2() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
+  padding:0 50px;
 
   .text_area {
-    margin-bottom: 30px;
-    padding: 20px 50px;
+    
+    padding-top:20px;
     text-align: center;
     .text {
       color: #147888;
@@ -211,5 +212,25 @@ const Root = styled.section`
         }
       }
     }
+  }
+
+  @media (max-width: 567px) {
+    padding:0;
+ .text_area {
+ padding-top:0; 
+}
+/* :nth-child(2) {
+      margin-right: 0px;
+      margin-left: 0px;
+    } */
+  }
+
+  
+  @media (min-width: 567px) and (max-width: 992px){
+    padding:0;
+ .text_area {
+ padding-top:0; 
+}
+
   }
 `;

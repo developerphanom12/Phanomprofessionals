@@ -5,7 +5,7 @@ import svgg from "../../Images/svg.svg";
 export default function Section4() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-2 col-md-12 col-12"></div>
           <div
@@ -19,7 +19,7 @@ export default function Section4() {
           <div className="col-lg-2 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-12 col-md-12 col-6">
+          <div className="col-lg-12 col-md-12 col-12">
             {/* <p className="text-center">
             Emphasizing advantageous behavior enables a supportive subculture that encourages collaboration, innovation, and standard group achievement. Here are a few key standards we recall while selling high quality conduct inside our members:
             </p> */}
@@ -29,7 +29,7 @@ export default function Section4() {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -42,7 +42,7 @@ export default function Section4() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -56,7 +56,7 @@ export default function Section4() {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -69,7 +69,7 @@ export default function Section4() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -84,7 +84,7 @@ export default function Section4() {
         </div>
 
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -96,7 +96,7 @@ export default function Section4() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -123,7 +123,7 @@ export default function Section4() {
                 Our team can nicely fit up with your team to give updates of the projects and our in house team are really good at their jobs and they can easily work in different time zones according to the availability of the client     </span>         </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-12 col-12">
            
           </div>
           
@@ -136,7 +136,8 @@ export default function Section4() {
   );
 }
 const Root = styled.section`
-  font-family: "DM Sans", sans-serif;
+  font-family:"DM Sans", sans-serif;
+  padding:0 50px;
 
   .text_div {
     margin-bottom: 0.7em;
@@ -161,7 +162,7 @@ const Root = styled.section`
     .block_div {
       word-spacing: 1px;
       letter-spacing: 0.1px;
-      padding: 0px 0px 40px 0px;
+      padding: 0px 10px 20px 0px;
       display: flex;
       border: 1px solid #147888;
       border-radius: 20px;
@@ -192,5 +193,28 @@ const Root = styled.section`
         padding: 10px 0px;
       }
     }
+  }
+  
+  @media (max-width: 567px) {
+    padding:0;
+ .text_div {
+    margin-bottom:0;
+ padding: 10px; 
+   
+}
+  }
+
+  @media (min-width: 567px) and (max-width: 992px){
+    padding:0;
+    .text_div {
+    margin-bottom:0;
+ padding: 10px; 
+   
+}
+ .block_main .block_div {
+    padding: 0px 10px 20px 0px;
+
+}
+
   }
 `;

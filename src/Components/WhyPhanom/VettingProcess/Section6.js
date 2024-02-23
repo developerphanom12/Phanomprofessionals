@@ -5,7 +5,7 @@ import chainpic from "../../../Components/Images/chainimg.png";
 export default function Section6() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row pt-3">
           <div
             className="col-lg-12 col-md-12 col-12 text_div"
@@ -48,6 +48,7 @@ export default function Section6() {
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
   text-align: center;
+  padding:0 50px;
   img {
     width: 100%;
   }
@@ -80,5 +81,37 @@ const Root = styled.section`
       color: #6e6e6e;
       border-bottom: 1.7em;
     }
+  }
+
+  @media (max-width: 567px) {
+    padding:0;
+
+ .text_div {
+    padding:0; 
+}
+
+.pt-3 {
+    padding-top:0! important;
+}
+
+.segment {
+    padding: 5px;
+}
+  }
+
+  @media (min-width: 567px) and (max-width: 992px){
+    padding:0;
+
+    .text_div {
+    padding:0; 
+}
+
+.pt-3 {
+    padding-top:0! important;
+}
+
+.segment {
+    padding: 5px;
+}
   }
 `;

@@ -32,7 +32,7 @@ export default function Section3() {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -46,7 +46,7 @@ export default function Section3() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -61,7 +61,7 @@ export default function Section3() {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -75,7 +75,7 @@ export default function Section3() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6  col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -157,4 +157,37 @@ const Root = styled.section`
       }
     }
   }
+
+  @media (max-width: 567px) {
+  
+    .text_div {
+    padding: 10px 10px;
+  }
+
+ .block_main .block_div {
+    padding: 0px 0px 20px 0px;
+    margin-top:20px;
+}
+  .block_main .block_div .tag_text {
+    padding: 10px 10px;
+}
+
+}
+
+
+@media (min-width: 567px) and (max-width: 992px) {
+
+ 
+  .text_div {
+    padding: 10px 10px;
+  }
+
+  .block_main .block_div {
+    padding: 0px 0px 20px 0px;
+    margin-top:20px;
+}
+  .block_main .block_div .tag_text {
+    padding: 10px 10px;
+}
+}
 `;

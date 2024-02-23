@@ -17,8 +17,8 @@ export default function Section7() {
   };
   return (
     <Root>
-      <div className="container">
-        <div className="row pt-4">
+      <div className="container-fluid">
+        <div className="row">
           <div className="col-lg-12 col-md-12 col-12 text">
             <h4>Ask a Question</h4>
             <div id="arrow_1">
@@ -86,6 +86,7 @@ export default function Section7() {
 }
 const Root = styled.section`
   background-color: #dadada;
+  padding:0 50px;
   .text {
     margin: 50px 0px;
     padding: 10px;
@@ -108,5 +109,22 @@ const Root = styled.section`
       font-size: 15px;
       padding: 10px;
     }
+  }
+  @media (max-width: 567px) {
+    padding: 0 16px;
+
+ .text {
+    margin: 20px 0px;
+}
+
+  }
+  
+  @media (min-width: 567px) and (max-width: 992px){
+    padding: 0 16px;
+
+.text {
+   margin: 20px 0px;
+}
+
   }
 `;

@@ -160,19 +160,18 @@ const Root = styled.section`
       margin-left: 0px;
       margin-top: 20px;
     }
+   
+ .third-col {
+    padding: 1% 2% 0 2%;
+}
 
-    .third-col img {
-      margin-top: 10px;
-    }
+  
 
-    .row {
-      margin-right: 0;
-    }
   }
 
   @media (min-width: 567px) and (max-width: 992px) {
     .first-col {
-      padding: 0% 0 0 4%;
+      padding: 0% 0 0 2%;
     }
    .second-col {
     margin:20px 0 0 10px;
@@ -181,6 +180,9 @@ const Root = styled.section`
     padding: 0% 2% 0 3%;
 }
 
+.row {
+      margin-right: 0;
+    }
 
   }
 `;

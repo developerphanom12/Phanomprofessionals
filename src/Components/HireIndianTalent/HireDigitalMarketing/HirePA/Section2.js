@@ -90,4 +90,31 @@ const Root = styled.section`
       color: #6e6e6e;
     }
   }
+  @media (max-width: 567px) {
+
+   iframe {
+    width:100%
+}
+ .text_div {
+    margin-bottom:0;
+}
+ .text_div p {
+    padding-top: 25px;
+    
+} 
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    iframe {
+    width:100%
+}
+.text_div {
+    margin-bottom:0;
+}
+ .text_div p {
+    padding-top: 25px;
+    
+} 
+
+  }
 `;

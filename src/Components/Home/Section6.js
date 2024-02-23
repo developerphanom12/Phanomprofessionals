@@ -134,7 +134,7 @@ const Root = styled.section`
   
   @media (max-width: 567px) {
     .first-div {
-    padding: 0 0 0 0;
+    padding: 20px 0 0 10px;
     .circle {
       width: 22%;
     margin: -6% 0 0 19%;
@@ -156,9 +156,9 @@ const Root = styled.section`
   height: 219px;
 }
 }
-.row {
+/* .row {
       margin-right: 0;
-    }
+    } */
 
   }
 

@@ -7,7 +7,7 @@ import tag3 from "../../../Images/tag3.png";
 export default function Section2() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-1 col-md-12 col-12"></div>
           <div className="col-lg-10 col-md-12 col-12 text_area">
@@ -17,7 +17,7 @@ export default function Section2() {
           <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-4 col-md-12 col-12 main">
+          <div className="col-lg-4 col-md-6 col-12 main">
             <div className="segment">
               <img src={tag1} alt="img" />
               <span>Share Your Needs</span>
@@ -27,7 +27,7 @@ export default function Section2() {
               </p>
             </div>
           </div>
-          <div className="col-lg-4 col-md-12 col-12 main">
+          <div className="col-lg-4 col-md-6 col-12 main">
             <div className="segment">
               <img src={tag2} alt="img" />
               <span>
@@ -41,7 +41,7 @@ export default function Section2() {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-12 col-12 main">
+          <div className="col-lg-4 col-md-6 col-12 main">
             <div className="segment">
               <img src={tag3} alt="img" />
               <span>Remote Onboarding And Support</span>
@@ -61,6 +61,7 @@ export default function Section2() {
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
   background: #f3f3f3;
+  padding: 0 50px;
   
   svg {
     color: #147888;
@@ -117,4 +118,36 @@ const Root = styled.section`
       line-height: 1.7em;
     }
   }
+  @media (max-width: 567px) {
+     padding:0;
+
+   .text_area {
+  padding: 20px 0px;
+ 
+}
+
+ .segment {
+    padding:0; 
+   align-items: center;
+
+}
+
+ .segment img {
+    margin-left: 0;
+}
+  }
+
+  @media (min-width: 567px) and (max-width: 992px){
+    .segment {
+   align-items: center;
+
+}
+.segment img {
+    margin-left: 0;
+}
+
+} 
+
+
 `;
+

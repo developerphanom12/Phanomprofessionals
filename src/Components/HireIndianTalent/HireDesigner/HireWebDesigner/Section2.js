@@ -29,7 +29,7 @@ export default function Section2() {
           <div className="col-lg-1 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-4 col-md-12 col-12 block_main">
+          <div className="col-lg-4 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Creating Digital Wonders:</p>
               <div className="mini_block">
@@ -45,7 +45,7 @@ export default function Section2() {
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-md-12 col-12 block_main">
+          <div className="col-lg-4 col-md-6 col-12 block_main">
             <div className="block_div">
               <p>Verified Proficiency:</p>
               <span>
@@ -97,7 +97,6 @@ export default function Section2() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
-
   .text_area {
     margin-bottom: 30px;
     padding: 20px 50px;
@@ -157,5 +156,19 @@ const Root = styled.section`
         }
       }
     }
+  }
+  @media (max-width: 567px) {
+    .text_area {
+     margin-bottom: 0;
+     padding:0; 
+}
+
+  }
+  @media (min-width: 567px) and (max-width: 992px) {
+    .text_area {
+     margin-bottom: 0;
+     padding:0; 
+}
+    
   }
 `;

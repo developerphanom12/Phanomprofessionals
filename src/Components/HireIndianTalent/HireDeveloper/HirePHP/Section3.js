@@ -5,7 +5,7 @@ import svgg from "../../../Images/svg.svg";
 export default function Section3() {
   return (
     <Root>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-2 col-md-12 col-12"></div>
           <div
@@ -19,7 +19,7 @@ export default function Section3() {
           <div className="col-lg-2 col-md-12 col-12"></div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -33,7 +33,7 @@ export default function Section3() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -49,7 +49,7 @@ export default function Section3() {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -64,7 +64,7 @@ export default function Section3() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -82,7 +82,7 @@ export default function Section3() {
         </div>
 
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             <div className="block_div">
               <div>
                 <img src={svgg} alt="img" />
@@ -97,7 +97,7 @@ export default function Section3() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-12 block_main">
+          <div className="col-lg-6 col-md-6 col-12 block_main">
             
           </div>
         </div>
@@ -107,6 +107,7 @@ export default function Section3() {
 }
 const Root = styled.section`
   font-family: "DM Sans", sans-serif;
+  padding: 0 50px;
 
   .text_div {
     margin-bottom: 0.7em;
@@ -162,5 +163,21 @@ const Root = styled.section`
         padding: 10px 0px;
       }
     }
+  }
+  @media (max-width: 567px) {
+    padding:0; 
+   .text_div {
+    padding: 15px;
+}
+
+.block_main {
+   flex: unset; 
+}
+
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    padding:0;
+
   }
 `;
