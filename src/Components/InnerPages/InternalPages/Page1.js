@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import styled from "styled-components";
 import pro from "../../Images/Boyspic.png";
 import { HiOutlineTrophy } from "react-icons/hi2";
+import msgimg from "../../Images/Boyspic.png";
+import { RxCross2 } from "react-icons/rx";
+import { ImAttachment } from "react-icons/im";
+import { BsEmojiSmile } from "react-icons/bs";
 import {
   IoIosMenu,
   IoMdHeart,
@@ -17,6 +21,11 @@ import SliderImage from "./SliderImage";
 import SliderText from "./SliderText";
 
 export default function Page1() {
+  const [showMessageBox, setShowMessageBox] = useState(false);
+
+  const toggleMessageBox = () => {
+    setShowMessageBox(!showMessageBox);
+  };
   return (
     <Root>
       <div className="main_section">
@@ -57,12 +66,15 @@ export default function Page1() {
             <SliderImage />
           </div>
           <div className="about_slider">
-            <p>What people loved about this seller</p>
-            <button>See all reviews</button>
+            <p>
+              What people loved about this seller{" "}
+              <button className="button_slider">See all reviews</button>
+            </p>
+
             <SliderText />
           </div>
-          <div>
-            <h5> About this gig</h5>
+          <div className="About_this_gig">
+            <h4> About this gig</h4>
             <p>
               Greetings as a experienced revision of WordPress , Shopify custom
               built CMS with an over 3 years in web development i have started
@@ -70,6 +82,43 @@ export default function Page1() {
               hire a guy with both front end and backend web development and
               designing skills to grasp and portray for your website
             </p>
+          </div>
+          {showMessageBox && (
+            <div className="msg_writing_box">
+              <div className="msg_writing_head">
+                <div className="heading">
+                  <div>
+                    <img src={msgimg} alt="img" />
+                  </div>
+                  <div>
+                    <p>Avineet</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => {
+                    toggleMessageBox(false);
+                  }}
+                >
+                  <RxCross2 />
+                </button>
+              </div>
+              <div className="msg_writing_body">
+                Ask the person anything about your website
+              </div>
+              <div className="msg_writing_foot">
+                <div><BsEmojiSmile />  <ImAttachment /></div>
+             <input placeholder="Write Message"/>
+              </div>
+            </div>
+          )}
+          <div className="msg_float" onClick={toggleMessageBox}>
+            <div className="msg_float_img">
+              <img src={msgimg} alt="img" />
+            </div>
+            <div className="msg_float_txt">
+              <p>Message</p>
+              <span>Online : Avg response time:2 Hrs</span>
+            </div>
           </div>
         </div>
         <div className="side_barr">
@@ -148,6 +197,9 @@ const Root = styled.section`
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
   .main_section {
     display: flex;
+    @media (max-width: 997px) {
+      flex-wrap: wrap;
+    }
     .main_barr {
       display: flex;
       flex-direction: column;
@@ -249,16 +301,113 @@ const Root = styled.section`
           line-height: 28px;
           font-weight: 700;
           margin: 0;
+          .button_slider {
+            border: none;
+            background-color: white;
+            border-bottom: 1px solid #fff;
+            font-weight: 600;
+            font-size: 15px;
+            color: #212529;
+            height: 23px;
+            &:hover {
+              border-bottom: 1px solid #212529;
+            }
+          }
         }
-        button {
-          border: none;
-          background-color: white;
-          border-bottom: 1px solid #fff;
+      }
+
+      .About_this_gig {
+        display: flex;
+        flex-direction: column;
+        h4 {
           font-weight: 600;
-          color: #212529;
-          height: 23px;
-          &:hover {
-            border-bottom: 1px solid #212529;
+          padding: 10px 20px;
+          color: #404145;
+        }
+        p {
+          padding: 10px 20px;
+          color: #62646a;
+        }
+      }
+      .msg_writing_box {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #d3d3d3b5;
+        box-shadow: 1px 1px 1px 3px 1px #d3d3d3b5;
+        .msg_writing_head {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding:10px 20px;
+          border-bottom: 1px solid darkgreen;
+          button{
+            border: none;
+            background-color: white;
+            color: #404145;
+            svg{
+              font-weight: 600;
+              width: 30px;
+              height: 30px;
+
+            }
+          }
+          .heading {
+            align-items: center;
+            display: flex;
+            p {
+              margin: 0;
+              font-size: 20px;
+              font-weight: 600;
+              padding-left: 10px;
+            }
+            img {
+              width: 50px;
+              height: 50px;
+              border-radius: 50px;
+            }
+          }
+        }
+        .msg_writing_body {
+          overflow-y: scroll;
+          padding:10px 20px;
+          color: #62646a;
+        }
+        .msg_writing_foot {
+          border-top: 1px solid #d3d3d3b5;
+          padding:10px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          >div{
+           display: flex;
+           gap: 20px;
+          }
+        }
+      }
+      .msg_float {
+        display: flex;
+        padding: 8px 24px 8px 8px;
+        box-shadow: 1px 1px 4px 1px gray;
+        border-radius: 50px;
+        width: fit-content;
+        .msg_float_img {
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+          }
+        }
+        .msg_float_txt {
+          padding-left: 10px;
+          p {
+            margin: 0;
+            padding: 0;
+            font-weight: 600;
+            color: #404145;
+          }
+          span {
+            color: #62646a;
+            font-size: 13px;
           }
         }
       }

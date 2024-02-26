@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import imgpro from "../../Images/logo2.png";
 
 export default function SliderText() {
   var settings = {
@@ -15,39 +16,82 @@ export default function SliderText() {
   return (
     <Slidertext>
       <Slider {...settings}>
-        <div>
-          <h5>heading</h5>
-          <p>description</p>
+        <div className="content">
+          <div>
+            <img src={imgpro} alt="img" />
+          </div>
+          <div>
+            <h6>required for an anchor to be keyboard accessible. </h6>
+            <p>
+              If you cannot provide an href, but still need the element to
+              resemble a link, use a button and change it with appropriate
+              styles.
+            </p>
+          </div>
         </div>
-        <div>
-          <h5>heading</h5>
-          <p>description</p>
+        <div className="content">
+          <div>
+            <img src={imgpro} alt="img" />
+          </div>
+          <div>
+            <h6>heading</h6>
+            <p>description</p>
+          </div>
         </div>
-        <div>
-          <h5>heading</h5>
-          <p>description</p>
+        <div className="content">
+          <div>
+            <img src={imgpro} alt="img" />
+          </div>
+          <div>
+            <h6>heading</h6>
+            <p>description</p>
+          </div>
         </div>
-        <div>
-          <h5>heading</h5>
-          <p>description</p>
+        <div className="content">
+          <div>
+            <img src={imgpro} alt="img" />
+          </div>
+          <div>
+            <h6>heading</h6>
+            <p>description</p>
+          </div>
         </div>
-        <div>
-          <h5>heading</h5>
-          <p>description</p>
+        <div className="content">
+          <div className="profile_img">
+            <img src={imgpro} alt="img" />
+          </div>
+          <div>
+            <h6>heading</h6>
+            <p>description</p>
+          </div>
         </div>
-        <div>
-          <h5>heading</h5>
-          <p>description</p>
+        <div className="content">
+          <div>
+            <img src={imgpro} alt="img" />
+          </div>
+          <div>
+            <h6>heading</h6>
+            <p>description</p>
+          </div>
         </div>
       </Slider>
     </Slidertext>
   );
 }
 const Slidertext = styled.section`
-  > div {
+  .content {
     width: 598px;
-    .img {
-      border-radius: 10px;
+    display: flex !important;
+    padding: 20px;
+    justify-content: space-evenly;
+    text-align: left;
+    gap: 10px;
+    h6{
+      font-weight: 600;
+    }
+    p{
+      font-weight: 400!important;
+      font-size: 14px!important;
     }
   }
   .czlJOl {
@@ -59,9 +103,14 @@ const Slidertext = styled.section`
     height: 150px !important;
   }
   margin: 20px;
+  .slick-slider {
+    width: 598px !important;
+    height: 150px !important;
+  }
   .slick-slide.slick-active.slick-current {
     width: 598px !important;
     height: 150px !important;
+    text-align: center;
   }
   .gvNmJZ .slick-slider.slick-initialized {
     display: flex;
@@ -72,6 +121,7 @@ const Slidertext = styled.section`
   .slick-list {
     width: 598px;
     height: 150px;
+    border: 1px solid lightgray;
   }
   .slick-track {
     display: flex;
@@ -79,27 +129,27 @@ const Slidertext = styled.section`
   }
   button.slick-arrow.slick-prev {
     color: black !important;
-    width: 50px !important;
-    height: 50px !important;
+    width: 30px !important;
+    height: 30px !important;
     z-index: 1;
-    background: lightgray;
+    background: #d3d3d38a;
     border-radius: 100px;
     svg {
-      width: 50px;
-      height: 50px;
+      width: 30px;
+      height: 30px;
     }
   }
   button.slick-arrow.slick-next,
   .iFipJE .slick-next:before {
     color: black !important;
-    width: 50px !important;
-    height: 50px !important;
+    width: 30px !important;
+    height: 30px !important;
     z-index: 1;
-    background: lightgray;
+    background: #d3d3d38a;
     border-radius: 100px;
     svg {
-      width: 50px;
-      height: 50px;
+      width: 30px;
+      height: 30px;
     }
   }
   .slick-prev:before,
@@ -111,5 +161,11 @@ const Slidertext = styled.section`
     color: white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  .slick-slide img {
+    display: block;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50px;
   }
 `;
