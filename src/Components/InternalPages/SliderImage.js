@@ -3,8 +3,8 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import imggg from "../../Images/ind18.png";
-import banner from "../../Images/ind20.png";
+import imggg from "../Images/ind18.png";
+import banner from "../Images/ind20.png";
 
 
 export default function SliderImage() {

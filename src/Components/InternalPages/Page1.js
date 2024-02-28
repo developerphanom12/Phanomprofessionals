@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import styled from "styled-components";
-import pro from "../../Images/Boyspic.png";
+import pro from "../Images/Boyspic.png";
 import { HiOutlineTrophy } from "react-icons/hi2";
-import msgimg from "../../Images/Boyspic.png";
+import msgimg from "../Images/Boyspic.png";
 import { RxCross2 } from "react-icons/rx";
 import { ImAttachment } from "react-icons/im";
 import { BsEmojiSmile } from "react-icons/bs";
@@ -63,7 +63,7 @@ export default function Page1() {
               <HiOutlineTrophy /> People keep coming back! amirkhan1996 has an
               exceptional number of repeat buyers.
             </p>
-            <SliderImage />
+            {/* <SliderImage /> */}
           </div>
           <div className="about_slider">
             <p>
@@ -71,7 +71,7 @@ export default function Page1() {
               <button className="button_slider">See all reviews</button>
             </p>
 
-            <SliderText />
+            {/* <SliderText /> */}
           </div>
           <div className="About_this_gig">
             <h4> About this gig</h4>
@@ -591,4 +591,41 @@ const Root = styled.section`
       }
     }
   }
+
+
+  @media (max-width: 567px) {
+ .main_section .main_barr {
+margin-right: 0; 
+ .slider_div p svg {
+    width: 50px;
+    height: 50px;
+}
+.path_value a {
+    font-size: 9px;
+}
+ .path_value p {
+    font-size: 10px;
+}
+.path_value svg {
+    width: 12px;
+    height: 12px;
+}
+
+}
+.main_section .side_barr .upper_side {
+    padding: 20px 0px 16px;
+    justify-content: flex-start; 
+}
+
+}
+
+@media (min-width: 567px) and (max-width: 992px) {
+ .main_section .side_barr .upper_side{
+    padding: 20px 0px 16px;
+    justify-content: flex-start;
+
+}
+   
+  }
+
 `;

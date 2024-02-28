@@ -24,7 +24,7 @@ import VettingProcess from "./Components/WhyPhanom/VettingProcess/VettingProcess
 import HirePpcExpert from "./Components/HireIndianTalent/HireDigitalMarketing/HirePpcExpert/HirePpcExpert";
 import HireSeoExpert from "./Components/HireIndianTalent/HireDigitalMarketing/HireSeoExpert/HireSeoExpert";
 import InnerPages from "./Components/InnerPages/InnerPages";
-import InternalPages from "./Components/InnerPages/InternalPages/InternalPages";
+import InternalPages from "./Components/InternalPages/InternalPages";
 
 
 function App() {
