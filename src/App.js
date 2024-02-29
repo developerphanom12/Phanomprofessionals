@@ -25,21 +25,47 @@ import HireSeoExpert from "./Components/CommonPages/HireIndianTalent/HireDigital
 import InnerPages from "./Components/Buyer/InnerPages/InnerPages";
 import InternalPages from "./Components/Buyer/InternalPages/InternalPages";
 import Layout from "./Components/MainLayouts/Layout";
-
+import { useSelector } from "react-redux";
+import Dashboard from "./Components/Seller/TopNavPages/Dashboard/Dashboard";
+import Orders from "./Components/Seller/TopNavPages/MyBusiness/Orders";
+import Gigs from "./Components/Seller/TopNavPages/MyBusiness/Gigs";
+import PhanomWorkspace from "./Components/Seller/TopNavPages/MyBusiness/PhanomWorkspace";
+import Profile from "./Components/Seller/TopNavPages/MyBusiness/Profile";
+import Earnings from "./Components/Seller/TopNavPages/MyBusiness/Earnings";
+import Contents from "./Components/Seller/TopNavPages/GrowthMarketing/Contents";
+import PhanomLearn from "./Components/Seller/TopNavPages/GrowthMarketing/PhanomLearn";
+import ScaleBusiness from "./Components/Seller/TopNavPages/GrowthMarketing/ScaleBusiness";
+import Overview from "./Components/Seller/TopNavPages/Analytics/Overview";
+import RepeatBusiness from "./Components/Seller/TopNavPages/Analytics/RepeatBusiness";
 
 function App() {
+  const userCheck = useSelector((state) => state?.users?.userCheck);
+  const userDetails = useSelector((state) => state?.users.user);
+  const token = localStorage.getItem("token");
   return (
     <div>
       <Layout>
         <Routes>
-          <Route path="/innerpages" element={<InnerPages/>} />
-          <Route path="/internalpage" element={<InternalPages/>}/>
+          {/* buyer pagess--------------------------------------------------------------- */}
+          <Route path="/innerpages" element={<InnerPages />} />
+          <Route path="/internalpage" element={<InternalPages />} />
+          {/* seller pages ---------------------------------------------------------------*/}
+
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/orders" element={<Orders/>}/>
+           <Route path="/gigs" element={<Gigs/>}/>
+           <Route path="/profile" element={<Profile/>}/>
+           <Route path="/earnings" element={<Earnings/>}/>
+           <Route path="/phanomworkspace" element={<PhanomWorkspace/>}/>
+           <Route path="/contents" element={<Contents/>}/>
+           <Route path="/phanomlearn" element={<PhanomLearn/>}/>
+           <Route path="/scalebusiness" element={<ScaleBusiness/>}/>
+           <Route path="/overview" element={<Overview/>}/>
+           <Route path="/repeatbusiness" element={<RepeatBusiness/>}/>
 
 
 
-
-
-          {/* common pages  */}
+          {/* common pages -------------------------------------------------------------- */}
           <Route path="/" element={<Home />} />
           <Route path="/vettingprocess" element={<VettingProcess />} />
           <Route path="/hiremobile" element={<HireMobileApp />} />
