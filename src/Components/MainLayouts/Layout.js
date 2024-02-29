@@ -8,7 +8,7 @@ export default function Layout({ children }) {
     <Root>
       <div className="top_bar">
         {/* <Navbar /> */}
-        {/* <PostNav/> */}
+        <PostNav/>
       </div>
       <div className="main_body">{children}</div>
       <div>
