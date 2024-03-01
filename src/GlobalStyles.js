@@ -1,73 +1,35 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Switch = styled.div`
-  position: relative;
-  display: inline-block;
-  width: 34px;
-  height: 20px;
-`;
-
-export const Input = styled.input`
-  opacity: 0;
-  width: 0;
-  height: 0;
-`;
-
-export const GlobalSlider = styled.span`
-    border-radius: 20px;
-  position: absolute;
+export const ToggleButton = styled.button`
+  padding: 5px 12px;
+  font-size: 14px;
+  margin: 10px;
+  border: none;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
-  
-  &:before {
-    position: absolute;
-    content: "";
-    height: 15px;
-    width: 15px;
-    left: 4px;
-    bottom: 3px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 20px;
+  outline: none;
+  color: white;
+  background-color: ${({ toggle }) => (toggle ? "#45a049" : "gray")};
+  border-radius: 15px;
+  transition: background-color 0.3s;
 
+  &:hover {
+    background-color: ${({ toggle }) => (toggle ? "#1dbf73" : "#1dbf73")};
   }
 `;
-
-export const RoundedSlider = styled(GlobalSlider)`
-  border-radius: 24px;
-  &:before {
-    border-radius: 50%;
-  }
+export const GigButton = styled.button`
+  border: none;
+  background-color: transparent;
+  color: #404145;
+  padding: 10px;
 `;
 
-export const StyledInput = styled(Input)`
-  &:checked + ${GlobalSlider} {
-    background-color: #2196F3;
-    
-    &:before {
-      transform: translateX(26px);
-    }
-  }
-  
-  &:focus + ${GlobalSlider} {
-    box-shadow: 0 0 1px #2196F3;
-  }
+export const CreateButton = styled.button`
+  background-color: #1dbf73;
+  font-weight: 700;
+  color: #fff !important;
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
 `;
-
-export const RoundedStyledInput = styled(Input)`
-  &:checked + ${RoundedSlider} {
-    background-color: #2196F3;
-    &:before {
-      transform: translateX(26px);
-    }
-  }
-  
-  &:focus + ${RoundedSlider} {
-    box-shadow: 0 0 1px #2196F3;
-  }
-`;
+ 

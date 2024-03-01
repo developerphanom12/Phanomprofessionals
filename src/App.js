@@ -28,7 +28,7 @@ import Layout from "./Components/MainLayouts/Layout";
 import { useSelector } from "react-redux";
 import Dashboard from "./Components/Seller/TopNavPages/Dashboard/Dashboard";
 import Orders from "./Components/Seller/TopNavPages/MyBusiness/Orders";
-import Gigs from "./Components/Seller/TopNavPages/MyBusiness/Gigs";
+import Gigs from "./Components/Seller/TopNavPages/MyBusiness/gigs/Gigs";
 import PhanomWorkspace from "./Components/Seller/TopNavPages/MyBusiness/PhanomWorkspace";
 import Profile from "./Components/Seller/TopNavPages/MyBusiness/Profile";
 import Earnings from "./Components/Seller/TopNavPages/MyBusiness/Earnings";
