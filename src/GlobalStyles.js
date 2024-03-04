@@ -31,5 +31,7 @@ export const CreateButton = styled.button`
   padding: 5px 10px;
   font-size: 12px;
   border-radius: 5px;
+  &:hover {
+    background: #19a463;
+  }
 `;
- 
