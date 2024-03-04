@@ -27,9 +27,8 @@ import InternalPages from "./Components/Buyer/InternalPages/InternalPages";
 import Layout from "./Components/MainLayouts/Layout";
 import { useSelector } from "react-redux";
 import Dashboard from "./Components/Seller/TopNavPages/Dashboard/Dashboard";
-import Orders from "./Components/Seller/TopNavPages/MyBusiness/Orders";
+import Orders from "./Components/Seller/TopNavPages/MyBusiness/orders/Orders";
 import Gigs from "./Components/Seller/TopNavPages/MyBusiness/gigs/Gigs";
-import PhanomWorkspace from "./Components/Seller/TopNavPages/MyBusiness/PhanomWorkspace";
 import Profile from "./Components/Seller/TopNavPages/MyBusiness/Profile";
 import Earnings from "./Components/Seller/TopNavPages/MyBusiness/Earnings";
 import Contents from "./Components/Seller/TopNavPages/GrowthMarketing/Contents";
@@ -56,7 +55,6 @@ function App() {
            <Route path="/gigs" element={<Gigs/>}/>
            <Route path="/profile" element={<Profile/>}/>
            <Route path="/earnings" element={<Earnings/>}/>
-           <Route path="/phanomworkspace" element={<PhanomWorkspace/>}/>
            <Route path="/contents" element={<Contents/>}/>
            <Route path="/phanomlearn" element={<PhanomLearn/>}/>
            <Route path="/scalebusiness" element={<ScaleBusiness/>}/>
