@@ -4,9 +4,13 @@ import styled from "styled-components";
 
 export default function Denied() {
   const [isChecked, setIsChecked] = useState(false);
-
+  const [showDropdown, setShowDropdown] = useState(false);
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+  };
+
+  const handleDropdownClick = () => {
+    setShowDropdown(!showDropdown);
   };
   return (
     <Root>
@@ -37,7 +41,7 @@ export default function Denied() {
           </tr>
           <tr>
             <td colSpan={2}>
-            <input type="checkbox" onChange={handleCheckboxChange} />
+              <input type="checkbox" onChange={handleCheckboxChange} />
             </td>
             <td colSpan={2}>
               <span>GIG</span>
@@ -65,7 +69,7 @@ export default function Denied() {
         <tbody>
           <tr>
             <td colSpan={2}>
-            <input type="checkbox" onChange={handleCheckboxChange} />
+              <input type="checkbox" onChange={handleCheckboxChange} />
             </td>
             <td colSpan={2}>
               <span>0</span>
@@ -88,7 +92,19 @@ export default function Denied() {
             </td>
             <td></td>
             <td colSpan={2}>
-              <IoMdArrowDropdown />
+              <div className="dropdown_wrapper">
+                <IoMdArrowDropdown onClick={handleDropdownClick} />
+                {showDropdown && (
+                  <div className="dropdown_menu">
+                    <ul>
+                      <li>Preview</li>
+                      <li>Edit</li>
+                      <li>Activate</li>
+                      <li>Delete</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
             </td>
           </tr>
           <tr className="head">
@@ -183,6 +199,38 @@ const Root = styled.section`
       width: 27px;
       height: 27px;
       border: 1px solid #55555578;
+    }
+    .dropdown_wrapper {
+      position: relative;
+    }
+
+    .dropdown_menu {
+      position: absolute;
+      top: 59px;
+      left: -70px;
+      background-color: #fff;
+      border: 1px solid #5556;
+      border-radius: 4px;
+      padding: 8px;
+    }
+
+    .dropdown_menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .dropdown_menu ul li {
+      padding: 4px 0;
+      cursor: pointer;
+      font-weight: 500;
+      color: #777;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .dropdown_menu ul li:hover {
+      background-color: #f2f2f2;
     }
   }
   .table td:first-child {

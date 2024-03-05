@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   return (
     <Root>
       <div className="top_bar">
-        {/* <PostNav/> */}
+        <PostNav/>
         {/* <Navbar /> */}
       </div>
       <div className="main_body">{children}</div>

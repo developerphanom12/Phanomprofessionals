@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Overview() {
+export default function Overviews() {
   return (
     <div>Overview</div>
   )

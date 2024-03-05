@@ -29,13 +29,14 @@ import { useSelector } from "react-redux";
 import Dashboard from "./Components/Seller/TopNavPages/Dashboard/Dashboard";
 import Orders from "./Components/Seller/TopNavPages/MyBusiness/orders/Orders";
 import Gigs from "./Components/Seller/TopNavPages/MyBusiness/gigs/Gigs";
-import Profile from "./Components/Seller/TopNavPages/MyBusiness/Profile";
+import Profile from "./Components/Seller/TopNavPages/MyBusiness/profile/Profile";
 import Earnings from "./Components/Seller/TopNavPages/MyBusiness/Earnings";
 import Contents from "./Components/Seller/TopNavPages/GrowthMarketing/Contents";
 import PhanomLearn from "./Components/Seller/TopNavPages/GrowthMarketing/PhanomLearn";
 import ScaleBusiness from "./Components/Seller/TopNavPages/GrowthMarketing/ScaleBusiness";
 import Overview from "./Components/Seller/TopNavPages/Analytics/Overview";
 import RepeatBusiness from "./Components/Seller/TopNavPages/Analytics/RepeatBusiness";
+import EditPage from "./Components/Seller/edit/EditPage";
 
 function App() {
   const userCheck = useSelector((state) => state?.users?.userCheck);
@@ -51,17 +52,16 @@ function App() {
           {/* seller pages ---------------------------------------------------------------*/}
 
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/orders" element={<Orders/>}/>
-           <Route path="/gigs" element={<Gigs/>}/>
-           <Route path="/profile" element={<Profile/>}/>
-           <Route path="/earnings" element={<Earnings/>}/>
-           <Route path="/contents" element={<Contents/>}/>
-           <Route path="/phanomlearn" element={<PhanomLearn/>}/>
-           <Route path="/scalebusiness" element={<ScaleBusiness/>}/>
-           <Route path="/overview" element={<Overview/>}/>
-           <Route path="/repeatbusiness" element={<RepeatBusiness/>}/>
-
-
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/gigs" element={<Gigs />} />
+          <Route path="/edit" element={<EditPage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/earnings" element={<Earnings />} />
+          <Route path="/contents" element={<Contents />} />
+          <Route path="/phanomlearn" element={<PhanomLearn />} />
+          <Route path="/scalebusiness" element={<ScaleBusiness />} />
+          <Route path="/overview" element={<Overview />} />
+          <Route path="/repeatbusiness" element={<RepeatBusiness />} />
 
           {/* common pages -------------------------------------------------------------- */}
           <Route path="/" element={<Home />} />

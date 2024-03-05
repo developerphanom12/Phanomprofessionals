@@ -269,35 +269,7 @@ export default function PostNav() {
           </div>
         </div>
       </div>
-      {/* <div className="main_div2">
-        <div>
-          <p>Graphics & Design</p>
-        </div>
-        <div>
-          <p>Programming & Tech</p>
-        </div>
-        <div>
-          <p>Digital Marketing</p>
-        </div>
-        <div>
-          <p>Video & Animation</p>
-        </div>
-        <div>
-          <p>Writing & Translation</p>
-        </div>
-        <div>
-          <p>Music & Audio</p>
-        </div>
-        <div>
-          <p>Business</p>
-        </div>
-        <div>
-          <p>AI Services</p>
-        </div>
-        <div>
-          <p>Consulting</p>
-        </div>
-      </div> */}
+    
     </Post>
   );
 }
@@ -555,24 +527,12 @@ const Post = styled.section`
       }
     }
   }
-  .main_div2 {
-    padding: 8px 30px;
-    color: #62646a;
-    > div {
-      padding: 0px 10px;
-      font-size: 16px;
-      line-height: 24px;
-      cursor: pointer;
-      p {
-        padding: 0px;
-      }
-    }
-  }
+   
 
   .main_div1,
   .main_div2 {
     display: flex;
     flex-wrap: wrap;
-    border-bottom: 1px solid #c5c6c9;
+    border-bottom:1px solid #dadbdd;
   }
 `;
