@@ -30,7 +30,7 @@ import Dashboard from "./Components/Seller/TopNavPages/Dashboard/Dashboard";
 import Orders from "./Components/Seller/TopNavPages/MyBusiness/orders/Orders";
 import Gigs from "./Components/Seller/TopNavPages/MyBusiness/gigs/Gigs";
 import Profile from "./Components/Seller/TopNavPages/MyBusiness/profile/Profile";
-import Earnings from "./Components/Seller/TopNavPages/MyBusiness/Earnings";
+import Earnings from "./Components/Seller/TopNavPages/MyBusiness/earning/Earnings";
 import Contents from "./Components/Seller/TopNavPages/GrowthMarketing/Contents";
 import PhanomLearn from "./Components/Seller/TopNavPages/GrowthMarketing/PhanomLearn";
 import ScaleBusiness from "./Components/Seller/TopNavPages/GrowthMarketing/ScaleBusiness";

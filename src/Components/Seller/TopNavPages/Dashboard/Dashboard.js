@@ -5,7 +5,7 @@ import { FaStar } from "react-icons/fa";
 import { LuDollarSign } from "react-icons/lu";
 import { FcApproval } from "react-icons/fc";
 
-export default function Dashboard() {
+export default function Dashboard(){
   return (
     <Root>
       <div className="main_div">
@@ -151,7 +151,7 @@ const Root = styled.section`
     padding:0;
     margin:0;
   } */
-  */ .main_div {
+ .main_div {
     display: flex;
     padding: 20px 20px 0;
   }
@@ -309,7 +309,7 @@ const Root = styled.section`
 
   .main_div_two {
     width: 75%;
-    margin-left: 90px;
+    margin: 0 0 30px 90px;
 
     .active_order {
       background: #fff;
@@ -338,9 +338,9 @@ const Root = styled.section`
       }
       .dropdown_list {
         select {
-          padding: 11px;
-          border: 1px solid #c5c6c9;
-          color: #74767e;
+          padding:11px;
+          border:1px solid #c5c6c9;
+          color:#74767e;
         }
       }
     }

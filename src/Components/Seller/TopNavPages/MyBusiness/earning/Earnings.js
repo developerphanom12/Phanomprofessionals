@@ -1,48 +1,57 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import PausedGigs from "./PausedGigs";
-import ActiveGigs from "./ActiveGigs";
-import { GigButton } from "../../../../../GlobalStyles";
+import React, { useState } from 'react'
+import styled from 'styled-components';
+import { GigButton } from '../../../../../GlobalStyles';
+import EarnOverview from './EarnOverview';
+import FinancialDocument from './FinancialDocument';
 
-export default function Profile2() {
-  const [active, setActive] = useState("activegigs");
+export default function Earnings() {
+  const [active, setActive] = useState("earnoverview");
   const [user, setUser] = useState();
   return (
     <Root>
       <div className="tab_button_area">
+        <div className='container-fluid mt-5'>
+          <div className='row'>
+            <div className='col-lg-12'>
+              <h2 >Earnings</h2>
+            </div>
+          </div>
+        </div>
         <div className="nav_tab">
           <div>
             <GigButton
-              className={active === "activegigs" ? "btn_1 active" : "btn_1"}
+              className={active === "earnoverview" ? "btn_1 active" : "btn_1"}
               onClick={() => {
-                setActive("activegigs");
+                setActive("earnoverview");
               }}
             >
-              ACTIVE GIGS
+             EarnOverview
             </GigButton>
           </div>
           <div>
             <GigButton
-              className={active === "pausedgigs" ? "btn_1 active" : "btn_1"}
+              className={active === "financialdocument" ? "btn_1 active" : "btn_1"}
               onClick={() => {
-                setActive("pausedgigs");
+                setActive("financialdocument");
               }}
             >
-              PAUSED
+              Financial documents
             </GigButton>
           </div>
         </div>
       </div>
       <div className="table">
         <div className="container-fluid">
+          
           <div className="row">
             <div className="col-lg-12">
-              {active === "activegigs" ? (
-                <ActiveGigs detail={user} />
-              ) : active === "pausedgigs" ? (
-                <PausedGigs />
+            {/* <h2 >Earnings</h2> */}
+              {active === "earnoverview" ? (
+                <EarnOverview detail={user} />
+              ) : active === "financialdocument" ? (
+                <FinancialDocument />
               ) : (
-                <ActiveGigs />
+                <EarnOverview />
               )}
             </div>
           </div>
@@ -57,10 +66,13 @@ const Root = styled.section`
   flex-direction: column;
   background-color: #f7f7f7;
   gap: 40px;
+  h2{
+    font-size:32px;
+    font-weight:700;
+  }
   .tab_button_area {
     background: #fff;
-    display: flex;
-    justify-content: space-between;
+    padding-left:20px;
     border: 1px solid #99999973;
     .nav_tab {
       display: flex;
@@ -124,3 +136,4 @@ const Root = styled.section`
     background-color: #f7f7f7 !important;
   }
 `;
+
