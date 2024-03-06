@@ -4,8 +4,9 @@ import { GigButton } from "../../../GlobalStyles";
 import Gallery from "./Gallery";
 import Requirements from "./Requirements";
 import Pricing from "./Pricing";
-import Overviews from "./Overviews";
+import Overviews from "./EditOverview";
 import DescriptionFAQ from "./DescriptionFAQ";
+import EditOverview from "./EditOverview";
 
 export default function EditPage() {
   const [active, setActive] = useState("overviews");
@@ -17,9 +18,9 @@ export default function EditPage() {
           <div>
             <div>
               <GigButton
-                className={active === "overviews" ? "btn_1 active" : "btn_1"}
+                className={active === "editoverview" ? "btn_1 active" : "btn_1"}
                 onClick={() => {
-                  setActive("overviews");
+                  setActive("editoverview");
                 }}
               >
                 Overview
@@ -78,8 +79,8 @@ export default function EditPage() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-12">
-              {active === "overviews" ? (
-                <Overviews />
+              {active === "editoverview" ? (
+                <EditOverview />
               ) : active === "pricing" ? (
                 <Pricing detail={user} />
               ) : active === "descriptionFAQ" ? (
@@ -89,7 +90,7 @@ export default function EditPage() {
               ) : active === "gallery" ? (
                 <Gallery detail={user} />
               ) : (
-                <Overviews />
+                <EditOverview />
               )}
             </div>
           </div>
