@@ -64,7 +64,7 @@ const Root = styled.section`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  background-color: #f7f7f7;
+  background-color: #fff;
   gap: 40px;
   h2{
     font-size:32px;
@@ -127,13 +127,10 @@ const Root = styled.section`
   .table {
     width: 100%;
     height: 100%;
-    background-color: #f7f7f7 !important;
+    background-color: #fff;
     @media (max-width: 600px) {
       padding: 0;
     }
   }
-  .table > :not(caption) > * > * {
-    background-color: #f7f7f7 !important;
-  }
+   
 `;
-
