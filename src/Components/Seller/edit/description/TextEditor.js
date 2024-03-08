@@ -15,7 +15,7 @@ const TextEditor = () => {
   }, []);
 
   return (
-    <div>
+    <div >
       <div ref={editorRef}>
         <p>Hello World!</p>
         <p>Some initial <strong>bold</strong> text</p>

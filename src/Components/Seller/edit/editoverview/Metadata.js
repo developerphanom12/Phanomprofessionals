@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { FaRegDotCircle } from "react-icons/fa";
-import { FaCircleDot, FaRegCircle } from "react-icons/fa6";
 import styled from "styled-components";
 
 export default function Metadata() {
@@ -15,8 +13,8 @@ export default function Metadata() {
             onClick={() => {
               setActive("page1");
             }}
-          >
-            programming language
+          >   
+            PROGRAMMING LANGUAGE*
           </button>
         </div>
         <div className="button_tab_area">
@@ -26,7 +24,7 @@ export default function Metadata() {
               setActive("page2");
             }}
           >
-            programming language
+            EXPERTISE
           </button>
         </div>
         <div className="button_tab_area">
@@ -36,7 +34,7 @@ export default function Metadata() {
               setActive("page3");
             }}
           >
-            programming language
+            FRONTEND FRAMEWORK
           </button>
         </div>
         <div className="button_tab_area">
@@ -46,7 +44,7 @@ export default function Metadata() {
               setActive("page4");
             }}
           >
-            programming language
+            BACKEND FRAMEWORK
           </button>
         </div>
       </div>
@@ -59,124 +57,124 @@ export default function Metadata() {
                 <li>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     ASP.NET
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     JavaScript
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     PHP
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Ruby/RoR
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Flash
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     TypeScript
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Go
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     C&C++
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Lua
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     MATLAB
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Rust
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     AutoHotkey
                   </label>
                 </li>
                 <li>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     HTML & CSS
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Perl
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Python
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Scala
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Java
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     C#
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Kotlin
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     VB
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Delphi
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Assembly
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Pine Script
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Haskell
                   </label>
                 </li>
@@ -185,69 +183,59 @@ export default function Metadata() {
           </div>
         ) : active === "page2" ? (
           <div className="button_pages">
-            <h6>Select the language you provide services for*</h6>
+            <h6>Select up to five areas you are an expert in</h6>
             <div className="select_tabs">
               <ul>
                 <li>
                   <label>
                     {" "}
-                    <input />
-                    ASP.NET
+                    <input type="checkbox" />
+                    Algorithms & Data structures
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    JavaScript
+                    <input type="checkbox" />
+                    Debugging
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    PHP
+                    <input type="checkbox" />
+                    Localization
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Ruby/RoR
+                    <input type="checkbox" />
+                    Performance
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Flash
+                    <input type="checkbox" />
+                    Security
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    TypeScript
+                    <input type="checkbox" />
+                    Operating systems
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Go
+                    <input type="checkbox" />
+                    Design
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    C&C++
+                    <input type="checkbox" />
+                    Databases
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Lua
+                    <input type="checkbox" />
+                    Source control
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    MATLAB
-                  </label>
-                  <label>
-                    {" "}
-                    <input />
-                    Rust
-                  </label>
-                  <label>
-                    {" "}
-                    <input />
-                    AutoHotkey
+                    <input type="checkbox" />
+                    Testing procedures
                   </label>
                 </li>
               </ul>
@@ -255,69 +243,69 @@ export default function Metadata() {
           </div>
         ) : active === "page3" ? (
           <div className="button_pages">
-            <h6>Select the language you provide services for*</h6>
+            <h6>Select up to five frontend frameworks you are an expert in</h6>
             <div className="select_tabs">
               <ul>
                 <li>
                   <label>
                     {" "}
-                    <input />
-                    ASP.NET
+                    <input type="checkbox" />
+                    React.js
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    JavaScript
+                    <input type="checkbox" />
+                    AngularJS
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    PHP
+                    <input type="checkbox" />
+                    Vue.js
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Ruby/RoR
+                    <input type="checkbox" />
+                    jQuery
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Flash
+                    <input type="checkbox" />
+                    Bootstrap
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    TypeScript
+                    <input type="checkbox" />
+                    Ember.js
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Go
+                    <input type="checkbox" />
+                    Backbone.js
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    C&C++
+                    <input type="checkbox" />
+                    Semantic-UI
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Lua
+                    <input type="checkbox" />
+                    Foundation
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    MATLAB
+                    <input type="checkbox" />
+                    Svelte
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Rust
+                    <input type="checkbox" />
+                    Preact
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    AutoHotkey
+                    <input type="checkbox" />
+                    Tailwind CSS
                   </label>
                 </li>
               </ul>
@@ -325,69 +313,54 @@ export default function Metadata() {
           </div>
         ) : active === "page4" ? (
           <div className="button_pages">
-            <h6>Select the language you provide services for*</h6>
+            <h6>Select up to five backend frameworks you are an expert in</h6>
             <div className="select_tabs">
               <ul>
                 <li>
                   <label>
                     {" "}
-                    <input />
-                    ASP.NET
+                    <input type="checkbox" />
+                    Django
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    JavaScript
+                    <input type="checkbox" />
+                    Laravel
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    PHP
+                    <input type="checkbox" />
+                    Spring
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Ruby/RoR
+                    <input type="checkbox" />
+                    Express.js
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Flash
+                    <input type="checkbox" />
+                    Node.js
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    TypeScript
+                    <input type="checkbox" />
+                    CakePHP
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Go
+                    <input type="checkbox" />
+                    Flask
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    C&C++
+                    <input type="checkbox" />
+                    Koa
                   </label>
                   <label>
                     {" "}
-                    <input />
-                    Lua
-                  </label>
-                  <label>
-                    {" "}
-                    <input />
-                    MATLAB
-                  </label>
-                  <label>
-                    {" "}
-                    <input />
-                    Rust
-                  </label>
-                  <label>
-                    {" "}
-                    <input />
-                    AutoHotkey
+                    <input type="checkbox" />
+                    Meteor.js
                   </label>
                 </li>
               </ul>
@@ -401,124 +374,124 @@ export default function Metadata() {
                 <li>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     ASP.NET
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     JavaScript
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     PHP
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Ruby/RoR
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Flash
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     TypeScript
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Go
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     C&C++
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Lua
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     MATLAB
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Rust
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     AutoHotkey
                   </label>
                 </li>
                 <li>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     HTML & CSS
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Perl
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Python
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Scala
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Java
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     C#
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Kotlin
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     VB
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Delphi
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Assembly
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Pine Script
                   </label>
                   <label>
                     {" "}
-                    <input />
+                    <input type="checkbox" />
                     Haskell
                   </label>
                 </li>
@@ -526,19 +499,70 @@ export default function Metadata() {
             </div>
           </div>
         )}
+        <div className="button_page">
+          <div className="select_tabs">
+            <ul>
+              <li>
+                <label>
+                  <input type="checkbox" />
+                  Other
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </Root>
   );
 }
 const Root = styled.section`
   display: flex;
+  /* border: 1px solid #74767e; */
   .main_metadata {
     display: flex;
     flex-direction: column;
+    background-color: #f5f5f5;
+    color: #74767e;
+    border: 1px solid #b5b6ba;
+    .button_tab_area {
+      background: #f7f7f7;
+      .btn_1 {
+        border: 1px solid #f5f5f5;
+        background-color: #f7f7f7;
+        width: 100%;
+        text-align: left;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 16px 12px;
+        cursor: pointer;
+        display: flex;
+        flex: 1;
+        color: #74767e;
+      }
+      .active {
+        width: 102%;
+        border-right: 1px solid #fff;
+        background-color: #fff;
+        border-top: 1px solid #c5c6c9;
+        border-bottom: 1px solid #c5c6c9;
+        :nth-child(1) {
+          border-top: 1px solid #fff;
+        }
+      }
+    }
   }
+
   .all_pages {
     display: flex;
-    .button_pages {
+    flex-direction: column;
+    border: 1px solid #b5b6ba;
+    border-left: 1px solid #fff;
+    .button_page {
+      border-top: 1px solid #dbdbdb;
+    }
+    .button_pages,
+    .button_page {
       display: flex;
       flex-direction: column;
       padding: 12px 24px 24px;
@@ -563,12 +587,16 @@ const Root = styled.section`
               input {
                 width: 20px;
                 height: 20px;
-                margin-right:5px ;
+                margin-right: 5px;
                 border-radius: 20px;
                 border: 1px solid #dbdbdb;
                 &:hover {
                   border: 1px solid #202020;
                   cursor: pointer;
+                }
+                &::after {
+                  border: 6px solid #fff;
+                  color: #000;
                 }
               }
             }

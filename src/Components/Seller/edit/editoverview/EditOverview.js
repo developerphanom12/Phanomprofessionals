@@ -71,7 +71,7 @@ export default function EditOverview() {
           <div className="input_label">
             <span>Gig metadata</span>
           </div>
-          <div className="input_div"><Metadata/></div>
+          <div className="input_divv"><Metadata/></div>
         </div>
         <div className="input_group">
           <div className="input_label">
@@ -186,7 +186,15 @@ const Root = styled.section`
           }
         }
       }
-      .input_div {
+      .input_divv {
+        width: 45vw;
+        position: relative;
+        padding: 10px;
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+      }
+      .input_div{
         width: 45vw;
         position: relative;
         padding: 10px;

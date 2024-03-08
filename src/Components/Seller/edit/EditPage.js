@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { GigButton } from "../../../GlobalStyles";
-import Gallery from "./Gallery";
-import Requirements from "./Requirements";
-import Pricing from "./Pricing";
-import Overviews from "./EditOverview";
-import DescriptionFAQ from "./DescriptionFAQ";
-import EditOverview from "./EditOverview";
+import Gallery from "./gallery/Gallery";
+import Requirements from "./requirements/Requirements";
+import Pricing from "./pricing/Pricing";
+import DescriptionFAQ from "./description/DescriptionFAQ";
+import EditOverview from "./editoverview/EditOverview";
 
 export default function EditPage() {
-  const [active, setActive] = useState("overviews");
+  const [active, setActive] = useState("editoverview");
   const [user, setUser] = useState();
   return (
     <Root>
@@ -187,6 +186,10 @@ const Root = styled.section`
     background-color: #f7f7f7 !important;
     @media (max-width: 600px) {
       padding: 0;
+    }
+    .container-fluid{
+      display: flex;
+      justify-content: center;
     }
   }
   .table > :not(caption) > * > * {
