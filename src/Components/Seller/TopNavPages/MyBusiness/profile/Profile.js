@@ -137,6 +137,7 @@ const Root = styled.section`
   background-color: #f7f7f7;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
   justify-content: space-between;
   font-family: macan, helvetica neue, Helvetica, Arial, sans-serif;
   .main_div1 {
@@ -343,5 +344,8 @@ const Root = styled.section`
         }
       }
     }
+  }
+  .main_div2{
+    width: 60%;
   }
 `;

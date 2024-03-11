@@ -3,7 +3,7 @@ const initialState = {
   userCheck: false,
   role: "",
   appDetails: {},
-
+  isLoading: false,
 
 };
 const UserReducer = (state = initialState, action) => {
@@ -13,6 +13,11 @@ const UserReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
+      case "LOADING_DATA":
+        return {
+          ...state,
+          isLoading: action.payload,
+        };
     case "USER_CHECK":
       return {
         ...state,

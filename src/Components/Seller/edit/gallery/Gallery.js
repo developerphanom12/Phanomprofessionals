@@ -26,19 +26,51 @@ export default function Gallery() {
             <span className="button_span">Gig image guidelines</span>
           </button>
         </header>
-        <div>
-          <h3>
-            <p>Images (up to 3)</p>
-            <p>
+        <div className="img_div_add">
+          <h3 className="div_img_h3">
+            <p className="div_img_h3_p">Images (up to 3)</p>
+            <p className="div_img_h3_p2">
               Get noticed by the right buyers with visual examples of your
               services.
             </p>
           </h3>
           <ul>
-            <div>
-              <span><li>1</li></span>
-              <span><li>2</li></span>
-              <span><li>3</li></span>
+            <div className="ul_div">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+            </div>
+          </ul>
+        </div>
+
+        <div className="img_div_add">
+          <h3 className="div_img_h3">
+            <p className="div_img_h3_p">Video (Only one)</p>
+            <p className="div_img_h3_p2">
+              Capture buyers' attention with a video that showcases your
+              service. Please choose a video shorter than 75 seconds and smaller
+              than 50MB
+            </p>
+          </h3>
+
+          <ul>
+            <div className="ul_div">
+              <li>1</li>
+            </div>
+          </ul>
+        </div>
+        <div className="img_div_add">
+          <h3 className="div_img_h3">
+            <p className="div_img_h3_p">Documents (Up to 2 )</p>
+            <p className="div_img_h3_p2">
+            Show some of the best work you created in a document (PDFs only).
+            </p>
+          </h3>
+
+          <ul>
+            <div className="ul_div">
+              <li>1</li>
+              <li>1</li>
             </div>
           </ul>
         </div>
@@ -113,6 +145,50 @@ const Root = styled.section`
         line-height: 21px;
         text-decoration-line: underline;
         padding: 12px 0 0;
+      }
+    }
+    .img_div_add {
+      border-bottom: 1px solid #dadbdd;
+      padding-top: 23px;
+      padding-bottom: 16px;
+      position: relative;
+      .div_img_h3 {
+        position: relative;
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 500;
+        padding-bottom: 32px;
+        .div_img_h3_p {
+          margin-bottom: 4px;
+          font-weight: 700;
+          font-size: 18px;
+        }
+        .div_img_h3_p2 {
+          font-size: 14px;
+          font-weight: 400;
+          color: #74767e;
+          margin-bottom: 5px;
+        }
+      }
+      ul {
+        list-style: none;
+        .ul_div {
+          display: flex;
+          gap: 10px;
+        }
+        li {
+          cursor: grab;
+          border-color: #222325;
+          background-color: #fff;
+          line-height: 100%;
+          font-size: 12px;
+          position: relative;
+          height: 160px;
+          width: 31%;
+          overflow: hidden;
+          border: 1px solid #dadbdd;
+          margin-bottom: 16px;
+        }
       }
     }
   }

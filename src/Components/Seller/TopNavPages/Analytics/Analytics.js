@@ -1,34 +1,33 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import PausedGigs from "./PausedGigs";
-import ActiveGigs from "./ActiveGigs";
-import { GigButton } from "../../../../../GlobalStyles";
+import React, { useState } from 'react'
+import styled from 'styled-components';
+import RepeatBusiness from './RepeatBusiness';
+import Overview from './Overview';
+import { GigButton } from '../../../../GlobalStyles';
 
-export default function Profile2() {
-  const [active, setActive] = useState("activegigs");
-  const [user, setUser] = useState();
+export default function Analytics() {
+    const [active, setActive] = useState("overview");
   return (
     <Root>
       <div className="tab_button_area">
         <div className="nav_tab">
           <div>
             <GigButton
-              className={active === "activegigs" ? "btn_1 active" : "btn_1"}
+              className={active === "overview" ? "btn_1 active" : "btn_1"}
               onClick={() => {
-                setActive("activegigs");
+                setActive("overview");
               }}
             >
-              ACTIVE GIGS
+              Overview
             </GigButton>
           </div>
           <div>
             <GigButton
-              className={active === "pausedgigs" ? "btn_1 active" : "btn_1"}
+              className={active === "repeatbusiness" ? "btn_1 active" : "btn_1"}
               onClick={() => {
-                setActive("pausedgigs");
+                setActive("repeatbusiness");
               }}
             >
-              PAUSED
+             Repeat Business
             </GigButton>
           </div>
         </div>
@@ -37,22 +36,22 @@ export default function Profile2() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-12">
-              {active === "activegigs" ? (
-                <ActiveGigs detail={user} />
-              ) : active === "pausedgigs" ? (
-                <PausedGigs />
+              {active === "overview" ? (
+                <Overview />
+              ) : active === "repeatbusiness" ? (
+                <RepeatBusiness />
               ) : (
-                <ActiveGigs />
+                <Overview />
               )}
             </div>
           </div>
         </div>
       </div>
     </Root>
-  );
+  )
 }
 const Root = styled.section`
-  display: flex;
+display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   background-color: #f7f7f7;
@@ -124,4 +123,4 @@ const Root = styled.section`
   .table > :not(caption) > * > * {
     background-color: #f7f7f7 !important;
   }
-`;
+`

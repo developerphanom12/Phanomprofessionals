@@ -121,43 +121,6 @@ export default function PostNav() {
             )}
           </div>
           <div className="business">
-            <button onClick={()=>{toggleGrowth(); }}>
-              <span>Growth & Marketing</span>
-              <IoIosArrowDown />
-            </button>
-            {showToggles.showGrowth && (
-              <div className="optn_div">
-                <div className="top">
-                  <button
-                    onClick={() => {
-                      navigate("/contents");closeAllToggles();
-                    }}
-                  >
-                    Contents
-                  </button>
-                </div>
-                <div className="middle">
-                  <button
-                    onClick={() => {
-                      navigate("/phanomlearn");closeAllToggles();
-                    }}
-                  >
-                    Phanom Learn
-                  </button>
-                </div>
-                <div className="bottom">
-                  <button
-                    onClick={() => {
-                      navigate("/scalebusiness");closeAllToggles();
-                    }}
-                  >
-                    Scale Business
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="business">
             <button onClick={()=>{toggleAnalytics() }}>
               <span>Analytics</span>
               <IoIosArrowDown />
@@ -167,14 +130,14 @@ export default function PostNav() {
                 <div className="top">
                   <button
                     onClick={() => {
-                      navigate("/overview"); closeAllToggles();
+                      navigate("/analytics"); closeAllToggles();
                     }}
                   >
                     Overview
                   </button>
                   <button
                     onClick={() => {
-                      navigate("/repeatbusiness"); closeAllToggles();
+                      navigate("/analytics"); closeAllToggles();
                     }}
                   >
                     Repeat Business
@@ -225,6 +188,7 @@ export default function PostNav() {
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content="Message"
                 onClick={()=>{toggleMessage(); }}
+               
               >
                 <CiMail />
               </a>
@@ -251,7 +215,7 @@ export default function PostNav() {
                       {/* <IoMdVolumeOff /> */}
                       <IoMdSettings />
                     </div>
-                    <span>See All In Inbox</span>
+                    <a >See All In Inbox</a>
                   </div>
                 </div>
               )}
@@ -479,12 +443,14 @@ const Post = styled.section`
                 margin-right: 5px;
                 size: 20px;
               }
-              span {
+              a {
                 color: #446ee7;
                 float: right;
                 font-size: 14px;
                 font-weight: 600;
                 border-bottom: 2px solid #fff;
+                text-decoration: none;
+                position: relative;
 
                 &:hover {
                   border-bottom: 2px solid #446ee7;

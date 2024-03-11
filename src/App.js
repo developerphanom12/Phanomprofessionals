@@ -25,27 +25,38 @@ import HireSeoExpert from "./Components/CommonPages/HireIndianTalent/HireDigital
 import InnerPages from "./Components/Buyer/InnerPages/InnerPages";
 import InternalPages from "./Components/Buyer/InternalPages/InternalPages";
 import Layout from "./Components/MainLayouts/Layout";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Dashboard from "./Components/Seller/TopNavPages/Dashboard/Dashboard";
 import Orders from "./Components/Seller/TopNavPages/MyBusiness/orders/Orders";
 import Gigs from "./Components/Seller/TopNavPages/MyBusiness/gigs/Gigs";
 import Profile from "./Components/Seller/TopNavPages/MyBusiness/profile/Profile";
 import Earnings from "./Components/Seller/TopNavPages/MyBusiness/earning/Earnings";
-import Contents from "./Components/Seller/TopNavPages/GrowthMarketing/Contents";
-import PhanomLearn from "./Components/Seller/TopNavPages/GrowthMarketing/PhanomLearn";
-import ScaleBusiness from "./Components/Seller/TopNavPages/GrowthMarketing/ScaleBusiness";
 import Overview from "./Components/Seller/TopNavPages/Analytics/Overview";
 import RepeatBusiness from "./Components/Seller/TopNavPages/Analytics/RepeatBusiness";
 import EditPage from "./Components/Seller/edit/EditPage";
+import Message from "./Components/MainLayouts/Message";
+import PageNF from "./Components/Important/PageNF";
+import { loaderAction } from "./redux/users/action";
+import { useEffect } from "react";
+import Loader from "./Components/Important/Loader";
+import Analytics from "./Components/Seller/TopNavPages/Analytics/Analytics";
 
 function App() {
   const userCheck = useSelector((state) => state?.users?.userCheck);
   const userDetails = useSelector((state) => state?.users.user);
   const token = localStorage.getItem("token");
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loaderAction(false));
+  });
+ 
   return (
     <div>
       <Layout>
         <Routes>
+          <Route path="/message" element={<Message />} />
+
           {/* buyer pagess--------------------------------------------------------------- */}
           <Route path="/innerpages" element={<InnerPages />} />
           <Route path="/internalpage" element={<InternalPages />} />
@@ -57,14 +68,13 @@ function App() {
           <Route path="/edit" element={<EditPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/earnings" element={<Earnings />} />
-          <Route path="/contents" element={<Contents />} />
-          <Route path="/phanomlearn" element={<PhanomLearn />} />
-          <Route path="/scalebusiness" element={<ScaleBusiness />} />
+          <Route path="/analytics" element={<Analytics />} />
           <Route path="/overview" element={<Overview />} />
           <Route path="/repeatbusiness" element={<RepeatBusiness />} />
 
           {/* common pages -------------------------------------------------------------- */}
           <Route path="/" element={<Home />} />
+          <Route path="*" element={<PageNF />} />
           <Route path="/vettingprocess" element={<VettingProcess />} />
           <Route path="/hiremobile" element={<HireMobileApp />} />
           <Route path="/hiresoftware" element={<HireSoftware />} />
@@ -86,6 +96,7 @@ function App() {
           <Route path="/whyindia" element={<WhyIndia />} />
           <Route path="/howitworks" element={<HowItWorks />} />
         </Routes>
+        <Loader />  
       </Layout>
     </div>
   );
