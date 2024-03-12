@@ -2,28 +2,17 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { ImCross } from "react-icons/im";
 import { HiQuestionMarkCircle } from "react-icons/hi";
-
-const Modal = styled.div`
-  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-`;
+import { Modal, ModalBody, ModalHeader } from "reactstrap";
 
 export default function FinancialDocument() {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const openModal = () => {
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  const [modal, setmodal] = useState(false);
+  const ModalHeader = styled.h5`
+    color: #404145;
+    font-size: 24px;
+    font-weight: 700;
+    padding-left: 15px;
+    padding-top: 30px;
+  `;
 
   return (
     <Root>
@@ -36,22 +25,17 @@ export default function FinancialDocument() {
               yearly earnings.
             </p>
             <div className="btn_div">
-              <button onClick={openModal}>
-                Choose date range
-                {/* <FinancialModal/> */}
-              </button>
+              <button onClick={() => setmodal(true)}>Choose date range</button>
             </div>
           </div>
           <div className="earning_col_two"></div>
         </div>
       </div>
-      <Modal isOpen={modalOpen} onClick={()=>{closeModal()}}>
-        <ModalContent>
-          {/* Your modal content here */}
-          <div className="header">
-            <h4>Get your statement of earnings</h4>
-            <ImCross />
-          </div>
+      <Modal size="lg" isOpen={modal} toggle={() => setmodal(!modal)}>
+        <ModalHeader toggle={() => setmodal(!modal)}>
+          Get your statement of earnings
+        </ModalHeader>
+        <CustomModalBody>
           <div className="modal_paragraph">
             <p>
               Select a month and year—your statement will cover a 12-month
@@ -63,29 +47,62 @@ export default function FinancialDocument() {
             </p>
           </div>
           <div className="form_div">
-            <div className="col_one">
-              <div>
-                <span>12-month period from</span>
-                <HiQuestionMarkCircle/>
+            <div className="row">
+              <div className="col-lg-6 mt-3">
+                <div>
+                  <span>12-month period from</span>
+                  <HiQuestionMarkCircle />
+                </div>
+                <select>
+                  <option>January</option>
+                  <option>February</option>
+                  <option>March</option>
+                  <option>April</option>
+                  <option>May</option>
+                  <option>June</option>
+                  <option>July</option>
+                  <option>August</option>
+                  <option>September</option>
+                  <option>October</option>
+                  <option>November</option>
+                  <option>December</option>
+                </select>
               </div>
-              <select>
-                <option>January</option>
-                <option>February</option>
-                <option>March</option>
-                <option>April</option>
-                <option>May</option>
-                <option>June</option>
-                <option>July</option>
-                <option>August</option>
-                <option>September</option>
-                <option>October</option>
-                <option>November</option>
-                <option>December</option>
-              </select>
+              <div className="col-lg-6 mt-3">
+                <div>
+                  <span>Year</span>
+                  <HiQuestionMarkCircle />
+                </div>
+                <select>
+                  <option>2023</option>
+                  <option>2022</option>
+                  <option>2021</option>
+                  <option>2020</option>
+                  <option>2019</option>
+                </select>
+              </div>
             </div>
-            <div className="col_two"></div>
           </div>
-        </ModalContent>
+
+          <div className="bill_content">
+            <span>Billing info</span>
+            <a href="#">Update</a>
+          </div>
+
+          <div className="address mt-2">
+            <div>developerphanom</div>
+            <div>Chandigarh</div>
+            <div>India</div>
+          </div>
+
+          <div className="row">
+            <div className="col-lg-6"></div>
+            <div className="col-lg-6 actin_btn">
+              <button className="cancel_btn">Cancel</button>
+              <button className="download_btn">Download Statement</button>
+            </div>
+          </div>
+        </CustomModalBody>
       </Modal>
     </Root>
   );
@@ -138,28 +155,9 @@ const Root = styled.section`
     }
   }
 `;
-const ModalContent = styled.div`
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    h4 {
-      color: #404145;
-      font-size: 24px;
-      font-weight: 700;
-    }
-  }
-
+const CustomModalBody = styled(ModalBody)`
   .modal_paragraph {
-    margin-top: 12px;
     p {
       margin: 0;
       color: #62646a;
@@ -167,33 +165,79 @@ const ModalContent = styled.div`
       font-weight: 500;
     }
   }
-  .form_div {
-    display: flex;
-    margin-top:25px;
-    .col_one {
-      flex:1;
-      span{
-        font-weight: 600;
-        margin-right: 8px;
-        color: #404145;
-        font-size:400;
-
-      }
-      svg{
-        width:20px;
-        height:20px;
-        color:rgb(116, 118, 126);
-      }
-      select {
-    word-wrap: normal;
-    padding: 12px 5px;
+  span {
+    font-weight: 600;
+    margin-right: 8px;
+    color: #404145;
+  }
+  svg {
+    color: rgb(116, 118, 126);
+    width: 20px;
+    height: 20px;
+  }
+  select {
     width: 100%;
-    margin-top:10px;
-}
+    border: 1px solid #c5c6c9;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 12px 32px 12px 12px;
+    margin-top: 15px;
+  }
+
+  .bill_content {
+    margin-top: 40px;
+    border-top: 1px solid #e4e5e7;
+    padding-top: 15px;
+    span {
+      font-weight: 600;
+      margin-right: 8px;
+      color: #62646a;
+      font-size: 16px;
     }
-    
-    .col_two{
-      flex:1;
+    a {
+      text-decoration: underline;
+      color: #62646a;
+      font-size: 16px;
+      line-height: 24px;
     }
   }
+
+  .address {
+    div {
+      font-size: 16px;
+      color: #62646a;
+      font-weight: 400;
+    }
+  }
+
+.actin_btn{
+  
+    .cancel_btn {
+      background: #e4e5e7;
+      color: #404145;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 100%;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+    .download_btn{
+      background: black;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 100%;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid transparent;
+      margin-left:20px;
+    }
+  }
+ 
 `;
