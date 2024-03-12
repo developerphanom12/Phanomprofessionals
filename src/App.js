@@ -40,6 +40,7 @@ import { loaderAction } from "./redux/users/action";
 import { useEffect } from "react";
 import Loader from "./Components/Important/Loader";
 import Analytics from "./Components/Seller/TopNavPages/Analytics/Analytics";
+import LoginSeller from "./Components/CommonPages/loginPages/LoginSeller";
 
 function App() {
   const userCheck = useSelector((state) => state?.users?.userCheck);
@@ -56,6 +57,8 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/message" element={<Message />} />
+          <Route path="/loginseller" element={<LoginSeller />} />
+
 
           {/* buyer pagess--------------------------------------------------------------- */}
           <Route path="/innerpages" element={<InnerPages />} />
