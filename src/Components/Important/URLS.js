@@ -1,2 +1,2 @@
 export const EXCHANGE_URLS =
-  "https://api-phanom.phanomprofessionals.com/";
+  "https://api-phanom.phanomprofessionals.com/api/seller";

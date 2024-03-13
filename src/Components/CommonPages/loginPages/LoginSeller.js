@@ -40,8 +40,8 @@ export default function LoginSeller() {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       };
-      const res = await axios.get(
-       `${EXCHANGE_URLS}/allstaffget`,val,
+      const res = await axios.post(
+       `${EXCHANGE_URLS}/loginseller`,val,
         axiosConfig
       );
       if (res?.status === 200) {
