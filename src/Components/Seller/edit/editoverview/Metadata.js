@@ -1,9 +1,36 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-export default function Metadata() {
+export default function Metadata({ value }) {
   const [active, setActive] = useState("page1");
+  const [selectedProgrammingLanguages, setSelectedProgrammingLanguages] =
+    useState([]);
+  const [selectedWebsiteFeatures, setSelectedWebsiteFeatures] = useState([]);
 
+  // Inside handleFeatureCheckboxChange function
+  const handleFeatureCheckboxChange = (feature) => {
+    if (selectedWebsiteFeatures.includes(feature)) {
+      setSelectedWebsiteFeatures(
+        selectedWebsiteFeatures.filter((item) => item !== feature)
+      );
+    } else {
+      setSelectedWebsiteFeatures([...selectedWebsiteFeatures, feature]);
+    }
+  };
+
+  // Inside handleLanguageCheckboxChange function
+  const handleLanguageCheckboxChange = (language) => {
+    if (selectedProgrammingLanguages.includes(language)) {
+      setSelectedProgrammingLanguages(
+        selectedProgrammingLanguages.filter((item) => item !== language)
+      );
+    } else {
+      setSelectedProgrammingLanguages([
+        ...selectedProgrammingLanguages,
+        language,
+      ]);
+    }
+  };
   return (
     <Root>
       <div className="main_metadata">
@@ -13,11 +40,21 @@ export default function Metadata() {
             onClick={() => {
               setActive("page1");
             }}
-          >   
+          >
             PROGRAMMING LANGUAGE*
           </button>
         </div>
         <div className="button_tab_area">
+          <button
+            className={active === "pagess" ? "btn_1 active" : "btn_1"}
+            onClick={() => {
+              setActive("pagess");
+            }}
+          >
+            WEBSITE FEATURE
+          </button>
+        </div>
+        {/* <div className="button_tab_area">
           <button
             className={active === "page2" ? "btn_1 active" : "btn_1"}
             onClick={() => {
@@ -46,7 +83,7 @@ export default function Metadata() {
           >
             BACKEND FRAMEWORK
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="all_pages">
         {active === "page1" ? (
@@ -54,319 +91,342 @@ export default function Metadata() {
             <h6>Select the language you provide services for*</h6>
             <div className="select_tabs">
               <ul>
+                {/* {Array.isArray(value.programing_language) &&
+                  value.programing_language.map((language, index) => (
+                    <li key={index}>
+                      <label>
+                        <input
+                          type="checkbox"
+                          value={language}
+                          checked={selectedProgrammingLanguages.includes(
+                            language
+                          )}
+                          onChange={() =>
+                            handleLanguageCheckboxChange(language)
+                          }
+                        />
+                        {language}
+                      </label>
+                     
+                    </li>
+                  ))} */}
+
+                {Array.isArray(value.programing_language) &&
+                  value.programing_language.map((language, index) => (
+                    <li key={index}>
+                      <label>
+                        <input
+                          type="checkbox"
+                          value={language}
+                          checked={selectedProgrammingLanguages.includes(
+                            language
+                          )}
+                          onChange={() =>
+                            handleLanguageCheckboxChange(language)
+                          }
+                        />
+                        {language}
+                      </label>
+                    </li>
+                  ))}
+                {/* Manually added options */}
                 <li>
                   <label>
-                    {" "}
-                    <input type="checkbox" />
-                    ASP.NET
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    JavaScript
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    PHP
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Ruby/RoR
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Flash
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    TypeScript
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Go
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    C&C++
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Lua
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    MATLAB
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Rust
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    AutoHotkey
+                    <input
+                      type="checkbox"
+                      value="NewLanguage1"
+                      checked={selectedProgrammingLanguages.includes(
+                        "NewLanguage1"
+                      )}
+                      onChange={() =>
+                        handleLanguageCheckboxChange("NewLanguage1")
+                      }
+                    />
+                    New Language 1
                   </label>
                 </li>
                 <li>
                   <label>
-                    {" "}
-                    <input type="checkbox" />
-                    HTML & CSS
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Perl
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Python
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Scala
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Java
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    C#
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Kotlin
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    VB
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Delphi
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Assembly
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Pine Script
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Haskell
+                    <input
+                      type="checkbox"
+                      value="NewLanguage2"
+                      checked={selectedProgrammingLanguages.includes(
+                        "NewLanguage2"
+                      )}
+                      onChange={() =>
+                        handleLanguageCheckboxChange("NewLanguage2")
+                      }
+                    />
+                    New Language 2
                   </label>
                 </li>
               </ul>
             </div>
           </div>
-        ) : active === "page2" ? (
+        ) : active === "pagess" ? (
           <div className="button_pages">
-            <h6>Select up to five areas you are an expert in</h6>
+            <h6>Select Features</h6>
             <div className="select_tabs">
-              <ul>
+              {/* <ul>
+               
+                {Array.isArray(value.website_feature) &&
+                  value.website_feature.map((feature, index) => (
+                    <li key={index}>
+                      <label>
+                        <input
+                          type="checkbox"
+                          value={feature}
+                          checked={selectedWebsiteFeatures.includes(feature)}
+                          onChange={() => handleFeatureCheckboxChange(feature)}
+                        />
+                        {feature}
+                      </label>
+                    </li>
+                  ))}
+               
                 <li>
                   <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Algorithms & Data structures
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Debugging
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Localization
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Performance
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Security
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Operating systems
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Design
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Databases
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Source control
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Testing procedures
+                    <input
+                      type="checkbox"
+                      value="NewFeature1"
+                      checked={selectedWebsiteFeatures.includes("NewFeature1")}
+                      onChange={() =>
+                        handleFeatureCheckboxChange("NewFeature1")
+                      }
+                    />
+                    New Feature 1
                   </label>
                 </li>
-              </ul>
-            </div>
-          </div>
-        ) : active === "page3" ? (
-          <div className="button_pages">
-            <h6>Select up to five frontend frameworks you are an expert in</h6>
-            <div className="select_tabs">
-              <ul>
                 <li>
                   <label>
-                    {" "}
-                    <input type="checkbox" />
-                    React.js
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    AngularJS
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Vue.js
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    jQuery
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Bootstrap
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Ember.js
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Backbone.js
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Semantic-UI
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Foundation
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Svelte
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Preact
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Tailwind CSS
+                    <input
+                      type="checkbox"
+                      value="NewFeature2"
+                      checked={selectedWebsiteFeatures.includes("NewFeature2")}
+                      onChange={() =>
+                        handleFeatureCheckboxChange("NewFeature2")
+                      }
+                    />
+                    New Feature 2
                   </label>
                 </li>
-              </ul>
-            </div>
-          </div>
-        ) : active === "page4" ? (
-          <div className="button_pages">
-            <h6>Select up to five backend frameworks you are an expert in</h6>
-            <div className="select_tabs">
-              <ul>
-                <li>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Django
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Laravel
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Spring
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Express.js
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Node.js
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    CakePHP
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Flask
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Koa
-                  </label>
-                  <label>
-                    {" "}
-                    <input type="checkbox" />
-                    Meteor.js
-                  </label>
-                </li>
-              </ul>
+              </ul> */}
+
+
+
+<ul>
+      <li>
+        <label>
+          <input
+            type="checkbox"
+            value="Feature 1"
+            checked={selectedWebsiteFeatures.includes("Feature 1")}
+            onChange={() => handleFeatureCheckboxChange("Feature 1")}
+          />
+          Feature 1
+        </label>
+      </li>
+      <li>
+        <label>
+          <input
+            type="checkbox"
+            value="Feature 2"
+            checked={selectedWebsiteFeatures.includes("Feature 2")}
+            onChange={() => handleFeatureCheckboxChange("Feature 2")}
+          />
+          Feature 2
+        </label>
+      </li>
+      {/* Add more checkboxes for other features */}
+    </ul>
             </div>
           </div>
         ) : (
+          // ) : active === "page2" ? (
+          //   <div className="button_pages">
+          //     <h6>Select up to five areas you are an expert in</h6>
+          //     <div className="select_tabs">
+          //       <ul>
+          //         <li>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Algorithms & Data structures
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Debugging
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Localization
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Performance
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Security
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Operating systems
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Design
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Databases
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Source control
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Testing procedures
+          //           </label>
+          //         </li>
+          //       </ul>
+          //     </div>
+          //   </div>
+          // ) : active === "page3" ? (
+          //   <div className="button_pages">
+          //     <h6>Select up to five frontend frameworks you are an expert in</h6>
+          //     <div className="select_tabs">
+          //       <ul>
+          //         <li>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             React.js
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             AngularJS
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Vue.js
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             jQuery
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Bootstrap
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Ember.js
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Backbone.js
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Semantic-UI
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Foundation
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Svelte
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Preact
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Tailwind CSS
+          //           </label>
+          //         </li>
+          //       </ul>
+          //     </div>
+          //   </div>
+          // ) : active === "page4" ? (
+          //   <div className="button_pages">
+          //     <h6>Select up to five backend frameworks you are an expert in</h6>
+          //     <div className="select_tabs">
+          //       <ul>
+          //         <li>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Django
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Laravel
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Spring
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Express.js
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Node.js
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             CakePHP
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Flask
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Koa
+          //           </label>
+          //           <label>
+          //             {" "}
+          //             <input type="checkbox" />
+          //             Meteor.js
+          //           </label>
+          //         </li>
+          //       </ul>
+          //     </div>
+          //   </div>
           <div className="button_pages">
             <h6>Select the language you provide services for*</h6>
             <div className="select_tabs">

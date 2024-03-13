@@ -3,11 +3,53 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoInformationCircle } from "react-icons/io5";
 import styled from "styled-components";
 import Metadata from "./Metadata";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { EXCHANGE_URLS } from "../../../Important/URLS";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { updateGigId } from "../../../../redux/users/action";
 
 export default function EditOverview() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isSoftOpen, setIsSoftOpen] = useState(false);
+  const [data, setData] = useState({
+    gig_title: "",
+    category_id: 1,
+    subcategory_id: 1,
+    service_type: "",
+    tags: "",
+    programing_language: [],
+    website_feature: [],
+  });
 
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const appApi = async () => {
+    try {
+      const axiosConfig = {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+      const res = await axios.post(
+        `${EXCHANGE_URLS}/giggscreate`,
+        data,
+        axiosConfig
+      );
+      if (res?.status === 200) {
+        const gigId = res.data.id; // Assuming the gig ID is returned in the response
+        dispatch(updateGigId(gigId));
+        navigate("/pricing")
+        toast.success("Updated");
+      }
+    } catch (err) {
+      toast.error("error");
+    }
+  };
+
+  const handleSubmit = () => {
+    appApi();
+  };
   return (
     <Root>
       <div className="main_div_section">
@@ -19,7 +61,13 @@ export default function EditOverview() {
             buyers would likely use to search for a service like yours.
           </div>
           <div className="input_div">
-            <textarea placeholder="text" />
+            <textarea
+              placeholder="text"
+              value={data.gig_title}
+              onChange={(e) => {
+                setData({ ...data, gig_title: e.target.value });
+              }}
+            />
           </div>
         </div>
         <div className="input_group">
@@ -28,26 +76,31 @@ export default function EditOverview() {
             Choose the category and sub-category most suitable for your Gig.
           </div>
           <div className="input_div">
-            <button onClick={() => setIsOpen(!isOpen)}>
+            {/* <select
+              value={data.programing_language}
+              onChange={(e) => {
+                // Convert selected option values to an array
+                const selectedLanguages = Array.from(
+                  e.target.selectedOptions,
+                  (option) => option.value
+                );
+                setData({
+                  ...data,
+                  programing_language: selectedLanguages, // Update with an array
+                });
+              }}
+            >
               PROGRAMMING & TECH <IoIosArrowDown />
-            </button>
-            {isOpen && (
-              <div className="option">
-                <p>Option A</p>
-                <p>Option B</p>
-                <p>Option C</p>
-              </div>
-            )}
-            <button onClick={() => setIsSoftOpen(!isSoftOpen)}>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Python">Python</option>
+            </select> */}
+            
+            <select>
               SOFTWARE DEVELOPMENT <IoIosArrowDown />
-            </button>
-            {isSoftOpen && (
-              <div className="option1">
-                <p>Option A</p>
-                <p>Option B</p>
-                <p>Option C</p>
-              </div>
-            )}
+              <option>Option A</option>
+              <option>Option B</option>
+              <option>Option C</option>
+            </select>
           </div>
         </div>
         <div className="input_group">
@@ -55,23 +108,30 @@ export default function EditOverview() {
             <span>Service type</span>
           </div>
           <div className="input_div">
-            <button onClick={() => setIsOpen(!isOpen)}>
+            <select
+              value={data.service_type}
+              onChange={(e) => {
+                setData({
+                  ...data,
+                  service_type: e.target.value,
+                });
+              }}
+            >
               WEB APPLICATIONS <IoIosArrowDown />
-            </button>
-            {isOpen && (
-              <div className="option">
-                <p>Option A</p>
-                <p>Option B</p>
-                <p>Option C</p>
-              </div>
-            )}
+              <option>Option A</option>
+              <option>Option B</option>
+              <option>Option C</option>
+            </select>
           </div>
         </div>
+        <button onClick={handleSubmit}>add</button>
         <div className="input_group">
           <div className="input_label">
             <span>Gig metadata</span>
           </div>
-          <div className="input_divv"><Metadata/></div>
+          <div className="input_divv">
+            <Metadata  value={data}/>
+          </div>
         </div>
         <div className="input_group">
           <div className="input_label">
@@ -89,7 +149,10 @@ export default function EditOverview() {
                 for your service.
               </span>
             </div>
-            <input placeholder="tag here" />
+            <input placeholder="tag here" value={data.tags}
+              onChange={(e) => {
+                setData({ ...data, tags: e.target.value });
+              }}/>
           </div>
         </div>
         <div className="input_group">
@@ -194,7 +257,7 @@ const Root = styled.section`
         display: flex;
         align-items: center;
       }
-      .input_div{
+      .input_div {
         width: 45vw;
         position: relative;
         padding: 10px;
@@ -220,30 +283,6 @@ const Root = styled.section`
           font-size: 14px;
           font-weight: 500;
           color: #202020;
-        }
-        .option,
-        .option1 {
-          z-index: 111;
-          display: flex;
-          flex-direction: column;
-          border: 1px solid #dbdbdbdb;
-          padding: 10px;
-          position: absolute;
-          margin: 5px;
-          background: #fff;
-          color: #62646a;
-        }
-        .option {
-          top: 46px;
-          left: 4px;
-          width: 250px;
-          height: 280px;
-        }
-        .option1 {
-          top: 46px;
-          left: 285px;
-          width: 250px;
-          height: 280px;
         }
       }
     }

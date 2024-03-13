@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { TiPencil } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
 
-export default function Table1() {
+export default function Table1({detail}) {
   return (
     <Root>
       <table>
@@ -20,7 +20,7 @@ export default function Table1() {
             <td className="first_table_col"></td>
             <td>
               <div className="title_input">
-                <textarea>122</textarea>
+                <textarea onClick={detail.title}>122</textarea>
                 <span className="span_headd">
                   <TiPencil />
                 </span>
@@ -76,7 +76,7 @@ export default function Table1() {
               <div className="title_input">
                 <div className="title_input_child">
                   <span className="span_head">
-                    <div className="title_input_gchild">34</div>
+                    <div className="title_input_gchild">delivery time</div>
                     <span className="span_svg">
                       <IoIosArrowDown />
                     </span>

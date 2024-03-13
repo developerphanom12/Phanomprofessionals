@@ -1,3 +1,7 @@
+export const updateGigId = (gigId) => ({
+  type: "UPDATE_GIG_ID",
+  payload: gigId,
+});
 export const UserDetails = (data) => {
     return {
       type: "USER_DETAILS",

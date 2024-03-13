@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Table1 from "./Table1";
 import Table2 from "./Table2";
@@ -6,8 +6,51 @@ import { IoCheckmark } from "react-icons/io5";
 import Table3 from "./Table3";
 import Table4 from "./Table4";
 import Table5 from "./Table5";
+import axios from "axios";
+import { EXCHANGE_URLS } from "../../../Important/URLS";
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 export default function Pricing() {
+  const [data, setData] = useState({
+    // gig_id: "",
+    title: "",
+    description: "",
+    delivery_time: "",
+    number_of_pages: "",
+    revision: "",
+    plugin_extension: "",
+    price: "",
+    plan_type: "",
+    content_upload: "",
+  });
+
+  const gigId = useSelector((state) => state.users.gigId);
+  const appPricing = async () => {
+    try {
+      const axiosConfig = {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+      const updatedData = { ...data, gig_id: gigId };
+      const res = await axios.post(
+        `${EXCHANGE_URLS}/gigspriceadd`,
+        data,updatedData,
+        axiosConfig
+      );
+      if (res?.status === 200) {
+        toast.success("Updated");
+      }
+    } catch (err) {
+      toast.error("error");
+    }
+  };
+
+  const handleSubmit = () => {
+    appPricing();
+  };
+
   return (
     <Root>
       <div className="div1">
@@ -34,17 +77,24 @@ export default function Pricing() {
         </header>
       </div>
       <div className="div3">
-        <Table1 />
-        <Table2 />
-        <Table3 />
-        <Table4 />
-        <Table5 />
+        <Table1 detail={data} />
+        <Table2 detail={data}/>
+        <Table3 detail={data}/>
+        {/* <Table4 /> */}
+        <Table5 detail={data}/>
       </div>
       <div className="div4">
-        <a type="button" role="button" href="link">
+        <a type="button" role="button" href="/gigs">
           Cancle
         </a>
-        <button>Save</button>
+        <button
+          type="submit"
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          Save
+        </button>
       </div>
     </Root>
   );

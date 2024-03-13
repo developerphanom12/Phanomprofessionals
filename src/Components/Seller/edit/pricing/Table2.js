@@ -50,7 +50,7 @@ export default function Table2() {
             </td>
           </tr>
           <tr>
-            <td className="first_table_col">Design customization</td>
+            <td className="first_table_col">Plugin  Extension</td>
             <td>
               <div className="check_div">
                 <label className="check_label">
@@ -101,7 +101,7 @@ export default function Table2() {
               </div>
             </td>
           </tr>
-          <tr>
+          {/* <tr>
             <td className="first_table_col">Responsive design</td>
             <td>
               <div className="check_div">
@@ -126,8 +126,8 @@ export default function Table2() {
                 </label>
               </div>
             </td>
-          </tr>
-          <tr>
+          </tr> */}
+          {/* <tr>
             <td className="first_table_col">Include source code</td>
             <td>
               <div className="check_div">
@@ -152,7 +152,7 @@ export default function Table2() {
                 </label>
               </div>
             </td>
-          </tr>
+          </tr> */}
           <tr>
             <td className="first_table_col">Revisions</td>
             <td className="tdd">

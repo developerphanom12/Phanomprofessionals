@@ -228,7 +228,7 @@ export default function PostNav() {
             </div>
           </div>
           <div className="orders">Orders</div>
-          <div className="profile" onClick={()=>{navigate("/loginseller")}}>
+          <div className="profile">
             <img src={logoimg} alt="img" />
           </div>
         </div>

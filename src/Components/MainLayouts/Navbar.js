@@ -53,9 +53,7 @@ export default function Navbar() {
     <Root>
       <div
         className="logo_img"
-        onClick={() => {
-          navigate("/innerpages");
-        }}
+        onClick={()=>{navigate("/loginseller")}}
       >
         <img src={logo} alt="img" />
       </div>

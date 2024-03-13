@@ -4,10 +4,16 @@ const initialState = {
   role: "",
   appDetails: {},
   isLoading: false,
+  gigId: null,
 
 };
 const UserReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "UPDATE_GIG_ID":
+      return {
+        ...state,
+        gigId: action.payload,
+      };
     case "USER_DATA":
       return {
         ...state,

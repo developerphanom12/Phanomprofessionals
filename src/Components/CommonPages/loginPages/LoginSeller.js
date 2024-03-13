@@ -37,18 +37,15 @@ export default function LoginSeller() {
   const dispatch = useDispatch();
 
 
-  
-
   const  onSubmit = async (data) => {
     try {
       const res = await axios.post(`${EXCHANGE_URLS}/loginseller`, data);
       console.log("resres", res?.data?.data);
-      if (res?.status === 201) {
+      if (res?.status === 200) {
+        navigate("/dashboard");
         localStorage.setItem("token", res?.data?.data?.token);
-        console.log("tokkkeennn",res?.data?.data?.token)
         dispatch(userDataAction(res?.data?.data));
         dispatch(userCheckAction(true));
-        navigate("/gigs");
         toast.success("Login Successfully");
       }
     } catch (err) {
@@ -59,14 +56,10 @@ export default function LoginSeller() {
   const {
     register,
     handleSubmit,
-    // formState: { errors },
     formState: { errors } = {},
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-
-  
 
   return (
     <Root>
