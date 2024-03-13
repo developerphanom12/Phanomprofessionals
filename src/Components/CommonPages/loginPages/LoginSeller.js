@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useForm } from "react-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -9,9 +8,27 @@ import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { EXCHANGE_URLS } from "../../Important/URLS";
+import { useForm } from "react-hook-form";
+import { userCheckAction, userDataAction } from "../../../redux/users/action";
+
+
+
+
+const schema = yup.object().shape({
+  username: yup
+    .string()
+    .required("Username is required."),
+  password: yup
+    .string()
+    .required("Password is required.")
+    .min(5, "Password should be at least 5 characters.")
+    // .matches(
+    //   /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/,
+    //   "Password should contain at least one uppercase letter, lowercase letter, digit, and special symbol."
+    // ),
+});
 
 export default function LoginSeller() {
-    const [val,setVal] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -19,43 +36,37 @@ export default function LoginSeller() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const schema = yup.object().shape({
-    username: yup.string().required("Username is required."),
-    password: yup.string().required("Password is required."),
-  });
+
+  
+
+  const  onSubmit = async (data) => {
+    try {
+      const res = await axios.post(`${EXCHANGE_URLS}/loginseller`, data);
+      console.log("resres", res?.data?.data);
+      if (res?.status === 201) {
+        localStorage.setItem("token", res?.data?.data?.token);
+        console.log("tokkkeennn",res?.data?.data?.token)
+        dispatch(userDataAction(res?.data?.data));
+        dispatch(userCheckAction(true));
+        navigate("/gigs");
+        toast.success("Login Successfully");
+      }
+    } catch (err) {
+      console.log("err", err);
+      toast.error("An error occurred during login");
+    }
+  };
   const {
-    register,    
+    register,
     handleSubmit,
-    formState: {errors},
-    reset,
+    // formState: { errors },
+    formState: { errors } = {},
   } = useForm({
     resolver: yupResolver(schema),
   });
 
 
-  const getLogin = async () => {
-    try {
-      const axiosConfig = {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      };
-      const res = await axios.post(
-       `${EXCHANGE_URLS}/loginseller`,val,
-        axiosConfig
-      );
-      if (res?.status === 200) {
-        reset()
-      }
-    } catch (err) {
-      toast.error(err,"Failed to fet ch messages");
-    }
-  };
-
-
-  const onSubmit = (data) => {
-    getLogin(data);
-  };
+  
 
   return (
     <Root>
@@ -63,8 +74,10 @@ export default function LoginSeller() {
         <div>
           <div>
             <label>User name or email address</label>
-            <input type="username" {...register("username")} />
-            {errors.username && <p>{errors.username.message}</p>}
+            <input type="username"
+             {...register("username")}
+              />
+            {errors.email && <p>{errors.email.message}</p>}
           </div>
           <div>
             <label>Password</label>
@@ -76,23 +89,15 @@ export default function LoginSeller() {
               <button className="btn" onClick={togglePasswordVisibility}>
                 {showPassword ? <IoEyeSharp /> : <IoEyeOffSharp />}
               </button>
-               {errors.password && <p>{errors.password.message}</p>}
+              {errors.password && <p>{errors.password.message}</p>}{" "}
             </div>
           </div>
           <div>
-<<<<<<< HEAD
-          <button type="submit">Login</button>    
-          </div>
-        </div>
-      </form>
-    </Root> 
-=======
           <button type="submit">Login</button>
           </div>
         </div>
       </form>
     </Root>
->>>>>>> e130a914f732b62ceaeab6b92696f060cf9f71ed
   );
 }
 const Root = styled.section`
