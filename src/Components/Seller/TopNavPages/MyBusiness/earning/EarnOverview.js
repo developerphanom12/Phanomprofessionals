@@ -25,7 +25,7 @@ export default function EarnOverview() {
                   Manage payout methods
                 </a>
               </div>
-            </div>
+            </div>     
           </div>
 
           <div className="column_two">
