@@ -24,7 +24,7 @@ export default function LoginSeller() {
     password: yup.string().required("Password is required."),
   });
   const {
-    register,
+    register,    
     handleSubmit,
     formState: {errors},
     reset,
