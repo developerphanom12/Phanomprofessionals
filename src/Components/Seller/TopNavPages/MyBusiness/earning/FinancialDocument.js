@@ -98,7 +98,7 @@ export default function FinancialDocument() {
           <div className="row">
             <div className="col-lg-6"></div>
             <div className="col-lg-6 actin_btn">
-              <button className="cancel_btn">Cancel</button>
+              <button className="cancel_btn" onClick={() => setmodal(false)}>Cancel</button>
               <button className="download_btn">Download Statement</button>
             </div>
           </div>

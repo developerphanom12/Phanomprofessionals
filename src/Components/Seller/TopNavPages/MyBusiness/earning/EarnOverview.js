@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { HiQuestionMarkCircle } from "react-icons/hi";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -6,9 +6,13 @@ import { GrDocumentCsv } from "react-icons/gr";
 
 
 export default function EarnOverview() {
+  const [show, setShow] = useState(false);
+  function toggleShowName(){
+    setShow(prevState => !prevState);
+  };
   return (
     <Root>
-      <div className="main_div">
+      <div className="main_div"  onClick={() => setShow(!show)}>
         <div className="main_div_one">
           <div className="column_one">
             <h6>Available funds</h6>
@@ -25,7 +29,7 @@ export default function EarnOverview() {
                   Manage payout methods
                 </a>
               </div>
-            </div>     
+            </div>
           </div>
 
           <div className="column_two">
@@ -90,10 +94,14 @@ export default function EarnOverview() {
 
         <div className="main_div_two">
           <div className="table_menubar">
-            <button>
+            <button  onClick={toggleShowName}>
               <span>Date range</span>
-              <MdKeyboardArrowDown />
+              <MdKeyboardArrowDown/>
             </button>
+            <div className="show-content"> 
+              {show && <h1>Hello Gagan</h1>}
+            </div>
+            
             <button>
               <span>Acitivity</span>
               <MdKeyboardArrowDown />
