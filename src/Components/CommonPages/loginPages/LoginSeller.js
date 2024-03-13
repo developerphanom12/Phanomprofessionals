@@ -48,7 +48,7 @@ export default function LoginSeller() {
         reset()
       }
     } catch (err) {
-      toast.error(err,"Failed to fetch messages");
+      toast.error(err,"Failed to fet ch messages");
     }
   };
 
