@@ -80,11 +80,19 @@ export default function LoginSeller() {
             </div>
           </div>
           <div>
+<<<<<<< HEAD
           <button type="submit">Login</button>    
           </div>
         </div>
       </form>
     </Root> 
+=======
+          <button type="submit">Login</button>
+          </div>
+        </div>
+      </form>
+    </Root>
+>>>>>>> e130a914f732b62ceaeab6b92696f060cf9f71ed
   );
 }
 const Root = styled.section`

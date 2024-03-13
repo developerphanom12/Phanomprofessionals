@@ -56,7 +56,7 @@ export default function PostNav() {
   return (
     <Post>
       <div className="main_div1">
-        <div className="logo_img">
+        <div className="logo_img" >
           <img src={logo1} alt="img" />
         </div>
         {/* <div className="search_bar">
@@ -228,7 +228,7 @@ export default function PostNav() {
             </div>
           </div>
           <div className="orders">Orders</div>
-          <div className="profile">
+          <div className="profile" onClick={()=>{navigate("/loginseller")}}>
             <img src={logoimg} alt="img" />
           </div>
         </div>
