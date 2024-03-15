@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Table3() {
+export default function Table3({ data, setData ,data2, setData2 ,data3, setData3}) {
   return (
     <Root>
       <table>
@@ -13,7 +13,13 @@ export default function Table3() {
                 <span>
                   <div className="txt_div">
                     <div className="dollar">$</div>
-                    <input type="number" />
+                    <input
+                      type="number"
+                      value={data.price}
+                      onChange={(e) =>
+                        setData({ ...data, price: e.target.value })
+                      }
+                    />
                   </div>
                 </span>
               </div>
@@ -23,7 +29,13 @@ export default function Table3() {
                 <span>
                   <div className="txt_div">
                     <div className="dollar">$</div>
-                    <input type="number" />
+                    <input
+                      type="number"
+                      value={data2.price}
+                      onChange={(e) =>
+                        setData2({ ...data2, price: e.target.value })
+                      }
+                    />
                   </div>
                 </span>
               </div>
@@ -33,7 +45,13 @@ export default function Table3() {
                 <span>
                   <div className="txt_div">
                     <div className="dollar">$</div>
-                    <input type="number" />
+                    <input
+                      type="number"
+                      value={data3.price}
+                      onChange={(e) =>
+                        setData3({ ...data3, price: e.target.value })
+                      }
+                    />
                   </div>
                 </span>
               </div>
@@ -75,7 +93,7 @@ const Root = styled.section`
           .outer_div {
             order: 1px solid #dadbdd;
             border-radius: 8px;
-            padding: 8px ;
+            padding: 8px;
           }
           .txt_div {
             width: 100%;

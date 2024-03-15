@@ -4,28 +4,54 @@ import Table1 from "./Table1";
 import Table2 from "./Table2";
 import { IoCheckmark } from "react-icons/io5";
 import Table3 from "./Table3";
-import Table4 from "./Table4";
 import Table5 from "./Table5";
 import axios from "axios";
 import { EXCHANGE_URLS } from "../../../Important/URLS";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function Pricing() {
+  const gigId = useSelector((state) => state.users.gigId);
   const [data, setData] = useState({
-    // gig_id: "",
+    gig_id: gigId ? gigId.toString() : "",
     title: "",
     description: "",
     delivery_time: "",
     number_of_pages: "",
     revision: "",
-    plugin_extension: "",
+    plugin_extension: 1,
     price: "",
-    plan_type: "",
-    content_upload: "",
+    plan_type: "basic",
+    content_upload: true,
+  });
+  const [data2, setData2] = useState({
+    gig_id: gigId ? gigId.toString() : "",
+    title: "",
+    description: "",
+    delivery_time: "",
+    number_of_pages: "",
+    revision: "",
+    plugin_extension: 1,
+    price: "",
+    plan_type: "standard",
+    content_upload: true,
+  });
+  const [data3, setData3] = useState({
+    gig_id: gigId ? gigId.toString() : "",
+    title: "",
+    description: "",
+    delivery_time: "",
+    number_of_pages: "",
+    revision: "",
+    plugin_extension: 1,
+    price: "",
+    plan_type: "premium",
+    content_upload: true,
   });
 
-  const gigId = useSelector((state) => state.users.gigId);
+  const navigate = useNavigate();
+  console.log("gigId", gigId);
   const appPricing = async () => {
     try {
       const axiosConfig = {
@@ -33,14 +59,35 @@ export default function Pricing() {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       };
+
       const updatedData = { ...data, gig_id: gigId };
       const res = await axios.post(
         `${EXCHANGE_URLS}/gigspriceadd`,
-        data,updatedData,
+        updatedData,
         axiosConfig
       );
       if (res?.status === 200) {
         toast.success("Updated");
+      }
+      const updatedData2 = { ...data2, gig_id: gigId };
+      const res2 = await axios.post(
+        `${EXCHANGE_URLS}/gigspriceadd`,
+        updatedData2,
+        axiosConfig
+      );
+      if (res2?.status === 200) {
+        toast.success("Updated");
+      }
+
+      const updatedData3 = { ...data3, gig_id: gigId };
+      const res3 = await axios.post(
+        `${EXCHANGE_URLS}/gigspriceadd`,
+        updatedData3,
+        axiosConfig
+      );
+      if (res3?.status === 200) {
+        toast.success("Updated");
+        navigate("/description");
       }
     } catch (err) {
       toast.error("error");
@@ -77,11 +124,39 @@ export default function Pricing() {
         </header>
       </div>
       <div className="div3">
-        <Table1 detail={data} />
-        <Table2 detail={data}/>
-        <Table3 detail={data}/>
+        <Table1
+          data={data}
+          setData={setData}
+          data2={data2}
+          setData2={setData2}
+          data3={data3}
+          setData3={setData3}
+        />
+        <Table2
+          data={data}
+          setData={setData}
+          data2={data2}
+          setData2={setData2}
+          data3={data3}
+          setData3={setData3}
+        />
+        <Table3
+          data={data}
+          setData={setData}
+          data2={data2}
+          setData2={setData2}
+          data3={data3}
+          setData3={setData3}
+        />
         {/* <Table4 /> */}
-        <Table5 detail={data}/>
+        <Table5
+          data={data}
+          setData={setData}
+          data2={data2}
+          setData2={setData2}
+          data3={data3}
+          setData3={setData3}
+        />
       </div>
       <div className="div4">
         <a type="button" role="button" href="/gigs">

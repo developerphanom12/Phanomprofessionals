@@ -41,6 +41,8 @@ import { useEffect } from "react";
 import Loader from "./Components/Important/Loader";
 import Analytics from "./Components/Seller/TopNavPages/Analytics/Analytics";
 import LoginSeller from "./Components/CommonPages/loginPages/LoginSeller";
+import Pricing from "./Components/Seller/edit/pricing/Pricing";
+import DescriptionFAQ from "./Components/Seller/edit/description/DescriptionFAQ";
 
 function App() {
   const userCheck = useSelector((state) => state?.users?.userCheck);
@@ -68,6 +70,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/gigs" element={<Gigs />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/description" element={<DescriptionFAQ />} />
           <Route path="/edit" element={<EditPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/earnings" element={<Earnings />} />

@@ -1,11 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { RiApps2Line } from "react-icons/ri";
 import { IoInformationCircle } from "react-icons/io5";
 import { PiTextT } from "react-icons/pi";
 import { GigButton } from "../../../../GlobalStyles";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { EXCHANGE_URLS } from "../../../Important/URLS";
 
 export default function Requirements() {
+  const gigId = useSelector((state) => state.users.gigId);
+  const [data, setData] = useState({
+    gig_id: gigId ? gigId.toString() : "",
+    questionsAnswers: [{ question: "", answer: "" }],
+  });
+  const [isSectionVisible, setSectionVisible] = useState(true);
+  const [isQuestion, setQuestion] = useState(true);
+
+  const handleQuestion = () => {
+    setQuestion(false);
+  };
+  const handleDismissClick = () => {
+    setSectionVisible(false);
+  };
+
+  const navigate = useNavigate();
+  console.log("gigId", gigId);
+  const appQues = async () => {
+    try {
+      const axiosConfig = {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+
+      const updatedData = { ...data, gig_id: gigId };
+      const res = await axios.post(
+        `${EXCHANGE_URLS}/gigsquestion`,
+        updatedData,
+        axiosConfig
+      );
+      if (res?.status === 200) {
+        toast.success("Updated");
+        navigate("/description");
+      }
+    } catch (err) {
+      toast.error("error");
+    }
+  };
+
+  const handleSubmit = () => {
+    appQues();
+  };
   return (
     <Root>
       <div className="main_req_div">
@@ -55,46 +103,77 @@ export default function Requirements() {
             </strong>
           </div>
         </div>
-        <div className="section_2">
-          <span className="icon_span">
-            <IoInformationCircle />
-          </span>
-          <div className="section_2_div">
-            <div>
-              <p>
-                <span>
-                  Take a moment to make sure your questions aren’t asking for
-                  the same information requested above.
-                </span>
-              </p>
+        {isSectionVisible && (
+          <div className="section_2">
+            <span className="icon_span">
+              <IoInformationCircle />
+            </span>
+            <div className="section_2_div">
+              <div>
+                <p>
+                  <span>
+                    Take a moment to make sure your questions aren’t asking for
+                    the same information requested above.
+                  </span>
+                </p>
+              </div>
+              <button onClick={handleDismissClick}>Dismiss</button>
             </div>
-            <button>Dismiss</button>
+          </div>
+        )}
+
+        {isQuestion && (
+          <>
+            <div className="sectionnn">
+              <ul>
+                <li>
+                  <div className="li_div">
+                    <div className="li_div_div">
+                      <PiTextT />
+                      <span>FREE TEXT</span>
+                      <GigButton>...</GigButton>
+                    </div>
+                    <span className="li_div_span">
+                      1. Is this order for personal use, business use, or a side
+                      project?
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <button className="add_question" onClick={handleQuestion}>
+              + Add New Questions
+            </button>
+          </>
+        )}
+        <div className="your_question">
+          <div className="your_question_div">
+            <span>Questions</span>
+            <input
+              placeholder="Add Your Question"
+              value={data.questionsAnswers}
+              onChange={(e) =>
+                setData({ ...data, questionsAnswers: e.target.value })
+              }
+            />
+          </div>
+          <div className="your_question_div">
+            <span>Answer</span>
+            <input
+              placeholder="Add Your Answer"
+              value={data.questionsAnswers}
+              onChange={(e) =>
+                setData({ ...data, questionsAnswers: e.target.value })
+              }
+            />
           </div>
         </div>
-        <div className="sectionnn">
-          <ul>
-            <li>
-              <div className="li_div">
-                <div className="li_div_div">
-                  <PiTextT />
-                  <span>FREE TEXT</span>
-                  <GigButton>...</GigButton>
-                </div>
-                <span className="li_div_span">
-                  1. Is this order for personal use, business use, or a side
-                  project?
-                </span>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <button className="add_question">+ Add New Questions</button>
       </div>
       <div className="div4">
         <a type="button" role="button" href="link">
           Cancle
         </a>
-        <button>Save</button>
+        <button onClick={handleSubmit}>Save</button>
       </div>
     </Root>
   );
@@ -285,6 +364,32 @@ const Root = styled.section`
       -webkit-transition: 70ms cubic-bezier(0.75, 0, 0.25, 1);
       transition: 70ms cubic-bezier(0.75, 0, 0.25, 1);
       margin-top: 8px;
+    }
+    .your_question {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      margin: 10px;
+      background-color: #dadbdd4a;
+      border: 1px solid #dadbdd;
+      .your_question_div {
+        display: flex;
+        flex-direction: column;
+        span {
+          color: #404145;
+          font-size: 14px;
+          line-height: 21px;
+          font-weight: 600;
+          padding-bottom: 4px;
+        }
+        input {
+          outline: none;
+          border: none;
+          font-size: 14px;
+          padding-bottom: 4px;
+          background-color: #dadbdd0a;
+        }
+      }
     }
   }
   .div4 {

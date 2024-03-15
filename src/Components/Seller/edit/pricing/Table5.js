@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Table5() {
+export default function Table5({ data, setData ,data2, setData2 ,data3, setData3}) {
   return (
     <Root>
       <table>

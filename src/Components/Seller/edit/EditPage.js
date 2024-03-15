@@ -9,7 +9,7 @@ import EditOverview from "./editoverview/EditOverview";
 
 export default function EditPage() {
   const [active, setActive] = useState("editoverview");
-  const [user, setUser] = useState();
+ 
   return (
     <Root>
       <div className="tab_button_area">
@@ -81,13 +81,13 @@ export default function EditPage() {
               {active === "editoverview" ? (
                 <EditOverview />
               ) : active === "pricing" ? (
-                <Pricing detail={user} />
+                <Pricing  />
               ) : active === "descriptionFAQ" ? (
-                <DescriptionFAQ detail={user} />
+                <DescriptionFAQ  />
               ) : active === "requirements" ? (
-                <Requirements detail={user} />
+                <Requirements />
               ) : active === "gallery" ? (
-                <Gallery detail={user} />
+                <Gallery  />
               ) : (
                 <EditOverview />
               )}

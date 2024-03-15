@@ -4,7 +4,7 @@ const initialState = {
   role: "",
   appDetails: {},
   isLoading: false,
-  gigId: null,
+  gigId: "",
 
 };
 const UserReducer = (state = initialState, action) => {

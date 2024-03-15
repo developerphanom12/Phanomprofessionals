@@ -1,7 +1,9 @@
-export const updateGigId = (gigId) => ({
+export const updateGigId = (gigId) => {
+  console.log("gigggId",gigId)
+  return{
   type: "UPDATE_GIG_ID",
   payload: gigId,
-});
+}};
 export const UserDetails = (data) => {
     return {
       type: "USER_DETAILS",

@@ -15,6 +15,9 @@ import {
   IoMdSettings,
 } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { userCheckAction } from "../../redux/users/action";
 
 export default function PostNav() {
   const [showToggles, setShowToggles] = useState({
@@ -26,6 +29,13 @@ export default function PostNav() {
   });
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleLogoutClick = () => {
+    localStorage.setItem("token", "");
+    dispatch(userCheckAction(false));
+    toast.success("Logout Successfully");
+    navigate("/");
+  };
 
   const toggleMessage = () => {
     setShowToggles({ ...showToggles, showMessage: !showToggles.showMessage });
@@ -56,7 +66,9 @@ export default function PostNav() {
   return (
     <Post>
       <div className="main_div1">
-        <div className="logo_img" >
+        <div className="logo_img" onClick={() => {
+              handleLogoutClick();
+            }}>
           <img src={logo1} alt="img" />
         </div>
         {/* <div className="search_bar">

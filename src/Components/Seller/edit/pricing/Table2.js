@@ -2,7 +2,14 @@ import React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import styled from "styled-components";
 
-export default function Table2() {
+export default function Table2({
+  data,
+  setData,
+  data2,
+  setData2,
+  data3,
+  setData3,
+}) {
   return (
     <Root>
       <table>
@@ -13,7 +20,15 @@ export default function Table2() {
               <div className="title_input">
                 <div className="title_input_child">
                   <span className="span_head">
-                    <div className="title_input_gchild">3654</div>
+                    <div className="title_input_gchild">
+                      {" "}
+                      <textarea
+                        value={data.number_of_pages}
+                        onChange={(e) =>
+                          setData({ ...data, number_of_pages: e.target.value })
+                        }
+                      />
+                    </div>
                     <span className="span_svg">
                       <IoIosArrowDown />
                     </span>
@@ -26,7 +41,18 @@ export default function Table2() {
               <div className="title_input">
                 <div className="title_input_child">
                   <span className="span_head">
-                    <div className="title_input_gchild">3654</div>
+                    <div className="title_input_gchild">
+                      {" "}
+                      <textarea
+                        value={data2.number_of_pages}
+                        onChange={(e) =>
+                          setData2({
+                            ...data2,
+                            number_of_pages: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
                     <span className="span_svg">
                       <IoIosArrowDown />
                     </span>
@@ -39,7 +65,18 @@ export default function Table2() {
               <div className="title_input">
                 <div className="title_input_child">
                   <span className="span_head">
-                    <div className="title_input_gchild">3654</div>
+                    <div className="title_input_gchild">
+                      {" "}
+                      <textarea
+                        value={data3.number_of_pages}
+                        onChange={(e) =>
+                          setData3({
+                            ...data3,
+                            number_of_pages: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
                     <span className="span_svg">
                       <IoIosArrowDown />
                     </span>
@@ -50,11 +87,23 @@ export default function Table2() {
             </td>
           </tr>
           <tr>
-            <td className="first_table_col">Plugin  Extension</td>
+            <td className="first_table_col">Plugin Extension</td>
             <td>
               <div className="check_div">
                 <label className="check_label">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={true}
+                    value={1}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        plugin_extension: e.target.checked
+                          ? parseInt(e.target.value)
+                          : 1,
+                      })
+                    }
+                  />
                 </label>
               </div>
             </td>
@@ -62,7 +111,19 @@ export default function Table2() {
               {" "}
               <div className="check_div">
                 <label className="check_label">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={true}
+                    value={1}
+                    onChange={(e) =>
+                      setData2({
+                        ...data2,
+                        plugin_extension: e.target.checked
+                          ? parseInt(e.target.value)
+                          : 1,
+                      })
+                    }
+                  />
                 </label>
               </div>
             </td>
@@ -70,7 +131,19 @@ export default function Table2() {
               {" "}
               <div className="check_div">
                 <label className="check_label">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={true}
+                    value={1}
+                    onChange={(e) =>
+                      setData3({
+                        ...data3,
+                        plugin_extension: e.target.checked
+                          ? parseInt(e.target.value)
+                          : 1,
+                      })
+                    }
+                  />
                 </label>
               </div>
             </td>
@@ -80,7 +153,17 @@ export default function Table2() {
             <td>
               <div className="check_div">
                 <label className="check_label">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={true}
+                    value={true}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        content_upload: e.target.checked,
+                      })
+                    }
+                  />
                 </label>
               </div>
             </td>
@@ -88,7 +171,17 @@ export default function Table2() {
               {" "}
               <div className="check_div">
                 <label className="check_label">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={true}
+                    value={true}
+                    onChange={(e) =>
+                      setData2({
+                        ...data2,
+                        content_upload: e.target.checked,
+                      })
+                    }
+                  />
                 </label>
               </div>
             </td>
@@ -96,70 +189,37 @@ export default function Table2() {
               {" "}
               <div className="check_div">
                 <label className="check_label">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={true}
+                    value={true}
+                    onChange={(e) =>
+                      setData3({
+                        ...data3,
+                        plugin_extension: e.target.checked
+                          
+                      })
+                    }
+                  />
                 </label>
               </div>
             </td>
           </tr>
-          {/* <tr>
-            <td className="first_table_col">Responsive design</td>
-            <td>
-              <div className="check_div">
-                <label className="check_label">
-                  <input type="checkbox" />
-                </label>
-              </div>
-            </td>
-            <td>
-              {" "}
-              <div className="check_div">
-                <label className="check_label">
-                  <input type="checkbox" />
-                </label>
-              </div>
-            </td>
-            <td>
-              {" "}
-              <div className="check_div">
-                <label className="check_label">
-                  <input type="checkbox" />
-                </label>
-              </div>
-            </td>
-          </tr> */}
-          {/* <tr>
-            <td className="first_table_col">Include source code</td>
-            <td>
-              <div className="check_div">
-                <label className="check_label">
-                  <input type="checkbox" />
-                </label>
-              </div>
-            </td>
-            <td>
-              {" "}
-              <div className="check_div">
-                <label className="check_label">
-                  <input type="checkbox" />
-                </label>
-              </div>
-            </td>
-            <td>
-              {" "}
-              <div className="check_div">
-                <label className="check_label">
-                  <input type="checkbox" />
-                </label>
-              </div>
-            </td>
-          </tr> */}
           <tr>
             <td className="first_table_col">Revisions</td>
             <td className="tdd">
               <div className="title_input">
                 <div className="title_input_child">
                   <span className="span_head">
-                    <div className="title_input_gchild">3654</div>
+                    <div className="title_input_gchild">
+                      {" "}
+                      <textarea
+                        value={data.revision}
+                        onChange={(e) =>
+                          setData({ ...data, revision: e.target.value })
+                        }
+                      />
+                    </div>
                     <span className="span_svg">
                       <IoIosArrowDown />
                     </span>
@@ -172,7 +232,15 @@ export default function Table2() {
               <div className="title_input">
                 <div className="title_input_child">
                   <span className="span_head">
-                    <div className="title_input_gchild">3654</div>
+                    <div className="title_input_gchild">
+                      {" "}
+                      <textarea
+                        value={data2.revision}
+                        onChange={(e) =>
+                          setData2({ ...data2, revision: e.target.value })
+                        }
+                      />
+                    </div>
                     <span className="span_svg">
                       <IoIosArrowDown />
                     </span>
@@ -185,39 +253,21 @@ export default function Table2() {
               <div className="title_input">
                 <div className="title_input_child">
                   <span className="span_head">
-                    <div className="title_input_gchild">3654</div>
+                    <div className="title_input_gchild">
+                      {" "}
+                      <textarea
+                        value={data3.revision}
+                        onChange={(e) =>
+                          setData3({ ...data3, revision: e.target.value })
+                        }
+                      />
+                    </div>
                     <span className="span_svg">
                       <IoIosArrowDown />
                     </span>
                     <input type="hidden" />
                   </span>
                 </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td className="first_table_col">Detailed code comments</td>
-            <td>
-              <div className="check_div">
-                <label className="check_label">
-                  <input type="checkbox" />
-                </label>
-              </div>
-            </td>
-            <td>
-              {" "}
-              <div className="check_div">
-                <label className="check_label">
-                  <input type="checkbox" />
-                </label>
-              </div>
-            </td>
-            <td>
-              {" "}
-              <div className="check_div">
-                <label className="check_label">
-                  <input type="checkbox" />
-                </label>
               </div>
             </td>
           </tr>
@@ -271,6 +321,18 @@ const Root = styled.section`
           font-weight: 400;
           .title_input {
             display: flex;
+            textarea {
+              height: 70px;
+              width: 100%;
+              padding-right: 24px;
+              border: none;
+              font-size: 13px;
+              outline: none;
+              background-color: #fff;
+              color: #7a7d85;
+              padding: 6px 7px 7px;
+              border-radius: 3px;
+            }
             .title_input_child {
               width: 100%;
               color: #7a7d85;

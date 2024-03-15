@@ -17,7 +17,7 @@ export default function EarnOverview() {
   }
   return (
     <Root>
-      <div className="main_div" >
+      <div className="main_div">
         <div className="main_div_one">
           <div className="column_one">
             <h6>Available funds</h6>
@@ -114,7 +114,6 @@ export default function EarnOverview() {
             <div className="table_filter">
               <div className="table_filter_header">
                 <h6 className="table_heading">Date range</h6>
-                {/ <button>close</button> /}
               </div>
               <div className="table_filter_body">
                 <select>
@@ -179,7 +178,11 @@ export default function EarnOverview() {
               <button>
                 <GrDocumentCsv />
                 <span>Email activity report</span>
-                <span className="tooltiptext">Your report will include data based on the date range and activity filters selected. Future payments will not appear in the report.</span>
+                <span className="tooltiptext">
+                  Your report will include data based on the date range and
+                  activity filters selected. Future payments will not appear in
+                  the report.
+                </span>
               </button>
             </div>
           </div>
@@ -451,10 +454,10 @@ const Root = styled.section`
       }
       .email_tooltip {
         button {
-          border:none;
-          background:#fff;
-          position:relative;
-          display:inline-block;
+          border: none;
+          background: #fff;
+          position: relative;
+          display: inline-block;
           svg {
             color: green;
             width: 20px;
@@ -469,22 +472,22 @@ const Root = styled.section`
           }
         }
         button .tooltiptext {
-          visibility:hidden;
+          visibility: hidden;
           width: 260px;
-          font-size:15px;
-          font-weight:400;
-          background-color:#404145;
-          color:#fff;
-          text-align:left;
-          border-radius:6px;
-          padding:15px 15px;
-          position:absolute;
-          z-index:1;
-          bottom:125%;
-          left:0;
-          margin-left:-60px;
-          opacity:0;
-          transition:opacity 0.3s;
+          font-size: 15px;
+          font-weight: 400;
+          background-color: #404145;
+          color: #fff;
+          text-align: left;
+          border-radius: 6px;
+          padding: 15px 15px;
+          position: absolute;
+          z-index: 1;
+          bottom: 125%;
+          left: 0;
+          margin-left: -60px;
+          opacity: 0;
+          transition: opacity 0.3s;
         }
 
         button .tooltiptext::after {
@@ -504,7 +507,6 @@ const Root = styled.section`
         }
       }
     }
-
     .table_body {
       margin-top: 24px;
       border: 1px solid #dadbdd;

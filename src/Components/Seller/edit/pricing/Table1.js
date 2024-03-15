@@ -3,16 +3,38 @@ import styled from "styled-components";
 import { TiPencil } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
 
-export default function Table1({detail}) {
+export default function Table1({
+  data,
+  setData,
+  data2,
+  setData2,
+  data3,
+  setData3,
+}) {
   return (
     <Root>
       <table>
         <thead>
           <tr>
             <th className="first_table_col"></th>
-            <th>Basic</th>
-            <th>Standard</th>
-            <th>Premium</th>
+            <th
+              // value={data.plan_type}
+              // onChange={(e) => setData({ ...data, plan_type: e.target.value })}
+            >
+              Basic
+            </th>
+            <th
+              // value={data2.plan_type}
+              // onChange={(e) => setData2({ ...data2, plan_type: e.target.value })}
+            >
+              Standard
+            </th>
+            <th
+              // value={data3.plan_type}
+              // onChange={(e) => setData3({ ...data3, plan_type: e.target.value })}
+            >
+              Premium
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -20,7 +42,11 @@ export default function Table1({detail}) {
             <td className="first_table_col"></td>
             <td>
               <div className="title_input">
-                <textarea onClick={detail.title}>122</textarea>
+                <textarea
+                  value={data.title}
+                  id="basic"
+                  onChange={(e) => setData({ ...data, title: e.target.value })}
+                />
                 <span className="span_headd">
                   <TiPencil />
                 </span>
@@ -28,7 +54,13 @@ export default function Table1({detail}) {
             </td>
             <td>
               <div className="title_input">
-                <textarea>1223</textarea>
+                <textarea
+                  value={data2.title}
+                  id="premium"
+                  onChange={(e) =>
+                    setData2({ ...data2, title: e.target.value })
+                  }
+                />
                 <span className="span_headd">
                   <TiPencil />
                 </span>
@@ -36,7 +68,13 @@ export default function Table1({detail}) {
             </td>
             <td>
               <div className="title_input">
-                <textarea>1224532</textarea>
+                <textarea
+                  id="standard"
+                  value={data3.title}
+                  onChange={(e) =>
+                    setData3({ ...data3, title: e.target.value })
+                  }
+                />
                 <span className="span_headd">
                   <TiPencil />
                 </span>
@@ -47,7 +85,12 @@ export default function Table1({detail}) {
             <td className="first_table_col"></td>
             <td>
               <div className="title_input">
-                <textarea>122</textarea>
+                <textarea
+                  value={data.description}
+                  onChange={(e) =>
+                    setData({ ...data, description: e.target.value })
+                  }
+                />
                 <span className="span_headd">
                   <TiPencil />
                 </span>
@@ -55,7 +98,12 @@ export default function Table1({detail}) {
             </td>
             <td>
               <div className="title_input">
-                <textarea>1223</textarea>
+                <textarea
+                  value={data2.description}
+                  onChange={(e) =>
+                    setData2({ ...data2, description: e.target.value })
+                  }
+                />
                 <span className="span_headd">
                   <TiPencil />
                 </span>
@@ -63,7 +111,12 @@ export default function Table1({detail}) {
             </td>
             <td>
               <div className="title_input">
-                <textarea>1224532</textarea>
+                <textarea
+                  value={data3.description}
+                  onChange={(e) =>
+                    setData3({ ...data3, description: e.target.value })
+                  }
+                />
                 <span className="span_headd">
                   <TiPencil />
                 </span>
@@ -71,12 +124,20 @@ export default function Table1({detail}) {
             </td>
           </tr>
           <tr>
-            <td className="first_table_col"></td>
+            <td className="first_table_col">delivery time</td>
             <td>
               <div className="title_input">
                 <div className="title_input_child">
                   <span className="span_head">
-                    <div className="title_input_gchild">delivery time</div>
+                    <div className="title_input_gchild">
+                      {" "}
+                      <textarea
+                        value={data.delivery_time}
+                        onChange={(e) =>
+                          setData({ ...data, delivery_time: e.target.value })
+                        }
+                      />
+                    </div>
                     <span className="span_svg">
                       <IoIosArrowDown />
                     </span>
@@ -90,7 +151,15 @@ export default function Table1({detail}) {
               <div className="title_input">
                 <div className="title_input_child">
                   <span className="span_head">
-                    <div className="title_input_gchild">34</div>
+                    <div className="title_input_gchild">
+                      {" "}
+                      <textarea
+                        value={data2.delivery_time}
+                        onChange={(e) =>
+                          setData2({ ...data2, delivery_time: e.target.value })
+                        }
+                      />
+                    </div>
                     <span className="span_svg">
                       <IoIosArrowDown />
                     </span>
@@ -104,7 +173,15 @@ export default function Table1({detail}) {
               <div className="title_input">
                 <div className="title_input_child">
                   <span className="span_head">
-                    <div className="title_input_gchild">34</div>
+                    <div className="title_input_gchild">
+                      {" "}
+                      <textarea
+                        value={data3.delivery_time}
+                        onChange={(e) =>
+                          setData3({ ...data3, delivery_time: e.target.value })
+                        }
+                      />
+                    </div>
                     <span className="span_svg">
                       <IoIosArrowDown />
                     </span>
@@ -165,6 +242,7 @@ const Root = styled.section`
               color: #7a7d85;
               padding: 6px 7px 7px;
               border-radius: 3px;
+              outline: none;
             }
             .span_headd {
               svg {
