@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import logo1 from "../Images/logo_final_web.webp";
-import {
-  IoNotificationsOffOutline,
-  IoVolumeHigh,
-} from "react-icons/io5";
+import { IoNotificationsOffOutline, IoVolumeHigh } from "react-icons/io5";
 import { CiHeart, CiMail } from "react-icons/ci";
 import logoimg from "../Images/Boyspic.png";
 import "react-tooltip/dist/react-tooltip.css";
@@ -18,8 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { userCheckAction } from "../../redux/users/action";
-
-
+import PostBotttomNav from "./category/PostBotttomNav";
 
 
 export default function PostNav() {
@@ -28,7 +24,7 @@ export default function PostNav() {
     showNotification: false,
     showBusiness: false,
     showGrowth: false,
-    showAnalytics: false
+    showAnalytics: false,
   });
 
   const navigate = useNavigate();
@@ -44,7 +40,10 @@ export default function PostNav() {
     setShowToggles({ ...showToggles, showMessage: !showToggles.showMessage });
   };
   const toggleNotification = () => {
-    setShowToggles({ ...showToggles, showNotification: !showToggles.showNotification });
+    setShowToggles({
+      ...showToggles,
+      showNotification: !showToggles.showNotification,
+    });
   };
   const toggleBusiness = () => {
     setShowToggles({ ...showToggles, showBusiness: !showToggles.showBusiness });
@@ -53,7 +52,10 @@ export default function PostNav() {
     setShowToggles({ ...showToggles, showGrowth: !showToggles.showGrowth });
   };
   const toggleAnalytics = () => {
-    setShowToggles({ ...showToggles, showAnalytics: !showToggles.showAnalytics });
+    setShowToggles({
+      ...showToggles,
+      showAnalytics: !showToggles.showAnalytics,
+    });
   };
 
   const closeAllToggles = () => {
@@ -62,30 +64,32 @@ export default function PostNav() {
       showNotification: false,
       showBusiness: false,
       showGrowth: false,
-      showAnalytics: false
+      showAnalytics: false,
     });
   };
 
   return (
-    <Post>
+    <Root>
       <div className="main_div1">
-        <div className="logo_img" onClick={() => {
-              handleLogoutClick();
-            }}>
+        <div
+          className="logo_img"
+          onClick={() => {
+            handleLogoutClick();
+          }}
+        >
           <img src={logo1} alt="img" />
         </div>
-        {/* <div className="search_bar">
-          <input placeholder="What service are you looking for Today" />
-          <p className="svg_search">
-            <IoSearch />
-          </p>
-        </div> */}
+
         <div className="top_nav_pages">
           <div className="dashboard">
             <a href="./dashboard">Dashboard</a>
           </div>
           <div className="business">
-            <button onClick={()=>{toggleBusiness(); }}>
+            <button
+              onClick={() => {
+                toggleBusiness();
+              }}
+            >
               <span>My Business</span>
               <IoIosArrowDown />
             </button>
@@ -94,7 +98,8 @@ export default function PostNav() {
                 <div className="top">
                   <button
                     onClick={() => {
-                      navigate("/orders");closeAllToggles();
+                      navigate("/orders");
+                      closeAllToggles();
                     }}
                   >
                     Orders
@@ -103,14 +108,16 @@ export default function PostNav() {
                 <div className="middle">
                   <button
                     onClick={() => {
-                      navigate("/gigs");closeAllToggles();
+                      navigate("/gigs");
+                      closeAllToggles();
                     }}
                   >
                     Gigs
                   </button>
                   <button
                     onClick={() => {
-                      navigate("/profile");closeAllToggles();
+                      navigate("/profile");
+                      closeAllToggles();
                     }}
                   >
                     Profiles
@@ -119,14 +126,16 @@ export default function PostNav() {
                 <div className="bottom">
                   <button
                     onClick={() => {
-                      navigate("/earnings");closeAllToggles();
+                      navigate("/earnings");
+                      closeAllToggles();
                     }}
                   >
                     Earnings
                   </button>
                   <button
                     onClick={() => {
-                      navigate("/phanomworkspace");closeAllToggles();
+                      navigate("/phanomworkspace");
+                      closeAllToggles();
                     }}
                   >
                     Phanom Workspace
@@ -136,7 +145,11 @@ export default function PostNav() {
             )}
           </div>
           <div className="business">
-            <button onClick={()=>{toggleAnalytics() }}>
+            <button
+              onClick={() => {
+                toggleAnalytics();
+              }}
+            >
               <span>Analytics</span>
               <IoIosArrowDown />
             </button>
@@ -145,14 +158,16 @@ export default function PostNav() {
                 <div className="top">
                   <button
                     onClick={() => {
-                      navigate("/analytics"); closeAllToggles();
+                      navigate("/analytics");
+                      closeAllToggles();
                     }}
                   >
                     Overview
                   </button>
                   <button
                     onClick={() => {
-                      navigate("/analytics"); closeAllToggles();
+                      navigate("/analytics");
+                      closeAllToggles();
                     }}
                   >
                     Repeat Business
@@ -168,7 +183,9 @@ export default function PostNav() {
               <a
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content="Notification"
-                onClick={()=>{toggleNotification();}}
+                onClick={() => {
+                  toggleNotification();
+                }}
               >
                 <IoIosNotificationsOutline />
               </a>
@@ -202,8 +219,9 @@ export default function PostNav() {
               <a
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content="Message"
-                onClick={()=>{toggleMessage(); }}
-               
+                onClick={() => {
+                  toggleMessage();
+                }}
               >
                 <CiMail />
               </a>
@@ -230,7 +248,7 @@ export default function PostNav() {
                       {/* <IoMdVolumeOff /> */}
                       <IoMdSettings />
                     </div>
-                    <a >See All In Inbox</a>
+                    <a>See All In Inbox</a>
                   </div>
                 </div>
               )}
@@ -248,11 +266,11 @@ export default function PostNav() {
           </div>
         </div>
       </div>
-    
-    </Post>
+      <PostBotttomNav />
+    </Root>
   );
 }
-const Post = styled.section`
+const Root = styled.section`
   font-family: "Macan", Helvetica Neue, Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
@@ -508,12 +526,11 @@ const Post = styled.section`
       }
     }
   }
-   
 
   .main_div1,
   .main_div2 {
     display: flex;
     flex-wrap: wrap;
-    border-bottom:1px solid #dadbdd;
+    border-bottom: 1px solid #dadbdd;
   }
 `;

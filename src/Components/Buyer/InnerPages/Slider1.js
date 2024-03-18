@@ -8,10 +8,10 @@ import banner from "../../Images/BannerDesktop.png";
 import profile from "../../Images/button1.webp";
 
 export default function Slider1() {
-  var settings = {
-    dots: true,
+  var settings = {    
+    dots: false,
     infinite: true,     
-    speed: 500,
+    speed: 500,        
     slidesToShow: 1,
     // slidesToScroll: 1,
   };
@@ -46,13 +46,13 @@ export default function Slider1() {
           <p>description</p>
         </div>
         <div>
-          <h5>Rating</h5>
+          <h5>Rating</h5>  
         </div>
       </div>
     </Sliderrrs>
   );
 }
-const Sliderrrs = styled.section`
+const Sliderrrs = styled.section`      
   > div {
     width: 298px;
     .img {
@@ -66,7 +66,7 @@ const Sliderrrs = styled.section`
     display: flex;
     flex-direction: column;
     .profile_footer {
-      display: flex;
+      display: flex;   
       h6 {
         padding: 10px;
       }
@@ -121,8 +121,8 @@ const Sliderrrs = styled.section`
     height: 30px !important;
     z-index: 1;
     position: relative;
-    top: -80px !important;
-    left: 248px !important;
+    top: -80px ;
+    left: 248px ;
     background: lightgray;
     border-radius: 100px;
  /* margin-top:170px;  */
