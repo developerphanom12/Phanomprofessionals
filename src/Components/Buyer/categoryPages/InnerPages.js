@@ -1,6 +1,6 @@
 import React from "react";
 import Page1 from "./Page1";
-import SimpleSlider from "./SimpleSlider";
+import SimpleSlider from "./BrowseHistory";
 import GigsSlider from "./GigsSlider";
 import Websitedev from "./Websitedev";
 import Populargigs from "./Populargigs";

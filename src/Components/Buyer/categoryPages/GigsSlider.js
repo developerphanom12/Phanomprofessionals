@@ -4,7 +4,7 @@ import {
   IoIosArrowDropright,
   IoIosArrowRoundForward,
 } from "react-icons/io";
-import Slider1 from "./Slider1";
+import Slider1 from "./BrowserSlider1";
 import styled from "styled-components";
 
 function GigsSlider() {

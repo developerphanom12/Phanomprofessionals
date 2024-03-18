@@ -1,23 +1,50 @@
 import React, { useState, useRef, useEffect } from "react";
 import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
-import Slider1 from "./Slider1";
+import Slider1 from "./BrowserSlider1";
 import styled from "styled-components";
+import axios from "axios";
+import { EXCHANGE_URLS } from "../../Important/URLS";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import BrowserSlider1 from "./BrowserSlider1";
 
-function SimpleSlider() {
+function BrowseHistory() {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const allTSlideApi = async () => {
+    const axiosConfig = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    try {
+      const res = await axios.get(
+        `${EXCHANGE_URLS}/gigslist`,
+        axiosConfig
+      );
+      if (res?.status === 201) {
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      toast.error(err, "Error");
+    }
+  };
+  useEffect(() => {
+    allTSlideApi();
+  }, []);
+  const navigate = useNavigate();
   const slideRef = useRef();
 
   const slides = [
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
+    <BrowserSlider1 />,
+    <BrowserSlider1 />,
+    <BrowserSlider1 />,
+    <BrowserSlider1 />,
+    <BrowserSlider1 />,
+    <BrowserSlider1 />,
+    <BrowserSlider1 />,
+    <BrowserSlider1 />,
   ];
-
   const totalSlides = slides.length;
   const slidesToShow = 4;
   const slideWidth = 300;
@@ -68,7 +95,7 @@ function SimpleSlider() {
   );
 }
 
-export default SimpleSlider;
+export default BrowseHistory;
 
 const Root = styled.section`
   width: 100vw;
@@ -104,7 +131,7 @@ const Root = styled.section`
     outline: none;
     color: lightgray;
     width: 40px;
-    height: 40px ;
+    height: 40px;
     z-index: 1;
     background: #fff;
     border-radius: 100px;

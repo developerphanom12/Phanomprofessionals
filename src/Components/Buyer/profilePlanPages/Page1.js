@@ -17,6 +17,8 @@ import { FaCheck, FaRegClock, FaShareAlt } from "react-icons/fa";
 import { SlOptions } from "react-icons/sl";
 import { TbRefresh } from "react-icons/tb";
 import { FaArrowRightLong } from "react-icons/fa6";
+import SliderImage from "./SliderImage";
+import SliderText from "./SliderText";
 // import SliderImage from "./SliderImage";
 // import SliderText from "./SliderText";
 
@@ -63,7 +65,7 @@ export default function Page1() {
               <HiOutlineTrophy /> People keep coming back! amirkhan1996 has an
               exceptional number of repeat buyers.
             </p>
-            {/* <SliderImage /> */}
+            <SliderImage />
           </div>
           <div className="about_slider">
             <p>
@@ -71,7 +73,7 @@ export default function Page1() {
               <button className="button_slider">See all reviews</button>
             </p>
 
-            {/* <SliderText /> */}
+            <SliderText />
           </div>
           <div className="About_this_gig">
             <h4> About this gig</h4>

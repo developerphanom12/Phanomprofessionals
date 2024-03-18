@@ -7,7 +7,7 @@ import imggg from "../../Images/k.webp";
 import banner from "../../Images/BannerDesktop.png";
 import profile from "../../Images/button1.webp";
 
-export default function Slider1() {
+export default function BrowserSlider1() {
   var settings = {    
     dots: false,
     infinite: true,     
