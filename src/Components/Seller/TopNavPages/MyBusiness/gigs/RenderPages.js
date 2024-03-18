@@ -7,10 +7,18 @@ import Modification from "./Modification";
 import Draft from "./Draft";
 import Denied from "./Denied";
 import Paused from "./Paused";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 export default function RenderPages() {
   const [active, setActive] = useState("active");
   const [user, setUser] = useState();
 
+  const navigate = useNavigate();
+
+  const handleGigCreate = () => {
+    toast.warn("Complete Steps In Sequence");
+    navigate("/edit");
+  };
   return (
     <Root>
       <div className="tab_button_area">
@@ -22,7 +30,7 @@ export default function RenderPages() {
                 setActive("active");
               }}
             >
-              ACTIVE 
+              ACTIVE
             </GigButton>
           </div>
           <div>
@@ -77,7 +85,13 @@ export default function RenderPages() {
           </div>
         </div>
         <div className="create_btn">
-          <CreateButton>CREATE A NEW GIG</CreateButton>
+          <CreateButton
+            onClick={() => {
+              handleGigCreate()
+            }}
+          >
+            CREATE A NEW GIG
+          </CreateButton>
         </div>
       </div>
       <div className="table">
@@ -169,5 +183,4 @@ const Root = styled.section`
       padding: 0;
     }
   }
-  
 `;

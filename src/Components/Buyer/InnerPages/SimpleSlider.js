@@ -39,7 +39,7 @@ export default function SimpleSlider() {
   };
   return (
     <Sliderr>
-      <h2>
+      <h2 className="main_heading">
         Continue Browsing
         <IoIosArrowRoundForward />
       </h2>
@@ -79,6 +79,11 @@ const Sliderr = styled.section`
   border-radius: 5px;
   padding: 30px 5px;
 
+  .main_heading{
+    font-size: 24px;
+    color: #222325;
+    font-weight: 700;
+}
   .gvNmJZ .slick-slider.slick-initialized {
     display: flex;
     width: 400px !important;

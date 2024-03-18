@@ -9,18 +9,18 @@ import profile from "../../Images/button1.webp";
 
 export default function Slider1() {
   var settings = {
-    dots: false,
-    infinite: true,
+    dots: true,
+    infinite: true,     
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1,
+    // slidesToScroll: 1,
   };
   return (
     <Sliderrrs>
-      <Slider {...settings}>
+      <Slider {...settings}>    
         <div>
           <img className="img" src={imggg} alt="img" />
-        </div>
+        </div>   
         <div>
           <img className="img" src={banner} alt="img" />
         </div>
@@ -121,10 +121,11 @@ const Sliderrrs = styled.section`
     height: 30px !important;
     z-index: 1;
     position: relative;
-    top: -85px !important;
+    top: -80px !important;
     left: 248px !important;
     background: lightgray;
     border-radius: 100px;
+ /* margin-top:170px;  */
     svg {
       width: 30px;
       height: 30px;

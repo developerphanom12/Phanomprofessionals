@@ -9,7 +9,7 @@ import EditOverview from "./editoverview/EditOverview";
 
 export default function EditPage() {
   const [active, setActive] = useState("editoverview");
- 
+
   return (
     <Root>
       <div className="tab_button_area">
@@ -68,10 +68,6 @@ export default function EditPage() {
               </GigButton>
             </div>
           </div>
-          <div className="button_nav_div">
-            <button>Save</button>
-            <button>Save & Preview</button>
-          </div>
         </div>
       </div>
       <div className="table">
@@ -81,13 +77,13 @@ export default function EditPage() {
               {active === "editoverview" ? (
                 <EditOverview />
               ) : active === "pricing" ? (
-                <Pricing  />
+                <Pricing />
               ) : active === "descriptionFAQ" ? (
-                <DescriptionFAQ  />
+                <DescriptionFAQ />
               ) : active === "requirements" ? (
                 <Requirements />
               ) : active === "gallery" ? (
-                <Gallery  />
+                <Gallery />
               ) : (
                 <EditOverview />
               )}
@@ -125,21 +121,7 @@ const Root = styled.section`
         display: flex;
         gap: 20px;
       }
-      .button_nav_div {
-        padding: 10px;
-        display: flex;
-        gap: 20px;
-        button {
-          padding: 6px 11px;
-          line-height: 21px;
-          font-size: 14px;
-          background-color: #fff;
-          color: #222325;
-          border: 1px solid #e4e5e7;
-          border-radius: 5px;
-          font-weight: 600;
-        }
-      }
+
       @media (max-width: 786px) {
         flex-direction: column;
       }
@@ -187,7 +169,7 @@ const Root = styled.section`
     @media (max-width: 600px) {
       padding: 0;
     }
-    .container-fluid{
+    .container-fluid {
       display: flex;
       justify-content: center;
     }

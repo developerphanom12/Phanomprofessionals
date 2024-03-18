@@ -66,8 +66,10 @@ export default function Pricing() {
         updatedData,
         axiosConfig
       );
-      if (res?.status === 200) {
+      if (res?.status === 201) {
         toast.success("Updated");
+        navigate("/description");
+
       }
       const updatedData2 = { ...data2, gig_id: gigId };
       const res2 = await axios.post(
@@ -75,7 +77,8 @@ export default function Pricing() {
         updatedData2,
         axiosConfig
       );
-      if (res2?.status === 200) {
+      if (res2?.status === 201) {
+        navigate("/description");
         toast.success("Updated");
       }
 
@@ -85,12 +88,12 @@ export default function Pricing() {
         updatedData3,
         axiosConfig
       );
-      if (res3?.status === 200) {
-        toast.success("Updated");
+      if (res3?.status === 201) {
         navigate("/description");
+        toast.success("Updated");
       }
     } catch (err) {
-      toast.error("error");
+      toast.error("Firstly Fill Overview Page");
     }
   };
 

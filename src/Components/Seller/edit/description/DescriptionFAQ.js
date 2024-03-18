@@ -17,9 +17,9 @@ export default function DescriptionFAQ() {
   console.log("valudfee", valuee);
   const navigate = useNavigate();
 
-
   const [textCount, setTextCount] = useState({});
   console.log("staffCount", textCount);
+
   const allTextApi = async () => {
     const axiosConfig = {
       headers: {
@@ -27,19 +27,21 @@ export default function DescriptionFAQ() {
       },
     };
     try {
-      const res = await axios.get(`${EXCHANGE_URLS}/gigslist/17`, axiosConfig);
+      const res = await axios.get(
+        `${EXCHANGE_URLS}/gigslist/${gigId}`,
+        axiosConfig
+      );
       if (res?.status === 201) {
         setTextCount(res?.data?.message[0]);
+        navigate("/requirements");
       }
     } catch (err) {
-      toast.error("Error");
+      toast.error(err, "Error");
     }
   };
   useEffect(() => {
     allTextApi();
   }, []);
-
-
 
   const appApi = async () => {
     try {
@@ -48,12 +50,9 @@ export default function DescriptionFAQ() {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       };
-
-      const plainTextContent = valuee.content.replace(/<[^>]*>/g, "");
       const updatedData = {
         ...valuee,
         gig_id: gigId,
-        content: plainTextContent,
       };
       const res = await axios.post(
         `${EXCHANGE_URLS}/gigstexteditor`,
@@ -65,7 +64,7 @@ export default function DescriptionFAQ() {
         toast.success("Updated");
       }
     } catch (err) {
-      toast.error("error");
+      toast.error("Firstly Fill Overview and Pricing Pages Detail");
     }
   };
 
@@ -80,8 +79,7 @@ export default function DescriptionFAQ() {
           <p>Briefly Describe Your Gig</p>
         </header>
         <TextEditor valuee={valuee} setValuee={setValuee} />
-        <TextEditor2 textCount={textCount}/>
-
+        <TextEditor2 textCount={textCount} />
       </div>
       <div className="div4">
         <a type="button" role="button" href="/edit">
@@ -96,7 +94,6 @@ export default function DescriptionFAQ() {
           Save
         </button>
       </div>
-
     </Root>
   );
 }

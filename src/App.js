@@ -43,6 +43,13 @@ import Analytics from "./Components/Seller/TopNavPages/Analytics/Analytics";
 import LoginSeller from "./Components/CommonPages/loginPages/LoginSeller";
 import Pricing from "./Components/Seller/edit/pricing/Pricing";
 import DescriptionFAQ from "./Components/Seller/edit/description/DescriptionFAQ";
+import Gallery from "./Components/Seller/edit/gallery/Gallery";
+import Requirements from "./Components/Seller/edit/requirements/Requirements";
+
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const userCheck = useSelector((state) => state?.users?.userCheck);
@@ -59,7 +66,6 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/message" element={<Message />} />
-          <Route path="/loginseller" element={<LoginSeller />} />
 
 
           {/* buyer pagess--------------------------------------------------------------- */}
@@ -72,6 +78,8 @@ function App() {
           <Route path="/gigs" element={<Gigs />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/description" element={<DescriptionFAQ />} />
+          <Route path="/requirements" element={<Requirements />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/edit" element={<EditPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/earnings" element={<Earnings />} />
@@ -80,7 +88,7 @@ function App() {
           <Route path="/repeatbusiness" element={<RepeatBusiness />} />
 
           {/* common pages -------------------------------------------------------------- */}
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="*" element={<PageNF />} />
           <Route path="/vettingprocess" element={<VettingProcess />} />
           <Route path="/hiremobile" element={<HireMobileApp />} />
@@ -102,8 +110,12 @@ function App() {
           <Route path="/hirereactnative" element={<HireReactNative />} />
           <Route path="/whyindia" element={<WhyIndia />} />
           <Route path="/howitworks" element={<HowItWorks />} />
+          <Route path="/loginseller" element={<LoginSeller />} />
+
         </Routes>
         <Loader />  
+        <ToastContainer />
+
       </Layout>
     </div>
   );

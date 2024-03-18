@@ -1,8 +1,83 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { IoInformationCircle } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { EXCHANGE_URLS } from "../../../Important/URLS";
+import { updateGigId } from "../../../../redux/users/action";
+import { toast } from "react-toastify";
 
 export default function Gallery() {
+  const gigId = useSelector((state) => state.users.gigId);
+  const [imageFiles, setImageFiles] = useState({
+    gig_id: gigId ? gigId.toString() : "",
+    image1: null,
+    image2: null,
+    image3: null,
+    vedio: null,
+  });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const appApi = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("gig_id", gigId);
+      formData.append("image1", imageFiles.image1);
+      formData.append("image2", imageFiles.image2);
+      formData.append("image3", imageFiles.image3);
+      formData.append("vedio", imageFiles.vedio);
+
+      const axiosConfig = {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const res = await axios.post(
+        `${EXCHANGE_URLS}/imageUpload`,
+        formData,
+        axiosConfig
+      );
+      if (res?.status === 201) {
+        const gigId = res.data.data.id;
+        dispatch(updateGigId(gigId));
+        console.log("GigID", gigId);
+        navigate("/gigs");
+        toast.success("Updated");
+      }
+    } catch (err) {
+      toast.error("Error occurred while uploading images and video.");
+    }
+  };
+
+  const handleSubmit = () => {
+    appApi();
+  };
+
+  const handleImageChange = (e, imageKey) => {
+    setImageFiles({
+      ...imageFiles,
+      [imageKey]: e.target.files[0],
+    });
+  };
+
+ 
+  const handleVideoChange = (e) => {
+    const file = e.target.files[0];
+    // Check if the selected file is an MP4 video
+    if (file.type !== "video/mp4") {
+      toast.error("Please upload an MP4 video file.");
+    } else {
+      setImageFiles({
+        ...imageFiles,
+        vedio: file,
+      });
+    }
+  };
+
   return (
     <Root>
       <div className="main_gallery_div">
@@ -17,7 +92,7 @@ export default function Gallery() {
               <IoInformationCircle />
             </span>
             <p className="header_div_p">
-              To comply with Fiverr’s terms of service, make sure to upload only
+              To comply with Phanom's terms of service, make sure to upload only
               content you either own or you have the permission or license to
               use.
             </p>
@@ -26,6 +101,7 @@ export default function Gallery() {
             <span className="button_span">Gig image guidelines</span>
           </button>
         </header>
+
         <div className="img_div_add">
           <h3 className="div_img_h3">
             <p className="div_img_h3_p">Images (up to 3)</p>
@@ -36,9 +112,15 @@ export default function Gallery() {
           </h3>
           <ul>
             <div className="ul_div">
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
+            <li>image 1
+              <input type="file" accept="image/*" onChange={(e) => handleImageChange(e, "image1")} />
+            </li>
+            <li>image 2
+              <input type="file" accept="image/*" onChange={(e) => handleImageChange(e, "image2")} />
+            </li>
+            <li>image 3
+              <input type="file" accept="image/*" onChange={(e) => handleImageChange(e, "image3")} />
+            </li>
             </div>
           </ul>
         </div>
@@ -55,25 +137,26 @@ export default function Gallery() {
 
           <ul>
             <div className="ul_div">
-              <li>1</li>
+            <li>video 1
+            <input type="file" accept="video/*" onChange={handleVideoChange} />
+            </li>
+           
             </div>
           </ul>
         </div>
-        <div className="img_div_add">
-          <h3 className="div_img_h3">
-            <p className="div_img_h3_p">Documents (Up to 2 )</p>
-            <p className="div_img_h3_p2">
-            Show some of the best work you created in a document (PDFs only).
-            </p>
-          </h3>
-
-          <ul>
-            <div className="ul_div">
-              <li>1</li>
-              <li>1</li>
-            </div>
-          </ul>
-        </div>
+      </div>
+      <div className="div4">
+        <a type="button" role="button" href="/gigs">
+          Cancle
+        </a>
+        <button
+          type="submit"
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          Save
+        </button>
       </div>
     </Root>
   );
@@ -87,6 +170,40 @@ const Root = styled.section`
   padding: 0px 40px;
   width: 75vw;
   color: #62646a;
+  .div4 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    a,
+    button {
+      padding: 11px 20px;
+      -webkit-box-pack: center;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      box-sizing: border-box;
+      position: relative;
+      border-radius: 8px;
+      font-weight: 600;
+      line-height: 24px;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      transition: 70ms cubic-bezier(0.75, 0, 0.25, 1);
+    }
+    a {
+      color: #222325;
+      border: 1px solid #e4e5e7;
+    }
+    button {
+      background: #222325;
+      border: 1px solid #fff;
+      color: #fff;
+    }
+  }
   .main_gallery_div {
     width: 100%;
     margin-bottom: 20px;

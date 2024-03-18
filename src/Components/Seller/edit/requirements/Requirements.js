@@ -17,11 +17,7 @@ export default function Requirements() {
     questionsAnswers: [{ question: "", answer: "" }],
   });
   const [isSectionVisible, setSectionVisible] = useState(true);
-  const [isQuestion, setQuestion] = useState(true);
 
-  const handleQuestion = () => {
-    setQuestion(false);
-  };
   const handleDismissClick = () => {
     setSectionVisible(false);
   };
@@ -36,15 +32,14 @@ export default function Requirements() {
         },
       };
 
-      const updatedData = { ...data, gig_id: gigId };
       const res = await axios.post(
         `${EXCHANGE_URLS}/gigsquestion`,
-        updatedData,
+        data,
         axiosConfig
       );
-      if (res?.status === 200) {
+      if (res?.status === 201) {
         toast.success("Updated");
-        navigate("/description");
+        navigate("/gallery");
       }
     } catch (err) {
       toast.error("error");
@@ -53,6 +48,28 @@ export default function Requirements() {
 
   const handleSubmit = () => {
     appQues();
+  };
+
+  const handleQuestionChange = (index, e) => {
+    const newData = [...data.questionsAnswers];
+    newData[index].question = e.target.value;
+    setData({ ...data, questionsAnswers: newData });
+  };
+
+  const handleAnswerChange = (index, e) => {
+    const newData = [...data.questionsAnswers];
+    newData[index].answer = e.target.value;
+    setData({ ...data, questionsAnswers: newData });
+  };
+
+  const addQuestion = () => {
+    setData({
+      ...data,
+      questionsAnswers: [
+        ...data.questionsAnswers,
+        { question: "", answer: "" },
+      ],
+    });
   };
   return (
     <Root>
@@ -122,52 +139,47 @@ export default function Requirements() {
           </div>
         )}
 
-        {isQuestion && (
-          <>
-            <div className="sectionnn">
-              <ul>
-                <li>
-                  <div className="li_div">
-                    <div className="li_div_div">
-                      <PiTextT />
-                      <span>FREE TEXT</span>
-                      <GigButton>...</GigButton>
-                    </div>
-                    <span className="li_div_span">
-                      1. Is this order for personal use, business use, or a side
-                      project?
-                    </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <button className="add_question" onClick={handleQuestion}>
-              + Add New Questions
-            </button>
-          </>
-        )}
-        <div className="your_question">
-          <div className="your_question_div">
-            <span>Questions</span>
-            <input
-              placeholder="Add Your Question"
-              value={data.questionsAnswers}
-              onChange={(e) =>
-                setData({ ...data, questionsAnswers: e.target.value })
-              }
-            />
-          </div>
-          <div className="your_question_div">
-            <span>Answer</span>
-            <input
-              placeholder="Add Your Answer"
-              value={data.questionsAnswers}
-              onChange={(e) =>
-                setData({ ...data, questionsAnswers: e.target.value })
-              }
-            />
-          </div>
+        <div className="sectionnn">
+          <ul>
+            <li>
+              <div className="li_div">
+                <div className="li_div_div">
+                  <PiTextT />
+                  <span>FREE TEXT</span>
+                  <GigButton>...</GigButton>
+                </div>
+                <span className="li_div_span">
+                  1. Is this order for personal use, business use, or a side
+                  project?
+                </span>
+              </div>
+            </li>
+          </ul>
         </div>
+        <button className="add_question" onClick={addQuestion}>
+          + Add New Questions
+        </button>
+
+        {data.questionsAnswers.map((item, index) => (
+          <div key={index} className="your_question">
+            <div className="your_question_div">
+              <span>Question</span>
+              <input
+                placeholder="Add Your Question"
+                value={item.question}
+                onChange={(e) => handleQuestionChange(index, e)}
+              />
+            </div>
+            <div className="your_question_div">
+              <span>Answer</span>
+              <input
+                placeholder="Add Your Answer"
+                value={item.answer}
+                onChange={(e) => handleAnswerChange(index, e)}
+              />
+            </div>
+          </div>
+        ))}
       </div>
       <div className="div4">
         <a type="button" role="button" href="link">

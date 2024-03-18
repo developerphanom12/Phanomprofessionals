@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Navbar from "./Navbar";
+import Navbarr from "./Navbarr";
 import PostNav from "./PostNav";
 import Footer from "./Footer";
 import { useSelector } from "react-redux";
@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   return (
     <Root>
       <div className="top_bar">
-        {token && userCheck ? <PostNav /> : <Navbar />}
+        {token && userCheck ? <PostNav /> : <Navbarr />}
       </div>
       <div className="main_body">{children}</div>
       <div>

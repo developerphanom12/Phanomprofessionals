@@ -20,7 +20,6 @@ export default function EditOverview() {
     useState([]);
   const [selectedWebsiteFeatures, setSelectedWebsiteFeatures] = useState([]);
 
-
   const handleProgrammingLanguageChange = (event) => {
     const { value, checked } = event.target;
     setSelectedProgrammingLanguages((prevLanguages) =>
@@ -46,7 +45,7 @@ export default function EditOverview() {
       gig_title: gigTitle,
       category_id: 1,
       subcategory_id: 1,
-      service_type: "serviceType",
+      service_type: "type",
       tags: "tags",
       programing_language: selectedProgrammingLanguages,
       website_feature: selectedWebsiteFeatures,
@@ -65,7 +64,7 @@ export default function EditOverview() {
       if (res?.status === 201) {
         const gigId = res.data.data.id;
         dispatch(updateGigId(gigId));
-        console.log('GigID',  gigId); 
+        console.log("GigID", gigId);
         navigate("/pricing");
         toast.success("Updated");
       }
@@ -131,7 +130,7 @@ export default function EditOverview() {
             </select>
           </div>
         </div>
-        <button onClick={handleSubmit}>add</button>
+
         <div className="input_group">
           <div className="input_label">
             <span>Gig metadata</span>
@@ -286,6 +285,19 @@ export default function EditOverview() {
             </span>
             Some categories require that sellers verify their skills.
           </div>
+        </div>
+        <div className="div4">
+          <a type="button" role="button" href="/gigs">
+            Cancle
+          </a>
+          <button
+            type="submit"
+            onClick={() => {
+              handleSubmit();
+            }}
+          >
+            Save
+          </button>
         </div>
       </div>
     </Root>
@@ -493,6 +505,41 @@ const Root = styled.section`
           font-weight: 500;
           color: #202020;
         }
+      }
+    }
+    .div4 {
+      width: 90%;
+    margin: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+      a,
+      button {
+        padding: 11px 20px;
+        -webkit-box-pack: center;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        box-sizing: border-box;
+        position: relative;
+        border-radius: 8px;
+        font-weight: 600;
+        line-height: 24px;
+        font-size: 16px;
+        text-decoration: none;
+        cursor: pointer;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        transition: 70ms cubic-bezier(0.75, 0, 0.25, 1);
+      }
+      a {
+        color: #222325;
+        border: 1px solid #e4e5e7;
+      }
+      button {
+        background: #222325;
+        border: 1px solid #fff;
+        color: #fff;
       }
     }
   }
