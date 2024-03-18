@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { userCheckAction } from "../../redux/users/action";
-import PostBotttomNav from "./category/PostBotttomNav";
+import PostBotttomNav from "./Category/PostBotttomNav";
 
 
 export default function PostNav() {

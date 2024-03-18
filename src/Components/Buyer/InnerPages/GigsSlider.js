@@ -1,5 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { IoIosArrowDropleft, IoIosArrowDropright, IoIosArrowRoundForward } from "react-icons/io";
+import {
+  IoIosArrowDropleft,
+  IoIosArrowDropright,
+  IoIosArrowRoundForward,
+} from "react-icons/io";
 import Slider1 from "./Slider1";
 import styled from "styled-components";
 
@@ -42,16 +46,20 @@ function GigsSlider() {
 
   return (
     <Root className="slider-container">
-      <h2 className="main_heading">
-        Gigs you may like
-        <IoIosArrowRoundForward />
-      </h2>
-      <button onClick={goToPreviousSlide}>
-        <IoIosArrowDropleft />
-      </button>
-      <button onClick={goToNextSlide}>
-        <IoIosArrowDropright />
-      </button>
+      <div className="heading_button">
+        <h2 className="main_heading">
+          Gigs you may like
+          <IoIosArrowRoundForward />
+        </h2>
+        <div>
+          <button onClick={goToPreviousSlide}>
+            <IoIosArrowDropleft />
+          </button>
+          <button onClick={goToNextSlide}>
+            <IoIosArrowDropright />
+          </button>
+        </div>
+      </div>
       <div className="slides-container" ref={slideRef}>
         {slides.map((slide, index) => (
           <div
@@ -69,9 +77,14 @@ function GigsSlider() {
 export default GigsSlider;
 
 const Root = styled.section`
-  width: 100vw;
-  padding: 30px 0px;
+  width: 100%;
+  padding: 0px 0px;
   margin: 20px 10px;
+  .heading_button {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
   .main_heading {
     font-size: 24px;
     color: #222325;
@@ -86,7 +99,7 @@ const Root = styled.section`
 
   .slides-container {
     display: flex;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
   }
@@ -100,13 +113,19 @@ const Root = styled.section`
   }
 
   button {
-    background: transparent;
     border: none;
     cursor: pointer;
     outline: none;
+    color: lightgray;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    background: #fff;
+    border-radius: 100px;
     svg {
-      width: 25px;
-      height: 25px;
+      width: 40px;
+      height: 40px;
+      font-weight: 700;
     }
   }
 `;

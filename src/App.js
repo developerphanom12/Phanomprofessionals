@@ -45,11 +45,9 @@ import Pricing from "./Components/Seller/edit/pricing/Pricing";
 import DescriptionFAQ from "./Components/Seller/edit/description/DescriptionFAQ";
 import Gallery from "./Components/Seller/edit/gallery/Gallery";
 import Requirements from "./Components/Seller/edit/requirements/Requirements";
-
-
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import InnPage from "./Components/MainLayouts/subcategory/InnPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const userCheck = useSelector((state) => state?.users?.userCheck);
@@ -60,13 +58,13 @@ function App() {
   useEffect(() => {
     dispatch(loaderAction(false));
   });
- 
+
   return (
     <div>
       <Layout>
         <Routes>
           <Route path="/message" element={<Message />} />
-
+          <Route path="/innpage" element={<InnPage />} />
 
           {/* buyer pagess--------------------------------------------------------------- */}
           <Route path="/innerpages" element={<InnerPages />} />
@@ -111,11 +109,9 @@ function App() {
           <Route path="/whyindia" element={<WhyIndia />} />
           <Route path="/howitworks" element={<HowItWorks />} />
           <Route path="/loginseller" element={<LoginSeller />} />
-
         </Routes>
-        <Loader />  
+        <Loader />
         <ToastContainer />
-
       </Layout>
     </div>
   );

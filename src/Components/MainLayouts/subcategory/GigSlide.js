@@ -1,21 +1,25 @@
 import React, { useState, useRef, useEffect } from "react";
-import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
-import Slider1 from "./Slider1";
+import {
+  IoIosArrowDropleft,
+  IoIosArrowDropright,
+  IoIosArrowRoundForward,
+} from "react-icons/io";
+import Slid from "./Slid";
 import styled from "styled-components";
 
-function SimpleSlider() {
+function GigSlide() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef();
 
   const slides = [
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
+    <Slid />,
+    <Slid />,
+    <Slid />,
+    <Slid />,
+    <Slid />,
+    <Slid />,
+    <Slid />,
+    <Slid />,
   ];
 
   const totalSlides = slides.length;
@@ -42,18 +46,16 @@ function SimpleSlider() {
 
   return (
     <Root className="slider-container">
-      <div className="heading_button">
-        <h3>Based on your browsing history</h3>
-        <div>
-          <button onClick={goToPreviousSlide}>
-            <IoIosArrowDropleft />
-          </button>
-          <button onClick={goToNextSlide}>
-            <IoIosArrowDropright />
-          </button>
-        </div>
-      </div>
-
+      <h2 className="main_heading">
+        Gigs you may like
+        <IoIosArrowRoundForward />
+      </h2>
+      <button onClick={goToPreviousSlide}>
+        <IoIosArrowDropleft />
+      </button>
+      <button onClick={goToNextSlide}>
+        <IoIosArrowDropright />
+      </button>
       <div className="slides-container" ref={slideRef}>
         {slides.map((slide, index) => (
           <div
@@ -68,24 +70,27 @@ function SimpleSlider() {
   );
 }
 
-export default SimpleSlider;
+export default GigSlide;
 
 const Root = styled.section`
   width: 100vw;
+  padding: 30px 0px;
+  margin: 20px 10px;
+  .main_heading {
+    font-size: 24px;
+    color: #222325;
+    font-weight: 700;
+  }
+
   .slider-container {
     display: flex;
     align-items: center;
     overflow-x: hidden;
   }
-  .heading_button {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-  }
 
   .slides-container {
     display: flex;
-    /* overflow-x: auto; */
+    overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
   }
@@ -94,24 +99,17 @@ const Root = styled.section`
     flex: 0 0 auto;
     width: 310px;
     scroll-snap-align: initial;
-    margin-right: 10px; /* Adjust spacing between slides */
-    padding: 10px; /* Optional: Add padding to slides */
+    margin-right: 10px;
+    padding: 10px;
   }
-
   button {
+    background: transparent;
     border: none;
     cursor: pointer;
     outline: none;
-    color: lightgray;
-    width: 40px;
-    height: 40px ;
-    z-index: 1;
-    background: #fff;
-    border-radius: 100px;
     svg {
-      width: 40px;
-      height: 40px;
-      font-weight: 700;
+      width: 25px;
+      height: 25px;
     }
   }
 `;

@@ -44,7 +44,7 @@ export default function GraphicsDesign() {
 
           </ul>
         </div>
-        {/* <div className="part1">
+        <div className="part1">
           <h6>Community</h6>
           <ul>
             <li> Customer Success Stories</li>
@@ -52,12 +52,7 @@ export default function GraphicsDesign() {
             <li>Forum</li>
             <li>Events</li>
             <li>Blog</li>
-            <li>Influencers</li>
-            <li>Affiliates</li>
-            <li>Podcast</li>
-            <li>Invite a Friend</li>
-            <li>Become a Seller</li>
-            <li>Community Standards</li>
+          
           </ul>
         </div>
         <div className="part1">
@@ -67,42 +62,11 @@ export default function GraphicsDesign() {
             <li>Fiverr Pro</li>
             <li>Fiverr Certified</li>
             <li>Become an Agency</li>
-            <li>Fiverr Enterprise</li>
-            <li>
-              ClearVoice <br />
-              <a href="#"> Content Marketing</a>
-            </li>
-
-            <li>Working Not Working</li>
-            <li>Contact Sales</li>
+            
           </ul>
-        </div> */}
+        </div>
       </div>
-      {/* <div className="footer_base">
-        <div className="logoo">
-          <h4>Phanom</h4> <p>Phanom International Ltd.2024</p>
-        </div>
-        <div className="social_media">
-          <ul>
-            <li>
-              {" "}
-              <FaInstagram /> <IoLogoLinkedin /> <FaFacebook /> <FaPinterest />{" "}
-              <FaXTwitter />
-            </li>
-          </ul>
-          <button>
-            <MdLanguage />
-            English
-          </button>
-          <button>
-            <MdOutlineCurrencyRupee />
-            INR
-          </button>
-          <div className="human_icon">
-            <IoMan />
-          </div>
-        </div>
-      </div> */}
+ 
     </Root>
   );
 }
