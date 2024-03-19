@@ -33,7 +33,7 @@ export default function DescriptionFAQ() {
       );
       if (res?.status === 201) {
         setTextCount(res?.data?.message[0]);
-        navigate("/requirements");
+      
       }
     } catch (err) {
       toast.error(err, "Error");
@@ -60,7 +60,7 @@ export default function DescriptionFAQ() {
         axiosConfig
       );
       if (res?.status === 201) {
-        navigate("/edit");
+        navigate("/requirements");
         toast.success("Updated");
       }
     } catch (err) {

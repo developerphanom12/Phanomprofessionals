@@ -13,7 +13,11 @@ export default function Table5({ data, setData ,data2, setData2 ,data3, setData3
                 <span>
                   <div className="txt_div">
                     <div className="dollar">$</div>
-                    <input type="number" />
+                    <input type="number"
+                      value={data.price}
+                      onChange={(e) =>
+                        setData({ ...data, price: e.target.value })
+                      }/>
                   </div>
                 </span>
               </div>
@@ -23,7 +27,11 @@ export default function Table5({ data, setData ,data2, setData2 ,data3, setData3
                 <span>
                   <div className="txt_div">
                     <div className="dollar">$</div>
-                    <input type="number" />
+                    <input  type="number"
+                      value={data2.price}
+                      onChange={(e) =>
+                        setData2({ ...data2, price: e.target.value })
+                      }/>
                   </div>
                 </span>
               </div>
@@ -33,7 +41,11 @@ export default function Table5({ data, setData ,data2, setData2 ,data3, setData3
                 <span>
                   <div className="txt_div">
                     <div className="dollar">$</div>
-                    <input type="number" />
+                    <input  type="number"
+                      value={data3.price}
+                      onChange={(e) =>
+                        setData2({ ...data3, price: e.target.value })
+                      } />
                   </div>
                 </span>
               </div>

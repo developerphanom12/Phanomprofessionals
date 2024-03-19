@@ -9,3 +9,6 @@
 
   export const EXCHANGE_URLS_CATEGORY =
   "http://localhost:4000/api/category";
+
+  export const EXCHANGE_URLS_IMAGES =
+  "http://localhost:4000/uploads";

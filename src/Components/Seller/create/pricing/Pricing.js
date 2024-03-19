@@ -67,7 +67,7 @@ export default function Pricing() {
         axiosConfig
       );
       if (res?.status === 201) {
-        toast.success("Updated");
+        // toast.success("Updated");
         navigate("/description");
 
       }
@@ -79,7 +79,7 @@ export default function Pricing() {
       );
       if (res2?.status === 201) {
         navigate("/description");
-        toast.success("Updated");
+        // toast.success("Updated");
       }
 
       const updatedData3 = { ...data3, gig_id: gigId };

@@ -6,20 +6,16 @@ import {
 } from "react-icons/io";
 import Slider1 from "./BrowserSlider1";
 import styled from "styled-components";
+import BrowserSlider1 from "./BrowserSlider1";
 
 function GigsSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef();
 
+
   const slides = [
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
+    <BrowserSlider1 />,
+   
   ];
 
   const totalSlides = slides.length;

@@ -44,9 +44,8 @@ export default function Gallery() {
       if (res?.status === 201) {
         const gigId = res.data.data.id;
         dispatch(updateGigId(gigId));
-        console.log("GigID", gigId);
         navigate("/gigs");
-        toast.success("Updated");
+        toast.success("All Steps Are Completed");
       }
     } catch (err) {
       toast.error("Error occurred while uploading images and video.");

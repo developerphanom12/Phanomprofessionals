@@ -20,7 +20,6 @@ function PostBotttomNav() {
   const [isListOpen8, setIsListOpen8] = useState(false);
   const [isListOpen9, setIsListOpen9] = useState(false);
   const [isListOpen10, setIsListOpen10] = useState(false);
-  
 
   const handleMouseEnter1 = () => {
     setIsListOpen1(true);
@@ -38,7 +37,7 @@ function PostBotttomNav() {
     setIsListOpen2(false);
   };
 
-    const handleMouseEnter3 = () => {
+  const handleMouseEnter3 = () => {
     setIsListOpen3(true);
   };
 
@@ -53,7 +52,7 @@ function PostBotttomNav() {
   const handleMouseLeave4 = () => {
     setIsListOpen4(false);
   };
- 
+
   const handleMouseEnter5 = () => {
     setIsListOpen5(true);
   };
@@ -62,7 +61,7 @@ function PostBotttomNav() {
     setIsListOpen5(false);
   };
 
-    const handleMouseEnter6 = () => {
+  const handleMouseEnter6 = () => {
     setIsListOpen6(true);
   };
 
@@ -70,7 +69,7 @@ function PostBotttomNav() {
     setIsListOpen6(false);
   };
 
-    const handleMouseEnter7 = () => {
+  const handleMouseEnter7 = () => {
     setIsListOpen7(true);
   };
 
@@ -78,8 +77,7 @@ function PostBotttomNav() {
     setIsListOpen7(false);
   };
 
-  
-    const handleMouseEnter8 = () => {
+  const handleMouseEnter8 = () => {
     setIsListOpen8(true);
   };
 
@@ -105,142 +103,144 @@ function PostBotttomNav() {
 
   return (
     <Root>
-      <Navbar bg="light" data-bs-theme="light">
+      <Navbar  collapseOnSelect
+        expand="lg"
+         bg="light" data-bs-theme="light">
         <ContainerFluid fluid>
-          <Nav>
-            <div
-              onMouseEnter={handleMouseEnter1}
-              onMouseLeave={handleMouseLeave1}
-              id="graphic"
-            >
-              <Nav.Link href="#home">Graphics & Design</Nav.Link>
-              {isListOpen1 && (
-                <div className="option_list_list">
-                  <GraphicsDesign />
-                </div>
-              )}
-            </div>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav"></Navbar.Toggle>
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav>
+              <div
+                onMouseEnter={handleMouseEnter1}
+                onMouseLeave={handleMouseLeave1}
+                id="graphic"
+              >
+                <Nav.Link href="/">Graphics & Design</Nav.Link>
+                {isListOpen1 && (
+                  <div className="option_list_list">
+                    <GraphicsDesign />
+                  </div>
+                )}
+              </div>
 
-            <div
-              onMouseEnter={handleMouseEnter2}
-              onMouseLeave={handleMouseLeave2}
-              id="graphic"
-            >
-              <Nav.Link href="#features">Programming & Tech</Nav.Link>
-              {isListOpen2 && (
-                <div className="option_list_list">
-                  <ProgrammingTech />
-                </div>
-              )}
-            </div>
+              <div
+                onMouseEnter={handleMouseEnter2}
+                onMouseLeave={handleMouseLeave2}
+                id="graphic"
+              >
+                <Nav.Link href="#features">Programming & Tech</Nav.Link>
+                {isListOpen2 && (
+                  <div className="option_list_list">
+                    <ProgrammingTech />
+                  </div>
+                )}
+              </div>
 
-            <div
-              onMouseEnter={handleMouseEnter3}
-              onMouseLeave={handleMouseLeave3}
-              id="graphic"
-            >
-              <Nav.Link href="#pricing">Digital Marketing</Nav.Link>
-              {isListOpen3 && (
-                <div className="option_list_list">
-                  <DigitalMarketing/>
-                </div>
-              )}
-            </div>
+              <div
+                onMouseEnter={handleMouseEnter3}
+                onMouseLeave={handleMouseLeave3}
+                id="graphic"
+              >
+                <Nav.Link href="#pricing">Digital Marketing</Nav.Link>
+                {isListOpen3 && (
+                  <div className="option_list_list">
+                    <DigitalMarketing />
+                  </div>
+                )}
+              </div>
 
-            <div
-              onMouseEnter={handleMouseEnter4}
-              onMouseLeave={handleMouseLeave4}
-              id="graphic"
-            >
-              <Nav.Link href="#pricing">Video & Animation</Nav.Link>
-              {isListOpen4 && (
-                <div className="option_list_list">
-                  <VideoAnimation/>
-                </div>
-              )}
-            </div>
+              <div
+                onMouseEnter={handleMouseEnter4}
+                onMouseLeave={handleMouseLeave4}
+                id="graphic"
+              >
+                <Nav.Link href="#pricing">Video & Animation</Nav.Link>
+                {isListOpen4 && (
+                  <div className="option_list_list">
+                    <VideoAnimation />
+                  </div>
+                )}
+              </div>
 
-             <div
-              onMouseEnter={handleMouseEnter5}
-              onMouseLeave={handleMouseLeave5}
-              id="graphic"
-            >
-              <Nav.Link href="#pricing">Writing & Translation</Nav.Link>
-              {isListOpen5 && (
-                <div className="option_list_list">
-                  <WritingTranslation />
-                </div>
-              )}
-            </div>
-            
-          <div
-              onMouseEnter={handleMouseEnter6}
-              onMouseLeave={handleMouseLeave6}
-              id="graphic"
-            >
-              <Nav.Link href="#pricing">Music & Audio</Nav.Link>
-              {isListOpen6 && (
-                <div className="option_list_list">
-                  <GraphicsDesign />
-                </div>
-              )}
-            </div>
-            
-         <div
-              onMouseEnter={handleMouseEnter7}
-              onMouseLeave={handleMouseLeave7}
-              id="graphic"
-            >
-              <Nav.Link href="#pricing">Business</Nav.Link>
-              {isListOpen7 && (
-                <div className="option_list_list">
-                  <GraphicsDesign />
-                </div>
-              )}
-            </div>
-            
+              <div
+                onMouseEnter={handleMouseEnter5}
+                onMouseLeave={handleMouseLeave5}
+                id="graphic"
+              >
+                <Nav.Link href="#pricing">Writing & Translation</Nav.Link>
+                {isListOpen5 && (
+                  <div className="option_list_list">
+                    <WritingTranslation />
+                  </div>
+                )}
+              </div>
 
-                 <div
-              onMouseEnter={handleMouseEnter8}
-              onMouseLeave={handleMouseLeave8}
-              id="graphic"
-            >
-              <Nav.Link href="#pricing">Consulting</Nav.Link>
-              {isListOpen8 && (
-                <div className="option_list_list">
-                  <GraphicsDesign />
-                </div>
-              )}
-            </div>
-            
-         <div
-              onMouseEnter={handleMouseEnter9}
-              onMouseLeave={handleMouseLeave9}
-              id="graphic"
-            >
-              <Nav.Link href="#pricing">Data</Nav.Link>
-              {isListOpen9 && (
-                <div className="option_list_list">
-                  <GraphicsDesign />
-                </div>
-              )}
-            </div>
+              <div
+                onMouseEnter={handleMouseEnter6}
+                onMouseLeave={handleMouseLeave6}
+                id="graphic"
+              >
+                <Nav.Link href="#pricing">Music & Audio</Nav.Link>
+                {isListOpen6 && (
+                  <div className="option_list_list">
+                    <GraphicsDesign />
+                  </div>
+                )}
+              </div>
 
-               <div
-              onMouseEnter={handleMouseEnter10}
-              onMouseLeave={handleMouseLeave10}
-              id="graphic"
-            >
-              <Nav.Link href="#pricing">AI Services</Nav.Link>
-              {isListOpen10 && (
-                <div className="option_list_list">
-                  <GraphicsDesign/>
-                </div>
-              )}
-            </div> 
+              <div
+                onMouseEnter={handleMouseEnter7}
+                onMouseLeave={handleMouseLeave7}
+                id="graphic"
+              >
+                <Nav.Link href="#pricing">Business</Nav.Link>
+                {isListOpen7 && (
+                  <div className="option_list_list">
+                    <GraphicsDesign />
+                  </div>
+                )}
+              </div>
 
+              <div
+                onMouseEnter={handleMouseEnter8}
+                onMouseLeave={handleMouseLeave8}
+                id="graphic"
+              >
+                <Nav.Link href="#pricing">Consulting</Nav.Link>
+                {isListOpen8 && (
+                  <div className="option_list_list">
+                    <GraphicsDesign />
+                  </div>
+                )}
+              </div>
 
-          </Nav>
+              <div
+                onMouseEnter={handleMouseEnter9}
+                onMouseLeave={handleMouseLeave9}
+                id="graphic"
+              >
+                <Nav.Link href="#pricing">Data</Nav.Link>
+                {isListOpen9 && (
+                  <div className="option_list_list">
+                    <GraphicsDesign />
+                  </div>
+                )}
+              </div>
+
+              <div
+                onMouseEnter={handleMouseEnter10}
+                onMouseLeave={handleMouseLeave10}
+                id="graphic"
+              >
+                <Nav.Link href="#pricing">AI Services</Nav.Link>
+                {isListOpen10 && (
+                  <div className="option_list_list">
+                    <GraphicsDesign />
+                  </div>
+                )}
+              </div>
+            </Nav>
+          </Navbar.Collapse>
         </ContainerFluid>
       </Navbar>
     </Root>
@@ -256,10 +256,10 @@ const Root = styled.section`
   a.nav-link {
     color: #62646a;
     display: block;
-    font-size:16px;
-    line-height:24px;
-    padding:6px 14px !important;
-    text-decoration:none;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 6px 10px !important;
+    text-decoration: none;
     border-bottom: 3px solid transparent;
     &:hover {
       border-bottom: 3px solid #1dbf73;
@@ -271,9 +271,15 @@ const Root = styled.section`
     width: 100vw;
     background-color: #fff;
     z-index: 11111;
-    left:0;
+    left: 0;
   }
   nav.navbar.navbar-expand.navbar-light.bg-light {
     padding: 0px;
+  }
+
+  @media (max-width: 567px){
+    .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+    justify-content: end;
 }
+  }
 `;

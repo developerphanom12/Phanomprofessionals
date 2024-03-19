@@ -45,10 +45,10 @@ export default function CreateOverview() {
   const appApi = async () => {
     const formData = {
       gig_title: gigTitle,
-      category_id: "",
-      subcategory_id: "",
-      service_type: "",
-      tags: "",
+      category_id: categoryId, 
+      subcategory_id: subcategoryId, 
+      service_type: serviceType,
+      tags: tags,
       programing_language: selectedProgrammingLanguages,
       website_feature: selectedWebsiteFeatures,
     };
@@ -63,6 +63,7 @@ export default function CreateOverview() {
         formData,
         axiosConfig
       );
+      console.log("formData",formData)
       if (res?.status === 201) {
         const gigId = res.data.data.id;
         dispatch(updateGigId(gigId));
@@ -125,8 +126,9 @@ export default function CreateOverview() {
           </div>
           <div className="input_div">
             <select
+            // value={categoryId}
               onChange={(e) => {
-                setCategoryId(e.target.value);
+                setCategoryId(e.target.value); // Set categoryId directly with the selected value
               }}
             >
               <option value="">Select Category</option>
@@ -303,18 +305,18 @@ export default function CreateOverview() {
                 for your service.
               </span>
             </div>
-            {/* <input
-              placeholder="tag here"
-              value={data.tags}
-              onChange={(e) => {
-                setData({ ...data, tags: e.target.value });
-              }}
-            /> */}
             <input
+              placeholder="tag here"
+              value={tags}
+              onChange={(e) => {
+                setTags(e.target.value );
+              }}
+            /> 
+            {/* <input
               placeholder="Enter tags separated by comma"
               value={tags}
               onChange={(e) => setTags(e.target.value)}
-            />
+            />*/}
           </div>
         </div>
         <div className="input_group">
