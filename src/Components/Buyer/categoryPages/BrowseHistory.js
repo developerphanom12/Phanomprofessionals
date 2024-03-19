@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
-import Slider1 from "./BrowserSlider1";
+import { IoIosArrowDropleft, IoIosArrowDropright, IoIosArrowRoundForward } from "react-icons/io";
 import styled from "styled-components";
 import axios from "axios";
 import { EXCHANGE_URLS } from "../../Important/URLS";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import BrowserSlider1 from "./BrowserSlider1";
 
@@ -15,9 +13,9 @@ function BrowseHistory() {
   useEffect(() => {
     const getSliderApi = async () => {
       try {
-        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/2`);
+        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/1`);
         if (res?.status === 201) {
-          setGigData(res?.data?.message[0]?.gigsData || []);
+          setGigData(res?.data?.message || []); // Update state with message array
         }
       } catch (err) {
         toast.error(err, "Error");
@@ -29,11 +27,7 @@ function BrowseHistory() {
   
   const slideRef = useRef();
 
-  const slides = [
-    <BrowserSlider1 />,
-   
-  ];
-  const totalSlides = slides.length;
+  const totalSlides = gigData.length;
   const slidesToShow = 4;
   const slideWidth = 300;
 
@@ -56,9 +50,12 @@ function BrowseHistory() {
   }, [currentSlide]);
 
   return (
-    <Root className="slider-container">
+    <Sliderrrs>
       <div className="heading_button">
-        <h3>Based on your browsing history</h3>
+        <h2 className="main_heading">
+          Gigs you may like
+          <IoIosArrowRoundForward />
+        </h2>
         <div>
           <button onClick={goToPreviousSlide}>
             <IoIosArrowDropleft />
@@ -68,24 +65,19 @@ function BrowseHistory() {
           </button>
         </div>
       </div>
-
       <div className="slides-container" ref={slideRef}>
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`slide ${index === currentSlide ? "active" : ""}`}
-          >
-            {slide}
+        {gigData.map((gig, index) => (
+          <div key={index} className={`slide ${index === currentSlide ? "active" : ""}`}>
+            <BrowserSlider1 gigData={gig} />
           </div>
         ))}
       </div>
-    </Root>
+    </Sliderrrs>
   );
 }
-
 export default BrowseHistory;
 
-const Root = styled.section`
+const Sliderrrs = styled.section`
   width: 100vw;
   .slider-container {
     display: flex;

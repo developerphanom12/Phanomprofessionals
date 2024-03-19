@@ -7,12 +7,9 @@ import imggg from "../../Images/k.webp";
 import banner from "../../Images/BannerDesktop.png";
 import profile from "../../Images/button1.webp";
 import axios from "axios";
-import { EXCHANGE_URLS, EXCHANGE_URLS_IMAGES } from "../../Important/URLS";
-import { toast } from "react-toastify";
+import { EXCHANGE_URLS_IMAGES } from "../../Important/URLS";
 
-export default function BrowserSlider1() {
-  
-
+export default function BrowserSlider1({ gigData }) {
   var settings = {
     dots: false,
     infinite: true,
@@ -20,46 +17,53 @@ export default function BrowserSlider1() {
     slidesToShow: 1,
   };
 
-  return (<div></div>
-    // <Sliderrrs>
-    //   <Slider {...settings}>
-    //     {gigData.map((gig) => (
-    //       <div key={gig.gig_id}>
-    //         <img
-    //           className="img"
-    //           src={`${EXCHANGE_URLS_IMAGES}/${gig?.gigsimages?.image1}`}
-    //           alt="Image 1"
-    //         />
-    //         <img
-    //           className="img"
-    //           src={`${EXCHANGE_URLS_IMAGES}/${gig?.gigsimages?.image2}`}
-    //           alt="Image 2"
-    //         />
-    //         <img
-    //           className="img"
-    //           src={`${EXCHANGE_URLS_IMAGES}/${gig?.gigsimages?.image3}`}
-    //           alt="Image 3"
-    //         />
-    //       </div>
-    //     ))}
-    //   </Slider>
-    //   <div className="footer">
-    //     {gigData.length > 0 && (
-    //       <div className="profile_footer">
-    //         <img src={profile} alt="img" />
-    //         <h6>name: {gigData[0]?.seller?.username}</h6>
-    //       </div>
-    //     )}
-    //     {/* Removed conditionals for description since there are multiple gigs */}
-    //     <div>
-    //       <h5>Rating: 5</h5>
-    //     </div>
-    //   </div>
-    // </Sliderrrs>
+  return (
+    <Sliderrrs>
+      <Slider {...settings}>
+      {Array.isArray(gigData) && gigData.length > 0 ? (
+  <>
+    {gigData.map((item, index) => (
+      <div key={index}>
+        <img
+          className="img"
+          src={`${EXCHANGE_URLS_IMAGES}/${item?.gigsimages?.image1}`}
+          alt={`Image 1 for item ${index}`}
+        />
+        <img
+          className="img"
+          src={`${EXCHANGE_URLS_IMAGES}/${item?.gigsimages?.image2}`}
+          alt={`Image 2 for item ${index}`}
+        />
+        <img
+          className="img"
+          src={`${EXCHANGE_URLS_IMAGES}/${item?.gigsimages?.image3}`}
+          alt={`Image 3 for item ${index}`}
+        />
+      </div>
+    ))}
+  </>
+) : (
+  <div>No gig data available</div>
+)}
+
+      </Slider>
+      <div className="footer">
+        <div className="profile_footer">
+          <img src={profile} alt="img" />
+          <h6>name: {gigData?.seller?.username}</h6>{" "}
+          {/* Assuming all gigData have the same seller */}
+        </div>
+        <div>
+          <p>description: {gigData?.gigsData?.gig_title}</p>{" "}
+          {/* Assuming all gigData have the same gig_title */}
+        </div>
+        <div>
+          <h5>Rating: 5</h5> {/* Assuming the rating is static for all items */}
+        </div>
+      </div>
+    </Sliderrrs>
   );
 }
-
-
 const Sliderrrs = styled.section`
   > div {
     width: 298px;
