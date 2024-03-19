@@ -13,13 +13,7 @@ function Websitedev() {
 
   const slides = [
     <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
-    <Slider1 />,
+   
   ];
 
   const totalSlides = slides.length;

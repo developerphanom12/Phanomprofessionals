@@ -10,40 +10,28 @@ import BrowserSlider1 from "./BrowserSlider1";
 
 function BrowseHistory() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [gigData, setGigData] = useState([]);
 
-  const allTSlideApi = async () => {
-    const axiosConfig = {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    };
-    try {
-      const res = await axios.get(
-        `${EXCHANGE_URLS}/gigslist`,
-        axiosConfig
-      );
-      if (res?.status === 201) {
-        navigate("/dashboard");
-      }
-    } catch (err) {
-      toast.error(err, "Error");
-    }
-  };
   useEffect(() => {
-    allTSlideApi();
+    const getSliderApi = async () => {
+      try {
+        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/2`);
+        if (res?.status === 201) {
+          setGigData(res?.data?.message[0]?.gigsData || []);
+        }
+      } catch (err) {
+        toast.error(err, "Error");
+      }
+    };
+
+    getSliderApi();
   }, []);
-  const navigate = useNavigate();
+  
   const slideRef = useRef();
 
   const slides = [
     <BrowserSlider1 />,
-    <BrowserSlider1 />,
-    <BrowserSlider1 />,
-    <BrowserSlider1 />,
-    <BrowserSlider1 />,
-    <BrowserSlider1 />,
-    <BrowserSlider1 />,
-    <BrowserSlider1 />,
+   
   ];
   const totalSlides = slides.length;
   const slidesToShow = 4;

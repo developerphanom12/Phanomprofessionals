@@ -11,69 +11,55 @@ import { EXCHANGE_URLS, EXCHANGE_URLS_IMAGES } from "../../Important/URLS";
 import { toast } from "react-toastify";
 
 export default function BrowserSlider1() {
-  const [gigApi, setGigApi] = useState();
-
-  const getSliderApi = async () => {
-    try {
-      const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/2`);
-      if (res?.status === 201) {
-        setGigApi(res?.data?.message.gigsData[0]);
-      }
-    } catch (err) {
-      toast.error(err, "Error");
-    }
-  };
-  useEffect(() => {
-    getSliderApi();
-  }, []);
+  
 
   var settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    // slidesToScroll: 1,
   };
-  return (
-    <Sliderrrs>
-      <Slider {...settings}>
-        {gigApi &&(
-          <div>
-            <img
-              className="img"
-              src={`${EXCHANGE_URLS_IMAGES}/${gigApi?.gigsimages?.image1}`}
-              alt="Image 1"
-            />
 
-            <img
-              className="img"
-              src={gigApi.gigsData[0]?.gigsimages.image2}
-              alt="Image 2"
-            />
-            <img
-              className="img"
-              src={gigApi.gigsData[0]?.gigsimages.image3}
-              alt="Image 3"
-            />
-          </div>
-        )}
-       
-      </Slider>
-      <div className="footer">
-        <div className="profile_footer">
-          <img src={profile} alt="img" />
-          <h6>name {gigApi?.name}</h6>
-        </div>
-        <div>
-          <p>description {gigApi?.gigsData?.gigsData?.username}</p>
-        </div>
-        <div>
-          <h5>Rating</h5>
-        </div>
-      </div>
-    </Sliderrrs>
+  return (<div></div>
+    // <Sliderrrs>
+    //   <Slider {...settings}>
+    //     {gigData.map((gig) => (
+    //       <div key={gig.gig_id}>
+    //         <img
+    //           className="img"
+    //           src={`${EXCHANGE_URLS_IMAGES}/${gig?.gigsimages?.image1}`}
+    //           alt="Image 1"
+    //         />
+    //         <img
+    //           className="img"
+    //           src={`${EXCHANGE_URLS_IMAGES}/${gig?.gigsimages?.image2}`}
+    //           alt="Image 2"
+    //         />
+    //         <img
+    //           className="img"
+    //           src={`${EXCHANGE_URLS_IMAGES}/${gig?.gigsimages?.image3}`}
+    //           alt="Image 3"
+    //         />
+    //       </div>
+    //     ))}
+    //   </Slider>
+    //   <div className="footer">
+    //     {gigData.length > 0 && (
+    //       <div className="profile_footer">
+    //         <img src={profile} alt="img" />
+    //         <h6>name: {gigData[0]?.seller?.username}</h6>
+    //       </div>
+    //     )}
+    //     {/* Removed conditionals for description since there are multiple gigs */}
+    //     <div>
+    //       <h5>Rating: 5</h5>
+    //     </div>
+    //   </div>
+    // </Sliderrrs>
   );
 }
+
+
 const Sliderrrs = styled.section`
   > div {
     width: 298px;
