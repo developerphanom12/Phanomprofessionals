@@ -59,7 +59,7 @@ const Root = styled.section`
     display: block;
     font-size: 16px;
     line-height: 24px;
-    padding: 6px 14px !important;
+    padding: 6px 10px !important;
     text-decoration: none;
     border-bottom: 3px solid transparent;
     &:hover {
