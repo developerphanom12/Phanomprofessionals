@@ -97,7 +97,7 @@ export default function Active() {
                       <li>Preview</li>
                       <li
                         onClick={() => {
-                          navigate("/edit");
+                          navigate("/editgigspages");
                         }}
                       >
                         Edit

@@ -33,7 +33,7 @@ import Profile from "./Components/Seller/TopNavPages/MyBusiness/profile/Profile"
 import Earnings from "./Components/Seller/TopNavPages/MyBusiness/earning/Earnings";
 import Overview from "./Components/Seller/TopNavPages/Analytics/Overview";
 import RepeatBusiness from "./Components/Seller/TopNavPages/Analytics/RepeatBusiness";
-import EditPage from "./Components/Seller/edit/EditPage";
+import CreatePage from "./Components/Seller/create/CreatePage";
 import Message from "./Components/MainLayouts/Message";
 import PageNF from "./Components/Important/PageNF";
 import { loaderAction } from "./redux/users/action";
@@ -41,13 +41,14 @@ import { useEffect } from "react";
 import Loader from "./Components/Important/Loader";
 import Analytics from "./Components/Seller/TopNavPages/Analytics/Analytics";
 import LoginSeller from "./Components/CommonPages/loginPages/LoginSeller";
-import Pricing from "./Components/Seller/edit/pricing/Pricing";
-import DescriptionFAQ from "./Components/Seller/edit/description/DescriptionFAQ";
-import Gallery from "./Components/Seller/edit/gallery/Gallery";
-import Requirements from "./Components/Seller/edit/requirements/Requirements";
+import Pricing from "./Components/Seller/create/pricing/Pricing";
+import DescriptionFAQ from "./Components/Seller/create/description/DescriptionFAQ";
+import Gallery from "./Components/Seller/create/gallery/Gallery";
+import Requirements from "./Components/Seller/create/requirements/Requirements";
 import InnPage from "./Components/MainLayouts/subcategory/InnPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import EditGigsPage from "./Components/Seller/TopNavPages/MyBusiness/gigs/editGigs/EditGigsPage";
 
 function App() {
   const userCheck = useSelector((state) => state?.users?.userCheck);
@@ -78,7 +79,8 @@ function App() {
           <Route path="/description" element={<DescriptionFAQ />} />
           <Route path="/requirements" element={<Requirements />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/edit" element={<EditPage />} />
+          <Route path="/create" element={<CreatePage />} />
+          <Route path="editgigspages" element={<EditGigsPage/>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/earnings" element={<Earnings />} />
           <Route path="/analytics" element={<Analytics />} />

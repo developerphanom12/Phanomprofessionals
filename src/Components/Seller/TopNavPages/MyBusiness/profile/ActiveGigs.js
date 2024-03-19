@@ -8,11 +8,11 @@ export default function ActiveGigs() {
   return (
     <Root>
       <div className="gig_box">
-        <div className="svg_file" onClick={()=>{navigate("/gigs")}}>
+        <div className="svg_file" onClick={()=>{navigate("/create")}}>
           <IoIosAdd />
         </div>
         <div className="text_gig">
-          <a href="Gigs">Create a new gig</a>
+          <a href="create">Create a new gig</a>
         </div>
       </div>
     </Root>

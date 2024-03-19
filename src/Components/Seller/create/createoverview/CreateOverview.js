@@ -1,24 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoInformationCircle } from "react-icons/io5";
 import styled from "styled-components";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { EXCHANGE_URLS } from "../../../Important/URLS";
+import { EXCHANGE_URLS, EXCHANGE_URLS_CATEGORY } from "../../../Important/URLS";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateGigId } from "../../../../redux/users/action";
 
-export default function EditOverview() {
+export default function CreateOverview() {
   const [active, setActive] = useState("page1");
   const [gigTitle, setGigTitle] = useState("");
-  const [categoryId, setCategoryId] = useState(1);
-  const [subcategory_id, setSubcategoryId] = useState(1);
+  const [categoryId, setCategoryId] = useState("");
+  const [subcategoryId, setSubcategoryId] = useState("");
   const [serviceType, setServiceType] = useState("");
   const [tags, setTags] = useState("");
   const [selectedProgrammingLanguages, setSelectedProgrammingLanguages] =
     useState([]);
   const [selectedWebsiteFeatures, setSelectedWebsiteFeatures] = useState([]);
+
+  const [getCategory, setGetCategory] = useState([]);
 
   const handleProgrammingLanguageChange = (event) => {
     const { value, checked } = event.target;
@@ -43,10 +45,10 @@ export default function EditOverview() {
   const appApi = async () => {
     const formData = {
       gig_title: gigTitle,
-      category_id: 1,
-      subcategory_id: 1,
-      service_type: "type",
-      tags: "tags",
+      category_id: "",
+      subcategory_id: "",
+      service_type: "",
+      tags: "",
       programing_language: selectedProgrammingLanguages,
       website_feature: selectedWebsiteFeatures,
     };
@@ -76,6 +78,28 @@ export default function EditOverview() {
   const handleSubmit = () => {
     appApi();
   };
+
+  const getCategoryApi = async () => {
+    const axiosConfig = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    try {
+      const res = await axios.get(
+        `${EXCHANGE_URLS_CATEGORY}/liscategory`,
+        axiosConfig
+      );
+      if (res?.status === 201) {
+        setGetCategory(res?.data?.message);
+      }
+    } catch (err) {
+      toast.error(err, "Error");
+    }
+  };
+  useEffect(() => {
+    getCategoryApi();
+  }, []);
   return (
     <Root>
       <div className="main_div_section">
@@ -100,17 +124,36 @@ export default function EditOverview() {
             Choose the category and sub-category most suitable for your Gig.
           </div>
           <div className="input_div">
-            <select>
-              PROGRAMMING & TECH <IoIosArrowDown />
-              <option>JavaScript</option>
-              <option>Python</option>
+            <select
+              onChange={(e) => {
+                setCategoryId(e.target.value);
+              }}
+            >
+              <option value="">Select Category</option>
+              {getCategory &&
+                getCategory.map((category, index) => (
+                  <option key={index} value={category.category_id}>
+                    {category.category_name}
+                  </option>
+                ))}
             </select>
 
-            <select>
-              SOFTWARE DEVELOPMENT <IoIosArrowDown />
-              <option>Option A</option>
-              <option>Option B</option>
-              <option>Option C</option>
+            <select
+              value={subcategoryId}
+              onChange={(e) => setSubcategoryId(e.target.value)}
+            >
+              <option value="">Select Subcategory</option>
+              {getCategory &&
+                getCategory.map((category) =>
+                  category.subcategories.map((subcategory) => (
+                    <option
+                      key={subcategory.subcategory_id}
+                      value={subcategory.subcategory_id}
+                    >
+                      {subcategory.subcategory_name}
+                    </option>
+                  ))
+                )}
             </select>
           </div>
         </div>
@@ -119,15 +162,13 @@ export default function EditOverview() {
             <span>Service type</span>
           </div>
           <div className="input_div">
-            <select
+            <textarea
+              className="text"
+              placeholder="Ex: e-commerce website"
+              type="text"
               value={serviceType}
               onChange={(e) => setServiceType(e.target.value)}
-            >
-              <option value="">Select Service Type</option>
-              <option value="Option A">Option A</option>
-              <option value="Option B">Option B</option>
-              <option value="Option C">Option C</option>
-            </select>
+            />
           </div>
         </div>
 
@@ -485,6 +526,15 @@ const Root = styled.section`
         justify-content: space-between;
         display: flex;
         align-items: center;
+        select,
+        .text {
+          width: 20vw;
+          border: 1px solid #dadbdd;
+          border-radius: 7px;
+          padding: 8px;
+          height: 8vh;
+          outline: none;
+        }
         textarea {
           width: 100%;
           border: 1px solid #dadbdd;
@@ -509,7 +559,7 @@ const Root = styled.section`
     }
     .div4 {
       width: 90%;
-    margin: 10px 40px;
+      margin: 10px 40px;
       display: flex;
       justify-content: space-between;
       a,

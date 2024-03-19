@@ -1,16 +1,18 @@
 import React from "react";
 import { IoIosAdd } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function PausedGigs() {
+  const navigate = useNavigate();
   return (
     <Root>
       <div className="gig_box">
-        <div className="svg_file">
+        <div className="svg_file" onClick={()=>{navigate("/create")}}>
         <IoIosAdd />
         </div>
         <div className="text_gig">
-          <b>Create a new gig</b>
+          <b onClick={navigate("/create")}>Create a new gig</b>
         </div>
       </div>
     </Root>

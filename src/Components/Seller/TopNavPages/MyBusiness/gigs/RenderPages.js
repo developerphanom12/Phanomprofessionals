@@ -17,7 +17,7 @@ export default function RenderPages() {
 
   const handleGigCreate = () => {
     toast.warn("Complete Steps In Sequence");
-    navigate("/edit");
+    navigate("/create");
   };
   return (
     <Root>

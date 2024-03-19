@@ -1,68 +1,52 @@
 import React from "react";
 import styled from "styled-components";
-import { IoMan } from "react-icons/io5";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaPinterest,
-  FaXTwitter,
-} from "react-icons/fa6";
-import { IoLogoLinkedin } from "react-icons/io";
-import { MdLanguage, MdOutlineCurrencyRupee } from "react-icons/md";
 
-export default function GraphicsDesign() {
+export default function DigitalMarketing() {
   return (
     <Root>
       <div className="footer_div">
         <div className="part1">
-          <h6>Logo & Brand Identity</h6>
+          <h6> Search</h6>
           <ul>
-            <li>Logo Design</li>
-            <li>Brand Style Guides</li>
-            <li>Business Cards & Stationery</li>
-            <li>Font & Typography</li>
+            <li>Search Engine Optimization (SEO)</li>
+            <li>Search Engine Marketing (SEM)</li>
+            <li>Local SEO</li>
+            <li>E-Commerce SEO</li>
+            <li>Video SEO</li>
           </ul>
         </div>
         <div className="part1">
-          <h6>Web & App Design</h6>
+          <h6>Social</h6>
           <ul>
-            <li>Website Design</li>
-            <li>App Design</li>
-            <li>UX Design</li>
-            <li>Landing Page Design</li>
-            <li>Icon Design</li>
+            <li>Social Media Marketing</li>
+            <li>Paid Social Media</li>
+            <li>Influencer Marketing</li>
+            <li>Community Management</li>
           </ul>
         </div>
         <div className="part1">
-          <h6>Visual Design</h6>
+          <h6>Analytics & Strategy</h6>
           <ul>
-            <li>Image Editing</li>
-            <li>Presentation Design</li>
-            <li>Background Removal</li>
-            <li>Infographic Design</li>
-            <li>Vector Tracing</li>
-            <li>Resume Design</li>
+            <li>Marketing Strategy</li>
+            <li>Marketing AdviceNEW</li>
+            <li>Web Analytics</li>
           </ul>
         </div>
         <div className="part1">
-          <h6> Marketing Design</h6>
+          <h6> Methods & Techniques</h6>
           <ul>
-            <li>Social Media Design</li>
-            <li>Social Posts & Banners</li>
-            <li>Email Design</li>
-            <li>Web Banners</li>
-            <li>Signage Design</li>
+            <li>Video Marketing</li>
+            <li>E-Commerce Marketing</li>
+            <li>Email Marketing</li>
+            <li>Guest Posting</li>
+            <li>Affiliate Marketing</li>
+            <li>Display Advertising</li>
+            <li>Public Relations</li>
+            <li>Text Message Marketing</li>
           </ul>
         </div>
-        <div className="part1">
-          <h6>Packaging & Covers</h6>
-          <ul>
-            <li>Packaging & Label Design</li>
-            <li>Book Design</li>
-            <li>Book Covers</li>
-            <li>Album Cover Design</li>
-          </ul>
-        </div>
+
+
       </div>
     </Root>
   );
@@ -70,7 +54,7 @@ export default function GraphicsDesign() {
 const Root = styled.section`
   padding: 30px 20px;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
-  @media (max-width: 567px){
+  @media (max-width: 567px) {
     padding: 30px 10px;
   }
   .footer_div {

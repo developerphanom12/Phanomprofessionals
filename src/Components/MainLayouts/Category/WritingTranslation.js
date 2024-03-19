@@ -1,66 +1,56 @@
 import React from "react";
 import styled from "styled-components";
-import { IoMan } from "react-icons/io5";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaPinterest,
-  FaXTwitter,
-} from "react-icons/fa6";
-import { IoLogoLinkedin } from "react-icons/io";
-import { MdLanguage, MdOutlineCurrencyRupee } from "react-icons/md";
 
-export default function GraphicsDesign() {
+export default function WritingTranslation() {
   return (
     <Root>
       <div className="footer_div">
         <div className="part1">
-          <h6>Logo & Brand Identity</h6>
+          <h6>Content Writing</h6>
           <ul>
-            <li>Logo Design</li>
-            <li>Brand Style Guides</li>
-            <li>Business Cards & Stationery</li>
-            <li>Font & Typography</li>
+            <li>Articles & Blog Posts</li>
+            <li>Content Strategy</li>
+            <li>Website Content</li>
+            <li>Creative Writing</li>
+            <li>Podcast Writing</li>
+            <li>Speechwriting</li>
+            <li>Research & Summaries</li>
           </ul>
         </div>
         <div className="part1">
-          <h6>Web & App Design</h6>
+          <h6>Business & Marketing Copy</h6>
           <ul>
-            <li>Website Design</li>
-            <li>App Design</li>
-            <li>UX Design</li>
-            <li>Landing Page Design</li>
-            <li>Icon Design</li>
-          </ul>
+            <li>Brand Voice & Tone</li>
+            <li>Business Names & Slogans</li>
+            <li>Case Studies</li>
+            <li>White Papers</li>
+            <li>Ad Copy</li>
+            <li>Sales Copy</li>
+            <li>Email Copy</li>
+            <li>Social Media Copy</li>
+            <li>Press Releases</li>
+            </ul>
+
+
         </div>
         <div className="part1">
-          <h6>Visual Design</h6>
+          <h6>Editing & Critique</h6>
           <ul>
-            <li>Image Editing</li>
-            <li>Presentation Design</li>
-            <li>Background Removal</li>
-            <li>Infographic Design</li>
-            <li>Vector Tracing</li>
-            <li>Resume Design</li>
+            <li>Proofreading & Editing</li>
+            <li>AI Content Editing</li>
+            <li>Writing Advice</li>
           </ul>
+
+
+
+
         </div>
         <div className="part1">
-          <h6> Marketing Design</h6>
+          <h6>Career Writing</h6>
           <ul>
-            <li>Social Media Design</li>
-            <li>Social Posts & Banners</li>
-            <li>Email Design</li>
-            <li>Web Banners</li>
-            <li>Signage Design</li>
-          </ul>
-        </div>
-        <div className="part1">
-          <h6>Packaging & Covers</h6>
-          <ul>
-            <li>Packaging & Label Design</li>
-            <li>Book Design</li>
-            <li>Book Covers</li>
-            <li>Album Cover Design</li>
+            <li>Resume Writing</li>
+            <li>LinkedIn Profiles</li>
+            <li>Job Descriptions</li>
           </ul>
         </div>
       </div>
@@ -70,7 +60,7 @@ export default function GraphicsDesign() {
 const Root = styled.section`
   padding: 30px 20px;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
-  @media (max-width: 567px){
+  @media (max-width: 567px) {
     padding: 30px 10px;
   }
   .footer_div {

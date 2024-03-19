@@ -1,26 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { IoMan } from "react-icons/io5";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaPinterest,
-  FaXTwitter,
-} from "react-icons/fa6";
-import { IoLogoLinkedin } from "react-icons/io";
-import { MdLanguage, MdOutlineCurrencyRupee } from "react-icons/md";
 
-export default function GraphicsDesign() {
+export default function ProgrammingTech() {
   return (
     <Root>
       <div className="footer_div">
         <div className="part1">
-          <h6>Logo & Brand Identity</h6>
+          <h6> Website Development</h6>
           <ul>
-            <li>Logo Design</li>
-            <li>Brand Style Guides</li>
-            <li>Business Cards & Stationery</li>
-            <li>Font & Typography</li>
+            <li>Business Websites</li>
+            <li>E-Commerce Development</li>
+            <li>Landing Pages</li>
+            <li>Dropshipping Websites</li>
           </ul>
         </div>
         <div className="part1">
@@ -34,33 +25,36 @@ export default function GraphicsDesign() {
           </ul>
         </div>
         <div className="part1">
-          <h6>Visual Design</h6>
+          <h6>Mobile App Development</h6>
           <ul>
-            <li>Image Editing</li>
-            <li>Presentation Design</li>
-            <li>Background Removal</li>
-            <li>Infographic Design</li>
-            <li>Vector Tracing</li>
-            <li>Resume Design</li>
+            <li>Cross-platform Development</li>
+            <li>Android App Development</li>
+            <li>IOS App Development</li>
+            <li>Website to App</li>
+            <li>Mobile App Maintenance</li>
           </ul>
         </div>
         <div className="part1">
-          <h6> Marketing Design</h6>
+          <h6> Software Development</h6>
           <ul>
-            <li>Social Media Design</li>
-            <li>Social Posts & Banners</li>
-            <li>Email Design</li>
-            <li>Web Banners</li>
-            <li>Signage Design</li>
+            <li>Web Applications</li>
+            <li>Desktop Applications</li>
+            <li>APIs & Integrations</li>
+            <li>Scripting</li>
+            <li>Browser Extensions</li>
+            <li>QA & Review</li>
+            <li>User Testing</li>
           </ul>
         </div>
+
         <div className="part1">
-          <h6>Packaging & Covers</h6>
+          <h6>Website Platforms</h6>
           <ul>
-            <li>Packaging & Label Design</li>
-            <li>Book Design</li>
-            <li>Book Covers</li>
-            <li>Album Cover Design</li>
+            <li>WordPress</li>
+            <li>Shopify</li>
+            <li>Wix</li>
+            <li>Custom Websites</li>
+            <li>GoDaddy</li>
           </ul>
         </div>
       </div>
@@ -70,7 +64,7 @@ export default function GraphicsDesign() {
 const Root = styled.section`
   padding: 30px 20px;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
-  @media (max-width: 567px){
+  @media (max-width: 567px) {
     padding: 30px 10px;
   }
   .footer_div {

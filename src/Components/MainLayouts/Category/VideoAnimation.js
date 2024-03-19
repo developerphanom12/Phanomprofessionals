@@ -1,66 +1,58 @@
 import React from "react";
 import styled from "styled-components";
-import { IoMan } from "react-icons/io5";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaPinterest,
-  FaXTwitter,
-} from "react-icons/fa6";
-import { IoLogoLinkedin } from "react-icons/io";
-import { MdLanguage, MdOutlineCurrencyRupee } from "react-icons/md";
 
-export default function GraphicsDesign() {
+export default function VideoAnimation() {
   return (
     <Root>
       <div className="footer_div">
         <div className="part1">
-          <h6>Logo & Brand Identity</h6>
+          <h6>Editing & Post-Production</h6>
           <ul>
-            <li>Logo Design</li>
-            <li>Brand Style Guides</li>
-            <li>Business Cards & Stationery</li>
-            <li>Font & Typography</li>
+            <li>Video Editing</li>
+            <li>Visual Effects</li>
+            <li>Video ArtNEW</li>
+            <li>Intro & Outro Videos</li>
+            <li>Video Templates Editing</li>
+            <li>Subtitles & Captions</li>
           </ul>
         </div>
         <div className="part1">
-          <h6>Web & App Design</h6>
+          <h6>Social & Marketing Videos</h6>
           <ul>
-            <li>Website Design</li>
-            <li>App Design</li>
-            <li>UX Design</li>
-            <li>Landing Page Design</li>
-            <li>Icon Design</li>
+            <li>Video Ads & Commercials</li>
+            <li>Social Media Videos</li>
+            <li>UGC Videos </li>
+            <li>Music Videos</li>
+            <li>Slideshow Videos</li>
           </ul>
         </div>
         <div className="part1">
-          <h6>Visual Design</h6>
+          <h6>Animation</h6>
           <ul>
-            <li>Image Editing</li>
-            <li>Presentation Design</li>
-            <li>Background Removal</li>
-            <li>Infographic Design</li>
-            <li>Vector Tracing</li>
-            <li>Resume Design</li>
+            <li>Character Animation</li>
+            <li>Animated GIFs</li>
+            <li>Animation for Kids</li>
+            <li>Animation for Streamers</li>
+            <li>Rigging</li>
+            <li>NFT Animation</li>
           </ul>
         </div>
         <div className="part1">
-          <h6> Marketing Design</h6>
+          <h6> Product Videos</h6>
           <ul>
-            <li>Social Media Design</li>
-            <li>Social Posts & Banners</li>
-            <li>Email Design</li>
-            <li>Web Banners</li>
-            <li>Signage Design</li>
+            <li>3D Product Animation</li>
+            <li>E-Commerce Product Videos</li>
+            <li>Corporate Videos</li>
+            <li>App & Website Previews</li>
           </ul>
         </div>
+
         <div className="part1">
-          <h6>Packaging & Covers</h6>
+          <h6>Motion Graphics</h6>
           <ul>
-            <li>Packaging & Label Design</li>
-            <li>Book Design</li>
-            <li>Book Covers</li>
-            <li>Album Cover Design</li>
+            <li>Logo Animation</li>
+            <li>Lottie & Web Animation</li>
+            <li>Text Animation</li>
           </ul>
         </div>
       </div>
@@ -70,7 +62,7 @@ export default function GraphicsDesign() {
 const Root = styled.section`
   padding: 30px 20px;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
-  @media (max-width: 567px){
+  @media (max-width: 567px) {
     padding: 30px 10px;
   }
   .footer_div {

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function PendingApprove() {
@@ -12,6 +13,7 @@ export default function PendingApprove() {
   const handleDropdownClick = () => {
     setShowDropdown(!showDropdown);
   };
+  const navigate = useNavigate();
   return (
     <Root>
       <table>
@@ -98,7 +100,9 @@ export default function PendingApprove() {
                   <div className="dropdown_menu">
                     <ul>
                       <li>Preview</li>
-                      <li>Edit</li>
+                      <li   onClick={() => {
+                          navigate("/editgigspages");
+                        }}>Edit</li>
                       <li>Activate</li>
                       <li>Delete</li>
                     </ul>

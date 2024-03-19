@@ -6,3 +6,6 @@
 
   export const EXCHANGE_URLS =
   "http://localhost:4000/api/seller";
+
+  export const EXCHANGE_URLS_CATEGORY =
+  "http://localhost:4000/api/category";

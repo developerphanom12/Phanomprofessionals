@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 export default function Paused() {
   const [isChecked, setIsChecked] = useState(false);
@@ -12,6 +13,7 @@ export default function Paused() {
   const handleDropdownClick = () => {
     setShowDropdown(!showDropdown);
   };
+  const navigate = useNavigate();
   return (
     <Root>
       <table>
@@ -98,7 +100,9 @@ export default function Paused() {
                   <div className="dropdown_menu">
                     <ul>
                       <li>Preview</li>
-                      <li>Edit</li>
+                      <li   onClick={() => {
+                          navigate("/editgigspages");
+                        }}>Edit</li>
                       <li>Activate</li>
                       <li>Delete</li>
                     </ul>

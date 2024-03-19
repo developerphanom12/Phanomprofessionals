@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { GigButton } from "../../../GlobalStyles";
-import Gallery from "./gallery/Gallery";
-import Requirements from "./requirements/Requirements";
-import Pricing from "./pricing/Pricing";
-import DescriptionFAQ from "./description/DescriptionFAQ";
-import EditOverview from "./editoverview/EditOverview";
+import { GigButton } from "../../../../../../GlobalStyles";
+import IndexO from "./editOverview/IndexO";
+import IndexP from "./editPricing/IndexP";
+import IndexD from "./editDescription/IndexD";
+import IndexR from "./editRequirements/IndexR";
+import IndexG from "./editGallery/IndexG";
 
-export default function EditPage() {
+export default function EditGigsPage() {
   const [active, setActive] = useState("editoverview");
 
   return (
@@ -27,9 +27,9 @@ export default function EditPage() {
             </div>
             <div>
               <GigButton
-                className={active === "pricing" ? "btn_1 active" : "btn_1"}
+                className={active === "editpricing" ? "btn_1 active" : "btn_1"}
                 onClick={() => {
-                  setActive("pricing");
+                  setActive("editpricing");
                 }}
               >
                 Pricing
@@ -38,10 +38,10 @@ export default function EditPage() {
             <div>
               <GigButton
                 className={
-                  active === "descriptionFAQ" ? "btn_1 active" : "btn_1"
+                  active === "editdescriptionFAQ" ? "btn_1 active" : "btn_1"
                 }
                 onClick={() => {
-                  setActive("descriptionFAQ");
+                  setActive("editdescriptionFAQ");
                 }}
               >
                 Description & FAQ
@@ -49,9 +49,9 @@ export default function EditPage() {
             </div>
             <div>
               <GigButton
-                className={active === "requirements" ? "btn_1 active" : "btn_1"}
+                className={active === "editrequirements" ? "btn_1 active" : "btn_1"}
                 onClick={() => {
-                  setActive("requirements");
+                  setActive("editrequirements");
                 }}
               >
                 Requirements
@@ -59,9 +59,9 @@ export default function EditPage() {
             </div>
             <div>
               <GigButton
-                className={active === "gallery" ? "btn_1 active" : "btn_1"}
+                className={active === "editgallery" ? "btn_1 active" : "btn_1"}
                 onClick={() => {
-                  setActive("gallery");
+                  setActive("editgallery");
                 }}
               >
                 Gallery
@@ -75,17 +75,17 @@ export default function EditPage() {
           <div className="row">
             <div className="col-lg-12">
               {active === "editoverview" ? (
-                <EditOverview />
-              ) : active === "pricing" ? (
-                <Pricing />
-              ) : active === "descriptionFAQ" ? (
-                <DescriptionFAQ />
-              ) : active === "requirements" ? (
-                <Requirements />
-              ) : active === "gallery" ? (
-                <Gallery />
+                <IndexO />
+              ) : active === "editpricing" ? (
+                <IndexP />
+              ) : active === "editdescriptionFAQ" ? (
+                <IndexD />
+              ) : active === "editrequirements" ? (
+                <IndexR />
+              ) : active === "editgallery" ? (
+                <IndexG />
               ) : (
-                <EditOverview />
+                <IndexO />
               )}
             </div>
           </div>
