@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { EXCHANGE_URLS_IMAGES } from "../../Important/URLS";
 
-export default function BrowserSlider1({ gigData }) {
+export default function WebsiteSlider({ gigData }) {
   var settings = {
     dots: true,
     infinite: true,
@@ -59,8 +59,9 @@ const Sliderrrs = styled.section`
   width: 100%;
   .img {
     width: 100%;
-    height: auto;
+    height: 193px;
     border-radius: 10px;
+    object-fit: cover;
   }
   .slick-prev,
   .slick-next {

@@ -1,22 +1,38 @@
+import axios from "axios";
 import React, { useState, useRef, useEffect } from "react";
 import {
   IoIosArrowDropleft,
   IoIosArrowDropright,
   IoIosArrowRoundForward,
 } from "react-icons/io";
-import Slider1 from "./BrowserSlider1";
 import styled from "styled-components";
+import { EXCHANGE_URLS } from "../../Important/URLS";
+import WebsiteSlider from "./WebsiteSlider";
+import { toast } from "react-toastify";
+import profile from "../../Images/button1.webp";
 
 function Websitedev() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [gigData, setGigData] = useState([]);
+
+  useEffect(() => {
+    const getSliderApi = async () => {
+      try {
+        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/5`);
+        if (res?.status === 201) {
+          setGigData(res?.data?.message || []);
+        }
+      } catch (err) {
+        toast.error(err, "Error");
+      }
+    };
+
+    getSliderApi();
+  }, []);
+
   const slideRef = useRef();
 
-  const slides = [
-    <Slider1 />,
-   
-  ];
-
-  const totalSlides = slides.length;
+  const totalSlides = gigData.length;
   const slidesToShow = 4;
   const slideWidth = 300;
 
@@ -39,15 +55,12 @@ function Websitedev() {
   }, [currentSlide]);
 
   return (
-    <Root className="slider-container">
+    <Sliderrrs>
       <div className="heading_button">
-        <div>
-          <h2 className="main_heading">
-            Verified Pro services in Website Development
-            <IoIosArrowRoundForward />
-          </h2>
-          <span>Hand-vetted talent for all your professional needs.</span>
-        </div>
+        <h2 className="main_heading">
+          Most popular Gigs in Website Development
+          <IoIosArrowRoundForward />
+        </h2>
         <div>
           <button onClick={goToPreviousSlide}>
             <IoIosArrowDropleft />
@@ -58,25 +71,39 @@ function Websitedev() {
         </div>
       </div>
       <div className="slides-container" ref={slideRef}>
-        {slides.map((slide, index) => (
+        {gigData.map((gig, index) => (
           <div
             key={index}
             className={`slide ${index === currentSlide ? "active" : ""}`}
           >
-            {slide}
+            <WebsiteSlider gigData={gig} />
+            <div className="footer">
+              <div className="profile_footer">
+                <img src={profile} alt="img" />
+                <h6>name: {gig?.seller?.username}</h6>
+              </div>
+              <div>
+                <p>description: {gig?.gigsData?.gig_title}</p>
+              </div>
+              <div>
+                <h5>Rating: 5</h5>
+              </div>
+            </div>
           </div>
         ))}
       </div>
-    </Root>
+    </Sliderrrs>
   );
 }
-
 export default Websitedev;
 
-const Root = styled.section`
+const Sliderrrs = styled.section`
   width: 100vw;
-  padding: 30px 0px;
-  margin: 20px 10px;
+  .slider-container {
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+  }
   .heading_button {
     display: flex;
     justify-content: space-between;
@@ -88,11 +115,6 @@ const Root = styled.section`
     font-weight: 700;
   }
 
-  .slider-container {
-    display: flex;
-    align-items: center;
-    overflow-x: auto;
-  }
 
   .slides-container {
     display: flex;
@@ -107,6 +129,24 @@ const Root = styled.section`
     scroll-snap-align: initial;
     margin-right: 10px; /* Adjust spacing between slides */
     padding: 10px; /* Optional: Add padding to slides */
+
+    .footer {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .profile_footer {
+        display: flex;
+        align-items: center;
+        h6 {
+          margin-left: 10px;
+        }
+        img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
   }
 
   button {

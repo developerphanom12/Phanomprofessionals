@@ -58,7 +58,7 @@ function BrowseHistory() {
     <Sliderrrs>
       <div className="heading_button">
         <h2 className="main_heading">
-          Gigs you may like
+          Related to your Browsing history
           <IoIosArrowRoundForward />
         </h2>
         <div>
@@ -109,6 +109,12 @@ const Sliderrrs = styled.section`
     justify-content: space-between;
     padding: 20px;
   }
+  .main_heading {
+    font-size: 24px;
+    color: #222325;
+    font-weight: 700;
+  }
+
 
   .slides-container {
     display: flex;
