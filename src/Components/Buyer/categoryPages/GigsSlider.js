@@ -11,7 +11,7 @@ import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 
 function GigsSlider() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);      
   const slideRef = useRef();
   const [gigData, setGigData] = useState([]);
 
