@@ -5,7 +5,7 @@ import { FaStar } from "react-icons/fa";
 import { LuDollarSign } from "react-icons/lu";
 import { FcApproval } from "react-icons/fc";
 
-export default function Dashboard(){
+export default function Dashboard() {
   return (
     <Root>
       <div className="main_div">
@@ -151,7 +151,7 @@ const Root = styled.section`
     padding:0;
     margin:0;
   } */
- .main_div {
+  .main_div {
     display: flex;
     padding: 20px 20px 0;
   }
@@ -233,7 +233,7 @@ const Root = styled.section`
         width: 100%;
         border: 1px solid #dadbdd;
         a {
-          /* / padding: 10px 20px; / */
+          /* / / padding: 10px 20px; / / */
           font-size: 16px;
           line-height: 31px;
           text-decoration: none;
@@ -338,9 +338,9 @@ const Root = styled.section`
       }
       .dropdown_list {
         select {
-          padding:11px;
-          border:1px solid #c5c6c9;
-          color:#74767e;
+          padding: 11px;
+          border: 1px solid #c5c6c9;
+          color: #74767e;
         }
       }
     }
@@ -447,6 +447,50 @@ const Root = styled.section`
           }
         }
       }
+    }
+  }
+
+  @media (max-width: 567px) {
+    .main_div {
+      flex-wrap: wrap;
+    }
+
+    .main_div_one {
+      width: 100%;
+    }
+
+    .main_div_two .active_order .active_content h3 {
+      font-size: 13px;
+      color: #222325;
+      font-weight: 600;
+      line-height: 42px;
+      margin: 0;
+    }
+
+    .main_div_two {
+      width: 100%;
+      margin: 0 0 30px 0px;
+      .steps_main_div .keys-container li {
+        flex: unset;
+      }
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    .main_div {
+      flex-wrap: wrap;
+    }
+
+    .main_div_one {
+      width: 100%;
+    }
+
+    .main_div_two {
+      width: 100%;
+      margin: 0 0 30px 0px;
+      /* .steps_main_div .keys-container li {
+        flex: unset;
+      } */
     }
   }
 `;

@@ -94,7 +94,9 @@ export default function PostNav() {
             <Nav>
               <div className="top_nav_pages">
                 <Nav.Link className="dashboard">
-                  <a href="./dashboard">Dashboard</a>
+                  <a href="dashboard"
+                  onClick={()=>{navigate("/dashboard")}}
+                  >Dashboard</a>
                 </Nav.Link>
                 <Nav.Link className="business">
                   <button
