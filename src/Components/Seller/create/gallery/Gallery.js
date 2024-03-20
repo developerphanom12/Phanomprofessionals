@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 export default function Gallery() {
   const gigId = useSelector((state) => state.users.gigId);
   const [imageFiles, setImageFiles] = useState({
-    gig_id: 9,
+    gig_id: gigId ? gigId.toString() : "",
     image1: null,
     image2: null,
     image3: null,

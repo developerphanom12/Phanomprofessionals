@@ -32,7 +32,7 @@ export default function Page1() {
   useEffect(() => {
     const getSliderApi = async () => {
       try {
-        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/2`);
+        const res = await axios.get(`${EXCHANGE_URLS}/gigslist/7`);
         if (res?.status === 201) {
           setGigData(res?.data?.message || []);
         }
@@ -44,168 +44,182 @@ export default function Page1() {
     getSliderApi();
   }, []);
 
-
   const toggleMessageBox = () => {
     setShowMessageBox(!showMessageBox);
   };
   return (
     <Root>
-      <div className="main_section">
-        <div className="main_barr">
-          <div className="path_value">
-            <a>
-              <IoHomeOutline />
-            </a>{" "}
-            <p>/</p> <a>Graphics & Design</a> <p>/</p> <a>Website Design</a>{" "}
-            <p>/</p> <a>Website UI/UX Design</a>
-          </div>
-          <div className="heading_point">
-            <h2>I will create innovative website design or website mockup</h2>
-          </div>
-          <div className="profile_contain">
-            <div className="pro_img">
-              <img src={pro} alt="img" />
+      {gigData.map((gig) => (
+        <div className="main_section">
+          <div className="main_barr">
+            <div className="path_value">
+              <a>
+                <IoHomeOutline />
+              </a>{" "}
+              <p>/</p> <a>Graphics & Design</a> <p>/</p> <a>Website Design</a>{" "}
+              <p>/</p> <a>{gig?.category?.category_name}</a>
             </div>
-            <div className="pro_detail">
-              <div>
-                {" "}
-                <p>Name</p>
-                <span>Top Rated</span>
-              </div>
-              <div>
-                <p>
-                  <IoMdStar /> 5.0
-                </p>
-                <label>20 Orders in Queue</label>
-              </div>
-            </div>
-          </div>
-          <div className="slider_div">
-            <p>
-              <HiOutlineTrophy /> People keep coming back! amirkhan1996 has an
-              exceptional number of repeat buyers.
-            </p>
-            <SliderImage />
-          </div>
-          <div className="about_slider">
-            <p>
-              What people loved about this seller{" "}
-              <button className="button_slider">See all reviews</button>
-            </p>     
 
-            <SliderText />
-          </div>
-          <div className="About_this_gig">
-            <h4> About this gig</h4>
-            <p>
-              Greetings as a experienced revision of WordPress , Shopify custom
-              built CMS with an over 3 years in web development i have started
-              here and i believe there is no other better way than for you to
-              hire a guy with both front end and backend web development and
-              designing skills to grasp and portray for your website
-            </p>
-          </div>
-          {showMessageBox && (
-            <div className="msg_writing_box">
-              <div className="msg_writing_head">
-                <div className="heading">
-                  <div>
-                    <img src={msgimg} alt="img" />
+            <div className="heading_point">
+              <h2>I will create innovative website design or website mockup</h2>
+            </div>
+            <div className="profile_contain">
+              <div className="pro_img">
+                <img src={pro} alt="img" />
+              </div>
+              <div className="pro_detail">
+                <div>
+                  {" "}
+                  <p>{gig?.seller?.username}</p>
+                  <span>Top Rated</span>
+                </div>
+                <div>
+                  <p>
+                    <IoMdStar /> 5.0
+                  </p>
+                  <label>20 Orders in Queue</label>
+                </div>
+              </div>
+            </div>
+            <div className="slider_div">
+              <p>
+                <HiOutlineTrophy /> People keep coming back! amirkhan1996 has an
+                exceptional number of repeat buyers.
+              </p>
+              <SliderImage gigData={gig} />
+            </div>
+            <div className="about_slider">
+              <p>
+                What people loved about this seller{" "}
+                <button className="button_slider">See all reviews</button>
+              </p>
+
+              <SliderText />
+            </div>
+            <div className="About_this_gig">
+              <h4> About this gig</h4>
+              <p>
+                Greetings as a experienced revision of WordPress , Shopify
+                custom built CMS with an over 3 years in web development i have
+                started here and i believe there is no other better way than for
+                you to hire a guy with both front end and backend web
+                development and designing skills to grasp and portray for your
+                website
+              </p>
+            </div>
+            {showMessageBox && (
+              <div className="msg_writing_box">
+                <div className="msg_writing_head">
+                  <div className="heading">
+                    <div>
+                      <img src={msgimg} alt="img" />
+                    </div>
+                    <div>
+                      <p>Avineet</p>
+                    </div>
                   </div>
+                  <button
+                    onClick={() => {
+                      toggleMessageBox(false);
+                    }}
+                  >
+                    <RxCross2 />
+                  </button>
+                </div>
+                <div className="msg_writing_body">
+                  Ask the person anything about your website
+                </div>
+                <div className="msg_writing_foot">
                   <div>
-                    <p>Avineet</p>
+                    <BsEmojiSmile /> <ImAttachment />
+                  </div>
+                  <input placeholder="Write Message" />
+                </div>
+              </div>
+            )}
+            <div className="msg_float" onClick={toggleMessageBox}>
+              <div className="msg_float_img">
+                <img src={msgimg} alt="img" />
+              </div>
+              <div className="msg_float_txt">
+                <p>Message</p>
+                <span>Online : Avg response time:2 Hrs</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="side_barr">
+            <div className="upper_side">
+              <IoIosMenu /> <IoMdHeart />
+              <button className="count">121</button>{" "}
+              <button>
+                <FaShareAlt />
+              </button>{" "}
+              <button>
+                <SlOptions />
+              </button>
+            </div>
+            <div className="plan_area">
+              {gigData ? (
+                <div className="plan_header">
+                  <div className="basic">
+                    Basic{gigData?.plantypes?.plan_type}
+                  </div>
+                  <div className="standard">Standard</div>
+                  <div className="premium">Premium</div>
+                </div>
+              ) : (
+                "no data"
+              )}
+
+              <div className="content_area">
+                <div className="content_text_area">
+                  <h4>
+                    $20000 <IoMdInformationCircleOutline />
+                  </h4>
+                  <span> website developer and designer</span>
+                  <p>
+                    will fix any bugs or make changes depending on client
+                    requests
+                  </p>
+                  <div className="time_area">
+                    <div>
+                      <b>
+                        <FaRegClock /> 2 Days Delivery
+                      </b>
+                      <b>
+                        <TbRefresh /> Unlimited Revisions
+                      </b>
+                    </div>
+                    <div>
+                      <ul>
+                        <li>
+                          <FaCheck /> 2 pages{" "}
+                        </li>
+                        <li>
+                          <FaCheck /> 1 custom asset
+                        </li>
+                        <li>
+                          <FaCheck /> Responsive design
+                        </li>
+                        <li>
+                          <FaCheck /> Content upload
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-                <button
-                  onClick={() => {
-                    toggleMessageBox(false);
-                  }}
-                >
-                  <RxCross2 />
-                </button>
+                <div className="continue_button">
+                  <button>
+                    Continue <FaArrowRightLong />
+                  </button>
+                  <span>Compare Packages</span>
+                </div>
               </div>
-              <div className="msg_writing_body">
-                Ask the person anything about your website
-              </div>
-              <div className="msg_writing_foot">
-                <div><BsEmojiSmile />  <ImAttachment /></div>
-             <input placeholder="Write Message"/>
-              </div>
-            </div>
-          )}
-          <div className="msg_float" onClick={toggleMessageBox}>
-            <div className="msg_float_img">
-              <img src={msgimg} alt="img" />
-            </div>
-            <div className="msg_float_txt">
-              <p>Message</p>
-              <span>Online : Avg response time:2 Hrs</span>
             </div>
           </div>
         </div>
-        <div className="side_barr">
-          <div className="upper_side">
-            <IoIosMenu /> <IoMdHeart />
-            <button className="count">121</button>{" "}
-            <button>
-              <FaShareAlt />
-            </button>{" "}
-            <button>
-              <SlOptions />
-            </button>
-          </div>
-          <div className="plan_area">
-            <div className="plan_header">
-              <div className="basic">Basic</div>
-              <div className="standard">Standard</div>
-              <div className="premium">Premium</div>
-            </div>
-            <div className="content_area">
-              <div className="content_text_area">
-                <h4>
-                  $20000 <IoMdInformationCircleOutline />
-                </h4>
-                <span> website developer and designer</span>
-                <p>
-                  will fix any bugs or make changes depending on client requests
-                </p>
-                <div className="time_area">
-                  <div>
-                    <b>
-                      <FaRegClock /> 2 Days Delivery
-                    </b>
-                    <b>
-                      <TbRefresh /> Unlimited Revisions
-                    </b>
-                  </div>
-                  <div>
-                    <ul>
-                      <li>
-                        <FaCheck /> 2 pages{" "}
-                      </li>
-                      <li>
-                        <FaCheck /> 1 custom asset
-                      </li>
-                      <li>
-                        <FaCheck /> Responsive design
-                      </li>
-                      <li>
-                        <FaCheck /> Content upload
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="continue_button">
-                <button>
-                  Continue <FaArrowRightLong />
-                </button>
-                <span>Compare Packages</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      ))}
     </Root>
   );
 }
@@ -360,17 +374,16 @@ const Root = styled.section`
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding:10px 20px;
+          padding: 10px 20px;
           border-bottom: 1px solid darkgreen;
-          button{
+          button {
             border: none;
             background-color: white;
             color: #404145;
-            svg{
+            svg {
               font-weight: 600;
               width: 30px;
               height: 30px;
-
             }
           }
           .heading {
@@ -391,18 +404,18 @@ const Root = styled.section`
         }
         .msg_writing_body {
           overflow-y: scroll;
-          padding:10px 20px;
+          padding: 10px 20px;
           color: #62646a;
         }
         .msg_writing_foot {
           border-top: 1px solid #d3d3d3b5;
-          padding:10px 20px;
+          padding: 10px 20px;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          >div{
-           display: flex;
-           gap: 20px;
+          > div {
+            display: flex;
+            gap: 20px;
           }
         }
       }
@@ -614,40 +627,34 @@ const Root = styled.section`
     }
   }
 
-
   @media (max-width: 567px) {
- .main_section .main_barr {
-margin-right: 0; 
- .slider_div p svg {
-    width: 50px;
-    height: 50px;
-}
-.path_value a {
-    font-size: 9px;
-}
- .path_value p {
-    font-size: 10px;
-}
-.path_value svg {
-    width: 12px;
-    height: 12px;
-}
-
-}
-.main_section .side_barr .upper_side {
-    padding: 20px 0px 16px;
-    justify-content: flex-start; 
-}
-
-}
-
-@media (min-width: 567px) and (max-width: 992px) {
- .main_section .side_barr .upper_side{
-    padding: 20px 0px 16px;
-    justify-content: flex-start;
-
-}
-   
+    .main_section .main_barr {
+      margin-right: 0;
+      .slider_div p svg {
+        width: 50px;
+        height: 50px;
+      }
+      .path_value a {
+        font-size: 9px;
+      }
+      .path_value p {
+        font-size: 10px;
+      }
+      .path_value svg {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    .main_section .side_barr .upper_side {
+      padding: 20px 0px 16px;
+      justify-content: flex-start;
+    }
   }
 
+  @media (min-width: 567px) and (max-width: 992px) {
+    .main_section .side_barr .upper_side {
+      padding: 20px 0px 16px;
+      justify-content: flex-start;
+    }
+  }
 `;

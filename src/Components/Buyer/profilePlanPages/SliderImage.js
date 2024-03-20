@@ -5,9 +5,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import imggg from "../../Images/ind18.png";
 import banner from "../../Images/ind20.png";
+import { EXCHANGE_URLS_IMAGES } from "../../Important/URLS";
 
 
-export default function SliderImage() {
+export default function SliderImage({gigData}) {
   var settings = {
     dots: false,
     infinite: true,
@@ -17,32 +18,47 @@ export default function SliderImage() {
   };
   return (
     <Sliderimage>
-      <Slider {...settings}>
-        <div>
-          <img className="img" src={imggg} alt="img" />
-        </div>
-        <div>
-          <img className="img" src={banner} alt="img" />
-        </div>
-        <div>
-          <img className="img" src={imggg} alt="img" />
-        </div>
-        <div>
-          <img className="img" src={banner} alt="img" />
-        </div>
-        <div>
-          <img className="img" src={imggg} alt="img" />
-        </div>
-        <div>
-          <img className="img" src={banner} alt="img" />
-        </div>
+       <Slider {...settings}>
+        {gigData ? (
+          <>
+            <img
+              className="img"
+              src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image1}`}
+              alt={`Image 1`}
+            />
+          </>
+        ) : (
+          <div>No gig data available</div>
+        )}
+        {gigData ? (
+          <>
+            <img
+              className="img"
+              src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image2}`}
+              alt={`Image 2`}
+            />
+          </>
+        ) : (
+          <div>No gig data available</div>
+        )}
+        {gigData ? (
+          <>
+            <img
+              className="img"
+              src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image3}`}
+              alt={`Image 3`}
+            />
+          </>
+        ) : (
+          <div>No gig data available</div>
+        )}
       </Slider>
     </Sliderimage>
   );
 }
 const Sliderimage = styled.section`
   > div {
-    width: 598px;
+    width: 50vw;
     .img {
       border-radius: 10px;
     }
@@ -52,7 +68,7 @@ const Sliderimage = styled.section`
   }
 
   .img {
-    width: 598px !important;
+    width: 50vw !important;
     height: 250px !important;
   }
   margin: 20px;
