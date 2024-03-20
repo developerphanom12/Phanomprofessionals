@@ -44,7 +44,7 @@ export default function Page1() {
     getSliderApi();
   }, []);
 
-  
+
   const toggleMessageBox = () => {
     setShowMessageBox(!showMessageBox);
   };
@@ -91,7 +91,7 @@ export default function Page1() {
             <p>
               What people loved about this seller{" "}
               <button className="button_slider">See all reviews</button>
-            </p>
+            </p>     
 
             <SliderText />
           </div>
