@@ -5,21 +5,34 @@ import {
   IoIosArrowRoundForward,
 } from "react-icons/io";
 import styled from "styled-components";
-import BrowserSlider1 from "./BrowserSlider1";
+import SliderrGig from "./SliderrGig";
+import axios from "axios";
+import { EXCHANGE_URLS } from "../../Important/URLS";
+import { toast } from "react-toastify";
 
 function GigsSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef();
+  const [gigData, setGigData] = useState([]);
 
+  useEffect(() => {
+    const getSliderApi = async () => {
+      try {
+        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/2`);
+        if (res?.status === 201) {
+          setGigData(res?.data?.message || []);
+        }
+      } catch (err) {
+        toast.error(err, "Error");
+      }
+    };
 
-  const slides = [
-    <BrowserSlider1 />,
-   
-  ];
+    getSliderApi();
+  }, []);
 
-  const totalSlides = slides.length;
+  const totalSlides = gigData.length;
   const slidesToShow = 4;
-  const slideWidth = 300;
+  const slideWidth = 310; // Adjusted slide width to match styling
 
   const goToPreviousSlide = () => {
     setCurrentSlide((prev) =>
@@ -56,12 +69,12 @@ function GigsSlider() {
         </div>
       </div>
       <div className="slides-container" ref={slideRef}>
-        {slides.map((slide, index) => (
+        {gigData.map((gig, index) => (
           <div
             key={index}
             className={`slide ${index === currentSlide ? "active" : ""}`}
           >
-            {slide}
+            <SliderrGig {...gig} /> {/* Pass gig data as props */}
           </div>
         ))}
       </div>

@@ -1,10 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
-import { IoIosArrowDropleft, IoIosArrowDropright, IoIosArrowRoundForward } from "react-icons/io";
+import {
+  IoIosArrowDropleft,
+  IoIosArrowDropright,
+  IoIosArrowRoundForward,
+} from "react-icons/io";
 import styled from "styled-components";
 import axios from "axios";
 import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import BrowserSlider1 from "./BrowserSlider1";
+import profile from "../../Images/button1.webp";
 
 function BrowseHistory() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -15,7 +20,7 @@ function BrowseHistory() {
       try {
         const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/1`);
         if (res?.status === 201) {
-          setGigData(res?.data?.message || []); // Update state with message array
+          setGigData(res?.data?.message || []);
         }
       } catch (err) {
         toast.error(err, "Error");
@@ -24,7 +29,7 @@ function BrowseHistory() {
 
     getSliderApi();
   }, []);
-  
+
   const slideRef = useRef();
 
   const totalSlides = gigData.length;
@@ -67,8 +72,23 @@ function BrowseHistory() {
       </div>
       <div className="slides-container" ref={slideRef}>
         {gigData.map((gig, index) => (
-          <div key={index} className={`slide ${index === currentSlide ? "active" : ""}`}>
+          <div
+            key={index}
+            className={`slide ${index === currentSlide ? "active" : ""}`}
+          >
             <BrowserSlider1 gigData={gig} />
+            <div className="footer">
+              <div className="profile_footer">
+                <img src={profile} alt="img" />
+                <h6>name: {gig?.seller?.username}</h6>
+              </div>
+              <div>
+                <p>description: {gig?.gigsData?.gig_title}</p>
+              </div>
+              <div>
+                <h5>Rating: 5</h5>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -103,6 +123,24 @@ const Sliderrrs = styled.section`
     scroll-snap-align: initial;
     margin-right: 10px; /* Adjust spacing between slides */
     padding: 10px; /* Optional: Add padding to slides */
+
+    .footer {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .profile_footer {
+        display: flex;
+        align-items: center;
+        h6 {
+          margin-left: 10px;
+        }
+        img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
   }
 
   button {
