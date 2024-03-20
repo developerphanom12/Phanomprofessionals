@@ -18,7 +18,7 @@ function Populargigs() {
   useEffect(() => {
     const getSliderApi = async () => {
       try {
-        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/5`);
+        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/4`);
         if (res?.status === 201) {
           setGigData(res?.data?.message || []);
         }
