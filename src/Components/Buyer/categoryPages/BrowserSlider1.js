@@ -59,8 +59,9 @@ const Sliderrrs = styled.section`
   width: 100%;
   .img {
     width: 100%;
-    height: auto;
     border-radius: 10px;
+    height: 193px;
+    object-fit: cover;
   }
   .slick-prev,
   .slick-next {

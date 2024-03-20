@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import styled from "styled-components";
 import pro from "../../Images/Boyspic.png";
@@ -19,12 +19,32 @@ import { TbRefresh } from "react-icons/tb";
 import { FaArrowRightLong } from "react-icons/fa6";
 import SliderImage from "./SliderImage";
 import SliderText from "./SliderText";
+import axios from "axios";
+import { EXCHANGE_URLS } from "../../Important/URLS";
+import { toast } from "react-toastify";
 // import SliderImage from "./SliderImage";
 // import SliderText from "./SliderText";
 
 export default function Page1() {
   const [showMessageBox, setShowMessageBox] = useState(false);
+  const [gigData, setGigData] = useState([]);
 
+  useEffect(() => {
+    const getSliderApi = async () => {
+      try {
+        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/2`);
+        if (res?.status === 201) {
+          setGigData(res?.data?.message || []);
+        }
+      } catch (err) {
+        toast.error(err, "Error");
+      }
+    };
+
+    getSliderApi();
+  }, []);
+
+  
   const toggleMessageBox = () => {
     setShowMessageBox(!showMessageBox);
   };

@@ -29,7 +29,10 @@ export default function PostNav() {
     showGrowth: false,
     showAnalytics: false,
   });
-
+  const [profileshow, setShow] = useState(false);
+  function toggleShowName() {
+    setShow((prevState) => !prevState);
+  }
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleLogoutClick = () => {
@@ -94,9 +97,14 @@ export default function PostNav() {
             <Nav>
               <div className="top_nav_pages">
                 <Nav.Link className="dashboard">
-                  <a href="dashboard"
-                  onClick={()=>{navigate("/dashboard")}}
-                  >Dashboard</a>
+                  <a
+                    href="dashboard"
+                    onClick={() => {
+                      navigate("/dashboard");
+                    }}
+                  >
+                    Dashboard
+                  </a>
                 </Nav.Link>
                 <Nav.Link className="business">
                   <button
@@ -167,6 +175,7 @@ export default function PostNav() {
                     <span>Analytics</span>
                     <IoIosArrowDown />
                   </button>
+
                   {showToggles.showAnalytics && (
                     <div className="optn_div">
                       <div className="top">
@@ -280,10 +289,23 @@ export default function PostNav() {
                   </Nav.Link>
                 </div>
                 <Nav.Link className="orders">Orders</Nav.Link>
-                <Nav.Link href="loginseller" className="profile">
+
+                <Nav.Link href="" className="profile" onClick={toggleShowName}>
                   {" "}
                   <img src={logoimg} alt="img" />
                 </Nav.Link>
+                {profileshow && (
+                  <div className="profile_option">
+                    <div className="profile_div">
+                      <button onClick={ () =>{navigate("/Profile")}}>Profile</button>
+                    </div>
+                    <hr/>
+
+                    <div className="profile_div">
+                      <button onClick={ ()=> {navigate("/loginseller")}}>Switch to Seller</button>
+                    </div>
+                  </div>
+                )}
               </div>
             </Nav>
           </Navbar.Collapse>
@@ -552,4 +574,50 @@ const Root = styled.section`
       height: 35px;
     }
   }
+
+  .profile_option {
+    position: absolute;
+    top: 70px;
+    z-index: 11;
+    border: 1px solid #c5c6c9;
+    background: white;
+    width: 18%;
+    padding:10px;
+    .profile_div {
+      display:flex;
+      justify-content:center;
+      margin-top:5px;
+      button {
+        padding:5px 16px;
+        color:#95979d;
+        background-color:#fff0;
+        border:1px solid transparent;
+      }
+    }
+    hr{
+      margin:10px;
+    }
+  }
+
+@media (max-width: 567px){
+  .profile_option {
+    position: absolute;
+    top: 240px;
+    z-index: 11;
+    border: 1px solid #c5c6c9;
+    background: white;
+    width: 50%;
+    padding:10px;
+    
+  }
+  
+}
+
+@media (min-width :567px) and (max-width: 992px){
+.profile_option {
+    top: 120px;
+    width: 25%;
+    left: 101px;
+}
+}
 `;

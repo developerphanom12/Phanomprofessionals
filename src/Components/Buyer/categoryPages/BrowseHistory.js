@@ -18,7 +18,7 @@ function BrowseHistory() {
   useEffect(() => {
     const getSliderApi = async () => {
       try {
-        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/1`);
+        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/2`);
         if (res?.status === 201) {
           setGigData(res?.data?.message || []);
         }

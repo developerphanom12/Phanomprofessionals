@@ -36,7 +36,7 @@ export default function LoginSeller() {
       const res = await axios.post(`${EXCHANGE_URLS}/loginseller`, data);
       console.log("resres", res?.data?.data);
       if (res?.status === 200) {
-        navigate("/dashboard");
+        navigate("/innerpages");
         localStorage.setItem("token", res?.data?.data?.token);
         dispatch(userDataAction(res?.data?.data));
         dispatch(userCheckAction(true));
