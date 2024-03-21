@@ -28,6 +28,7 @@ import { toast } from "react-toastify";
 export default function Page1() {
   const [showMessageBox, setShowMessageBox] = useState(false);
   const [gigData, setGigData] = useState([]);
+  const [active, setActive] = useState("basic");
 
   useEffect(() => {
     const getSliderApi = async () => {
@@ -160,60 +161,215 @@ export default function Page1() {
               </button>
             </div>
             <div className="plan_area">
-              {gigData ? (
-                <div className="plan_header">
-                  <div className="basic">
-                    Basic{gigData?.plantypes?.plan_type}
-                  </div>
-                  <div className="standard">Standard</div>
-                  <div className="premium">Premium</div>
+              <div className="plan_header">
+                <div
+                  className={active === "active" ? "active" : "basic"}
+                  onClick={() => {
+                    setActive("basic");
+                  }}
+                >
+                  Basic
                 </div>
-              ) : (
-                "no data"
-              )}
-
-              <div className="content_area">
-                <div className="content_text_area">
-                  <h4>
-                    $20000 <IoMdInformationCircleOutline />
-                  </h4>
-                  <span> website developer and designer</span>
-                  <p>
-                    will fix any bugs or make changes depending on client
-                    requests
-                  </p>
-                  <div className="time_area">
-                    <div>
-                      <b>
-                        <FaRegClock /> 2 Days Delivery
-                      </b>
-                      <b>
-                        <TbRefresh /> Unlimited Revisions
-                      </b>
-                    </div>
-                    <div>
-                      <ul>
-                        <li>
-                          <FaCheck /> 2 pages{" "}
-                        </li>
-                        <li>
-                          <FaCheck /> 1 custom asset
-                        </li>
-                        <li>
-                          <FaCheck /> Responsive design
-                        </li>
-                        <li>
-                          <FaCheck /> Content upload
-                        </li>
-                      </ul>
+                <div
+                  className={active === "active" ? "active" : "standard"}
+                  onClick={() => {
+                    setActive("standard");
+                  }}
+                >
+                  Standard
+                </div>
+                <div
+                  className={active === "active" ? "active" : "premium"}
+                  onClick={() => {
+                    setActive("premium");
+                  }}
+                >
+                  Premium
+                </div>
+              </div>
+              <div className="table">
+                <div className="container-fluid">
+                  <div className="row">
+                    <div className="col-lg-12">
+                      {active === "basic" ? (
+                        <div className="content_area">
+                          <div className="content_text_area">
+                            <h4>
+                              $206786 <IoMdInformationCircleOutline />
+                            </h4>
+                            <span> website developer and designer</span>
+                            <p>
+                              will fix any bugs or make changes depending on
+                              client requests
+                            </p>
+                            <div className="time_area">
+                              <div>
+                                <b>
+                                  <FaRegClock /> 2 Days Delivery
+                                </b>
+                                <b>
+                                  <TbRefresh /> Unlimited Revisions
+                                </b>
+                              </div>
+                              <div>
+                                <ul>
+                                  <li>
+                                    <FaCheck /> 2 pages{" "}
+                                  </li>
+                                  <li>
+                                    <FaCheck /> 1 custom asset
+                                  </li>
+                                  <li>
+                                    <FaCheck /> Responsive design
+                                  </li>
+                                  <li>
+                                    <FaCheck /> Content upload
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="continue_button">
+                            <button>
+                              ContactMe <FaArrowRightLong />
+                            </button>
+                          </div>
+                        </div>
+                      ) : active === "standard" ? (
+                        <div className="content_area">
+                          <div className="content_text_area">
+                            <h4>
+                              $567567 <IoMdInformationCircleOutline />
+                            </h4>
+                            <span> website developer and designer</span>
+                            <p>
+                              will fix any bugs or make changes depending on
+                              client requests
+                            </p>
+                            <div className="time_area">
+                              <div>
+                                <b>
+                                  <FaRegClock /> 2 Days Delivery
+                                </b>
+                                <b>
+                                  <TbRefresh /> Unlimited Revisions
+                                </b>
+                              </div>
+                              <div>
+                                <ul>
+                                  <li>
+                                    <FaCheck /> 2 pages{" "}
+                                  </li>
+                                  <li>
+                                    <FaCheck /> 1 custom asset
+                                  </li>
+                                  <li>
+                                    <FaCheck /> Responsive design
+                                  </li>
+                                  <li>
+                                    <FaCheck /> Content upload
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="continue_button">
+                            <button>
+                              ContactMe <FaArrowRightLong />
+                            </button>
+                          </div>
+                        </div>
+                      ) : active === "premium" ? (
+                        <div className="content_area">
+                          <div className="content_text_area">
+                            <h4>
+                              $56756767 <IoMdInformationCircleOutline />
+                            </h4>
+                            <span> website developer and designer</span>
+                            <p>
+                              will fix any bugs or make changes depending on
+                              client requests
+                            </p>
+                            <div className="time_area">
+                              <div>
+                                <b>
+                                  <FaRegClock /> 2 Days Delivery
+                                </b>
+                                <b>
+                                  <TbRefresh /> Unlimited Revisions
+                                </b>
+                              </div>
+                              <div>
+                                <ul>
+                                  <li>
+                                    <FaCheck /> 2 pages{" "}
+                                  </li>
+                                  <li>
+                                    <FaCheck /> 1 custom asset
+                                  </li>
+                                  <li>
+                                    <FaCheck /> Responsive design
+                                  </li>
+                                  <li>
+                                    <FaCheck /> Content upload
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="continue_button">
+                            <button>
+                              ContactMe <FaArrowRightLong />
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="content_area">
+                          <div className="content_text_area">
+                            <h4>
+                              $206786 <IoMdInformationCircleOutline />
+                            </h4>
+                            <span> website developer and designer</span>
+                            <p>
+                              will fix any bugs or make changes depending on
+                              client requests
+                            </p>
+                            <div className="time_area">
+                              <div>
+                                <b>
+                                  <FaRegClock /> 2 Days Delivery
+                                </b>
+                                <b>
+                                  <TbRefresh /> Unlimited Revisions
+                                </b>
+                              </div>
+                              <div>
+                                <ul>
+                                  <li>
+                                    <FaCheck /> 2 pages{" "}
+                                  </li>
+                                  <li>
+                                    <FaCheck /> 1 custom asset
+                                  </li>
+                                  <li>
+                                    <FaCheck /> Responsive design
+                                  </li>
+                                  <li>
+                                    <FaCheck /> Content upload
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="continue_button">
+                            <button>
+                              ContactMe <FaArrowRightLong />
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
-                </div>
-                <div className="continue_button">
-                  <button>
-                    Continue <FaArrowRightLong />
-                  </button>
-                  <span>Compare Packages</span>
                 </div>
               </div>
             </div>
@@ -494,6 +650,7 @@ const Root = styled.section`
         .plan_header {
           display: flex;
           border: 1px solid lightgray;
+
           .standard {
             border-left: 1px solid lightgray;
             border-right: 1px solid lightgray;
@@ -521,7 +678,10 @@ const Root = styled.section`
             padding: 16px;
             text-align: center;
             border-bottom: 3px solid #fff;
-
+            .active {
+              border-bottom: 3px solid #222325;
+              color: #222325;
+            }
             &:hover {
               border-bottom: 3px solid #222325;
               color: #222325;
@@ -656,5 +816,8 @@ const Root = styled.section`
       padding: 20px 0px 16px;
       justify-content: flex-start;
     }
+  }
+  .table > :not(caption) > * > * {
+    padding: 0px;
   }
 `;

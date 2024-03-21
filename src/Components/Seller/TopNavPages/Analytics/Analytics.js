@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
-import RepeatBusiness from './RepeatBusiness';
 import Overview from './Overview';
 import { GigButton } from '../../../../GlobalStyles';
+import Topkeywords from './Topkeywords';
+import KeywordsResearch from './KeywordsResearch';
 
 export default function Analytics() {
     const [active, setActive] = useState("overview");
@@ -20,16 +21,31 @@ export default function Analytics() {
               Overview
             </GigButton>
           </div>
+
           <div>
             <GigButton
-              className={active === "repeatbusiness" ? "btn_1 active" : "btn_1"}
+              className={active === "topkeywords" ? "btn_1 active" : "btn_1"}
               onClick={() => {
-                setActive("repeatbusiness");
+                setActive("topkeywords");
               }}
             >
-             Repeat Business
+            Top Keywords
             </GigButton>
           </div>
+          
+          <div>
+            <GigButton
+              className={active === "keywordsresearch" ? "btn_1 active" : "btn_1"}
+              onClick={() => {
+                setActive("keywordsresearch");
+              }}
+            >
+             Keywords Research
+            </GigButton>
+          </div>
+
+
+
         </div>
       </div>
       <div className="table">
@@ -38,8 +54,10 @@ export default function Analytics() {
             <div className="col-lg-12">
               {active === "overview" ? (
                 <Overview />
-              ) : active === "repeatbusiness" ? (
-                <RepeatBusiness />
+              ) : active === "topkeywords" ? (
+                <Topkeywords />
+              ) : active === "keywordsresearch" ? (
+                <KeywordsResearch />
               ) : (
                 <Overview />
               )}
@@ -65,7 +83,7 @@ display: flex;
     .nav_tab {
       display: flex;
       gap: 10px;
-      /* padding: 10px; */
+      /* / padding: 10px; / */
       color: #999;
       font-size: 14px;
       line-height: 42px;
@@ -120,7 +138,7 @@ display: flex;
       padding: 0;
     }
   }
-  .table > :not(caption) > * > * {
+  .table > :not(caption) > * >  *{
     background-color: #f7f7f7 !important;
   }
 `

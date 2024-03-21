@@ -187,14 +187,14 @@ export default function PostNav() {
                         >
                           Overview
                         </button>
-                        <button
+                        {/* <button
                           onClick={() => {
                             navigate("/analytics");
                             closeAllToggles();
                           }}
                         >
                           Repeat Business
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   )}
@@ -260,7 +260,7 @@ export default function PostNav() {
                         </div>
                         <div className="middle">
                           <IoNotificationsOffOutline />
-                          {/* <IoNotificationsOutline /> */}
+                          {/*<IoNotificationsOutline /> */}
                           <h5>No Notification</h5>
                           <p>
                             Browse our amazing catalog of Gigs or offer your

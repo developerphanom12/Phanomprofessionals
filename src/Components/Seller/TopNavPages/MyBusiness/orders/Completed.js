@@ -3,11 +3,11 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import styled from "styled-components";
 
 export default function Completed() {
-  const [isChecked, setIsChecked] = useState(false);
+   // const [isChecked, setIsChecked] = useState(false);
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };
+  // const handleCheckboxChange = () => {
+  //   setIsChecked(!isChecked);
+  // };
   return (
     <Root>
       <table>
@@ -17,7 +17,7 @@ export default function Completed() {
               <h6>Completed Orders</h6>
             </td>
             <td colSpan={8}>
-              <div className="button_select">
+              {/* <div className="button_select">
                 {isChecked && (
                   <>
                     <button>Active</button>
@@ -32,12 +32,12 @@ export default function Completed() {
                   <option>Last 2 months</option>
                   <option>Last 3 months</option>
                 </select>
-              </div>
+              </div> */}
             </td>
           </tr>
           <tr>
             <td colSpan={2}>
-              <input type="checkbox" onChange={handleCheckboxChange} />
+              {/* <input type="checkbox" onChange={handleCheckboxChange} /> */}
             </td>
             <td colSpan={2}>
               <span>BUYER</span>
@@ -60,14 +60,14 @@ export default function Completed() {
             <td colSpan={2}>
               <span>STATUS</span>
             </td>
-            <td></td>
-            <td></td>
+            {/* <td></td>
+            <td></td> */}
           </tr>
         </thead>
         <tbody>
           <tr>
             <td colSpan={2}>
-              <input type="checkbox" onChange={handleCheckboxChange} />
+              {/* <input type="checkbox" onChange={handleCheckboxChange} /> */}
             </td>
             <td colSpan={2}>
               <span>0</span>
@@ -91,13 +91,13 @@ export default function Completed() {
               {" "}
               <span>0</span>
             </td>
-            <td></td>
-            <td colSpan={2}>
+            {/* <td></td> */}
+            {/* <td colSpan={2}>
               <IoMdArrowDropdown />
-            </td>
+            </td> */}
           </tr>
           <tr className="head">
-            <td colSpan={5}>no cancelled orders to show</td>
+            <td colSpan={5}>no Completed orders to show</td>
           </tr>
         </tbody>
       </table>

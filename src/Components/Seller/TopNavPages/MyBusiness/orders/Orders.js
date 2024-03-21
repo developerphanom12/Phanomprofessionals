@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Priority from "./Priority";
 import Active from "./Active";
-import Late from "./Late";
-import Delivered from "./Delivered";
 import Completed from "./Completed";
 import Cancelled from "./Cancelled";
-import Starred from "./Starred";
 import { GigButton } from "../../../../../GlobalStyles";
 import { IoSearch } from "react-icons/io5";
 
 export default function Orders() {
-  const [active, setActive] = useState("priority");
+  const [active, setActive] = useState("active");
   const [user, setUser] = useState();
 
   return (
@@ -27,42 +23,12 @@ export default function Orders() {
         <div className="nav_tab">
           <div>
             <GigButton
-              className={active === "priority" ? "btn_1 active" : "btn_1"}
-              onClick={() => {
-                setActive("priority");
-              }}
-            >
-              PRIORITY
-            </GigButton>
-          </div>
-          <div>
-            <GigButton
               className={active === "active" ? "btn_1 active" : "btn_1"}
               onClick={() => {
                 setActive("active");
               }}
             >
               ACTIVE
-            </GigButton>
-          </div>
-          <div>
-            <GigButton
-              className={active === "late" ? "btn_1 active" : "btn_1"}
-              onClick={() => {
-                setActive("late");
-              }}
-            >
-              LATE
-            </GigButton>
-          </div>
-          <div>
-            <GigButton
-              className={active === "delivered" ? "btn_1 active" : "btn_1"}
-              onClick={() => {
-                setActive("delivered");
-              }}
-            >
-              DELIVERED
             </GigButton>
           </div>
           <div>
@@ -85,38 +51,20 @@ export default function Orders() {
               CANCELLED
             </GigButton>
           </div>
-          <div>
-            <GigButton
-              className={active === "starred" ? "btn_1 active" : "btn_1"}
-              onClick={() => {
-                setActive("starred");
-              }}
-            >
-              STARRED
-            </GigButton>
-          </div>
         </div>
       </div>
       <div className="table">
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-12">
-              {active === "priority" ? (
-                <Priority detail={user} />
-              ) : active === "active" ? (
+              {active === "active" ? (
                 <Active detail={user} />
-              ) : active === "late" ? (
-                <Late detail={user} />
-              ) : active === "delivered" ? (
-                <Delivered detail={user} />
               ) : active === "completed" ? (
                 <Completed />
               ) : active === "cancelled" ? (
                 <Cancelled />
-              ) : active === "starred" ? (
-                <Starred />
               ) : (
-                <Priority />
+                <Active />
               )}
             </div>
           </div>

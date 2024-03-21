@@ -32,7 +32,6 @@ import Gigs from "./Components/Seller/TopNavPages/MyBusiness/gigs/Gigs";
 import Profile from "./Components/Seller/TopNavPages/MyBusiness/profile/Profile";
 import Earnings from "./Components/Seller/TopNavPages/MyBusiness/earning/Earnings";
 import Overview from "./Components/Seller/TopNavPages/Analytics/Overview";
-import RepeatBusiness from "./Components/Seller/TopNavPages/Analytics/RepeatBusiness";
 import CreatePage from "./Components/Seller/create/CreatePage";
 import Message from "./Components/MainLayouts/Message";
 import PageNF from "./Components/Important/PageNF";
@@ -49,6 +48,8 @@ import InnPage from "./Components/MainLayouts/subcategory/InnPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EditGigsPage from "./Components/Seller/TopNavPages/MyBusiness/gigs/editGigs/EditGigsPage";
+import Topkeywords from "./Components/Seller/TopNavPages/Analytics/Topkeywords";
+import LoginBuyer from "./Components/CommonPages/loginPages/LoginBuyer";
 
 function App() {
   const userCheck = useSelector((state) => state?.users?.userCheck);
@@ -85,7 +86,7 @@ function App() {
           <Route path="/earnings" element={<Earnings />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/overview" element={<Overview />} />
-          <Route path="/repeatbusiness" element={<RepeatBusiness />} />
+          <Route path="/topkeywords" element={<Topkeywords />} />
 
           {/* common pages -------------------------------------------------------------- */}
           <Route path="/home" element={<Home />} />
@@ -111,6 +112,7 @@ function App() {
           <Route path="/whyindia" element={<WhyIndia />} />
           <Route path="/howitworks" element={<HowItWorks />} />
           <Route path="/loginseller" element={<LoginSeller />} />
+          <Route path="/loginBuyer" element={<LoginBuyer />} />
         </Routes>
         <Loader />
         <ToastContainer />
