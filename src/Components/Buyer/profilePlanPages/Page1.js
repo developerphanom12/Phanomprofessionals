@@ -99,14 +99,11 @@ export default function Page1() {
             </div>
             <div className="About_this_gig">
               <h4> About this gig</h4>
-              <p>
-                Greetings as a experienced revision of WordPress , Shopify
-                custom built CMS with an over 3 years in web development i have
-                started here and i believe there is no other better way than for
-                you to hire a guy with both front end and backend web
-                development and designing skills to grasp and portray for your
-                website
-              </p>
+              {gig.EditorData && (
+                <div
+                  dangerouslySetInnerHTML={{ __html: gig.EditorData.content }}
+                />
+              )}
             </div>
             {showMessageBox && (
               <div className="msg_writing_box">
@@ -193,179 +190,211 @@ export default function Page1() {
                     <div className="col-lg-12">
                       {active === "basic" ? (
                         <div className="content_area">
-                          <div className="content_text_area">
-                            <h4>
-                              $206786 <IoMdInformationCircleOutline />
-                            </h4>
-                            <span> website developer and designer</span>
-                            <p>
-                              will fix any bugs or make changes depending on
-                              client requests
-                            </p>
-                            <div className="time_area">
-                              <div>
-                                <b>
-                                  <FaRegClock /> 2 Days Delivery
-                                </b>
-                                <b>
-                                  <TbRefresh /> Unlimited Revisions
-                                </b>
-                              </div>
-                              <div>
-                                <ul>
-                                  <li>
-                                    <FaCheck /> 2 pages{" "}
-                                  </li>
-                                  <li>
-                                    <FaCheck /> 1 custom asset
-                                  </li>
-                                  <li>
-                                    <FaCheck /> Responsive design
-                                  </li>
-                                  <li>
-                                    <FaCheck /> Content upload
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="continue_button">
-                            <button>
-                              ContactMe <FaArrowRightLong />
-                            </button>
-                          </div>
+                          {gig.plantypes.map(
+                            (plan) =>
+                              plan.plan_type === active && (
+                                <>
+                                  <div className="content_text_area">
+                                    <h4>
+                                      ${plan.price}{" "}
+                                      <IoMdInformationCircleOutline />
+                                    </h4>
+                                    <span> {plan.title}</span>
+                                    <p>{plan.description}</p>
+                                    <div className="time_area">
+                                      <div>
+                                        <b>
+                                          <FaRegClock /> {plan.delivery_time}{" "}
+                                          Day/Days
+                                        </b>
+                                        <b>
+                                          <TbRefresh /> {plan.revision} Revision
+                                        </b>
+                                      </div>
+                                      <div>
+                                        <ul>
+                                          <li>
+                                            <FaCheck /> {plan.number_of_pages}
+                                          </li>
+                                          <li>
+                                            <FaCheck /> {plan.plugin_extension}{" "}
+                                            Plugin
+                                          </li>
+                                          <li>
+                                            <FaCheck /> {plan.plan_type} Plan
+                                          </li>
+                                          <li>
+                                            <FaCheck /> {plan.content_upload}{" "}
+                                            Content Upload
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="continue_button">
+                                    <button>
+                                      ContactMe <FaArrowRightLong />
+                                    </button>
+                                  </div>
+                                </>
+                              )
+                          )}
                         </div>
                       ) : active === "standard" ? (
                         <div className="content_area">
-                          <div className="content_text_area">
-                            <h4>
-                              $567567 <IoMdInformationCircleOutline />
-                            </h4>
-                            <span> website developer and designer</span>
-                            <p>
-                              will fix any bugs or make changes depending on
-                              client requests
-                            </p>
-                            <div className="time_area">
-                              <div>
-                                <b>
-                                  <FaRegClock /> 2 Days Delivery
-                                </b>
-                                <b>
-                                  <TbRefresh /> Unlimited Revisions
-                                </b>
-                              </div>
-                              <div>
-                                <ul>
-                                  <li>
-                                    <FaCheck /> 2 pages{" "}
-                                  </li>
-                                  <li>
-                                    <FaCheck /> 1 custom asset
-                                  </li>
-                                  <li>
-                                    <FaCheck /> Responsive design
-                                  </li>
-                                  <li>
-                                    <FaCheck /> Content upload
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="continue_button">
-                            <button>
-                              ContactMe <FaArrowRightLong />
-                            </button>
-                          </div>
+                          {gig.plantypes.map(
+                            (plan) =>
+                              plan.plan_type === active && (
+                                <>
+                                  <div className="content_text_area">
+                                    <h4>
+                                      ${plan.price}{" "}
+                                      <IoMdInformationCircleOutline />
+                                    </h4>
+                                    <span> {plan.title}</span>
+                                    <p>{plan.description}</p>
+                                    <div className="time_area">
+                                      <div>
+                                        <b>
+                                          <FaRegClock /> {plan.delivery_time}{" "}
+                                          Day/Days
+                                        </b>
+                                        <b>
+                                          <TbRefresh /> {plan.revision} Revision
+                                        </b>
+                                      </div>
+                                      <div>
+                                        <ul>
+                                          <li>
+                                            <FaCheck /> {plan.number_of_pages}
+                                          </li>
+                                          <li>
+                                            <FaCheck /> {plan.plugin_extension}{" "}
+                                            Plugin
+                                          </li>
+                                          <li>
+                                            <FaCheck /> {plan.plan_type} Plan
+                                          </li>
+                                          <li>
+                                            <FaCheck /> {plan.content_upload}{" "}
+                                            Content Upload
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="continue_button">
+                                    <button>
+                                      ContactMe <FaArrowRightLong />
+                                    </button>
+                                  </div>
+                                </>
+                              )
+                          )}
                         </div>
                       ) : active === "premium" ? (
                         <div className="content_area">
-                          <div className="content_text_area">
-                            <h4>
-                              $56756767 <IoMdInformationCircleOutline />
-                            </h4>
-                            <span> website developer and designer</span>
-                            <p>
-                              will fix any bugs or make changes depending on
-                              client requests
-                            </p>
-                            <div className="time_area">
-                              <div>
-                                <b>
-                                  <FaRegClock /> 2 Days Delivery
-                                </b>
-                                <b>
-                                  <TbRefresh /> Unlimited Revisions
-                                </b>
-                              </div>
-                              <div>
-                                <ul>
-                                  <li>
-                                    <FaCheck /> 2 pages{" "}
-                                  </li>
-                                  <li>
-                                    <FaCheck /> 1 custom asset
-                                  </li>
-                                  <li>
-                                    <FaCheck /> Responsive design
-                                  </li>
-                                  <li>
-                                    <FaCheck /> Content upload
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="continue_button">
-                            <button>
-                              ContactMe <FaArrowRightLong />
-                            </button>
-                          </div>
+                          {gig.plantypes.map(
+                            (plan) =>
+                              plan.plan_type === active && (
+                                <>
+                                  <div className="content_text_area">
+                                    <h4>
+                                      ${plan.price}{" "}
+                                      <IoMdInformationCircleOutline />
+                                    </h4>
+                                    <span> {plan.title}</span>
+                                    <p>{plan.description}</p>
+                                    <div className="time_area">
+                                      <div>
+                                        <b>
+                                          <FaRegClock /> {plan.delivery_time}{" "}
+                                          Day/Days
+                                        </b>
+                                        <b>
+                                          <TbRefresh /> {plan.revision} Revision
+                                        </b>
+                                      </div>
+                                      <div>
+                                        <ul>
+                                          <li>
+                                            <FaCheck /> {plan.number_of_pages}
+                                          </li>
+                                          <li>
+                                            <FaCheck /> {plan.plugin_extension}{" "}
+                                            Plugin
+                                          </li>
+                                          <li>
+                                            <FaCheck /> {plan.plan_type} Plan
+                                          </li>
+                                          <li>
+                                            <FaCheck /> {plan.content_upload}{" "}
+                                            Content Upload
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="continue_button">
+                                    <button>
+                                      ContactMe <FaArrowRightLong />
+                                    </button>
+                                  </div>
+                                </>
+                              )
+                          )}
                         </div>
                       ) : (
                         <div className="content_area">
-                          <div className="content_text_area">
-                            <h4>
-                              $206786 <IoMdInformationCircleOutline />
-                            </h4>
-                            <span> website developer and designer</span>
-                            <p>
-                              will fix any bugs or make changes depending on
-                              client requests
-                            </p>
-                            <div className="time_area">
-                              <div>
-                                <b>
-                                  <FaRegClock /> 2 Days Delivery
-                                </b>
-                                <b>
-                                  <TbRefresh /> Unlimited Revisions
-                                </b>
-                              </div>
-                              <div>
-                                <ul>
-                                  <li>
-                                    <FaCheck /> 2 pages{" "}
-                                  </li>
-                                  <li>
-                                    <FaCheck /> 1 custom asset
-                                  </li>
-                                  <li>
-                                    <FaCheck /> Responsive design
-                                  </li>
-                                  <li>
-                                    <FaCheck /> Content upload
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="continue_button">
-                            <button>
-                              ContactMe <FaArrowRightLong />
-                            </button>
-                          </div>
+                          {gig.plantypes.map(
+                            (plan) =>
+                              plan.plan_type === active && (
+                                <>
+                                  <div className="content_text_area">
+                                    <h4>
+                                      ${plan.price}{" "}
+                                      <IoMdInformationCircleOutline />
+                                    </h4>
+                                    <span> {plan.title}</span>
+                                    <p>{plan.description}</p>
+                                    <div className="time_area">
+                                      <div>
+                                        <b>
+                                          <FaRegClock /> {plan.delivery_time}{" "}
+                                          Day/Days
+                                        </b>
+                                        <b>
+                                          <TbRefresh /> {plan.revision} Revision
+                                        </b>
+                                      </div>
+                                      <div>
+                                        <ul>
+                                          <li>
+                                            <FaCheck /> {plan.number_of_pages}
+                                          </li>
+                                          <li>
+                                            <FaCheck /> {plan.plugin_extension}{" "}
+                                            Plugin
+                                          </li>
+                                          <li>
+                                            <FaCheck /> {plan.plan_type} Plan
+                                          </li>
+                                          <li>
+                                            <FaCheck /> {plan.content_upload}{" "}
+                                            Content Upload
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="continue_button">
+                                    <button>
+                                      ContactMe <FaArrowRightLong />
+                                    </button>
+                                  </div>
+                                </>
+                              )
+                          )}
                         </div>
                       )}
                     </div>
@@ -388,6 +417,7 @@ const Root = styled.section`
   border-bottom: 1px solid lightgray;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
   .main_section {
+    min-height: 100vh;
     display: flex;
     @media (max-width: 997px) {
       flex-wrap: wrap;
@@ -416,11 +446,15 @@ const Root = styled.section`
       }
       .heading_point {
         padding: 0px 0px 16px;
+        width: 100%;
         h2 {
           overflow-wrap: break-word;
           padding-bottom: 16px;
           color: #404145;
           font-weight: 700;
+          @media (max-width: 576px) {
+            width: 86vw !important;
+          }
         }
       }
       .profile_contain {
@@ -469,6 +503,9 @@ const Root = styled.section`
         }
       }
       .slider_div {
+        @media (max-width: 576px) {
+    width: 86vw !important;
+  }
         p {
           display: flex;
           align-items: center;
@@ -545,6 +582,7 @@ const Root = styled.section`
           .heading {
             align-items: center;
             display: flex;
+
             p {
               margin: 0;
               font-size: 20px;
@@ -608,7 +646,11 @@ const Root = styled.section`
       display: flex;
       flex-direction: column;
       width: 100%;
-      position: sticky;
+      position: sticky !important;
+      top: 0;
+      @media (max-width: 576px) {
+        width: 90vw;
+      }
       .upper_side {
         display: flex;
         padding: 0px 0px 16px;
@@ -679,7 +721,7 @@ const Root = styled.section`
             text-align: center;
             border-bottom: 3px solid #fff;
             .active {
-              border-bottom: 3px solid #222325;
+              border-bottom: 3px solid green;
               color: #222325;
             }
             &:hover {

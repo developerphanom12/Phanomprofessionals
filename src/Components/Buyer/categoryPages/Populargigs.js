@@ -8,7 +8,7 @@ import {
 import styled from "styled-components";
 import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
-import profile from "../../Images/button1.webp";
+import profile from "../../Images/Boyspic.png";
 import PopularSlider from "./PopularSlider";
 
 function Populargigs() {
@@ -18,7 +18,7 @@ function Populargigs() {
   useEffect(() => {
     const getSliderApi = async () => {
       try {
-        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/4`);
+        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/1`);
         if (res?.status === 201) {
           setGigData(res?.data?.message || []);
         }
@@ -61,7 +61,7 @@ function Populargigs() {
           Most popular Gigs in Website Development
           <IoIosArrowRoundForward />
         </h2>
-        <div>
+        <div className="slide_btn">
           <button onClick={goToPreviousSlide}>
             <IoIosArrowDropleft />
           </button>
@@ -115,36 +115,55 @@ const Sliderrrs = styled.section`
     font-weight: 700;
   }
 
-
   .slides-container {
     display: flex;
-    /* overflow-x: auto; */
+    flex-wrap: wrap;
+    /* / overflow-x: auto; / */
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
   }
 
   .slide {
     flex: 0 0 auto;
-    width: 310px;
+    width: 330px;
     scroll-snap-align: initial;
-    margin-right: 10px; /* Adjust spacing between slides */
-    padding: 10px; /* Optional: Add padding to slides */
+    margin-right: 10px;
+    padding: 10px;
 
     .footer {
       margin-top: 20px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+
       .profile_footer {
         display: flex;
         align-items: center;
         h6 {
           margin-left: 10px;
+          margin-top: 10px;
+          font-size: 14px;
+          font-weight: 700;
+          color: #222325;
         }
         img {
           width: 30px;
           height: 30px;
         }
+      }
+
+      p {
+        font-size: 18px;
+        margin-top: 5px;
+        color: #404145;
+        font-weight: 400;
+      }
+
+      h5 {
+        margin-left: 10px;
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #222325;
       }
     }
   }
@@ -157,12 +176,26 @@ const Sliderrrs = styled.section`
     width: 40px;
     height: 40px;
     z-index: 1;
-    background: #fff;
     border-radius: 100px;
     svg {
       width: 40px;
       height: 40px;
       font-weight: 700;
+    }
+  }
+
+  @media (max-width: 567px) {
+    .slide_btn {
+      display: flex;
+    }
+    .slide {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    .slide {
+      width: 48%;
     }
   }
 `;

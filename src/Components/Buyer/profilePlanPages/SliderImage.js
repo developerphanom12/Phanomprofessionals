@@ -3,12 +3,9 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import imggg from "../../Images/ind18.png";
-import banner from "../../Images/ind20.png";
 import { EXCHANGE_URLS_IMAGES } from "../../Important/URLS";
 
-
-export default function SliderImage({gigData}) {
+export default function SliderImage({ gigData }) {
   var settings = {
     dots: false,
     infinite: true,
@@ -18,12 +15,12 @@ export default function SliderImage({gigData}) {
   };
   return (
     <Sliderimage>
-       <Slider {...settings}>
+      <Slider {...settings}>
         {gigData ? (
           <>
             <img
               className="img"
-              src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image1}`}
+              src={`${EXCHANGE_URLS_IMAGES}/${gigData?.images?.image1}`}
               alt={`Image 1`}
             />
           </>
@@ -34,7 +31,7 @@ export default function SliderImage({gigData}) {
           <>
             <img
               className="img"
-              src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image2}`}
+              src={`${EXCHANGE_URLS_IMAGES}/${gigData?.images?.image2}`}
               alt={`Image 2`}
             />
           </>
@@ -45,7 +42,7 @@ export default function SliderImage({gigData}) {
           <>
             <img
               className="img"
-              src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image3}`}
+              src={`${EXCHANGE_URLS_IMAGES}/${gigData?.images?.image3}`}
               alt={`Image 3`}
             />
           </>
@@ -57,10 +54,20 @@ export default function SliderImage({gigData}) {
   );
 }
 const Sliderimage = styled.section`
+  width: 46vw;
+  @media (max-width: 576px) {
+    width: 86vw;
+  }
   > div {
-    width: 50vw;
+    width: 46vw;
+    @media (max-width: 576px) {
+      width: 86vw;
+    }
     .img {
       border-radius: 10px;
+      @media (max-width: 576px) {
+        width: 86vw;
+      }
     }
   }
   .czlJOl {
@@ -68,23 +75,36 @@ const Sliderimage = styled.section`
   }
 
   .img {
-    width: 50vw !important;
+    width: 46vw !important;
     height: 250px !important;
+    border-radius: 20px;
+    @media (max-width: 576px) {
+      width: 86vw !important;
+    }
   }
   margin: 20px;
   .slick-slide.slick-active.slick-current {
-    width: 598px !important;
+    width: 46vw !important;
     height: 250px !important;
+    @media (max-width: 576px) {
+        width: 86vw !important;
+      }
   }
   .gvNmJZ .slick-slider.slick-initialized {
     display: flex;
-    width: 598px !important;
+    width: 46vw !important;
     height: 250px !important;
     position: absolute;
+    @media (max-width: 576px) {
+        width: 86vw !important;
+      }
   }
   .slick-list {
-    width: 598px;
+    width: 46vw;
     height: 250px;
+    @media (max-width: 576px) {
+        width: 86vw !important;
+      }
   }
   .slick-track {
     display: flex;
@@ -130,4 +150,15 @@ const Sliderimage = styled.section`
     top: -85px!important;
     left: 221px!important; */
   }
+
+  /* @media (max-width: 576px) {
+    .slick-list,
+    .img,
+    .slick-slide.slick-active.slick-current {
+      width: 86vw;
+    }
+    .gvNmJZ .slick-slider.slick-initialized {
+      width: 86vw;
+    }
+  } */
 `;

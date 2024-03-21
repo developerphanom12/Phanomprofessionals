@@ -7,7 +7,7 @@ import b2 from "../../Images/button2.webp";
 import { useNavigate } from "react-router-dom";
 
 export default function Page1() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <Pageone>
       <h2 onClick={navigate("/internalpage")}>
@@ -108,12 +108,11 @@ const Pageone = styled.section`
             margin: 0px;
             font-weight: 600;
             line-height: 24px;
-            font-size:16px;
+            font-size: 16px;
           }
           span {
             font-size: 14px;
             font-weight: 400;
-
           }
           button {
             padding: 10px;
@@ -127,6 +126,33 @@ const Pageone = styled.section`
           }
         }
       }
+    }
+  }
+
+  @media (max-width: 567px) {
+    margin: 40px 10px 0px 10px;
+    h2{
+      font-size:20px;
+    }
+    .sections {
+      display: unset;
+      width: 100%;
+    }
+    .sections .sub_section {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    margin: 40px 10px 0px 10px;
+    .sections {
+      display: unset;
+      width: 100%;
+    }
+    .sections .sub_section {
+      width: 100%;
+      margin-bottom: 20px;
     }
   }
 `;
