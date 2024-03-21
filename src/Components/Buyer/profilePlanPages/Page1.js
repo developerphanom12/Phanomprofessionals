@@ -57,12 +57,12 @@ export default function Page1() {
               <a>
                 <IoHomeOutline />
               </a>{" "}
-              <p>/</p> <a>Graphics & Design</a> <p>/</p> <a>Website Design</a>{" "}
               <p>/</p> <a>{gig?.category?.category_name}</a>
+              <p>/</p> <a>{gig?.subcategory?.name}</a>
             </div>
 
             <div className="heading_point">
-              <h2>I will create innovative website design or website mockup</h2>
+              <h2>{gig?.gig_title}</h2>
             </div>
             <div className="profile_contain">
               <div className="pro_img">
@@ -83,10 +83,6 @@ export default function Page1() {
               </div>
             </div>
             <div className="slider_div">
-              <p>
-                <HiOutlineTrophy /> People keep coming back! amirkhan1996 has an
-                exceptional number of repeat buyers.
-              </p>
               <SliderImage gigData={gig} />
             </div>
             <div className="about_slider">
@@ -214,7 +210,8 @@ export default function Page1() {
                                       <div>
                                         <ul>
                                           <li>
-                                            <FaCheck /> {plan.number_of_pages}
+                                            <FaCheck /> {plan.number_of_pages}{" "}
+                                            Page/Pages
                                           </li>
                                           <li>
                                             <FaCheck /> {plan.plugin_extension}{" "}
@@ -227,6 +224,15 @@ export default function Page1() {
                                             <FaCheck /> {plan.content_upload}{" "}
                                             Content Upload
                                           </li>
+                                          {gig.websiteFeatures.map(
+                                            (feature) => (
+                                              <li key={feature.web_id}>
+                                                <FaCheck />
+
+                                                {feature.website_feature}
+                                              </li>
+                                            )
+                                          )}
                                         </ul>
                                       </div>
                                     </div>
@@ -416,6 +422,9 @@ const Root = styled.section`
   padding: 30px;
   border-bottom: 1px solid lightgray;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
+  @media (max-width: 997px) {
+    padding: 10px;
+  }
   .main_section {
     min-height: 100vh;
     display: flex;
@@ -425,7 +434,9 @@ const Root = styled.section`
     .main_barr {
       display: flex;
       flex-direction: column;
-      margin-right: 100px;
+      margin-right: 40px;
+      width: 65%;
+
       .path_value {
         font-size: 14px;
         display: flex;
@@ -503,21 +514,9 @@ const Root = styled.section`
         }
       }
       .slider_div {
+        padding: 10px;
         @media (max-width: 576px) {
-    width: 86vw !important;
-  }
-        p {
-          display: flex;
-          align-items: center;
-          font-weight: 600;
-          margin: 0;
-          padding: 10px;
-          gap: 10px;
-          svg {
-            width: 20px;
-            height: 20px;
-            color: darkgrey;
-          }
+          width: 86vw !important;
         }
       }
       .about_slider {
@@ -530,6 +529,8 @@ const Root = styled.section`
           line-height: 28px;
           font-weight: 700;
           margin: 0;
+          padding: 10px 20px 0px;
+
           .button_slider {
             border: none;
             background-color: white;
@@ -563,6 +564,10 @@ const Root = styled.section`
         flex-direction: column;
         border: 1px solid #d3d3d3b5;
         box-shadow: 1px 1px 1px 3px 1px #d3d3d3b5;
+        margin: 10px;
+        input{
+          outline: none;
+        }
         .msg_writing_head {
           display: flex;
           justify-content: space-between;
@@ -619,6 +624,9 @@ const Root = styled.section`
         box-shadow: 1px 1px 4px 1px gray;
         border-radius: 50px;
         width: fit-content;
+        @media (max-width:576px){
+          width: 70vw !important;
+        }
         .msg_float_img {
           img {
             width: 50px;
@@ -645,7 +653,7 @@ const Root = styled.section`
     .side_barr {
       display: flex;
       flex-direction: column;
-      width: 100%;
+      width: 35%;
       position: sticky !important;
       top: 0;
       @media (max-width: 576px) {

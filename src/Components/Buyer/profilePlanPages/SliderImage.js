@@ -54,19 +54,24 @@ export default function SliderImage({ gigData }) {
   );
 }
 const Sliderimage = styled.section`
-  width: 46vw;
+  width: 53vw;
+  height: 70vh ;
+
   @media (max-width: 576px) {
     width: 86vw;
+    height: 53vh;
   }
   > div {
-    width: 46vw;
+    width: 53vw;
     @media (max-width: 576px) {
       width: 86vw;
+      height: 53vh;
     }
     .img {
       border-radius: 10px;
       @media (max-width: 576px) {
         width: 86vw;
+        height: 53vh;
       }
     }
   }
@@ -75,40 +80,44 @@ const Sliderimage = styled.section`
   }
 
   .img {
-    width: 46vw !important;
-    height: 250px !important;
+    width: 53vw ;
+    height: 70vh ;
     border-radius: 20px;
     @media (max-width: 576px) {
-      width: 86vw !important;
+      width: 86vw ;
+      height: 53vh;
     }
   }
   margin: 20px;
   .slick-slide.slick-active.slick-current {
-    width: 46vw !important;
-    height: 250px !important;
+    width: 53vw !important;
+    height: 70vh !important;
     @media (max-width: 576px) {
-        width: 86vw !important;
-      }
+      width: 86vw !important;
+      height: 53vh;
+    }
   }
   .gvNmJZ .slick-slider.slick-initialized {
     display: flex;
-    width: 46vw !important;
-    height: 250px !important;
+    width: 53vw !important;
+    height: 70vh !important;
     position: absolute;
     @media (max-width: 576px) {
-        width: 86vw !important;
-      }
+      width: 86vw !important;
+      height: 53vh;
+    }
   }
   .slick-list {
-    width: 46vw;
-    height: 250px;
+    width: 53vw;
+    height: 70vh;
     @media (max-width: 576px) {
-        width: 86vw !important;
-      }
+      width: 86vw !important;
+      height: 53vh !important;;
+    }
   }
   .slick-track {
     display: flex;
-    height: 250px;
+    height: 70vh;
   }
   button.slick-arrow.slick-prev {
     color: black !important;
