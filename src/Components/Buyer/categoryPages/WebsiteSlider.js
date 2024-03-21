@@ -59,7 +59,7 @@ const Sliderrrs = styled.section`
   width: 100%;
   .img {
     width: 100%;
-    height: 193px;
+    height: 30vh;
     border-radius: 10px;
     object-fit: cover;
   }
@@ -73,4 +73,10 @@ const Sliderrrs = styled.section`
   .slick-next {
     right: 10px;
   }
+  .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+    color: transparent;
+    outline: none;
+    background: transparent;
+    width: 40px;
+}
 `;

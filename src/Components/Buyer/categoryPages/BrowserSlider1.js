@@ -60,7 +60,7 @@ const Sliderrrs = styled.section`
   .img {
     width: 100%;
     border-radius: 10px;
-    height: 193px;
+    height: 30vh;
     object-fit: cover;
   }
   .slick-prev,

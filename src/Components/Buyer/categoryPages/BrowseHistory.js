@@ -118,6 +118,7 @@ const Sliderrrs = styled.section`
 
   .slides-container {
     display: flex;
+    flex-wrap: wrap;
     /* overflow-x: auto; */
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;

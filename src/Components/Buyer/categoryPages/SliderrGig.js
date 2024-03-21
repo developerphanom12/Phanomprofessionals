@@ -60,7 +60,7 @@ const Sliderrrs = styled.section`
   width: 100%;
   .img {
     width: 100%;
-    height: 193px;
+    height: 30vh;
     object-fit: cover;
     border-radius: 10px;
   }
