@@ -10,15 +10,18 @@ import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import BrowserSlider1 from "./BrowserSlider1";
 import profile from "../../Images/Boyspic.png";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function BrowseHistory() {
+  const gigId = useSelector((state) => state.users.gigId);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [gigData, setGigData] = useState([]);
 
   useEffect(() => {
     const getSliderApi = async () => {
       try {
-        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/1`);
+        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/2`);
         if (res?.status === 201) {
           setGigData(res?.data?.message || []);
         }
@@ -29,6 +32,8 @@ function BrowseHistory() {
 
     getSliderApi();
   }, []);
+
+  const matchingGig = gigData.find((item) => item.gigs_id === gigId);
 
   const slideRef = useRef();
 
@@ -71,26 +76,30 @@ function BrowseHistory() {
         </div>
       </div>
       <div className="slides-container" ref={slideRef}>
-        {gigData.map((gig, index) => (
-          <div
-            key={index}
-            className={`slide ${index === currentSlide ? "active" : ""}`}
-          >
-            <BrowserSlider1 gigData={gig} />
-            <div className="footer">
-              <div className="profile_footer">
-                <img src={profile} alt="img" />
-                <h6> {gig?.seller?.username}</h6>
+        {matchingGig && (
+          <Link to="/internalpage" className="link">
+            {gigData.map((gig, index) => (
+              <div
+                key={index}
+                className={`slide ${index === currentSlide ? "active" : ""}`}
+              >
+                <BrowserSlider1 gigData={gig} />
+                <div className="footer">
+                  <div className="profile_footer">
+                    <img src={profile} alt="img" />
+                    <h6> {gig?.seller?.username}</h6>
+                  </div>
+                  <div>
+                    <p> {gig?.gigsData?.gig_title}</p>
+                  </div>
+                  <div>
+                    <h5>5</h5>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p> {gig?.gigsData?.gig_title}</p>
-              </div>
-              <div>
-                <h5>5</h5>
-              </div>
-            </div>
-          </div>
-        ))}
+            ))}
+          </Link>
+        )}
       </div>
     </Sliderrrs>
   );
@@ -121,6 +130,7 @@ const Sliderrrs = styled.section`
     /* / overflow-x: auto; / */
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+    text-decoration: none;
   }
 
   .slide {

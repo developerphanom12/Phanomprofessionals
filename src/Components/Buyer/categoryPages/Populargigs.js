@@ -10,15 +10,19 @@ import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import profile from "../../Images/Boyspic.png";
 import PopularSlider from "./PopularSlider";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Populargigs() {
+  const gigId = useSelector((state) => state.users.gigId);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [gigData, setGigData] = useState([]);
 
   useEffect(() => {
     const getSliderApi = async () => {
       try {
-        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/1`);
+        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/2`);
         if (res?.status === 201) {
           setGigData(res?.data?.message || []);
         }
@@ -29,6 +33,8 @@ function Populargigs() {
 
     getSliderApi();
   }, []);
+
+  const matchingGig = gigData.find((item) => item.gigs_id === gigId);
 
   const slideRef = useRef();
 
@@ -71,26 +77,30 @@ function Populargigs() {
         </div>
       </div>
       <div className="slides-container" ref={slideRef}>
-        {gigData.map((gig, index) => (
-          <div
-            key={index}
-            className={`slide ${index === currentSlide ? "active" : ""}`}
-          >
-            <PopularSlider gigData={gig} />
-            <div className="footer">
-              <div className="profile_footer">
-                <img src={profile} alt="img" />
-                <h6>name: {gig?.seller?.username}</h6>
+        {matchingGig && (
+          <Link to="/internalpage" className="link">
+            {gigData.map((gig, index) => (
+              <div
+                key={index}
+                className={`slide ${index === currentSlide ? "active" : ""}`}
+              >
+                <PopularSlider gigData={gig} />
+                <div className="footer">
+                  <div className="profile_footer">
+                    <img src={profile} alt="img" />
+                    <h6>name: {gig?.seller?.username}</h6>
+                  </div>
+                  <div>
+                    <p>description: {gig?.gigsData?.gig_title}</p>
+                  </div>
+                  <div>
+                    <h5>Rating: 5</h5>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p>description: {gig?.gigsData?.gig_title}</p>
-              </div>
-              <div>
-                <h5>Rating: 5</h5>
-              </div>
-            </div>
-          </div>
-        ))}
+            ))}
+          </Link>
+        )}
       </div>
     </Sliderrrs>
   );

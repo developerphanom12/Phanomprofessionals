@@ -22,18 +22,20 @@ import SliderText from "./SliderText";
 import axios from "axios";
 import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 // import SliderImage from "./SliderImage";
 // import SliderText from "./SliderText";
 
 export default function Page1() {
+  const gigId = useSelector((state) => state.users.gigId);
   const [showMessageBox, setShowMessageBox] = useState(false);
   const [gigData, setGigData] = useState([]);
   const [active, setActive] = useState("basic");
-
+  console.log("tttttttttttt", gigId);
   useEffect(() => {
     const getSliderApi = async () => {
       try {
-        const res = await axios.get(`${EXCHANGE_URLS}/gigslist/7`);
+        const res = await axios.get(`${EXCHANGE_URLS}/gigslist/8`);
         if (res?.status === 201) {
           setGigData(res?.data?.message || []);
         }
@@ -43,7 +45,7 @@ export default function Page1() {
     };
 
     getSliderApi();
-  }, []);
+  }, [gigId]);
 
   const toggleMessageBox = () => {
     setShowMessageBox(!showMessageBox);
@@ -285,6 +287,15 @@ export default function Page1() {
                                             <FaCheck /> {plan.content_upload}{" "}
                                             Content Upload
                                           </li>
+                                          {gig.websiteFeatures.map(
+                                            (feature) => (
+                                              <li key={feature.web_id}>
+                                                <FaCheck />
+
+                                                {feature.website_feature}
+                                              </li>
+                                            )
+                                          )}
                                         </ul>
                                       </div>
                                     </div>
@@ -337,6 +348,15 @@ export default function Page1() {
                                             <FaCheck /> {plan.content_upload}{" "}
                                             Content Upload
                                           </li>
+                                          {gig.websiteFeatures.map(
+                                            (feature) => (
+                                              <li key={feature.web_id}>
+                                                <FaCheck />
+
+                                                {feature.website_feature}
+                                              </li>
+                                            )
+                                          )}
                                         </ul>
                                       </div>
                                     </div>
@@ -389,6 +409,15 @@ export default function Page1() {
                                             <FaCheck /> {plan.content_upload}{" "}
                                             Content Upload
                                           </li>
+                                          {gig.websiteFeatures.map(
+                                            (feature) => (
+                                              <li key={feature.web_id}>
+                                                <FaCheck />
+
+                                                {feature.website_feature}
+                                              </li>
+                                            )
+                                          )}
                                         </ul>
                                       </div>
                                     </div>
@@ -565,7 +594,7 @@ const Root = styled.section`
         border: 1px solid #d3d3d3b5;
         box-shadow: 1px 1px 1px 3px 1px #d3d3d3b5;
         margin: 10px;
-        input{
+        input {
           outline: none;
         }
         .msg_writing_head {
@@ -624,7 +653,7 @@ const Root = styled.section`
         box-shadow: 1px 1px 4px 1px gray;
         border-radius: 50px;
         width: fit-content;
-        @media (max-width:576px){
+        @media (max-width: 576px) {
           width: 70vw !important;
         }
         .msg_float_img {

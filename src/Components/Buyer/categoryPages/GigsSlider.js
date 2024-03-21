@@ -10,8 +10,12 @@ import axios from "axios";
 import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import profile from "../../Images/Boyspic.png";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function GigsSlider() {
+  const gigId = useSelector((state) => state.users.gigId);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef();
   const [gigData, setGigData] = useState([]);
@@ -19,7 +23,7 @@ function GigsSlider() {
   useEffect(() => {
     const getSliderApi = async () => {
       try {
-        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/1`);
+        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/2`);
         if (res?.status === 201) {
           setGigData(res?.data?.message || []);
         }
@@ -30,6 +34,8 @@ function GigsSlider() {
 
     getSliderApi();
   }, []);
+
+  const matchingGig = gigData.find((item) => item.gigs_id === gigId);
 
   const totalSlides = gigData.length;
   const slidesToShow = 4;
@@ -70,26 +76,30 @@ function GigsSlider() {
         </div>
       </div>
       <div className="slides-container" ref={slideRef}>
-        {gigData.map((gig, index) => (
-          <div
-            key={index}
-            className={`slide ${index === currentSlide ? "active" : ""}`}
-          >
-            <SliderrGig gigData={gig} />
-            <div className="footer">
-              <div className="profile_footer">
-                <img src={profile} alt="img" />
-                <h6>{gig?.seller?.username}</h6>
+        {matchingGig && (
+          <Link to="/internalpage" className="link">
+            {gigData.map((gig, index) => (
+              <div
+                key={index}
+                className={`slide ${index === currentSlide ? "active" : ""}`}
+              >
+                <SliderrGig gigData={gig} />
+                <div className="footer">
+                  <div className="profile_footer">
+                    <img src={profile} alt="img" />
+                    <h6>{gig?.seller?.username}</h6>
+                  </div>
+                  <div>
+                    <p>{gig?.gigsData?.gig_title}</p>
+                  </div>
+                  <div>
+                    <h5>5</h5>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p>{gig?.gigsData?.gig_title}</p>
-              </div>
-              <div>
-                <h5>5</h5>
-              </div>
-            </div>
-          </div>
-        ))}
+            ))}
+          </Link>
+        )}
       </div>
     </Root>
   );
@@ -103,7 +113,6 @@ const Root = styled.section`
     display: flex;
     align-items: center;
     overflow-x: hidden;
-    
   }
   .heading_button {
     display: flex;
@@ -114,9 +123,7 @@ const Root = styled.section`
     font-size: 24px;
     color: #222325;
     font-weight: 700;
-    
   }
-
 
   .slides-container {
     display: flex;
@@ -130,20 +137,20 @@ const Root = styled.section`
     flex: 0 0 auto;
     width: 330px;
     scroll-snap-align: initial;
-    margin-right: 10px;  
-    padding: 10px;  
+    margin-right: 10px;
+    padding: 10px;
 
     .footer {
       margin-top: 20px;
       display: flex;
       flex-direction: column;
-    
+
       .profile_footer {
         display: flex;
         align-items: center;
         h6 {
           margin-left: 10px;
-          margin-top:10px;
+          margin-top: 10px;
           font-size: 14px;
           font-weight: 700;
           color: #222325;
@@ -154,19 +161,19 @@ const Root = styled.section`
         }
       }
 
-      p{
+      p {
         font-size: 18px;
         margin-top: 5px;
         color: #404145;
         font-weight: 400;
       }
 
-      h5{
+      h5 {
         margin-left: 10px;
-          margin-top:10px;
-          font-size: 14px;
-          font-weight: 700;
-          color: #222325;
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #222325;
       }
     }
   }
@@ -189,21 +196,16 @@ const Root = styled.section`
 
   @media (max-width: 567px) {
     .slide_btn {
-    display: flex;
-}
- .slide {
-    width: 100%;
-}
-
-
+      display: flex;
+    }
+    .slide {
+      width: 100%;
+    }
   }
 
-  
   @media (min-width: 567px) and (max-width: 992px) {
-
-   .slide{
-    width: 48%;
-}
+    .slide {
+      width: 48%;
+    }
   }
-
-  `;
+`;

@@ -1,13 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import profile from "../../../../Images/Boyspic.png";
 import { CreateButton } from "../../../../../GlobalStyles";
 import { CiEdit } from "react-icons/ci";
 import { FaLocationDot, FaUser } from "react-icons/fa6";
 import Profile2 from "./Profile2";
+import axios from "axios";
+import { EXCHANGE_URLS } from "../../../../Important/URLS";
+import { toast } from "react-toastify";
 
 export default function Profile() {
   const [isEdit, setIsEdit] = useState(false);
+
+  const [profile, setProfile] = useState([]);
+
+  useEffect(() => {
+    const getSliderApi = async () => {
+      try {
+        const axiosConfig = {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        };
+        const res = await axios.get(
+          `${EXCHANGE_URLS}/sellerProfile`,
+          axiosConfig
+        );
+        if (res?.status === 201) {
+          setProfile(res?.data?.message || []);
+        }
+      } catch (err) {
+        toast.error(err, "Error");
+      }
+    };
+
+    getSliderApi();
+  }, []);
 
   const toggleEdit = () => {
     setIsEdit(!isEdit);
@@ -15,16 +43,18 @@ export default function Profile() {
   return (
     <Root>
       <div className="main_div1">
+      {profile.map((item, index) => (
+        <div key={index} className="profile_div">
         <div className="profile_div">
           <div className="profile_image">
             <p>
               <span>online</span>
             </p>
-            <img src={profile} />
+            <img src={profile} alt="img" />
           </div>
           <div className="username">
             <div className="user_button">
-              <button>PhanomdeveloperBoy</button>
+              <button>{item?.username}</button>
               <CiEdit />
             </div>
             <b>@phanombuddy</b>
@@ -63,6 +93,8 @@ export default function Profile() {
             </ul>
           </div>
         </div>
+        </div>
+      ))}
         <div className="description_div">
           <div className="descrip_box">
             <div className="descrip_head">
@@ -126,6 +158,7 @@ export default function Profile() {
           </div>
         </div>
       </div>
+
       <div className="main_div2">
         <Profile2 />
       </div>
@@ -345,7 +378,7 @@ const Root = styled.section`
       }
     }
   }
-  .main_div2{
+  .main_div2 {
     width: 60%;
   }
 `;
