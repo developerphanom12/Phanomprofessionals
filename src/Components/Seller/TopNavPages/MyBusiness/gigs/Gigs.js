@@ -49,4 +49,10 @@ const Root = styled.section`
     }
    
   }
+
+  @media(max-width: 567px){
+    padding: 25px 25px 25px 25px;
+  }
+
+
 `;

@@ -10,18 +10,15 @@ import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import BrowserSlider1 from "./BrowserSlider1";
 import profile from "../../Images/Boyspic.png";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 function BrowseHistory() {
-  const gigId = useSelector((state) => state.users.gigId);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [gigData, setGigData] = useState([]);
 
   useEffect(() => {
     const getSliderApi = async () => {
       try {
-        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/2`);
+        const res = await axios.get(`${EXCHANGE_URLS}/subcategoryData/1`);
         if (res?.status === 201) {
           setGigData(res?.data?.message || []);
         }
@@ -32,8 +29,6 @@ function BrowseHistory() {
 
     getSliderApi();
   }, []);
-
-  const matchingGig = gigData.find((item) => item.gigs_id === gigId);
 
   const slideRef = useRef();
 
@@ -76,30 +71,26 @@ function BrowseHistory() {
         </div>
       </div>
       <div className="slides-container" ref={slideRef}>
-        {matchingGig && (
-          <Link to="/internalpage" className="link">
-            {gigData.map((gig, index) => (
-              <div
-                key={index}
-                className={`slide ${index === currentSlide ? "active" : ""}`}
-              >
-                <BrowserSlider1 gigData={gig} />
-                <div className="footer">
-                  <div className="profile_footer">
-                    <img src={profile} alt="img" />
-                    <h6> {gig?.seller?.username}</h6>
-                  </div>
-                  <div>
-                    <p> {gig?.gigsData?.gig_title}</p>
-                  </div>
-                  <div>
-                    <h5>Rating : 5</h5>
-                  </div>
-                </div>
+        {gigData.map((gig, index) => (
+          <div
+            key={index}
+            className={`slide ${index === currentSlide ? "active" : ""}`}
+          >
+            <BrowserSlider1 gigData={gig} />
+            <div className="footer">
+              <div className="profile_footer">
+                <img src={profile} alt="img" />
+                <h6> {gig?.seller?.username}</h6>
               </div>
-            ))}
-          </Link>
-        )}
+              <div>
+                <p> {gig?.gigsData?.gig_title}</p>
+              </div>
+              <div>
+                <h5>5</h5>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </Sliderrrs>
   );
@@ -127,10 +118,9 @@ const Sliderrrs = styled.section`
   .slides-container {
     display: flex;
     flex-wrap: wrap;
-    /* / overflow-x: auto; / */
+    /* / / overflow-x: auto; / / */
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    text-decoration: none;
   }
 
   .slide {
@@ -144,7 +134,6 @@ const Sliderrrs = styled.section`
       margin-top: 20px;
       display: flex;
       flex-direction: column;
-      text-decoration: none;
 
       .profile_footer {
         display: flex;
@@ -208,8 +197,5 @@ const Sliderrrs = styled.section`
     .slide {
       width: 48%;
     }
-  }
-  a {
-    text-decoration: none;
   }
 `;

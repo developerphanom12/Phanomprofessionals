@@ -81,6 +81,8 @@ const Root = styled.section`
     align-items: center;
     justify-content: space-between;
     padding-bottom: 20px;
+    flex-wrap: wrap;
+    
     .input_div {
       border-bottom: 1px solid #dadbdd;
       input {
@@ -113,7 +115,7 @@ const Root = styled.section`
     .nav_tab {
       display: flex;
       gap: 10px;
-      /* padding: 10px; */
+      /* / padding: 10px; / */
       color: #999;
       font-size: 14px;
       line-height: 42px;
@@ -121,7 +123,7 @@ const Root = styled.section`
       text-decoration: none;
       text-transform: uppercase;
       @media (max-width: 786px) {
-        flex-direction: column;
+        flex-direction: row;
       }
 
       .btn_1 {
@@ -160,10 +162,16 @@ const Root = styled.section`
   .table {
     width: 100%;
     height: 100%;
-    /* border: 1px solid #99999973; */
+    /* / border: 1px solid #99999973; / */
     background: #f7f7f7;
     @media (max-width: 600px) {
       padding: 0;
     }
+  }
+
+  @media (max-width: 567px) {
+ .order_header .input_div {
+    margin-top: 20px;
+}
   }
 `;

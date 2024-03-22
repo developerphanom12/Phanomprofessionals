@@ -13,7 +13,7 @@ export default function Cancelled() {
       <table>
         <thead>
           <tr className="head">
-            <td colSpan={7}>
+            <td colSpan={10}>
               <h6>Cancelled Orders</h6>
             </td>
             <td colSpan={8}>
@@ -37,7 +37,7 @@ export default function Cancelled() {
           </tr>
           <tr>
             <td colSpan={2}>
-              {/* <input type="checkbox" onChange={handleCheckboxChange} /> */}
+              {/* {/ <input type="checkbox" onChange={handleCheckboxChange} /> /} */}
             </td>
             <td colSpan={2}>
               <span>BUYER</span>
@@ -67,7 +67,7 @@ export default function Cancelled() {
         <tbody>
           <tr>
             <td colSpan={2}>
-              {/* <input type="checkbox" onChange={handleCheckboxChange} /> */}
+              {/* {/ <input type="checkbox" onChange={handleCheckboxChange} /> /} */}
             </td>
             <td colSpan={2}>
               <span>0</span>
@@ -91,13 +91,13 @@ export default function Cancelled() {
               {" "}
               <span>0</span>
             </td>
-            {/* <td></td> */}
+            {/* {/ <td></td> /} */}
             {/* <td colSpan={2}>
               <IoMdArrowDropdown />
             </td> */}
           </tr>
           <tr className="head">
-            <td colSpan={5}>no cancelled orders to show</td>
+            <td colSpan={12}>no cancelled orders to show</td>
           </tr>
         </tbody>
       </table>
@@ -108,7 +108,7 @@ const Root = styled.section`
   margin: -10px;
   table {
     width: 100%;
-    /* border-collapse: collapse; */
+ 
   }
   .head td {
     font-size: 14px;
@@ -140,7 +140,7 @@ const Root = styled.section`
     white-space: nowrap;
   }
   tr {
-    /* border-bottom: 1px solid #ddd; */
+    /* / border-bottom: 1px solid #ddd; / */
     background-color: #fff;
     border: 1px #e5e5e5 solid;
   }
@@ -177,7 +177,7 @@ const Root = styled.section`
         border-radius: 3px;
         font-size: 12px;
         font-weight: 600;
-        /* float: left; */
+        /* / float: left; / */
         text-transform: uppercase;
       }
       select:focus-visible {
@@ -194,4 +194,13 @@ const Root = styled.section`
   .table td:first-child {
     padding-left: 20px;
   }
+
+  @media (max-width: 567px) {
+
+ td {
+    padding: 5px 4px;
+    white-space: unset; 
+}
+  }
+ 
 `;

@@ -57,9 +57,7 @@ export default function Overview() {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-12">
-
-          </div>
+          <div className="col-lg-12"></div>
         </div>
       </div>
     </Root>

@@ -1,41 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import profilee from "../../../../Images/Boyspic.png";
+import profile from "../../../../Images/Boyspic.png";
 import { CreateButton } from "../../../../../GlobalStyles";
 import { CiEdit } from "react-icons/ci";
 import { FaLocationDot, FaUser } from "react-icons/fa6";
 import Profile2 from "./Profile2";
-import axios from "axios";
-import { EXCHANGE_URLS } from "../../../../Important/URLS";
-import { toast } from "react-toastify";
 
 export default function Profile() {
   const [isEdit, setIsEdit] = useState(false);
-
-  const [profile, setProfile] = useState([]);
-
-  useEffect(() => {
-    const getSliderApi = async () => {
-      try {
-        const axiosConfig = {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        };
-        const res = await axios.get(
-          `${EXCHANGE_URLS}/sellerProfile`,
-          axiosConfig
-        );
-        if (res?.status === 201) {
-          setProfile(res?.data?.message || []);
-        }
-      } catch (err) {
-        toast.error(err, "Error");
-      }
-    };
-
-    getSliderApi();
-  }, []);
 
   const toggleEdit = () => {
     setIsEdit(!isEdit);
@@ -43,22 +15,19 @@ export default function Profile() {
   return (
     <Root>
       <div className="main_div1">
-      {profile.map((item, index) => (
-        <div key={index} className="profile_div">
         <div className="profile_div">
           <div className="profile_image">
             <p>
               <span>online</span>
             </p>
-            <img src={profilee} alt="img" />
+            <img src={profile} />
           </div>
           <div className="username">
             <div className="user_button">
-              <button>{item?.username}</button>
+              <button>PhanomdeveloperBoy</button>
               <CiEdit />
             </div>
-            <b>{item?.technology_name}</b> <br/>
-            <b>{item?.category?.category_name}</b>
+            <b>@phanombuddy</b>
           </div>
           <div className="editing">
             <CiEdit onClick={toggleEdit} />
@@ -94,8 +63,6 @@ export default function Profile() {
             </ul>
           </div>
         </div>
-        </div>
-      ))}
         <div className="description_div">
           <div className="descrip_box">
             <div className="descrip_head">
@@ -159,7 +126,6 @@ export default function Profile() {
           </div>
         </div>
       </div>
-
       <div className="main_div2">
         <Profile2 />
       </div>
@@ -227,11 +193,11 @@ const Root = styled.section`
             line-height: 28px;
           }
           svg {
-            /* float: left; */
-            /* height: 100%; */
+            /* / float: left; / */
+            /* / height: 100%; / */
             margin-left: 5px;
             color: #7a7d85;
-            /* width: 100%; */
+            /* / width: 100%; / */
           }
         }
       }
@@ -246,7 +212,7 @@ const Root = styled.section`
           flex-direction: column;
           justify-content: center;
           input {
-            /* display: block; */
+            /* / display: block; / */
             width: 100%;
             font-size: 14px;
             line-height: 120%;
@@ -382,4 +348,30 @@ const Root = styled.section`
   .main_div2 {
     width: 60%;
   }
+
+  @media (max-width: 567px) {
+    .main_div2 {
+      width: 100%;
+      margin-top: 20px;
+    }
+    .gig_box {
+      width: 100%;
+    }
+    .tab_button_area .nav_tab {
+      flex-direction: row;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    flex-wrap: unset;
+    gap: 30px;
+
+    .tab_button_area .nav_tab {
+    flex-direction: row;
+}
+ .gig_box {
+    width: 100%;
+  }
+
+}
 `;

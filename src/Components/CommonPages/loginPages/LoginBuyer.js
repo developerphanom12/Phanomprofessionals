@@ -23,7 +23,7 @@ const schema = yup.object().shape({
   // ),
 });
 
-export default function LoginBuyer(){
+export default function LoginBuyer() {
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -145,4 +145,26 @@ const Root = styled.section`
   display:flex;
   justify-content: center;
 } */
+
+  @media (max-width: 567px) {
+    margin: 0;
+    padding: 0;
+    form {
+      width: unset;
+    }
+    form .pswrd button.btn {
+      margin-left: -60px;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    margin: 0;
+    padding: 0;
+    form {
+      width: 90%;
+    }
+    form .pswrd button.btn {
+      margin-left: -60px;
+    }
+  }
 `;

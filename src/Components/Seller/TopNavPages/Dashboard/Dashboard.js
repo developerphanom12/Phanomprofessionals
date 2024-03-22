@@ -233,7 +233,7 @@ const Root = styled.section`
         width: 100%;
         border: 1px solid #dadbdd;
         a {
-          /* / / padding: 10px 20px; / / */
+          /* / / / padding: 10px 20px; / / / */
           font-size: 16px;
           line-height: 31px;
           text-decoration: none;

@@ -83,7 +83,7 @@ display: flex;
     .nav_tab {
       display: flex;
       gap: 10px;
-      /* / padding: 10px; / */
+      /* / / padding: 10px; / / */
       color: #999;
       font-size: 14px;
       line-height: 42px;
@@ -138,7 +138,7 @@ display: flex;
       padding: 0;
     }
   }
-  .table > :not(caption) > * >  *{
+  .table > :not(caption) > * > * {
     background-color: #f7f7f7 !important;
   }
 `

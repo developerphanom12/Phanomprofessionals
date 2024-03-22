@@ -98,7 +98,9 @@ export default function FinancialDocument() {
           <div className="row">
             <div className="col-lg-6"></div>
             <div className="col-lg-6 actin_btn">
-              <button className="cancel_btn" onClick={() => setmodal(false)}>Cancel</button>
+              <button className="cancel_btn" onClick={() => setmodal(false)}>
+                Cancel
+              </button>
               <button className="download_btn">Download Statement</button>
             </div>
           </div>
@@ -152,6 +154,23 @@ const Root = styled.section`
       .earning_col_two {
         flex: 1;
       }
+    }
+  }
+  @media (max-width: 567px) {
+    .main_div .earning_row .earning_col_one {
+      flex: unset;
+    }
+    .main_div {
+      min-height: unset;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    .main_div .earning_row .earning_col_one {
+      flex: unset;
+    }
+    .main_div {
+      min-height: unset;
     }
   }
 `;
@@ -211,8 +230,7 @@ const CustomModalBody = styled(ModalBody)`
     }
   }
 
-.actin_btn{
-  
+  .actin_btn {
     .cancel_btn {
       background: #e4e5e7;
       color: #404145;
@@ -225,7 +243,7 @@ const CustomModalBody = styled(ModalBody)`
       cursor: pointer;
       border: 1px solid transparent;
     }
-    .download_btn{
+    .download_btn {
       background: black;
       color: #fff;
       padding: 12px 24px;
@@ -236,8 +254,13 @@ const CustomModalBody = styled(ModalBody)`
       text-align: center;
       cursor: pointer;
       border: 1px solid transparent;
-      margin-left:20px;
+      margin-left: 20px;
     }
   }
- 
+
+  @media (max-width: 567px) {
+    .actin_btn {
+      display: flex;
+    }
+  }
 `;

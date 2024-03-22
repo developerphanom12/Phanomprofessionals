@@ -127,21 +127,25 @@ const Root = styled.section`
     justify-content: space-between;
     border-bottom: 1px solid #99999973;
     margin: 20px 0px;
+    flex-wrap: wrap;
+
     .nav_tab {
       display: flex;
+      width: 80vw;
       gap: 10px;
-      /* padding: 10px; */
+      /* / padding: 10px; / */
       color: #999;
       font-size: 14px;
       line-height: 42px;
       font-weight: 400;
       text-decoration: none;
       text-transform: uppercase;
-      @media (max-width: 786px) {
+      /* @media (max-width: 786px) {
         flex-direction: column;
-      }
+      } */
 
       .btn_1 {
+        width: 15vw;
         background-color: transparent;
         border: none;
         width: fit-content;
@@ -177,10 +181,30 @@ const Root = styled.section`
   .table {
     width: 100%;
     height: 100%;
-    /* border: 1px solid #99999973; */
+    /* / border: 1px solid #99999973; / */
     background: #f7f7f7;
     @media (max-width: 600px) {
       padding: 0;
     }
   }
+
+  @media (max-width: 567px) {
+ .tab_button_area {
+    padding-bottom: 20px;
+}
+
+  .tab_button_area .nav_tab {
+    display: unset;
+}
+
+ .tab_button_area .create_btn {
+    margin-left: 100px;
+}
+    }
+    @media (min-width: 567px) and (max-width: 992px) {
+ .tab_button_area {
+    flex-wrap: unset;
+    gap:30px;
+}
+    }
 `;

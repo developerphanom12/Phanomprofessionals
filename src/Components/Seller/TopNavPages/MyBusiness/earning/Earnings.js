@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import styled from 'styled-components';
-import { GigButton } from '../../../../../GlobalStyles';
-import EarnOverview from './EarnOverview';
-import FinancialDocument from './FinancialDocument';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { GigButton } from "../../../../../GlobalStyles";
+import EarnOverview from "./EarnOverview";
+import FinancialDocument from "./FinancialDocument";
 
 export default function Earnings() {
   const [active, setActive] = useState("earnoverview");
@@ -10,10 +10,10 @@ export default function Earnings() {
   return (
     <Root>
       <div className="tab_button_area">
-        <div className='container-fluid mt-5'>
-          <div className='row'>
-            <div className='col-lg-12'>
-              <h2 >Earnings</h2>
+        <div className="container-fluid mt-5">
+          <div className="row">
+            <div className="col-lg-12">
+              <h2>Earnings</h2>
             </div>
           </div>
         </div>
@@ -25,12 +25,14 @@ export default function Earnings() {
                 setActive("earnoverview");
               }}
             >
-             EarnOverview
+              EarnOverview
             </GigButton>
           </div>
           <div>
             <GigButton
-              className={active === "financialdocument" ? "btn_1 active" : "btn_1"}
+              className={
+                active === "financialdocument" ? "btn_1 active" : "btn_1"
+              }
               onClick={() => {
                 setActive("financialdocument");
               }}
@@ -42,10 +44,9 @@ export default function Earnings() {
       </div>
       <div className="table">
         <div className="container-fluid">
-          
           <div className="row">
             <div className="col-lg-12">
-            {/* <h2 >Earnings</h2> */}
+              {/* {/ <h2 >Earnings</h2> /} */}
               {active === "earnoverview" ? (
                 <EarnOverview detail={user} />
               ) : active === "financialdocument" ? (
@@ -66,18 +67,18 @@ const Root = styled.section`
   flex-direction: column;
   background-color: #fff;
   gap: 40px;
-  h2{
-    font-size:32px;
-    font-weight:700;
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
   }
   .tab_button_area {
     background: #fff;
-    padding-left:20px;
+    padding-left: 20px;
     border: 1px solid #99999973;
     .nav_tab {
       display: flex;
       gap: 10px;
-      /* padding: 10px; */
+      /* / padding: 10px; / */
       color: #999;
       font-size: 14px;
       line-height: 42px;
@@ -132,5 +133,16 @@ const Root = styled.section`
       padding: 0;
     }
   }
-   
+
+  @media (max-width: 567px) {
+    .tab_button_area .nav_tab {
+      flex-direction: row;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    .tab_button_area .nav_tab {
+      flex-direction: row;
+    }
+  }
 `;

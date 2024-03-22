@@ -131,8 +131,8 @@ const Pageone = styled.section`
 
   @media (max-width: 567px) {
     margin: 40px 10px 0px 10px;
-    h2{
-      font-size:20px;
+    h2 {
+      font-size: 20px;
     }
     .sections {
       display: unset;

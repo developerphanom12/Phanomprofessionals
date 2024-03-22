@@ -33,7 +33,7 @@ import Profile from "./Components/Seller/TopNavPages/MyBusiness/profile/Profile"
 import Earnings from "./Components/Seller/TopNavPages/MyBusiness/earning/Earnings";
 import Overview from "./Components/Seller/TopNavPages/Analytics/Overview";
 import CreatePage from "./Components/Seller/create/CreatePage";
-import Message from "./Components/MainLayouts/Message";
+import Message from "./Components/MainLayouts/message/Message";
 import PageNF from "./Components/Important/PageNF";
 import { loaderAction } from "./redux/users/action";
 import { useEffect } from "react";

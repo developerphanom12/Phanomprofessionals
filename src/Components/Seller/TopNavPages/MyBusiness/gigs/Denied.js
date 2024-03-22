@@ -127,7 +127,7 @@ const Root = styled.section`
   margin: -10px;
   table {
     width: 100%;
-    /* border-collapse: collapse; */
+    /* / border-collapse: collapse; / */
   }
   .head td {
     font-size: 14px;
@@ -159,7 +159,7 @@ const Root = styled.section`
     white-space: nowrap;
   }
   tr {
-    /* border-bottom: 1px solid #ddd; */
+    /* / border-bottom: 1px solid #ddd; / */
     background-color: #fff;
     border: 1px #e5e5e5 solid;
   }
@@ -195,7 +195,7 @@ const Root = styled.section`
         border-radius: 3px;
         font-size: 12px;
         font-weight: 600;
-        /* float: left; */
+        /* / float: left; / */
         text-transform: uppercase;
       }
       select:focus-visible {
@@ -244,4 +244,7 @@ const Root = styled.section`
   .table td:first-child {
     padding-left: 20px;
   }
+  @media (max-width: 567px) {
+      overflow:auto;
+    }
 `;
