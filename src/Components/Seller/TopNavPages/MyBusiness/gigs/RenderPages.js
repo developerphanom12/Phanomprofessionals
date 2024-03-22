@@ -32,7 +32,7 @@ export default function RenderPages() {
       };
       const updatedData = {
         ...formData,
-        gig_id: gigId,
+        id: gigId,
       };
       const res = await axios.post(
         `${EXCHANGE_URLS}/activategig `,
@@ -49,8 +49,8 @@ export default function RenderPages() {
     }
   };
 
-  const handleSubmit = () => {
-    appApi();
+  const handleSubmit = (gigId) => {
+    appApi(gigId);
   };
 
   const handleGigCreate = () => {

@@ -150,7 +150,7 @@ export default function Paused({ formData, setFormData, handleSubmit }) {
                           <li
                             onClick={() => {
                               setFormData({ ...formData, is_open: 1 });
-                              handleSubmit();
+                              handleSubmit(gigData.gig_id);
                             }}
                           >
                             Activate
