@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import profile from "../../../../Images/Boyspic.png";
+import profilee from "../../../../Images/Boyspic.png";
 import { CreateButton } from "../../../../../GlobalStyles";
 import { CiEdit } from "react-icons/ci";
 import { FaLocationDot, FaUser } from "react-icons/fa6";
@@ -50,14 +50,15 @@ export default function Profile() {
             <p>
               <span>online</span>
             </p>
-            <img src={profile} alt="img" />
+            <img src={profilee} alt="img" />
           </div>
           <div className="username">
             <div className="user_button">
               <button>{item?.username}</button>
               <CiEdit />
             </div>
-            <b>@phanombuddy</b>
+            <b>{item?.technology_name}</b> <br/>
+            <b>{item?.category?.category_name}</b>
           </div>
           <div className="editing">
             <CiEdit onClick={toggleEdit} />

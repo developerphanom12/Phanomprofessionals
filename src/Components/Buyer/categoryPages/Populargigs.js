@@ -208,4 +208,8 @@ const Sliderrrs = styled.section`
       width: 48%;
     }
   }
+  a{
+    text-decoration: none;
+
+  }
 `;

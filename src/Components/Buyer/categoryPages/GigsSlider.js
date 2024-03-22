@@ -93,7 +93,7 @@ function GigsSlider() {
                     <p>{gig?.gigsData?.gig_title}</p>
                   </div>
                   <div>
-                    <h5>5</h5>
+                    <h5>Rating : 5</h5>
                   </div>
                 </div>
               </div>
@@ -207,5 +207,9 @@ const Root = styled.section`
     .slide {
       width: 48%;
     }
+  }
+  a{
+    text-decoration: none;
+
   }
 `;
