@@ -292,4 +292,16 @@ const Root = styled.section`
       }
     }
   }
+  @media (max-width: 567px) {
+    table thead tr th,
+    .gAvFUA table tbody tr th {
+      padding:0;
+      font-size:12px;
+    }
+
+ table thead tr .first_table_col, .knwZRi table tbody tr .first_table_col {
+    width: 150px;
+}
+  }
+
 `;

@@ -1,19 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GigButton, CreateButton } from "../../../../../GlobalStyles";
 import styled from "styled-components";
 import Active from "./Active";
 import PendingApprove from "./PendingApprove";
 import Modification from "./Modification";
 import Draft from "./Draft";
-import Denied from "./Denied";
 import Paused from "./Paused";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { EXCHANGE_URLS } from "../../../../Important/URLS";
+
 export default function RenderPages() {
   const [active, setActive] = useState("active");
-  const [user, setUser] = useState();
+  const gigId = useSelector((state) => state.users.gigId);
+  const [formData, setFormData] = useState({
+    id: gigId,
+    is_open: "",
+  });
+  console.log(gigId,"formDataformData")
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const appApi = async () => {
+    try {
+      const axiosConfig = {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+      const updatedData = {
+        ...formData,
+        gig_id: gigId,
+      };
+      const res = await axios.post(
+        `${EXCHANGE_URLS}/activategig `,
+        updatedData,
+        axiosConfig
+      );
+      console.log("formData", formData);
+      if (res?.status === 201) {
+        navigate("/dashboard");
+        toast.success("activate successfull");
+      }
+    } catch (err) {
+      toast.error("error");
+    }
+  };
+
+  const handleSubmit = () => {
+    appApi();
+  };
 
   const handleGigCreate = () => {
     toast.warn("Complete Steps In Sequence");
@@ -63,7 +101,7 @@ export default function RenderPages() {
               DRAFT
             </GigButton>
           </div>
-          <div>
+          {/* <div>
             <GigButton
               className={active === "denied" ? "btn_1 active" : "btn_1"}
               onClick={() => {
@@ -72,7 +110,7 @@ export default function RenderPages() {
             >
               DENIED
             </GigButton>
-          </div>
+          </div> */}
           <div>
             <GigButton
               className={active === "paused" ? "btn_1 active" : "btn_1"}
@@ -87,7 +125,7 @@ export default function RenderPages() {
         <div className="create_btn">
           <CreateButton
             onClick={() => {
-              handleGigCreate()
+              handleGigCreate();
             }}
           >
             CREATE A NEW GIG
@@ -99,17 +137,25 @@ export default function RenderPages() {
           <div className="row">
             <div className="col-lg-12">
               {active === "active" ? (
-                <Active detail={user} />
+                <Active />
               ) : active === "pendingapprove" ? (
-                <PendingApprove detail={user} />
+                <PendingApprove />
               ) : active === "modification" ? (
-                <Modification detail={user} />
+                <Modification />
               ) : active === "draft" ? (
-                <Draft detail={user} />
-              ) : active === "denied" ? (
-                <Denied />
-              ) : active === "paused" ? (
-                <Paused />
+                <Draft
+                  formData={formData}
+                  setFormData={setFormData}
+                  handleSubmit={handleSubmit}
+                />
+              ) : // ) : active === "denied" ? (
+              //   <Denied />
+              active === "paused" ? (
+                <Paused
+                  formData={formData}
+                  setFormData={setFormData}
+                  handleSubmit={handleSubmit}
+                />
               ) : (
                 <Active />
               )}
@@ -189,22 +235,22 @@ const Root = styled.section`
   }
 
   @media (max-width: 567px) {
- .tab_button_area {
-    padding-bottom: 20px;
-}
-
-  .tab_button_area .nav_tab {
-    display: unset;
-}
-
- .tab_button_area .create_btn {
-    margin-left: 100px;
-}
+    .tab_button_area {
+      padding-bottom: 20px;
     }
-    @media (min-width: 567px) and (max-width: 992px) {
- .tab_button_area {
-    flex-wrap: unset;
-    gap:30px;
-}
+
+    .tab_button_area .nav_tab {
+      display: unset;
     }
+
+    .tab_button_area .create_btn {
+      margin-left: 100px;
+    }
+  }
+  @media (min-width: 567px) and (max-width: 992px) {
+    .tab_button_area {
+      flex-wrap: unset;
+      gap: 30px;
+    }
+  }
 `;

@@ -161,4 +161,17 @@ const Root = styled.section`
       color: #fff;
     }
   }
+
+  @media (max-width: 567px){
+    margin:0;
+    padding:0;
+     .main_div_section{
+    width: 90vw;
+}
+ .div4 {
+   width: unset; 
+
+}
+  }
 `;
+

@@ -308,4 +308,45 @@ const Root = styled.section`
       }
     }
   }
+
+  @media (max-width: 567px) {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    ol, ul {
+     padding-left:unset; 
+}
+.main_gallery_div .img_div_add ul .ul_div {
+display: unset; 
+
+}
+.main_gallery_div .img_div_add ul li {
+width: unset;
+}
+
+ .div4 {
+    width: 90%;
+}
+
+  }
+
+  @media (min-width: 567px) and (max-width: 992px){
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    ol, ul {
+     padding-left:unset; 
+}
+/* .main_gallery_div .img_div_add ul .ul_div {
+display: unset; 
+
+} */
+.main_gallery_div .img_div_add ul li {
+width: unset;
+}
+
+ .div4 {
+    width: 90%;
+}
+  }
 `;

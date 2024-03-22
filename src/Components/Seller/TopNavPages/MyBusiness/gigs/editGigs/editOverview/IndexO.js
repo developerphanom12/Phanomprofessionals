@@ -6,9 +6,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { EXCHANGE_URLS, EXCHANGE_URLS_CATEGORY } from "../../../../../../Important/URLS";
+import {
+  EXCHANGE_URLS,
+  EXCHANGE_URLS_CATEGORY,
+} from "../../../../../../Important/URLS";
 import { updateGigId } from "../../../../../../../redux/users/action";
-
 
 export default function IndexO() {
   const [active, setActive] = useState("page1");
@@ -594,5 +596,106 @@ const Root = styled.section`
       }
     }
   }
-`;
 
+  @media (max-width: 567px) {
+    margin: 0;
+    padding: 0;
+    .main_div_section {
+      width: unset;
+    }
+    .main_div_section .input_group {
+      display: unset;
+    }
+    .main_div_section .input_group .input_label {
+      width: unset;
+      padding: 11px;
+    }
+    .main_div_section .input_group .input_div {
+      width: unset;
+    }
+    .main_div_section .input_group .input_divv .all_pages .button_page ul {
+      padding-left: 0px;
+    }
+    .main_div_section .input_group .input_div {
+      justify-content: space-around;
+    }
+
+    .main_div_section .input_group .input_div select {
+      width: 42vw;
+    }
+    .main_div_section .input_group .input_div .text {
+      width: 85vw;
+    }
+
+    .main_div_section .input_group .input_divv {
+      display: unset;
+    }
+
+    .main_div_section .input_group .input_divv .main_metadata {
+      margin-bottom: 20px;
+    }
+
+    .main_div_section
+      .input_group
+      .input_divv
+      .all_pages
+      .button_pages
+      .select_tabs
+      ul,
+    .iMxYZt
+      .main_div_section
+      .input_group
+      .input_divv
+      .all_pages
+      .button_page
+      .select_tabs
+      ul {
+      padding-left: 0;
+      display: unset;
+    }
+    .hyxrIE
+      .main_div_section
+      .input_group
+      .input_divv
+      .all_pages
+      .button_pages
+      .select_tabs
+      ul,
+    .hyxrIE
+      .main_div_section
+      .input_group
+      .input_divv
+      .all_pages
+      .button_page
+      .select_tabs
+      ul {
+      padding-left: 0;
+    }
+    .main_div_section .input_group .input_div_area {
+      width: unset;
+    }
+
+    .main_div_section .input_group .information {
+      width: unset;
+    }
+    .main_div_section .div4 {
+      width: unset;
+      margin: 10px 0px;
+      justify-content: space-around;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    margin: 0;
+    padding: 0;
+    .main_div_section {
+      width: 90vw;
+    }
+    .main_div_section .input_group .input_label {
+      width: unset;
+    }
+    .main_div_section .input_group .input_div .text {
+      width: 85vw;
+    }
+  }
+`;

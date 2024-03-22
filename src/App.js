@@ -50,6 +50,7 @@ import "react-toastify/dist/ReactToastify.css";
 import EditGigsPage from "./Components/Seller/TopNavPages/MyBusiness/gigs/editGigs/EditGigsPage";
 import Topkeywords from "./Components/Seller/TopNavPages/Analytics/Topkeywords";
 import LoginBuyer from "./Components/CommonPages/loginPages/LoginBuyer";
+// import ChatSection from "./Components/MainLayouts/message/ChatSection";
 
 function App() {
   const userCheck = useSelector((state) => state?.users?.userCheck);
@@ -66,6 +67,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/message" element={<Message />} />
+          {/* <Route path="/chat" element={<ChatSection />} /> */}
           <Route path="/innpage" element={<InnPage />} />
 
           {/* buyer pagess--------------------------------------------------------------- */}

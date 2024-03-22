@@ -88,6 +88,10 @@ function Populargigs() {
               <div>
                 <h5>Rating: 5</h5>
               </div>
+              <div>
+                <h4>From: $ {gig?.price?.price}</h4>
+              </div>
+
             </div>
           </div>
         ))}
@@ -138,6 +142,8 @@ const Sliderrrs = styled.section`
       .profile_footer {
         display: flex;
         align-items: center;
+        margin-left: 10px;
+
         h6 {
           margin-left: 10px;
           margin-top: 10px;
@@ -152,16 +158,25 @@ const Sliderrrs = styled.section`
       }
 
       p {
-        font-size: 18px;
+        font-size: 15px;
         margin-top: 5px;
         color: #404145;
         font-weight: 400;
+        margin-left: 10px;
+        margin-bottom: 0px;
       }
 
       h5 {
         margin-left: 10px;
         margin-top: 10px;
-        font-size: 14px;
+        font-size: 16px;
+        font-weight: 700;
+        color: #222325;
+      }
+      h4 {
+        margin-left: 10px;
+        margin-top: 10px;
+        font-size: 16px;
         font-weight: 700;
         color: #222325;
       }

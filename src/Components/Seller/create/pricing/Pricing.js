@@ -325,4 +325,17 @@ const Root = styled.section`
       color: #fff;
     }
   }
+
+  @media (max-width: 567px){
+    margin:0;
+    padding:5px;
+    width:100vw;
+  }
+
+  @media (min-width: 567px) and (max-width: 992px){
+    margin:0;
+    padding:30px;
+    width:100vw;
+  }
+
 `;

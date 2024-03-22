@@ -7,8 +7,10 @@ import IndexD from "./editDescription/IndexD";
 import IndexR from "./editRequirements/IndexR";
 import IndexG from "./editGallery/IndexG";
 
+
 export default function EditGigsPage() {
   const [active, setActive] = useState("editoverview");
+ 
 
   return (
     <Root>
@@ -49,7 +51,9 @@ export default function EditGigsPage() {
             </div>
             <div>
               <GigButton
-                className={active === "editrequirements" ? "btn_1 active" : "btn_1"}
+                className={
+                  active === "editrequirements" ? "btn_1 active" : "btn_1"
+                }
                 onClick={() => {
                   setActive("editrequirements");
                 }}
@@ -73,7 +77,7 @@ export default function EditGigsPage() {
       <div className="table">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-12">
+            <div className="col-lg-12 col-12">
               {active === "editoverview" ? (
                 <IndexO />
               ) : active === "editpricing" ? (
@@ -176,5 +180,25 @@ const Root = styled.section`
   }
   .table > :not(caption) > * > * {
     background-color: #f7f7f7 !important;
+  }
+
+  @media (max-width: 567px) {
+    .tab_button_area {
+      padding-left: 20px;
+    }
+    .tab_button_area .nav_tab {
+      padding: unset;
+    }
+    .tab_button_area .nav_tab > div {
+      gap: 0;
+    }
+    .tab_button_area .nav_tab .btn_1 {
+      min-width: 63px;
+    }
+  }
+  @media (min-width: 567px) and (max-width: 992px) {
+     .tab_button_area .nav_tab {
+      padding: 0px 120px;
+    }
   }
 `;

@@ -438,4 +438,29 @@ const Root = styled.section`
       color: #fff;
     }
   }
+
+  @media (max-width: 567px){
+    margin: 0;
+    padding: 0;
+    width: unset;
+    .main_req_div .section_2 .section_2_div {
+      display: unset;
+    }
+
+    .main_req_div .section_2 .section_2_div button {
+      margin-top: 12px;
+      margin-left: 0;
+    }
+    .main_req_div .your_question {
+      margin-top:20px;
+      margin-left: 0;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    margin: 0;
+    padding: 30px;
+    width: 100vw;
+
+  }
 `;

@@ -373,4 +373,9 @@ const Root = styled.section`
       }
     }
   }
+  @media (max-width: 567px) {
+    table tbody tr .first_table_col {
+      width: 150px;
+    }
+  }
 `;

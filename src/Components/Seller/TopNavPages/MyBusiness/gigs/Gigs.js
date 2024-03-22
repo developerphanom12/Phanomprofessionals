@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { ToggleButton } from "../../../../../GlobalStyles";
 import RenderPages from "./RenderPages";
 
+
 export default function Gigs() {
   const [toggle, setToggle] = useState();
 
+ 
   const handleToggle = () => {
     setToggle(!toggle);
   };

@@ -1,19 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import {
+  EXCHANGE_URLS,
+  EXCHANGE_URLS_IMAGES,
+} from "../../../../Important/URLS";
+import { toast } from "react-toastify";
 
-export default function Paused() {
+export default function Paused({ formData, setFormData, handleSubmit }) {
   const [isChecked, setIsChecked] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };
+  const [showDropdown, setShowDropdown] = useState([]);
 
-  const handleDropdownClick = () => {
-    setShowDropdown(!showDropdown);
+  const [gigGet, setGigGet] = useState([]);
+
+  useEffect(() => {
+    const getSliderApi = async () => {
+      try {
+        const axiosConfig = {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        };
+        const inactive = "inactive";
+        const res = await axios.get(
+          `${EXCHANGE_URLS}/gigsdatatat?selection=${inactive}`,
+          axiosConfig
+        );
+        if (res?.status === 200) {
+          setGigGet(res?.data?.data);
+        }
+      } catch (err) {
+        toast.error(err, "Error");
+      }
+    };
+
+    getSliderApi();
+  }, []);
+  useEffect(() => {
+    const initializeDropdownStates = () => {
+      // Initialize dropdown states for each row
+      const dropdownStates = new Array(gigGet.length).fill(false);
+      setShowDropdown(dropdownStates);
+    };
+
+    initializeDropdownStates();
+  }, [gigGet]);
+
+  const handleDropdownClick = (index) => {
+    // Toggle dropdown state for the clicked row
+    const newDropdownStates = [...showDropdown];
+    newDropdownStates[index] = !newDropdownStates[index];
+    setShowDropdown(newDropdownStates);
   };
   const navigate = useNavigate();
+
+  const handleDelete = (index) => {
+    // Create a copy of the gigGet array
+    const updatedGigGet = [...gigGet];
+    // Remove the item at the specified index
+    updatedGigGet.splice(index, 1);
+    // Update the gigGet state with the modified array
+    setGigGet(updatedGigGet);
+  };
+
   return (
     <Root>
       <table>
@@ -22,29 +73,10 @@ export default function Paused() {
             <td colSpan={7}>
               <h6>PAUSED GIGS</h6>
             </td>
-            <td colSpan={8}>
-              <div className="button_select">
-                {isChecked && (
-                  <>
-                    <button>Active</button>
-                    <button>Delete</button>
-                  </>
-                )}
-                <select>
-                  Last 30 Days
-                  <option>Last 7 Days</option>
-                  <option>Last 14 Days</option>
-                  <option>Last 30 Days</option>
-                  <option>Last 2 months</option>
-                  <option>Last 3 months</option>
-                </select>
-              </div>
-            </td>
+            <td colSpan={8}></td>
           </tr>
           <tr>
-            <td colSpan={2}>
-              <input type="checkbox" onChange={handleCheckboxChange} />
-            </td>
+            <td colSpan={2}></td>
             <td colSpan={2}>
               <span>GIG</span>
             </td>
@@ -62,59 +94,76 @@ export default function Paused() {
             </td>
             <td colSpan={2}>
               {" "}
-              <span>CANCELLATIONS</span>
+              <span>DATE</span>
             </td>
             <td></td>
             <td></td>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td colSpan={2}>
-              <input type="checkbox" onChange={handleCheckboxChange} />
-            </td>
-            <td colSpan={2}>
-              <span>0</span>
-            </td>
-            <td colSpan={2}>
-              {" "}
-              <span>0</span>
-            </td>
-            <td></td>
+        {gigGet &&
+          gigGet.map((gigData, index) => (
+            <tbody>
+              <tr>
+                <td colSpan={2}>
+                  <img
+                    className="img"
+                    src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image1}`}
+                    alt={`Image 1`}
+                  />
+                </td>
+                <td colSpan={2}>
+                  <span>{gigData?.gig_title}</span>
+                </td>
+                <td colSpan={2}>
+                  {" "}
+                  <span>0</span>
+                </td>
+                <td></td>
 
-            <td colSpan={2}>
-              <span>0</span>{" "}
-            </td>
-            <td colSpan={2}>
-              <span>0</span>{" "}
-            </td>
-            <td colSpan={2}>
-              {" "}
-              <span>0</span>
-            </td>
-            <td></td>
-            <td colSpan={2}>
-              <div className="dropdown_wrapper">
-                <IoMdArrowDropdown onClick={handleDropdownClick} />
-                {showDropdown && (
-                  <div className="dropdown_menu">
-                    <ul>
-                      <li>Preview</li>
-                      <li   onClick={() => {
-                          navigate("/editgigspages");
-                        }}>Edit</li>
-                      <li>Activate</li>
-                      <li>Delete</li>
-                    </ul>
+                <td colSpan={2}>
+                  <span>0</span>{" "}
+                </td>
+                <td colSpan={2}>
+                  <span>0</span>{" "}
+                </td>
+                <td colSpan={2}>
+                  {" "}
+                  <span>0</span>
+                </td>
+                <td></td>
+                <td colSpan={2}>
+                  <div className="dropdown_wrapper">
+                    <IoMdArrowDropdown
+                      onClick={() => handleDropdownClick(index)}
+                    />
+                    {showDropdown[index] && (
+                      <div className="dropdown_menu">
+                        <ul>
+                          <li>Preview</li>
+                          <li
+                            onClick={() => {
+                              navigate("/editgigspages");
+                            }}
+                          >
+                            Edit
+                          </li>
+                          <li
+                            onClick={() => {
+                              setFormData({ ...formData, is_open: 1 });
+                              handleSubmit();
+                            }}
+                          >
+                            Activate
+                          </li>
+                          <li onClick={() => handleDelete(index)}>Delete</li>
+                        </ul>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            </td>
-          </tr>
-          <tr className="head">
-            <td colSpan={5}>no active gigs</td>
-          </tr>
-        </tbody>
+                </td>
+              </tr>
+            </tbody>
+          ))}
       </table>
     </Root>
   );
@@ -153,6 +202,10 @@ const Root = styled.section`
     color: #999;
     vertical-align: middle;
     white-space: nowrap;
+    img {
+      width: 40px;
+      height: 40px;
+    }
   }
   tr {
     /* / border-bottom: 1px solid #ddd; / */
@@ -241,6 +294,6 @@ const Root = styled.section`
     padding-left: 20px;
   }
   @media (max-width: 567px) {
-      overflow:auto;
-    }
+    overflow: auto;
+  }
 `;

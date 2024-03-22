@@ -177,4 +177,26 @@ const Root = styled.section`
   .table > :not(caption) > * > * {
     background-color: #f7f7f7 !important;
   }
+
+  @media (max-width: 567px) {
+
+    .fizYSn .tab_button_area .nav_tab .btn_1 {
+    font-size: 11px;
+}
+
+    .tab_button_area .nav_tab {
+      padding: unset;
+    }
+    .tab_button_area .nav_tab > div {
+      gap: 0;
+    }
+    .tab_button_area .nav_tab .btn_1 {
+      min-width: 63px;
+    }
+  }
+  @media (min-width: 567px) and (max-width: 992px) {
+     .tab_button_area .nav_tab {
+      padding: 0px 120px;
+    }
+  }
 `;

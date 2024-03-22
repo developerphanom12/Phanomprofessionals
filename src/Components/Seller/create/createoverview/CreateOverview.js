@@ -45,8 +45,8 @@ export default function CreateOverview() {
   const appApi = async () => {
     const formData = {
       gig_title: gigTitle,
-      category_id: categoryId, 
-      subcategory_id: subcategoryId, 
+      category_id: categoryId,
+      subcategory_id: subcategoryId,
       service_type: serviceType,
       tags: tags,
       programing_language: selectedProgrammingLanguages,
@@ -63,7 +63,7 @@ export default function CreateOverview() {
         formData,
         axiosConfig
       );
-      console.log("formData",formData)
+      console.log("formData", formData);
       if (res?.status === 201) {
         const gigId = res.data.data.id;
         dispatch(updateGigId(gigId));
@@ -126,7 +126,7 @@ export default function CreateOverview() {
           </div>
           <div className="input_div">
             <select
-            // value={categoryId}
+              // value={categoryId}
               onChange={(e) => {
                 setCategoryId(e.target.value); // Set categoryId directly with the selected value
               }}
@@ -309,9 +309,9 @@ export default function CreateOverview() {
               placeholder="tag here"
               value={tags}
               onChange={(e) => {
-                setTags(e.target.value );
+                setTags(e.target.value);
               }}
-            /> 
+            />
             {/* <input
               placeholder="Enter tags separated by comma"
               value={tags}
@@ -595,4 +595,110 @@ const Root = styled.section`
       }
     }
   }
+
+  @media (max-width: 567px) {
+    margin: 0;
+    padding: 0;
+    .main_div_section {
+      width: unset;
+    }
+    .main_div_section .input_group {
+      display: unset;
+    }
+    .main_div_section .input_group .input_label {
+      width: unset;
+      padding: 11px;
+    }
+    .main_div_section .input_group .input_div {
+      width: unset;
+    }
+
+    .main_div_section .input_group .input_div {
+      justify-content: space-around;
+    }
+
+    .main_div_section .input_group .input_div select {
+      width: 42vw;
+    }
+    .main_div_section .input_group .input_div .text {
+      width: 85vw;
+    }
+
+    .main_div_section .input_group .input_divv {
+      display: unset;
+    }
+
+    .main_div_section .input_group .input_divv .main_metadata {
+      margin-bottom: 20px;
+    }
+
+    .main_div_section
+      .input_group
+      .input_divv
+      .all_pages
+      .button_pages
+      .select_tabs
+      ul,
+    .iMxYZt
+      .main_div_section
+      .input_group
+      .input_divv
+      .all_pages
+      .button_page
+      .select_tabs
+      ul {
+      padding-left: 0;
+      display: unset;
+    }
+    .hyxrIE
+      .main_div_section
+      .input_group
+      .input_divv
+      .all_pages
+      .button_pages
+      .select_tabs
+      ul,
+    .hyxrIE
+      .main_div_section
+      .input_group
+      .input_divv
+      .all_pages
+      .button_page
+      .select_tabs
+      ul {
+      padding-left: 0;
+    }
+    .main_div_section .input_group .input_div_area {
+      width: unset;
+    }
+
+    .main_div_section .input_group .input_divv .all_pages .button_page ul {
+      padding-left:0px;
+    }
+
+    .main_div_section .input_group .information {
+      width: unset;
+    }
+    .main_div_section .div4 {
+      width: unset;
+      margin: 10px 0px;
+      justify-content: space-around;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px){
+    margin: 0;
+    padding: 0;
+  .main_div_section {
+    width: 90vw;
+}
+ .main_div_section .input_group .input_label {
+    width: unset;
+
+}
+.main_div_section .input_group .input_div .text {
+      width: 85vw;
+    }
+  }
+
 `;

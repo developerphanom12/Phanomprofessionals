@@ -6,6 +6,7 @@ import { CiEdit } from "react-icons/ci";
 import { FaLocationDot, FaUser } from "react-icons/fa6";
 import Profile2 from "./Profile2";
 
+
 export default function Profile() {
   const [isEdit, setIsEdit] = useState(false);
 
@@ -367,11 +368,10 @@ const Root = styled.section`
     gap: 30px;
 
     .tab_button_area .nav_tab {
-    flex-direction: row;
-}
- .gig_box {
-    width: 100%;
+      flex-direction: row;
+    }
+    .gig_box {
+      width: 100%;
+    }
   }
-
-}
 `;
