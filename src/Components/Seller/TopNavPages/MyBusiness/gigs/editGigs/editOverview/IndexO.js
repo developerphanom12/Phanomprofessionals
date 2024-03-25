@@ -10,13 +10,12 @@ import {
   EXCHANGE_URLS,
   EXCHANGE_URLS_CATEGORY,
 } from "../../../../../../Important/URLS";
-import { updateGigId } from "../../../../../../../redux/users/action";
 
 export default function IndexO() {
   const [active, setActive] = useState("page1");
   const [gigTitle, setGigTitle] = useState("");
-  const [categoryId, setCategoryId] = useState("");
-  const [subcategoryId, setSubcategoryId] = useState("");
+  const [categoryId, setCategoryId] = useState(1);
+  const [subcategoryId, setSubcategoryId] = useState(1);
   const [serviceType, setServiceType] = useState("");
   const [tags, setTags] = useState("");
   const [selectedProgrammingLanguages, setSelectedProgrammingLanguages] =
@@ -48,8 +47,8 @@ export default function IndexO() {
   const appApi = async () => {
     const formData = {
       gig_title: gigTitle,
-      category_id: "",
-      subcategory_id: "",
+      category_id:categoryId,
+      subcategory_id: subcategoryId,
       service_type: "",
       tags: "",
       programing_language: selectedProgrammingLanguages,
@@ -61,15 +60,12 @@ export default function IndexO() {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       };
-      const res = await axios.post(
+      const res = await axios.put(
         `${EXCHANGE_URLS}/giggscreate`,
         formData,
         axiosConfig
       );
       if (res?.status === 201) {
-        const gigId = res.data.data.id;
-        dispatch(updateGigId(gigId));
-        console.log("GigID", gigId);
         navigate("/pricing");
         toast.success("Updated");
       }
@@ -77,7 +73,7 @@ export default function IndexO() {
       toast.error("error");
     }
   };
-
+                                                                                                              
   const handleSubmit = () => {
     appApi();
   };
