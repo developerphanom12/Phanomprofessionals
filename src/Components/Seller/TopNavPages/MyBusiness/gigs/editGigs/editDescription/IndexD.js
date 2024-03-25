@@ -5,3 +5,4 @@ export default function IndexD() {
     <div>Index</div>
   )
 }
+                                                                                                                                     

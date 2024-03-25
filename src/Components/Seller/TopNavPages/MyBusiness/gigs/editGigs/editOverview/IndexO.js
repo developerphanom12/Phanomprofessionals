@@ -108,7 +108,7 @@ export default function IndexO() {
             As your Gig storefront, your{" "}
             <b>title is the most important place</b> to include keywords that
             buyers would likely use to search for a service like yours.
-          </div>
+          </div>         
           <div className="input_div">
             <textarea
               placeholder="text"
