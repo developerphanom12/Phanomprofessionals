@@ -1,19 +1,14 @@
-import React, { useState } from 'react'
-import TextEditor2 from './TextEditor2';
-import styled from 'styled-components';
-import axios from 'axios';
-import { EXCHANGE_URLS } from '../../../../../../Important/URLS';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import TextEditor2 from "./TextEditor2";
+import styled from "styled-components";
+import axios from "axios";
+import { EXCHANGE_URLS } from "../../../../../../Important/URLS";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-
-export default function IndexD({editGetGig}) {
-  const [valuee, setValuee] = useState({
-    content: "",
-  });
-  console.log("valudfee", valuee);
+export default function IndexD({ editGetGig }) {
+  const [content, setContent] = useState(editGetGig[0]?.EditorData?.content || '');
   const navigate = useNavigate();
-
 
   const appApi = async () => {
     try {
@@ -22,9 +17,13 @@ export default function IndexD({editGetGig}) {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       };
-    
+      const c_id = editGetGig[0]?.EditorData?.texteditor_id;
+      const updatedData = {
+        content: content,
+      };
       const res = await axios.put(
         `${EXCHANGE_URLS}/updateContent/${c_id}`,
+        updatedData,
         axiosConfig
       );
       if (res?.status === 201) {
@@ -36,9 +35,10 @@ export default function IndexD({editGetGig}) {
     }
   };
   const c_id =
-  editGetGig && editGetGig.length > 0
-    ? editGetGig[0].EditorData.texteditor_id
-    : null;
+    editGetGig && editGetGig.length > 0
+      ? editGetGig[0].EditorData.texteditor_id
+      : null;
+      console.log("updatedDataaaaaaaaa",c_id)
   const handleSubmit = () => {
     appApi();
   };
@@ -49,7 +49,10 @@ export default function IndexD({editGetGig}) {
           <h3>Description</h3>
           <p>Briefly Describe Your Gig</p>
         </header>
-        <TextEditor2 editGetGig={editGetGig} valuee={valuee} setValuee={setValuee}/>
+        <TextEditor2
+                initialValue={content}
+                onChange={(value) => setContent(value)}
+        />
       </div>
       <div className="div4">
         <a type="button" role="button" href="/edit">
@@ -132,18 +135,14 @@ const Root = styled.section`
     }
   }
 
-  @media (max-width: 567px){
-    margin:0;
-    padding:0;
-     .main_div_section{
-    width: 90vw;
-}
- .div4 {
-   width: unset; 
-
-}
+  @media (max-width: 567px) {
+    margin: 0;
+    padding: 0;
+    .main_div_section {
+      width: 90vw;
+    }
+    .div4 {
+      width: unset;
+    }
   }
 `;
-
-
-                                                                                                                                     
