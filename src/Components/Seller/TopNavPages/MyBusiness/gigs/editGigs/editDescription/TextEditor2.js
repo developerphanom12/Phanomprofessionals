@@ -3,7 +3,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 
-function TextEditor2({ textCount }) {
+function TextEditor2({ editGetGig ,valuee ,setValuee}) {
   
   const modules = {
     toolbar: [
@@ -22,7 +22,8 @@ function TextEditor2({ textCount }) {
       <ReactQuill
         theme="snow"
         modules={modules}
-        value={textCount?.EditorData?.content}  
+        value={editGetGig[0]?.EditorData?.content}  
+        onChange={(e)=>{setValuee(...valuee, editGetGig[0]?.EditorData?.content)}}
       />
       
     </div>

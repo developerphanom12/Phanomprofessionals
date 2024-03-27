@@ -99,10 +99,20 @@ export default function PendingApprove() {
                 {showDropdown && (
                   <div className="dropdown_menu">
                     <ul>
-                      <li>Preview</li>
-                      <li   onClick={() => {
+                      <li
+                        onClick={() => {
+                          navigate("/internalpage");
+                        }}
+                      >
+                        Preview
+                      </li>
+                      <li
+                        onClick={() => {
                           navigate("/editgigspages");
-                        }}>Edit</li>
+                        }}
+                      >
+                        Edit
+                      </li>
                       <li>Activate</li>
                       <li>Delete</li>
                     </ul>
@@ -244,6 +254,6 @@ const Root = styled.section`
     padding-left: 20px;
   }
   @media (max-width: 567px) {
-      overflow:auto;
-    }
+    overflow: auto;
+  }
 `;

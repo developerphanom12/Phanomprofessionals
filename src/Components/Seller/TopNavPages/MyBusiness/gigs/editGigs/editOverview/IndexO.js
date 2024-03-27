@@ -1,56 +1,72 @@
 import React, { useEffect, useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
 import { IoInformationCircle } from "react-icons/io5";
 import styled from "styled-components";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   EXCHANGE_URLS,
   EXCHANGE_URLS_CATEGORY,
 } from "../../../../../../Important/URLS";
+import { useSelector } from "react-redux";
 
-export default function IndexO() {
+export default function IndexO({ editGetGig }) {
+  const gigId = useSelector((state) => state.users.gigId);
   const [active, setActive] = useState("page1");
+  const [getCategory, setGetCategory] = useState([]);
   const [gigTitle, setGigTitle] = useState("");
-  const [categoryId, setCategoryId] = useState(1);
-  const [subcategoryId, setSubcategoryId] = useState(1);
+  const [categoryId, setCategoryId] = useState("");
+  const [subcategoryId, setSubcategoryId] = useState("");
   const [serviceType, setServiceType] = useState("");
   const [tags, setTags] = useState("");
   const [selectedProgrammingLanguages, setSelectedProgrammingLanguages] =
     useState([]);
   const [selectedWebsiteFeatures, setSelectedWebsiteFeatures] = useState([]);
 
-  const [getCategory, setGetCategory] = useState([]);
+  // const handleProgrammingLanguageChange = (event) => {
+  //   const { value, checked } = event.target;
+  //   setSelectedProgrammingLanguages((prevLanguages) =>
+  //     checked
+  //       ? [...prevLanguages, value]
+  //       : prevLanguages.filter((lang) => lang !== value)
+  //   );
+  // };
 
-  const handleProgrammingLanguageChange = (event) => {
-    const { value, checked } = event.target;
-    setSelectedProgrammingLanguages((prevLanguages) =>
-      checked
-        ? [...prevLanguages, value]
-        : prevLanguages.filter((lang) => lang !== value)
-    );
-  };
+  // const handleWebsiteFeatureChange = (event) => {
+  //   const { value, checked } = event.target;
+  //   setSelectedWebsiteFeatures((prevFeatures) =>
+  //     checked
+  //       ? [...prevFeatures, value]
+  //       : prevFeatures.filter((feature) => feature !== value)
+  //   );
+  // };
 
-  const handleWebsiteFeatureChange = (event) => {
-    const { value, checked } = event.target;
-    setSelectedWebsiteFeatures((prevFeatures) =>
-      checked
-        ? [...prevFeatures, value]
-        : prevFeatures.filter((feature) => feature !== value)
-    );
-  };
-
-  const dispatch = useDispatch();
+  useEffect(() => {
+    if (editGetGig.length > 0) {
+      const gig = editGetGig[0];
+      setGigTitle(gig.gig_title);
+      setCategoryId(gig.category.category_id);
+      setSubcategoryId(gig.subcategory.subcategory_id);
+      setServiceType(gig.service_type);
+      setTags(gig.tags);
+      const programmingLanguages = gig.programing.map(
+        (language) => language.programing_language
+      );
+      setSelectedProgrammingLanguages(programmingLanguages);
+      const websiteFeatures = gig.websiteFeatures.map(
+        (feature) => feature.website_feature
+      );
+      setSelectedWebsiteFeatures(websiteFeatures);
+    }
+  }, [editGetGig]);
   const navigate = useNavigate();
-  const appApi = async () => {
+  const updateApi = async () => {
     const formData = {
       gig_title: gigTitle,
-      category_id:categoryId,
+      category_id: categoryId,
       subcategory_id: subcategoryId,
-      service_type: "",
-      tags: "",
+      service_type: serviceType,
+      tags: tags,
       programing_language: selectedProgrammingLanguages,
       website_feature: selectedWebsiteFeatures,
     };
@@ -61,21 +77,24 @@ export default function IndexO() {
         },
       };
       const res = await axios.put(
-        `${EXCHANGE_URLS}/giggscreate`,
+        `${EXCHANGE_URLS}/updategigsdata/${a}`,
         formData,
         axiosConfig
       );
       if (res?.status === 201) {
         navigate("/pricing");
-        toast.success("Updated");
+        toast.success("Data Updated");
       }
     } catch (err) {
       toast.error("error");
     }
   };
-                                                                                                              
+  const a = editGetGig && editGetGig.length > 0 ? editGetGig[0].gigs_id : null;
+
+  console.log("dt", a);
+
   const handleSubmit = () => {
-    appApi();
+    updateApi();
   };
 
   const getCategoryApi = async () => {
@@ -99,233 +118,238 @@ export default function IndexO() {
   useEffect(() => {
     getCategoryApi();
   }, []);
+
+  const handleProgrammingLanguageChange = (event) => {
+    const { value, checked } = event.target;
+    setSelectedProgrammingLanguages((prevLanguages) =>
+      checked
+        ? [...prevLanguages, value]
+        : prevLanguages.filter((lang) => lang !== value)
+    );
+  };
+
+  const handleWebsiteFeatureChange = (event) => {
+    const { value, checked } = event.target;
+    setSelectedWebsiteFeatures((prevFeatures) =>
+      checked
+        ? [...prevFeatures, value]
+        : prevFeatures.filter((feature) => feature !== value)
+    );
+  };
+
   return (
     <Root>
       <div className="main_div_section">
-        <div className="input_group">
-          <div className="input_label">
-            <span>Gig title</span>
-            As your Gig storefront, your{" "}
-            <b>title is the most important place</b> to include keywords that
-            buyers would likely use to search for a service like yours.
-          </div>         
-          <div className="input_div">
-            <textarea
-              placeholder="text"
-              value={gigTitle}
-              onChange={(e) => setGigTitle(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="input_group">
-          <div className="input_label">
-            <span>Category</span>
-            Choose the category and sub-category most suitable for your Gig.
-          </div>
-          <div className="input_div">
-            <select
-              onChange={(e) => {
-                setCategoryId(e.target.value);
-              }}
-            >
-              <option value="">Select Category</option>
-              {getCategory &&
-                getCategory.map((category, index) => (
-                  <option key={index} value={category.category_id}>
-                    {category.category_name}
-                  </option>
-                ))}
-            </select>
+        {editGetGig.map((i) => (
+          <div key={i}>
+            <div className="input_group">
+              <div className="input_label">
+                <span>Gig title</span>
+                As your Gig storefront, your{" "}
+                <b>title is the most important place</b> to include keywords
+                that buyers would likely use to search for a service like yours.
+              </div>
+              <div className="input_div">
+                <textarea
+                  value={gigTitle}
+                  onChange={(e) => setGigTitle(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="input_group">
+              <div className="input_label">
+                <span>Category</span>
+                Choose the category and sub-category most suitable for your Gig.
+              </div>
+              <div className="input_div">
+                <select value={i.category.category_name}>
+                  <option value="">{i.category.category_name}</option>
+                </select>
 
-            <select
-              value={subcategoryId}
-              onChange={(e) => setSubcategoryId(e.target.value)}
-            >
-              <option value="">Select Subcategory</option>
-              {getCategory &&
-                getCategory.map((category) =>
-                  category.subcategories.map((subcategory) => (
-                    <option
-                      key={subcategory.subcategory_id}
-                      value={subcategory.subcategory_id}
+                <select
+                  value={subcategoryId}
+                  onChange={(e) => setSubcategoryId(e.target.value)}
+                >
+                  <option value="">{i.subcategory.name}</option>
+                  {getCategory &&
+                    getCategory.map((category) =>
+                      category.subcategories.map((subcategory) => (
+                        <option
+                          key={subcategory.subcategory_id}
+                          value={subcategory.subcategory_id}
+                        >
+                          {subcategory.subcategory_name}
+                        </option>
+                      ))
+                    )}
+                </select>
+              </div>
+            </div>
+            <div className="input_group">
+              <div className="input_label">
+                <span>Service type</span>
+              </div>
+              <div className="input_div">
+                <textarea
+                  className="text"
+                  placeholder="Ex: e-commerce website"
+                  type="text"
+                  value={serviceType}
+                  onChange={(e) => setServiceType(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="input_group">
+              <div className="input_label">
+                <span>Gig metadata</span>
+              </div>
+              <div className="input_divv">
+                <div className="main_metadata">
+                  <div className="button_tab_area">
+                    <button
+                      className={active === "page1" ? "btn_1 active" : "btn_1"}
+                      onClick={() => {
+                        setActive("page1");
+                      }}
                     >
-                      {subcategory.subcategory_name}
-                    </option>
-                  ))
-                )}
-            </select>
-          </div>
-        </div>
-        <div className="input_group">
-          <div className="input_label">
-            <span>Service type</span>
-          </div>
-          <div className="input_div">
-            <textarea
-              className="text"
-              placeholder="Ex: e-commerce website"
-              type="text"
-              value={serviceType}
-              onChange={(e) => setServiceType(e.target.value)}
-            />
-          </div>
-        </div>
-
-        <div className="input_group">
-          <div className="input_label">
-            <span>Gig metadata</span>
-          </div>
-          <div className="input_divv">
-            <div className="main_metadata">
-              <div className="button_tab_area">
-                <button
-                  className={active === "page1" ? "btn_1 active" : "btn_1"}
-                  onClick={() => {
-                    setActive("page1");
-                  }}
-                >
-                  PROGRAMMING LANGUAGE*
-                </button>
-              </div>
-              <div className="button_tab_area">
-                <button
-                  className={active === "pagess" ? "btn_1 active" : "btn_1"}
-                  onClick={() => {
-                    setActive("pagess");
-                  }}
-                >
-                  WEBSITE FEATURE
-                </button>
-              </div>
-            </div>
-            <div className="all_pages">
-              {active === "page1" ? (
-                <div className="button_pages">
-                  <h6>Select the language you provide services for*</h6>
-                  <div className="select_tabs">
-                    <ul>
-                      {["JavaScript", "Python"].map((language) => (
+                      PROGRAMMING LANGUAGE*
+                    </button>
+                  </div>
+                  <div className="button_tab_area">
+                    <button
+                      className={active === "pagess" ? "btn_1 active" : "btn_1"}
+                      onClick={() => {
+                        setActive("pagess");
+                      }}
+                    >
+                      WEBSITE FEATURE
+                    </button>
+                  </div>
+                </div>
+                <div className="all_pages">
+                  {active === "page1" ? (
+                    <div className="button_pages">
+                      <h6>Select the language you provide services for*</h6>
+                      <div className="select_tabs">
+                        <ul>
+                          {["JavaScript", "Python"].map((language) => (
+                            <li key={language}>
+                              <label>
+                                <input
+                                  type="checkbox"
+                                  value={language}
+                                  checked={selectedProgrammingLanguages.includes(
+                                    language
+                                  )}
+                                  onChange={handleProgrammingLanguageChange}
+                                />
+                                {language}
+                              </label>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ) : active === "pagess" ? (
+                    <div className="button_pages">
+                      <h6>Select Features</h6>
+                      <div className="select_tabs">
+                        <ul>
+                          {["Responsive Design", "SEO Optimization"].map(
+                            (feature) => (
+                              <li key={feature}>
+                                <label>
+                                  <input
+                                    type="checkbox"
+                                    value={feature}
+                                    checked={selectedWebsiteFeatures.includes(
+                                      feature
+                                    )}
+                                    onChange={handleWebsiteFeatureChange}
+                                  />
+                                  {feature}
+                                </label>
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="button_pages">
+                      <h6>Select the language you provide services for*</h6>
+                      <div className="select_tabs">
+                        <ul>
+                          {["JavaScript", "Python"].map((language) => (
+                            <li>
+                              <label key={language}>
+                                <input
+                                  type="checkbox"
+                                  value={language}
+                                  checked={selectedProgrammingLanguages.includes(
+                                    language
+                                  )}
+                                  onChange={handleProgrammingLanguageChange}
+                                />{" "}
+                                {language}
+                              </label>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
+                  <div className="button_page">
+                    <div className="select_tabs">
+                      <ul>
                         <li>
-                          <label key={language}>
-                            <input
-                              type="checkbox"
-                              value={language}
-                              checked={selectedProgrammingLanguages.includes(
-                                language
-                              )}
-                              onChange={handleProgrammingLanguageChange}
-                            />{" "}
-                            {language}
+                          <label>
+                            <input type="checkbox" />
+                            Other
                           </label>
                         </li>
-                      ))}
-                    </ul>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-              ) : active === "pagess" ? (
-                <div className="button_pages">
-                  <h6>Select Features</h6>
-                  <div className="select_tabs">
-                    <ul>
-                      {["Responsive Design", "SEO Optimization"].map(
-                        (feature) => (
-                          <li>
-                            <label key={feature}>
-                              <input
-                                type="checkbox"
-                                value={feature}
-                                checked={selectedWebsiteFeatures.includes(
-                                  feature
-                                )}
-                                onChange={handleWebsiteFeatureChange}
-                              />{" "}
-                              {feature}
-                            </label>
-                          </li>
-                        )
-                      )}
-                    </ul>
-                  </div>
-                </div>
-              ) : (
-                <div className="button_pages">
-                  <h6>Select the language you provide services for*</h6>
-                  <div className="select_tabs">
-                    <ul>
-                      {["JavaScript", "Python"].map((language) => (
-                        <li>
-                          <label key={language}>
-                            <input
-                              type="checkbox"
-                              value={language}
-                              checked={selectedProgrammingLanguages.includes(
-                                language
-                              )}
-                              onChange={handleProgrammingLanguageChange}
-                            />{" "}
-                            {language}
-                          </label>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
-              <div className="button_page">
-                <div className="select_tabs">
-                  <ul>
-                    <li>
-                      <label>
-                        <input type="checkbox" />
-                        Other
-                      </label>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="input_group">
-          <div className="input_label">
-            <span>Search tags</span>
-            Tag your Gig with buzz words that are relevant to the services you
-            offer. Use all 5 tags to get found.
-          </div>
-          <div className="input_div_area">
-            <div>
-              <h6>Positive keywords</h6>
+            <div className="input_group">
+              <div className="input_label">
+                <span>Search tags</span>
+                Tag your Gig with buzz words that are relevant to the services
+                you offer. Use all 5 tags to get found.
+              </div>
+              <div className="input_div_area">
+                <div>
+                  <h6>Positive keywords</h6>
+                </div>
+                <div>
+                  <span>
+                    Enter search terms you feel your buyers will use when
+                    looking for your service.
+                  </span>
+                </div>
+                <input
+                  placeholder="Enter tags separated by comma"
+                  value={tags}
+                  onChange={(e) => setTags(e.target.value)}
+                />
+              </div>
             </div>
-            <div>
-              <span>
-                Enter search terms you feel your buyers will use when looking
-                for your service.
-              </span>
+            <div className="input_group">
+              <div className="input_label"></div>
+              <div className="information">
+                <span>
+                  <IoInformationCircle />
+                  Please note:
+                </span>
+                Some categories require that sellers verify their skills.
+              </div>
             </div>
-            {/* <input
-              placeholder="tag here"
-              value={data.tags}
-              onChange={(e) => {
-                setData({ ...data, tags: e.target.value });
-              }}
-            /> */}
-            <input
-              placeholder="Enter tags separated by comma"
-              value={tags}
-              onChange={(e) => setTags(e.target.value)}
-            />
           </div>
-        </div>
-        <div className="input_group">
-          <div className="input_label"></div>
-          <div className="information">
-            <span>
-              <IoInformationCircle />
-              Please note:
-            </span>
-            Some categories require that sellers verify their skills.
-          </div>
-        </div>
+        ))}
         <div className="div4">
           <a type="button" role="button" href="/gigs">
             Cancle

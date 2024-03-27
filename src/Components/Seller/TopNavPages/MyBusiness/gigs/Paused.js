@@ -3,17 +3,79 @@ import styled from "styled-components";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {
-  EXCHANGE_URLS,
-  EXCHANGE_URLS_IMAGES,
-} from "../../../../Important/URLS";
+import { EXCHANGE_URLS, EXCHANGE_URLS_IMAGES } from "../../../../Important/URLS";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
-export default function Paused({ formData, setFormData, handleSubmit }) {
+export default function Paused() {
+  const gigId = useSelector((state) => state.users.gigId);
   const [isChecked, setIsChecked] = useState(false);
   const [showDropdown, setShowDropdown] = useState([]);
+  const [formData, setFormData] = useState({
+    id: gigId,
+    is_open: 1,
+  });
 
+  const [formDatadeleted, setFormDatadeleted] = useState({
+    id: gigId,
+    is_deleted: 1,
+  });
   const [gigGet, setGigGet] = useState([]);
+
+  const appApi = async (updatedData) => {
+    try {
+      const axiosConfig = {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+      const res = await axios.post(
+        `${EXCHANGE_URLS}/activategig `,
+        updatedData,
+        axiosConfig
+      );
+      if (res?.status === 201) {
+        navigate("/dashboard");
+        toast.success("activate successfull");
+      }
+    } catch (err) {
+      toast.error("error");
+    }
+  };
+
+
+  const appApidelete = async (updatedDatadelete) => {
+    try {
+      const axiosConfig = {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+      const res = await axios.post(
+        `${EXCHANGE_URLS}/deletegig `,
+        updatedDatadelete,
+        axiosConfig
+      );
+      if (res?.status === 201) {
+        navigate("/dashboard");
+        toast.success("Gig  Delete Permanent successfull");
+      }
+    } catch (err) {
+      toast.error("error");
+    }
+  };
+
+  const handleSubmit = async (gigId) => {
+    const updatedData = { ...formData, id: gigId };
+    await appApi(updatedData);
+  };
+
+
+  const handleSubmitfordelete = async (gigId) => {
+    const updatedDatadelete = { ...formDatadeleted,    id: JSON.stringify(gigId),
+    };
+    await appApidelete(updatedDatadelete);
+  };
 
   useEffect(() => {
     const getSliderApi = async () => {
@@ -30,39 +92,40 @@ export default function Paused({ formData, setFormData, handleSubmit }) {
         );
         if (res?.status === 200) {
           setGigGet(res?.data?.data);
+          const dropdownStates = new Array(res.data.data.length).fill(false);
+          setShowDropdown(dropdownStates);
         }
       } catch (err) {
-        toast.error(err, "Error");
+        toast.error("Error fetching gigs");
       }
     };
 
     getSliderApi();
   }, []);
-  useEffect(() => {
-    const initializeDropdownStates = () => {
-      // Initialize dropdown states for each row
-      const dropdownStates = new Array(gigGet.length).fill(false);
-      setShowDropdown(dropdownStates);
-    };
-
-    initializeDropdownStates();
-  }, [gigGet]);
 
   const handleDropdownClick = (index) => {
-    // Toggle dropdown state for the clicked row
     const newDropdownStates = [...showDropdown];
     newDropdownStates[index] = !newDropdownStates[index];
     setShowDropdown(newDropdownStates);
   };
+
   const navigate = useNavigate();
 
-  const handleDelete = (index) => {
-    // Create a copy of the gigGet array
-    const updatedGigGet = [...gigGet];
-    // Remove the item at the specified index
-    updatedGigGet.splice(index, 1);
-    // Update the gigGet state with the modified array
-    setGigGet(updatedGigGet);
+  // const handleDelete = (index) => {
+  //   const updatedGigGet = [...gigGet];
+  //   updatedGigGet.splice(index, 1);
+  //   setGigGet(updatedGigGet);
+  // };
+
+  const handleActivate = (gigId) => {
+    setFormData({ ...formData, is_open: 1 });
+    handleSubmit(gigId);
+  };
+
+
+  const handleDeleted = (gigId) => {
+    setFormDatadeleted({ ...formDatadeleted, is_deleted: 1 });
+    handleSubmitfordelete(gigId);
   };
 
   return (
@@ -81,7 +144,6 @@ export default function Paused({ formData, setFormData, handleSubmit }) {
               <span>GIG</span>
             </td>
             <td colSpan={2}>
-              {" "}
               <span>IMPRESSIONS</span>
             </td>
             <td></td>
@@ -93,77 +155,68 @@ export default function Paused({ formData, setFormData, handleSubmit }) {
               <span>ORDERS</span>{" "}
             </td>
             <td colSpan={2}>
-              {" "}
               <span>DATE</span>
             </td>
             <td></td>
             <td></td>
           </tr>
         </thead>
-        {gigGet &&
-          gigGet.map((gigData, index) => (
-            <tbody>
-              <tr>
-                <td colSpan={2}>
-                  <img
-                    className="img"
-                    src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image1}`}
-                    alt={`Image 1`}
-                  />
-                </td>
-                <td colSpan={2}>
-                  <span>{gigData?.gig_title}</span>
-                </td>
-                <td colSpan={2}>
-                  {" "}
-                  <span>0</span>
-                </td>
-                <td></td>
+        <tbody>
+          {gigGet.map((gigData, index) => (
+            <tr key={index}>
+              <td colSpan={2}>
+                <img
+                  className="img"
+                  src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image1}`}
+                  alt={`Image 1`}
+                />
+              </td>
+              <td colSpan={2}>
+                <span>{gigData?.gig_title}</span>
+              </td>
+              <td colSpan={2}>
+                <span>0</span>
+              </td>
+              <td></td>
 
-                <td colSpan={2}>
-                  <span>0</span>{" "}
-                </td>
-                <td colSpan={2}>
-                  <span>0</span>{" "}
-                </td>
-                <td colSpan={2}>
-                  {" "}
-                  <span>0</span>
-                </td>
-                <td></td>
-                <td colSpan={2}>
-                  <div className="dropdown_wrapper">
-                    <IoMdArrowDropdown
-                      onClick={() => handleDropdownClick(index)}
-                    />
-                    {showDropdown[index] && (
-                      <div className="dropdown_menu">
-                        <ul>
-                          <li>Preview</li>
-                          <li
-                            onClick={() => {
-                              navigate("/editgigspages");
-                            }}
-                          >
-                            Edit
-                          </li>
-                          <li
-                            onClick={() => {
-                              setFormData({ ...formData, is_open: 1 });
-                              handleSubmit(gigData.gig_id);
-                            }}
-                          >
-                            Activate
-                          </li>
-                          <li onClick={() => handleDelete(index)}>Delete</li>
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </td>
-              </tr>
-            </tbody>
+              <td colSpan={2}>
+                <span>0</span>{" "}
+              </td>
+              <td colSpan={2}>
+                <span>0</span>{" "}
+              </td>
+              <td colSpan={2}>
+                <span>0</span>
+              </td>
+              <td></td>
+              <td colSpan={2}>
+                <div className="dropdown_wrapper">
+                  <IoMdArrowDropdown
+                    onClick={() => handleDropdownClick(index)}
+                  />
+                  {showDropdown[index] && (
+                    <div className="dropdown_menu">
+                      <ul>
+                      <li onClick={()=>{navigate("/internalpage")}}>Preview</li>
+                        <li
+                          onClick={() => {
+                            navigate("/editgigspages");
+                          }}
+                        >
+                          Edit
+                        </li>
+                        <li onClick={() => handleActivate(gigData.gig_ids)}>
+                          Activate
+                        </li>
+                        <li onClick={() => handleDeleted(gigData.gig_ids)}>Delete</li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </td>
+            </tr>
           ))}
+        </tbody>
       </table>
     </Root>
   );
@@ -172,7 +225,6 @@ const Root = styled.section`
   margin: -10px;
   table {
     width: 100%;
-    /* / border-collapse: collapse; / */
   }
   .head td {
     font-size: 14px;
@@ -208,7 +260,6 @@ const Root = styled.section`
     }
   }
   tr {
-    /* / border-bottom: 1px solid #ddd; / */
     background-color: #fff;
     border: 1px #e5e5e5 solid;
   }
@@ -244,7 +295,6 @@ const Root = styled.section`
         border-radius: 3px;
         font-size: 12px;
         font-weight: 600;
-        /* / float: left; / */
         text-transform: uppercase;
       }
       select:focus-visible {

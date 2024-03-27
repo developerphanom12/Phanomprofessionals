@@ -151,7 +151,6 @@ export default function Pricing() {
           data3={data3}
           setData3={setData3}
         />
-        {/* <Table4 /> */}
         <Table5
           data={data}
           setData={setData}

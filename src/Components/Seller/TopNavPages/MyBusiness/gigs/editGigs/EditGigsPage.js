@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { GigButton } from "../../../../../../GlobalStyles";
 import IndexO from "./editOverview/IndexO";
@@ -6,11 +6,30 @@ import IndexP from "./editPricing/IndexP";
 import IndexD from "./editDescription/IndexD";
 import IndexR from "./editRequirements/IndexR";
 import IndexG from "./editGallery/IndexG";
+import axios from "axios";
+import { EXCHANGE_URLS } from "../../../../../Important/URLS";
+import { toast } from "react-toastify";
 
 
 export default function EditGigsPage() {
   const [active, setActive] = useState("editoverview");
- 
+  const [editGetGig, setEditGetGig] = useState([]);
+
+
+  useEffect(() => {
+    const getApi = async () => {
+      try {
+        const res = await axios.get(`${EXCHANGE_URLS}/gigslist/8`);
+        if (res?.status === 201) {
+          setEditGetGig(res?.data?.message || []);
+        }
+      } catch (err) {
+        toast.error(err, "Error");
+      }
+    };
+
+    getApi();
+  }, []);
 
   return (
     <Root>
@@ -74,22 +93,22 @@ export default function EditGigsPage() {
           </div>
         </div>
       </div>
-      <div className="table">
+      <div className="table">EDIT GIGS
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-12 col-12">
               {active === "editoverview" ? (
-                <IndexO />
+                <IndexO editGetGig={editGetGig}/>
               ) : active === "editpricing" ? (
-                <IndexP />
+                <IndexP editGetGig={editGetGig}/>
               ) : active === "editdescriptionFAQ" ? (
-                <IndexD />
+                <IndexD editGetGig={editGetGig}/>
               ) : active === "editrequirements" ? (
-                <IndexR />
+                <IndexR editGetGig={editGetGig}/>
               ) : active === "editgallery" ? (
-                <IndexG />
+                <IndexG editGetGig={editGetGig}/>
               ) : (
-                <IndexO />
+                <IndexO editGetGig={editGetGig}/>
               )}
             </div>
           </div>

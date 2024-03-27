@@ -6,7 +6,6 @@ import axios from "axios";
 import { EXCHANGE_URLS } from "../../../Important/URLS";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import TextEditor2 from "./TextEditor2";
 
 export default function DescriptionFAQ() {
   const gigId = useSelector((state) => state.users.gigId);
@@ -17,31 +16,7 @@ export default function DescriptionFAQ() {
   console.log("valudfee", valuee);
   const navigate = useNavigate();
 
-  const [textCount, setTextCount] = useState({});
-  console.log("staffCount", textCount);
-
-  const allTextApi = async () => {
-    const axiosConfig = {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    };
-    try {
-      const res = await axios.get(
-        `${EXCHANGE_URLS}/gigslist/${gigId}`,
-        axiosConfig
-      );
-      if (res?.status === 201) {
-        setTextCount(res?.data?.message[0]);
-      
-      }
-    } catch (err) {
-      toast.error(err, "Error");
-    }
-  };
-  useEffect(() => {
-    allTextApi();
-  }, []);
+  
 
   const appApi = async () => {
     try {
@@ -79,7 +54,6 @@ export default function DescriptionFAQ() {
           <p>Briefly Describe Your Gig</p>
         </header>
         <TextEditor valuee={valuee} setValuee={setValuee} />
-        <TextEditor2 textCount={textCount} />
       </div>
       <div className="div4">
         <a type="button" role="button" href="/edit">

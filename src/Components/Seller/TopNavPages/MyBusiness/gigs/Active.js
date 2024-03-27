@@ -8,13 +8,97 @@ import {
 } from "../../../../Important/URLS";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 export default function Active() {
+  const gigId = useSelector((state) => state.users.gigId);
   const [isChecked, setIsChecked] = useState(false);
   const [showDropdown, setShowDropdown] = useState([]);
   const navigate = useNavigate();
-
   const [gigGet, setGigGet] = useState([]);
+  const [formDatadeleted, setFormDatadeleted] = useState({
+    id: gigId,
+    is_deleted: 1,
+  });
+
+  const [formDatapause, setFormDatapause] = useState({
+    id: gigId,
+    is_open: 0,
+  });
+
+
+  const appApidelete = async (updatedDatadelete) => {
+    try {
+      const axiosConfig = {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+      const res = await axios.post(
+        `${EXCHANGE_URLS}/deletegig `,
+        updatedDatadelete,
+        axiosConfig
+      );
+      if (res?.status === 201) {
+        navigate("/dashboard");
+        toast.success("Gig  Delete Permanent successfull");
+      }
+    } catch (err) {
+      toast.error("error");
+    }
+  };
+
+
+
+  const handleSubmitfordelete = async (gigId) => {
+    const updatedDatadelete = { ...formDatadeleted,    id: JSON.stringify(gigId),
+    };
+    await appApidelete(updatedDatadelete);
+  };
+
+
+
+  const handleDeleted = (gigId) => {
+    setFormDatadeleted({ ...formDatadeleted, is_deleted: 1 });
+    handleSubmitfordelete(gigId);
+  };
+
+
+  const appApipause= async (updatedDatapause) => {
+    try {
+      const axiosConfig = {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+      const res = await axios.post(
+        `${EXCHANGE_URLS}/pausegigs `,
+        updatedDatapause,
+        axiosConfig
+      );
+      if (res?.status === 201) {
+        navigate("/dashboard");
+        toast.success("Gig  Pause successfull check now on pause");
+      }
+    } catch (err) {
+      toast.error("error");
+    }
+  };
+
+
+
+  const handleSubmitforpause= async (gigId) => {
+    const updatedDatapause = { ...formDatapause,    id: JSON.stringify(gigId),
+    };
+    await appApipause(updatedDatapause);
+  };
+
+
+
+  const handlepause = (gigId) => {
+    setFormDatapause({ ...formDatapause, is_open: 0 });
+    handleSubmitforpause(gigId);
+  };
 
   useEffect(() => {
     const getSliderApi = async () => {
@@ -41,7 +125,6 @@ export default function Active() {
   }, []);
   useEffect(() => {
     const initializeDropdownStates = () => {
-      // Initialize dropdown states for each row
       const dropdownStates = new Array(gigGet.length).fill(false);
       setShowDropdown(dropdownStates);
     };
@@ -50,7 +133,6 @@ export default function Active() {
   }, [gigGet]);
 
   const handleDropdownClick = (index) => {
-    // Toggle dropdown state for the clicked row
     const newDropdownStates = [...showDropdown];
     newDropdownStates[index] = !newDropdownStates[index];
     setShowDropdown(newDropdownStates);
@@ -129,7 +211,7 @@ export default function Active() {
                     {showDropdown[index] && (
                       <div className="dropdown_menu">
                         <ul>
-                          <li>Preview</li>
+                          <li onClick={()=>{navigate("/internalpage")}}>Preview</li>
                           <li
                             onClick={() => {
                               navigate("/editgigspages");
@@ -137,8 +219,8 @@ export default function Active() {
                           >
                             Edit
                           </li>
-                          <li>Paused</li>
-                          <li>Delete</li>
+                          <li onClick={() => handlepause(gigData.gig_ids)}>Paused</li>
+                          <li onClick={() => handleDeleted(gigData.gig_ids)}>Delete</li>
                         </ul>
                       </div>
                     )}
@@ -155,7 +237,7 @@ const Root = styled.section`
   margin: -10px;
   table {
     width: 100%;
-    /* / border-collapse: collapse; / */
+    /* / / border-collapse: collapse; / / */
   }
   .head td {
     font-size: 14px;
@@ -191,7 +273,7 @@ const Root = styled.section`
     }
   }
   tr {
-    /* / border-bottom: 1px solid #ddd; / */
+    /* / / border-bottom: 1px solid #ddd; / / */
     background-color: #fff;
     border: 1px #e5e5e5 solid;
   }
@@ -227,7 +309,7 @@ const Root = styled.section`
         border-radius: 3px;
         font-size: 12px;
         font-weight: 600;
-        /* / float: left; / */
+        /* / / float: left; / / */
         text-transform: uppercase;
       }
       select:focus-visible {

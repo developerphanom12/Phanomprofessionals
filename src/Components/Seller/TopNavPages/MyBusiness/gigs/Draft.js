@@ -99,7 +99,7 @@ export default function Draft() {
                 {showDropdown && (
                   <div className="dropdown_menu">
                     <ul>
-                      <li>Preview</li>
+                    <li onClick={()=>{navigate("/internalpage")}}>Preview</li>
                       <li   onClick={() => {
                           navigate("/editgigspages");
                         }}>Edit</li>

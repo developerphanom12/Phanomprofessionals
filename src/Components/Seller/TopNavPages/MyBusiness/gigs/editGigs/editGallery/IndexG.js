@@ -1,17 +1,18 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { IoInformationCircle } from "react-icons/io5";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { toast } from "react-toastify";
-import { updateGigId } from "../../../../../../../redux/users/action";
-import { EXCHANGE_URLS } from "../../../../../../Important/URLS";
 
-export default function IndexG() {
-  const gigId = useSelector((state) => state.users.gigId);
+import styled from "styled-components";
+import {
+  EXCHANGE_URLS,
+  EXCHANGE_URLS_IMAGES,
+} from "../../../../../../Important/URLS";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+export default function IndexG({ editGetGig }) {
   const [imageFiles, setImageFiles] = useState({
-    gig_id: gigId ? gigId.toString() : "",
     image1: null,
     image2: null,
     image3: null,
@@ -20,10 +21,9 @@ export default function IndexG() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const appApi = async () => {
+  const appGalApi = async () => {
     try {
       const formData = new FormData();
-      formData.append("gig_id", gigId);
       formData.append("image1", imageFiles.image1);
       formData.append("image2", imageFiles.image2);
       formData.append("image3", imageFiles.image3);
@@ -36,14 +36,12 @@ export default function IndexG() {
         },
       };
 
-      const res = await axios.post(
-        `${EXCHANGE_URLS}/imageUpload`,
+      const res = await axios.put(
+        `${EXCHANGE_URLS}/imageUploadUpdate/${id}`,
         formData,
         axiosConfig
       );
       if (res?.status === 201) {
-        const gigId = res.data.data.id;
-        dispatch(updateGigId(gigId));
         navigate("/gigs");
         toast.success("All Steps Are Completed");
       }
@@ -53,20 +51,28 @@ export default function IndexG() {
   };
 
   const handleSubmit = () => {
-    appApi();
+    appGalApi();
   };
+
+  const id =
+    editGetGig && editGetGig.length > 0
+      ? editGetGig[0].images.content_id
+      : null;
+  console.log("dccxxxxct", editGetGig[0].images.content_id);
 
   const handleImageChange = (e, imageKey) => {
-    setImageFiles({
-      ...imageFiles,
-      [imageKey]: e.target.files[0],
-    });
-  };
+    // Get the file from the input
+    const file = e.target.files[0];
 
- 
+    // Update the state based on the image key
+    setImageFiles(prevState => ({
+      ...prevState,
+      [imageKey]: file,
+    }));
+  };
   const handleVideoChange = (e) => {
     const file = e.target.files[0];
-    // Check if the selected file is an MP4 video
+
     if (file.type !== "video/mp4") {
       toast.error("Please upload an MP4 video file.");
     } else {
@@ -79,84 +85,137 @@ export default function IndexG() {
 
   return (
     <Root>
-      <div className="main_gallery_div">
-        <header>
-          <h3 className="header_h3">Showcase Your Services In A Gig Gallery</h3>
-          <p className="header_p">
-            Encourage buyers to choose your Gig by featuring a variety of your
-            work.
-          </p>
-          <div className="header_div">
-            <span className="span_icon">
-              <IoInformationCircle />
-            </span>
-            <p className="header_div_p">
-              To comply with Phanom's terms of service, make sure to upload only
-              content you either own or you have the permission or license to
-              use.
-            </p>
+      {editGetGig.map((i) => (
+        <>
+          <div className="main_gallery_div">
+            <header>
+              <h3 className="header_h3">
+                Showcase Your Services In A Gig Gallery
+              </h3>
+              <p className="header_p">
+                Encourage buyers to choose your Gig by featuring a variety of
+                your work.
+              </p>
+              <div className="header_div">
+                <span className="span_icon">
+                  <IoInformationCircle />
+                </span>
+                <p className="header_div_p">
+                  To comply with Phanom's terms of service, make sure to upload
+                  only content you either own or you have the permission or
+                  license to use.
+                </p>
+              </div>
+              <button className="header_button">
+                <span className="button_span">Gig image guidelines</span>
+              </button>
+            </header>
+
+            <div className="img_div_add">
+              <h3 className="div_img_h3">
+                <p className="div_img_h3_p">Images (up to 3)</p>
+                <p className="div_img_h3_p2">
+                  Get noticed by the right buyers with visual examples of your
+                  services.
+                </p>
+              </h3>
+              <ul>
+              <div className="ul_div">
+  <li>
+    image 1
+    <input
+      type="file"
+      accept="image/*"
+      onChange={(e) => handleImageChange(e, "image1")}
+    />
+    {editGetGig[0].images?.image1 && (
+      <img
+        src={`${EXCHANGE_URLS_IMAGES}/${editGetGig[0].images.image1}`}
+        alt="Image 1"
+      />
+    )}
+  </li>
+  <li>
+    image 2
+    <input
+      type="file"
+      accept="image/*"
+      onChange={(e) => handleImageChange(e, "image2")}
+    />
+    {editGetGig[0].images?.image2 && (
+      <img
+        src={`${EXCHANGE_URLS_IMAGES}/${editGetGig[0].images.image2}`}
+        alt="Image 2"
+      />
+    )}
+  </li>
+  <li>
+    image 3
+    <input
+      type="file"
+      accept="image/*"
+      onChange={(e) => handleImageChange(e, "image3")}
+    />
+    {editGetGig[0].images?.image3 && (
+      <img
+        src={`${EXCHANGE_URLS_IMAGES}/${editGetGig[0].images.image3}`}
+        alt="Image 3"
+      />
+    )}
+  </li>
+</div>
+
+              </ul>
+            </div>
+
+            <div className="img_div_add">
+              <h3 className="div_img_h3">
+                <p className="div_img_h3_p">Video (Only one)</p>
+                <p className="div_img_h3_p2">
+                  Capture buyers' attention with a video that showcases your
+                  service. Please choose a video shorter than 75 seconds and
+                  smaller than 50MB
+                </p>
+              </h3>
+
+              <ul>
+                <div className="ul_div">
+                  <li>
+                    video 1
+                    <input
+                      type="file"
+                      accept="video/*"
+                      onChange={handleVideoChange}
+                    />
+                    {i.images && (
+                      <video controls>
+                        <source
+                          src={`${EXCHANGE_URLS_IMAGES}/${i.images.video}`}
+                          type="video/mp4"
+                        />
+                        Your browser does not support the video tag.
+                      </video>
+                    )}
+                  </li>
+                </div>
+              </ul>
+            </div>
           </div>
-          <button className="header_button">
-            <span className="button_span">Gig image guidelines</span>
-          </button>
-        </header>
-
-        <div className="img_div_add">
-          <h3 className="div_img_h3">
-            <p className="div_img_h3_p">Images (up to 3)</p>
-            <p className="div_img_h3_p2">
-              Get noticed by the right buyers with visual examples of your
-              services.
-            </p>
-          </h3>
-          <ul>
-            <div className="ul_div">
-            <li>image 1
-              <input type="file" accept="image/*" onChange={(e) => handleImageChange(e, "image1")} />
-            </li>
-            <li>image 2
-              <input type="file" accept="image/*" onChange={(e) => handleImageChange(e, "image2")} />
-            </li>
-            <li>image 3
-              <input type="file" accept="image/*" onChange={(e) => handleImageChange(e, "image3")} />
-            </li>
-            </div>
-          </ul>
-        </div>
-
-        <div className="img_div_add">
-          <h3 className="div_img_h3">
-            <p className="div_img_h3_p">Video (Only one)</p>
-            <p className="div_img_h3_p2">
-              Capture buyers' attention with a video that showcases your
-              service. Please choose a video shorter than 75 seconds and smaller
-              than 50MB
-            </p>
-          </h3>
-
-          <ul>
-            <div className="ul_div">
-            <li>video 1
-            <input type="file" accept="video/*" onChange={handleVideoChange} />
-            </li>
-           
-            </div>
-          </ul>
-        </div>
-      </div>
-      <div className="div4">
-        <a type="button" role="button" href="/gigs">
-          Cancle
-        </a>
-        <button
-          type="submit"
-          onClick={() => {
-            handleSubmit();
-          }}
-        >
-          Save
-        </button>
-      </div>
+          <div className="div4">
+            <a type="button" role="button" href="/gigs">
+              Cancle
+            </a>
+            <button
+              type="submit"
+              onClick={() => {
+                handleSubmit();
+              }}
+            >
+              Save
+            </button>
+          </div>
+        </>
+      ))}
     </Root>
   );
 }
@@ -304,6 +363,11 @@ const Root = styled.section`
           overflow: hidden;
           border: 1px solid #dadbdd;
           margin-bottom: 16px;
+          img {
+            width: 230px;
+            height: 130px;
+            object-fit: contain;
+          }
         }
       }
     }
@@ -313,41 +377,40 @@ const Root = styled.section`
     margin: 0;
     padding: 0;
     width: 100vw;
-    ol, ul {
-     padding-left:unset; 
-}
-.main_gallery_div .img_div_add ul .ul_div {
-display: unset; 
+    ol,
+    ul {
+      padding-left: unset;
+    }
+    .main_gallery_div .img_div_add ul .ul_div {
+      display: unset;
+    }
+    .main_gallery_div .img_div_add ul li {
+      width: unset;
+    }
 
-}
-.main_gallery_div .img_div_add ul li {
-width: unset;
-}
-
- .div4 {
-    width: 90%;
-}
-
+    .div4 {
+      width: 90%;
+    }
   }
 
-  @media (min-width: 567px) and (max-width: 992px){
+  @media (min-width: 567px) and (max-width: 992px) {
     margin: 0;
     padding: 0;
     width: 100vw;
-    ol, ul {
-     padding-left:unset; 
-}
-/* .main_gallery_div .img_div_add ul .ul_div {
+    ol,
+    ul {
+      padding-left: unset;
+    }
+    /* .main_gallery_div .img_div_add ul .ul_div {
 display: unset; 
 
 } */
-.main_gallery_div .img_div_add ul li {
-width: unset;
-}
+    .main_gallery_div .img_div_add ul li {
+      width: unset;
+    }
 
- .div4 {
-    width: 90%;
-}
+    .div4 {
+      width: 90%;
+    }
   }
 `;
-
