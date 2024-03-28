@@ -263,7 +263,7 @@ export default function PostNav() {
                       </div>
                     )}
                   </Nav.Link>
-                  <Nav.Link className="msg">
+                  <Nav.Link className="msg" >
                     <a
                       data-tooltip-id="my-tooltip"
                       data-tooltip-content="Message"
@@ -276,8 +276,8 @@ export default function PostNav() {
                     <Tooltip id="my-tooltip" />
 
                     {showToggles.showMessage && (
-                      <div className="message_div">
-                        <div className="top">
+                      <div className="message_div" onClick={()=>{navigate("/chat")}}>
+                        <div className="top" >
                           {" "}
                           <CiMail /> Inbox (0){" "}
                         </div>

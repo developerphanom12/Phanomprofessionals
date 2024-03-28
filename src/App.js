@@ -51,6 +51,8 @@ import EditGigsPage from "./Components/Seller/TopNavPages/MyBusiness/gigs/editGi
 import Topkeywords from "./Components/Seller/TopNavPages/Analytics/Topkeywords";
 import LoginBuyer from "./Components/CommonPages/loginPages/LoginBuyer";
 import Page1 from "./Components/Buyer/profilePlanPages/Page1";
+import Chat from "./Components/Chat/Chat";
+import Userone from "./Components/Chat/Userone";
 // import ChatSection from "./Components/MainLayouts/message/ChatSection";
 
 function App() {
@@ -97,12 +99,15 @@ function App() {
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/overview" element={<Overview />} />
               <Route path="/topkeywords" element={<Topkeywords />} />
+              <Route path="/chat" element={<Chat />} />
+
             </>
           </>
 
           <>
             {/* common pages -------------------------------------------------------------- */}
-
+           
+            <Route path="/user" element={<Userone />} />
             <Route path="/home" element={<Home />} />
             <Route path="*" element={<PageNF />} />
             <Route path="/vettingprocess" element={<VettingProcess />} />
@@ -126,6 +131,7 @@ function App() {
             <Route path="/whyindia" element={<WhyIndia />} />
             <Route path="/howitworks" element={<HowItWorks />} />
             <Route path="/loginBuyer" element={<LoginBuyer />} />
+
           </>
         </Routes>
         <Loader />

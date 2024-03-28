@@ -35,7 +35,7 @@ export default function Paused() {
         axiosConfig
       );
       if (res?.status === 201) {
-        navigate("/dashboard");
+        navigate("/gigs");
         toast.success("activate successfull");
       }
     } catch (err) {
@@ -57,7 +57,7 @@ export default function Paused() {
         axiosConfig
       );
       if (res?.status === 201) {
-        navigate("/dashboard");
+        navigate("/gigs");
         toast.success("Gig  Delete Permanent successfull");
       }
     } catch (err) {
