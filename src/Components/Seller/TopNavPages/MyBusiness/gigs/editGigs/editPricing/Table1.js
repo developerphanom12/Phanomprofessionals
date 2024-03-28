@@ -12,6 +12,9 @@ export default function Table1({
   setPrice2,
   setPrice3,
 }) {
+  console.log("price", price);
+  console.log("price2", price2);
+  console.log("price3", price3);
   return (
     <Root>
       {editGetGig.map((i, index) => (
