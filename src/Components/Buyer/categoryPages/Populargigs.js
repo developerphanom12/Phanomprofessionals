@@ -10,6 +10,7 @@ import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import BrowserSlider1 from "./BrowserSlider1";
 import profile from "../../Images/Boyspic.png";
+import { Link, useNavigate } from "react-router-dom";
 
 function Populargigs() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -53,12 +54,12 @@ function Populargigs() {
       slideRef.current.scrollLeft = slideWidth * currentSlide; // Updated scrollLeft property
     }
   }, [currentSlide]);
-
+const navigate = useNavigate();
   return (
     <Sliderrrs>
       <div className="heading_button">
         <h2 className="main_heading">
-        Most popular Gigs in Website Development
+        Most popular Gigs in Software Development 
           <IoIosArrowRoundForward />
         </h2>
         <div className="slide_btn">
@@ -70,12 +71,16 @@ function Populargigs() {
           </button>
         </div>
       </div>
+      
       <div className="slides-container" ref={slideRef}>
         {gigData.map((gig, index) => (
-          <div
-            key={index}
-            className={`slide ${index === currentSlide ? "active" : ""}`}
-          >
+           <div
+           key={index}
+           className={`slide ${index === currentSlide ? "active" : ""}`}
+           onClick={() => {
+             navigate(`/editgigspages/${gig?.gigsData?.gig_ids}`);
+           }}
+         >
             <BrowserSlider1 gigData={gig} />
             <div className="footer">
               <div className="profile_footer">
@@ -95,6 +100,7 @@ function Populargigs() {
           </div>
         ))}
       </div>
+      
     </Sliderrrs>
   );
 }

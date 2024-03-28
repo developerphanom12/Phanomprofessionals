@@ -10,6 +10,7 @@ import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import BrowserSlider1 from "./BrowserSlider1";
 import profile from "../../Images/Boyspic.png";
+import { Link, useNavigate } from "react-router-dom";
 
 function GigsSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -53,12 +54,13 @@ function GigsSlider() {
       slideRef.current.scrollLeft = slideWidth * currentSlide; // Updated scrollLeft property
     }
   }, [currentSlide]);
+  const navigate = useNavigate();
 
   return (
     <Sliderrrs>
       <div className="heading_button">
         <h2 className="main_heading">
-        Gigs you may like
+          Gigs you may like
           <IoIosArrowRoundForward />
         </h2>
         <div className="slide_btn">
@@ -75,6 +77,9 @@ function GigsSlider() {
           <div
             key={index}
             className={`slide ${index === currentSlide ? "active" : ""}`}
+            onClick={() => {
+              navigate(`/editgigspages/${gig?.gigsData?.gig_ids}`);
+            }}
           >
             <BrowserSlider1 gigData={gig} />
             <div className="footer">
@@ -86,7 +91,9 @@ function GigsSlider() {
                 <p> {gig?.gigsData?.gig_title}</p>
               </div>
               <div>
-                <h5>Rating:5 <span>(50)</span></h5>
+                <h5>
+                  Rating:5 <span>(50)</span>
+                </h5>
               </div>
               <div>
                 <h4>From: $ {gig?.price?.price}</h4>
@@ -128,8 +135,8 @@ const Sliderrrs = styled.section`
   .slide {
     flex: 0 0 auto;
     width: 19%;
-    scroll-snap-align: start; 
-    margin-left:13px;
+    scroll-snap-align: start;
+    margin-left: 13px;
     padding: 10px;
 
     .footer {
@@ -162,11 +169,10 @@ const Sliderrrs = styled.section`
         font-weight: 400;
         margin-left: 10px;
         margin-bottom: 0px;
-        &:hover{
+        &:hover {
           text-decoration: underline;
           text-decoration-thickness: 1px;
         }
-   
       }
 
       h5 {
@@ -175,11 +181,11 @@ const Sliderrrs = styled.section`
         font-size: 16px;
         font-weight: 700;
         color: #222325;
-        span{
+        span {
           color: #74767e;
           font-size: 16px;
           font-weight: 400;
-          margin-left:2px;
+          margin-left: 2px;
         }
       }
       h4 {

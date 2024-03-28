@@ -7,9 +7,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { EXCHANGE_URLS } from "../../Important/URLS";
+import {  EXCHANGE_URLS_BUYER } from "../../Important/URLS";
 import { useForm } from "react-hook-form";
-import { userCheckAction, userDataAction } from "../../../redux/users/action";
+import { setUserRoleAction, userCheckAction, userDataAction } from "../../../redux/users/action";
 
 const schema = yup.object().shape({
   username: yup.string().required("Username is required."),
@@ -33,11 +33,13 @@ export default function LoginBuyer() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post(`${EXCHANGE_URLS}/loginseller`, data);
+      const res = await axios.post(`${EXCHANGE_URLS_BUYER}/buyerlogin`, data);
       console.log("resres", res?.data?.data);
       if (res?.status === 200) {
         navigate("/innerpages");
         localStorage.setItem("token", res?.data?.data?.token);
+        localStorage.setItem("role", "buyer");
+        dispatch(setUserRoleAction('buyer'));
         dispatch(userDataAction(res?.data?.data));
         dispatch(userCheckAction(true));
         toast.success("Login Successfully");
@@ -62,7 +64,7 @@ export default function LoginBuyer() {
           <div className="user_name">
             <label>User name or email address</label>
             <input type="username" {...register("username")} />
-            {errors.email && <p>{errors.email.message}</p>}
+            {errors.username && <p>{errors.username.message}</p>}
           </div>
           <div>
             <label>Password</label>

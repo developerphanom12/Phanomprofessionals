@@ -227,7 +227,7 @@ export default function Navbarr() {
             </Nav>
 
             <Nav>
-              <Nav.Link href="loginseller">Be a Buyer</Nav.Link>
+              <Nav.Link href="loginBuyer">Be a Buyer</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </ContainerFluid>

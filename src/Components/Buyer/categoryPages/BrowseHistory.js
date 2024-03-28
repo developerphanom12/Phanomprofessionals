@@ -10,11 +10,12 @@ import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import BrowserSlider1 from "./BrowserSlider1";
 import profile from "../../Images/Boyspic.png";
+import { Link, useNavigate } from "react-router-dom";
 
 function BrowseHistory() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [gigData, setGigData] = useState([]);
-
+ 
   useEffect(() => {
     const getSliderApi = async () => {
       try {
@@ -29,12 +30,12 @@ function BrowseHistory() {
 
     getSliderApi();
   }, []);
-
+const navigate = useNavigate();
   const slideRef = useRef();
 
   const totalSlides = gigData.length;
   const slidesToShow = 5;
-  const slideWidth = 330; // Adjusted slide width
+  const slideWidth = 330;
 
   const goToPreviousSlide = () => {
     setCurrentSlide((prev) =>
@@ -70,31 +71,39 @@ function BrowseHistory() {
           </button>
         </div>
       </div>
-      <div className="slides-container" ref={slideRef}>
-        {gigData.map((gig, index) => (
-          <div
-            key={index}
-            className={`slide ${index === currentSlide ? "active" : ""}`}
-          >
-            <BrowserSlider1 gigData={gig} />
-            <div className="footer">
-              <div className="profile_footer">
-                <img src={profile} alt="img" />
-                <h6> {gig?.seller?.username}</h6>
-              </div>
-              <div>
-                <p> {gig?.gigsData?.gig_title}</p>
-              </div>
-              <div>
-                <h5>Rating:5<span>(50)</span></h5>
-              </div>
-              <div>
-                <h4>From: $ {gig?.price?.price}</h4>
+     
+        <div className="slides-container" ref={slideRef}>
+          {gigData.map((gig, index) => (
+              <div
+              key={index}
+              className={`slide ${index === currentSlide ? "active" : ""}`}
+              onClick={() => {
+                navigate(`/editgigspages/${gig?.gigsData?.gig_ids}`);
+              }}
+            >
+              <BrowserSlider1 gigData={gig} />
+              <div className="footer">
+                <div className="profile_footer">
+                  <img src={profile} alt="img" />
+                  <h6> {gig?.seller?.username}</h6>
+                </div>
+                <div>
+                  <p> {gig?.gigsData?.gig_title}</p>
+                </div>
+                <div>
+                  <h5>
+                    Rating:5<span>(50)</span>
+                  </h5>
+                </div>
+                <div>
+                  <h4>From: $ {gig?.price?.price}</h4>
+                </div>
+                
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+     
     </Sliderrrs>
   );
 }
@@ -130,7 +139,7 @@ const Sliderrrs = styled.section`
     width: 19%;
     scroll-snap-align: start;
     padding: 10px;
-    margin-left:13px;
+    margin-left: 13px;
 
     .footer {
       margin-top: 20px;
@@ -162,11 +171,10 @@ const Sliderrrs = styled.section`
         font-weight: 400;
         margin-left: 10px;
         margin-bottom: 0px;
-        &:hover{
+        &:hover {
           text-decoration: underline;
           text-decoration-thickness: 1px;
         }
-   
       }
 
       h5 {
@@ -175,11 +183,11 @@ const Sliderrrs = styled.section`
         font-size: 16px;
         font-weight: 700;
         color: #222325;
-        span{
+        span {
           color: #74767e;
           font-size: 16px;
           font-weight: 400;
-          margin-left:2px;
+          margin-left: 2px;
         }
       }
       h4 {

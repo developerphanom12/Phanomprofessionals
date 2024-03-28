@@ -23,19 +23,21 @@ import axios from "axios";
 import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 // import SliderImage from "./SliderImage";
 // import SliderText from "./SliderText";
 
 export default function Page1() {
-  const gigId = useSelector((state) => state.users.gigId);
+  const { id } = useParams();
+  const userDetails = useSelector((state) => state.users.user);
   const [showMessageBox, setShowMessageBox] = useState(false);
   const [gigData, setGigData] = useState([]);
   const [active, setActive] = useState("basic");
-  console.log("tttttttttttt", gigId);
+
   useEffect(() => {
     const getSliderApi = async () => {
       try {
-        const res = await axios.get(`${EXCHANGE_URLS}/gigslist/8`);
+        const res = await axios.get(`${EXCHANGE_URLS}/gigslist/${id}`);
         if (res?.status === 201) {
           setGigData(res?.data?.message || []);
         }
@@ -45,8 +47,7 @@ export default function Page1() {
     };
 
     getSliderApi();
-  }, [gigId]);
-
+  }, [id]);
   const toggleMessageBox = () => {
     setShowMessageBox(!showMessageBox);
   };

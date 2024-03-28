@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { FaQuestionCircle } from "react-icons/fa";
+import Mainchart from "./charts/MainChart";
 
 export default function Overview() {
+
   return (
     <Root>
       <div className="container-fluid">
@@ -60,6 +61,7 @@ export default function Overview() {
           <div className="col-lg-12"></div>
         </div>
       </div>
+      <Mainchart/>
     </Root>
   );
 }

@@ -9,7 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { EXCHANGE_URLS } from "../../Important/URLS";
 import { useForm } from "react-hook-form";
-import { userCheckAction, userDataAction } from "../../../redux/users/action";
+import { setUserRoleAction, userCheckAction, userDataAction } from "../../../redux/users/action";
 
 const schema = yup.object().shape({
   username: yup.string().required("Username is required."),
@@ -36,8 +36,10 @@ export default function LoginSeller() {
       const res = await axios.post(`${EXCHANGE_URLS}/loginseller`, data);
       console.log("resres", res?.data?.data);
       if (res?.status === 200) {
-        navigate("/innerpages");
+        navigate("/dashboard");
         localStorage.setItem("token", res?.data?.data?.token);
+        localStorage.setItem("role", "seller");
+        dispatch(setUserRoleAction('seller'));
         dispatch(userDataAction(res?.data?.data));
         dispatch(userCheckAction(true));
         toast.success("Login Successfully");
@@ -62,7 +64,7 @@ export default function LoginSeller() {
           <div className="user_name">
             <label>User name or email address</label>
             <input type="username" {...register("username")} />
-            {errors.email && <p>{errors.email.message}</p>}
+            {errors.username && <p>{errors.username.message}</p>}
           </div>
           <div>
             <label>Password</label>

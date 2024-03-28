@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import logo1 from "../Images/logo_final_web.webp";
-import { IoNotificationsOffOutline, IoVolumeHigh } from "react-icons/io5";
+import {
+  IoNotificationsOffOutline,
+  IoSearch,
+  IoVolumeHigh,
+} from "react-icons/io5";
 import { CiHeart, CiMail } from "react-icons/ci";
 import logoimg from "../Images/Boyspic.png";
 import "react-tooltip/dist/react-tooltip.css";
@@ -13,15 +17,18 @@ import {
   IoMdSettings,
 } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { userCheckAction } from "../../redux/users/action";
+import { setUserRoleAction, userCheckAction } from "../../redux/users/action";
 import PostBotttomNav from "./Category/PostBotttomNav";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import ContainerFluid from "react-bootstrap/Container";
 
 export default function PostNav() {
+  const userCheck = useSelector((state) => state?.users?.userCheck);
+  const userDetails = useSelector((state) => state?.users.user);
+  const token = localStorage.getItem("token");
   const [showToggles, setShowToggles] = useState({
     showMessage: false,
     showNotification: false,
@@ -35,11 +42,18 @@ export default function PostNav() {
   }
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const handleLogoutClick = () => {
+    // Clear token from local storage
     localStorage.setItem("token", "");
+    // Update user check status in Redux store
     dispatch(userCheckAction(false));
-    toast.success("Logout Successfully");
-    navigate("/");
+    // Update user role in local storage to "buyer"
+    localStorage.setItem("role", "buyer");
+    // Dispatch action to set user role to "buyer" in Redux store
+    dispatch(setUserRoleAction("buyer"));
+    // Navigate to innerpages
+    navigate("/innerpages");
   };
 
   const toggleMessage = () => {
@@ -78,112 +92,121 @@ export default function PostNav() {
     <Root>
       <Navbar expand="lg" className="bg-body-tertiary">
         <ContainerFluid fluid>
-          <Navbar.Brand
-            href="home"
-            className="logo_img"
-            onClick={() => {
-              handleLogoutClick();
-            }}
-          >
+          <Navbar.Brand href="home" className="logo_img">
             {" "}
             <img src={logo1} alt="img" />
           </Navbar.Brand>
+          {token && userDetails.role === "buyer" ? (
+            <Nav>
+              <Nav.Link>
+                <div className="search_bar">
+                  <input placeholder="What service are you looking for Today" />
+                  <p className="svg_search">
+                    <IoSearch />
+                  </p>
+                </div>
+              </Nav.Link>
+            </Nav>
+          ) : (
+            ""
+          )}
           <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <div className="top_nav_pages">
-                <Nav.Link className="dashboard">
-                  <a
-                    href="dashboard"
-                    onClick={() => {
-                      navigate("/dashboard");
-                    }}
-                  >
-                    Dashboard
-                  </a>
-                </Nav.Link>
-                <Nav.Link className="business">
-                  <button
-                    onClick={() => {
-                      toggleBusiness();
-                    }}
-                  >
-                    <span>My Business</span>
-                    <IoIosArrowDown />
-                  </button>
-                  {showToggles.showBusiness && (
-                    <div className="optn_div">
-                      <div className="top">
-                        <button
-                          onClick={() => {
-                            navigate("/orders");
-                            closeAllToggles();
-                          }}
-                        >
-                          Orders
-                        </button>
+            {userDetails.role === "seller" ? (
+              <Nav className="me-auto">
+                <div className="top_nav_pages">
+                  <Nav.Link className="dashboard">
+                    <a
+                      href="dashboard"
+                      onClick={() => {
+                        navigate("/dashboard");
+                      }}
+                    >
+                      Dashboard
+                    </a>
+                  </Nav.Link>
+                  <Nav.Link className="business">
+                    <button
+                      onClick={() => {
+                        toggleBusiness();
+                      }}
+                    >
+                      <span>My Business</span>
+                      <IoIosArrowDown />
+                    </button>
+                    {showToggles.showBusiness && (
+                      <div className="optn_div">
+                        <div className="top">
+                          <button
+                            onClick={() => {
+                              navigate("/orders");
+                              closeAllToggles();
+                            }}
+                          >
+                            Orders
+                          </button>
+                        </div>
+                        <div className="middle">
+                          <button
+                            onClick={() => {
+                              navigate("/gigs");
+                              closeAllToggles();
+                            }}
+                          >
+                            Gigs
+                          </button>
+                          <button
+                            onClick={() => {
+                              navigate("/profile");
+                              closeAllToggles();
+                            }}
+                          >
+                            Profiles
+                          </button>
+                        </div>
+                        <div className="bottom">
+                          <button
+                            onClick={() => {
+                              navigate("/earnings");
+                              closeAllToggles();
+                            }}
+                          >
+                            Earnings
+                          </button>
+                          <button
+                            onClick={() => {
+                              navigate("/phanomworkspace");
+                              closeAllToggles();
+                            }}
+                          >
+                            Phanom Workspace
+                          </button>
+                        </div>
                       </div>
-                      <div className="middle">
-                        <button
-                          onClick={() => {
-                            navigate("/gigs");
-                            closeAllToggles();
-                          }}
-                        >
-                          Gigs
-                        </button>
-                        <button
-                          onClick={() => {
-                            navigate("/profile");
-                            closeAllToggles();
-                          }}
-                        >
-                          Profiles
-                        </button>
-                      </div>
-                      <div className="bottom">
-                        <button
-                          onClick={() => {
-                            navigate("/earnings");
-                            closeAllToggles();
-                          }}
-                        >
-                          Earnings
-                        </button>
-                        <button
-                          onClick={() => {
-                            navigate("/phanomworkspace");
-                            closeAllToggles();
-                          }}
-                        >
-                          Phanom Workspace
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </Nav.Link>
-                <Nav.Link className="business">
-                  <button
-                    onClick={() => {
-                      toggleAnalytics();
-                    }}
-                  >
-                    <span>Analytics</span>
-                    <IoIosArrowDown />
-                  </button>
+                    )}
+                  </Nav.Link>
+                  <Nav.Link className="business">
+                    <button
+                      onClick={() => {
+                        toggleAnalytics();
+                      }}
+                    >
+                      <span>Analytics</span>
+                      <IoIosArrowDown />
+                    </button>
 
-                  {showToggles.showAnalytics && (
-                    <div className="optn_div">
-                      <div className="top">
-                        <button
-                          onClick={() => {
-                            navigate("/analytics");
-                            closeAllToggles();
-                          }}
-                        >
-                          Overview
-                        </button>
-                        {/* <button
+                    {showToggles.showAnalytics && (
+                      <div className="optn_div">
+                        <div className="top">
+                          <button
+                            onClick={() => {
+                              navigate("/analytics");
+                              closeAllToggles();
+                            }}
+                          >
+                            Overview
+                          </button>
+                          {/* <button
                           onClick={() => {
                             navigate("/analytics");
                             closeAllToggles();
@@ -191,12 +214,16 @@ export default function PostNav() {
                         >
                           Repeat Business
                         </button> */}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </Nav.Link>
-              </div>
-            </Nav>
+                    )}
+                  </Nav.Link>
+                </div>
+              </Nav>
+            ) : (
+              ""
+            )}
+
             <Nav>
               <div className="notifyy">
                 <div className="notify_div">
@@ -304,13 +331,23 @@ export default function PostNav() {
                     <hr />
 
                     <div className="profile_div">
-                      <button
-                        onClick={() => {
-                          navigate("/loginseller");
-                        }}
-                      >
-                        Switch to Seller
-                      </button>
+                      {userDetails.role === "seller" ? (
+                        <button
+                          onClick={() => {
+                            handleLogoutClick();
+                          }}
+                        >
+                          logout
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            navigate("/loginseller");
+                          }}
+                        >
+                          Switch to Seller
+                        </button>
+                      )}
                     </div>
                   </div>
                 )}
@@ -319,7 +356,7 @@ export default function PostNav() {
           </Navbar.Collapse>
         </ContainerFluid>
       </Navbar>
-      <PostBotttomNav />
+      {userDetails.role === "buyer" ? <PostBotttomNav /> : ""}
     </Root>
   );
 }
@@ -359,14 +396,12 @@ const Root = styled.section`
     border: 1px solid #c5c6c9;
     border-radius: 4px;
     color: #62646a;
-    width: 63%;
+    width: 60vw;
     margin: 10px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @media (max-width: 576px) {
-      width: 93%;
-    }
+
     .svg_search {
       color: white;
       background-color: black;
@@ -381,9 +416,10 @@ const Root = styled.section`
     }
     input {
       border: none;
-
+      width: 90%;
       padding: 0px 10px;
       word-spacing: 2px;
+      background-color: transparent;
     }
   }
   .top_nav_pages {
@@ -643,21 +679,17 @@ const Root = styled.section`
     }
   }
 
-  @media (min-width: 567px) and (max-width: 992px){
-    .profile_option{
-      top:120px;
-      width:25%;
-      left:101px;
+  @media (min-width: 567px) and (max-width: 992px) {
+    .profile_option {
+      top: 120px;
+      width: 25%;
+      left: 101px;
     }
-.show {
-    display: flex;
-}
-.top_nav_pages {
-    padding:0px; 
-}
-
-
-
-
+    .show {
+      display: flex;
+    }
+    .top_nav_pages {
+      padding: 0px;
+    }
   }
 `;

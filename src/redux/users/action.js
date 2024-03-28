@@ -35,3 +35,8 @@ export const UserDetails = (data) => {
       payload: data,
     };
   };
+
+export const setUserRoleAction = (role) => ({
+  type: "SET_USER_ROLE",
+  payload: role,
+});

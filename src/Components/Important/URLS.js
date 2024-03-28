@@ -1,5 +1,7 @@
 export const EXCHANGE_URLS =
   "https://api-phanom.phanomprofessionals.com/api/seller";
+  export const EXCHANGE_URLS_BUYER =
+  "https://api-phanom.phanomprofessionals.com/api/buyer";
 
 export const EXCHANGE_URLS_CATEGORY =
   "https://api-phanom.phanomprofessionals.com/api/category";

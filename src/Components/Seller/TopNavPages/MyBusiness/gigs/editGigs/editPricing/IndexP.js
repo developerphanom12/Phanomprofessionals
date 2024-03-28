@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoCheckmark } from "react-icons/io5";
 import styled from "styled-components";
-import Table1 from "./Table1";
-import Table2 from "./Table2";
-import Table3 from "./Table3";
-import Table5 from "./Table5";
 import axios from "axios";
 import { EXCHANGE_URLS } from "../../../../../../Important/URLS";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { IoIosArrowDown } from "react-icons/io";
+import { TiPencil } from "react-icons/ti";
 
 export default function IndexP({ editGetGig }) {
   const [price, setPrice] = useState({
@@ -18,6 +16,7 @@ export default function IndexP({ editGetGig }) {
     number_of_pages: "",
     revision: "",
     plugin_extension: 1,
+    content_upload:1,
     price: "",
   });
   const [price2, setPrice2] = useState({
@@ -27,6 +26,7 @@ export default function IndexP({ editGetGig }) {
     number_of_pages: "",
     revision: "",
     plugin_extension: 1,
+    content_upload:1,
     price: "",
   });
   const [price3, setPrice3] = useState({
@@ -36,6 +36,7 @@ export default function IndexP({ editGetGig }) {
     number_of_pages: "",
     revision: "",
     plugin_extension: 1,
+    content_upload:1,
     price: "",
   });
   const navigate = useNavigate();
@@ -49,31 +50,31 @@ export default function IndexP({ editGetGig }) {
       };
       const updatedData = { ...price };
       const res = await axios.put(
-        `${EXCHANGE_URLS}//updategigsplantypedata/${a}`,
+        `${EXCHANGE_URLS}/updategigsplantypedata/${a}`,
         updatedData,
         axiosConfig
       );
-      if (res?.status === 201) {
+      if (res?.status === 200) {
         navigate("/description");
       }
       const updatedData2 = { ...price2 };
       const res2 = await axios.put(
-        `${EXCHANGE_URLS}//updategigsplantypedata/${b}`,
+        `${EXCHANGE_URLS}/updategigsplantypedata/${b}`,
         updatedData2,
         axiosConfig
       );
-      if (res2?.status === 201) {
+      if (res2?.status === 200) {
         navigate("/description");
         // toast.success("Updated");
       }
 
       const updatedData3 = { ...price3 };
       const res3 = await axios.put(
-        `${EXCHANGE_URLS}//updategigsplantypedata/${c}`,
+        `${EXCHANGE_URLS}/updategigsplantypedata/${c}`,
         updatedData3,
         axiosConfig
       );
-      if (res3?.status === 201) {
+      if (res3?.status === 200) {
         navigate("/description");
         toast.success("Updated");
       }
@@ -98,6 +99,55 @@ export default function IndexP({ editGetGig }) {
   const handleSubmit = () => {
     updatePriceApi();
   };
+
+  useEffect(() => {
+    if (editGetGig.length > 0) {
+      const basic = editGetGig[0].plantypes.find(
+        (plantype) => plantype.plan_type === "basic"
+      );
+      if (basic) {
+        setPrice({
+          title: basic.title,
+          description: basic.description,
+          delivery_time: basic.delivery_time,
+          number_of_pages: basic.number_of_pages,
+          revision: basic.revision,
+          plugin_extension: basic.plugin_extension,
+          price: basic.price,
+        });
+      }
+
+      const standard = editGetGig[0].plantypes.find(
+        (plantype) => plantype.plan_type === "standard"
+      );
+      if (standard) {
+        setPrice2({
+          title: standard.title,
+          description: standard.description,
+          delivery_time: standard.delivery_time,
+          number_of_pages: standard.number_of_pages,
+          revision: standard.revision,
+          plugin_extension: standard.plugin_extension,
+          price: standard.price,
+        });
+      }
+
+      const premium = editGetGig[0].plantypes.find(
+        (plantype) => plantype.plan_type === "premium"
+      );
+      if (premium) {
+        setPrice3({
+          title: premium.title,
+          description: premium.description,
+          delivery_time: premium.delivery_time,
+          number_of_pages: premium.number_of_pages,
+          revision: premium.revision,
+          plugin_extension: premium.plugin_extension,
+          price: premium.price,
+        });
+      }
+    }
+  }, [editGetGig]);
   return (
     <Root>
       <div className="div1">
@@ -124,42 +174,299 @@ export default function IndexP({ editGetGig }) {
         </header>
       </div>
       <div className="div3">
-        <Table1
-          editGetGig={editGetGig}
-          price={price}
-          price2={price2}
-          price3={price3}
-          setPrice={setPrice}
-          setPrice2={setPrice2}
-          setPrice3={setPrice3}
-        />
-        <Table2
-          editGetGig={editGetGig}
-          price={price}
-          price2={price2}
-          price3={price3}
-          setPrice={setPrice}
-          setPrice2={setPrice2}
-          setPrice3={setPrice3}
-        />
-        <Table3
-          editGetGig={editGetGig}
-          price={price}
-          price2={price2}
-          price3={price3}
-          setPrice={setPrice}
-          setPrice2={setPrice2}
-          setPrice3={setPrice3}
-        />
-        <Table5
-          editGetGig={editGetGig}
-          price={price}
-          price2={price2}
-          price3={price3}
-          setPrice={setPrice}
-          setPrice2={setPrice2}
-          setPrice3={setPrice3}
-        />
+        {editGetGig.map((i) => (
+          <>
+            <div className="column1">
+              <div className="input_div"></div>
+              <div className="input_div"></div>
+              <div className="input_div"></div>
+              <div className="input_div">delivery time</div>
+              <div className="input_div">Number of pages</div>
+              <div className="input_div">Plugin Extension</div>
+              <div className="input_div">Content upload</div>
+              <div className="input_div">Revisions</div>
+              <div className="input_div2">Price</div>
+              <div className="input_div2">Total Price</div>
+            </div>
+
+            <div className="column1" id="basic">
+              <div className="input_div1">
+                {i.plantypes[0].plan_type.toUpperCase()}
+              </div>
+              <div className="input_div">
+                <textarea
+                  placeholder="Title"
+                  value={price.title}
+                  onChange={(e) =>
+                    setPrice({ ...price, title: e.target.value })
+                  }
+                />
+                <span className="span_headd">
+                  <TiPencil />
+                </span>
+              </div>
+              <div className="input_div">
+                <textarea
+                  placeholder="Description"
+                  value={price.description}
+                  onChange={(e) =>
+                    setPrice({ ...price, description: e.target.value })
+                  }
+                />
+                <span className="span_headd">
+                  <TiPencil />
+                </span>
+              </div>
+              <div className="input_div">
+                <textarea value={price.delivery_time} readOnly />
+              </div>
+              <div className="input_div">
+                <textarea
+                  placeholder="1-10 Pages"
+                  value={price.number_of_pages}
+                  onChange={(e) =>
+                    setPrice({ ...price, number_of_pages: e.target.value })
+                  }
+                />
+                <span className="span_svg">
+                  <IoIosArrowDown />
+                </span>
+              </div>
+              <div className="input_div">
+                <input
+                  type="checkbox"
+                  checked={price.plugin_extension}
+                  readOnly
+                />
+              </div>
+              <div className="input_div">
+                <input
+                  type="checkbox"
+                  checked={price.content_upload}
+                  readOnly
+                />
+              </div>
+              <div className="input_div">
+                <textarea
+                  placeholder="Revision = 1-10"
+                  value={price.revision}
+                  onChange={(e) =>
+                    setPrice({ ...price, revision: e.target.value })
+                  }
+                />
+                <span className="span_svg">
+                  <IoIosArrowDown />
+                </span>
+              </div>
+              <div className="input_div">
+                <input
+                  placeholder="in $"
+                  type="number"
+                  value={price.price}
+                  onChange={(e) =>
+                    setPrice({ ...price, price: e.target.value })
+                  }
+                />
+              </div>
+              <div className="input_div">
+                <input
+                  placeholder="in $"
+                  type="number"
+                  value={price.price}
+                  onChange={(e) =>
+                    setPrice({ ...price, price: e.target.value })
+                  }
+                />
+              </div>
+            </div>
+            {/* --------------standard---------------- */}
+            {/* // number_of_pages */}
+
+            <div className="column1" id="standard">
+              <div className="input_div1">
+                {i.plantypes[1].plan_type.toUpperCase()}
+              </div>
+              <div className="input_div">
+                <textarea
+                  placeholder="Title"
+                  value={price2.title}
+                  onChange={(e) =>
+                    setPrice2({ ...price2, title: e.target.value })
+                  }
+                />
+                <span className="span_headd">
+                  <TiPencil />
+                </span>
+              </div>
+              <div className="input_div">
+                <textarea
+                  placeholder="Description"
+                  value={price2.description}
+                  onChange={(e) =>
+                    setPrice2({ ...price2, description: e.target.value })
+                  }
+                />
+                <span className="span_headd">
+                  <TiPencil />
+                </span>
+              </div>
+              <div className="input_div">
+                <textarea value={price2.delivery_time} readOnly />
+              </div>
+              <div className="input_div">
+                <textarea
+                  placeholder="1-10 Pages"
+                  value={price2.number_of_pages}
+                  onChange={(e) =>
+                    setPrice2({ ...price2, number_of_pages: e.target.value })
+                  }
+                />
+                <span className="span_svg">
+                  <IoIosArrowDown />
+                </span>
+              </div>
+              <div className="input_div">
+                <input
+                  type="checkbox"
+                  checked={price2.plugin_extension}
+                  readOnly
+                />
+              </div>
+              <div className="input_div">
+                <input
+                  type="checkbox"
+                  checked={price2.content_upload}
+                  readOnly
+                />
+              </div>
+              <div className="input_div">
+                <textarea
+                  placeholder="Revision = 1-10"
+                  value={price2.revision}
+                  onChange={(e) =>
+                    setPrice2({ ...price2, revision: e.target.value })
+                  }
+                />
+                <span className="span_svg">
+                  <IoIosArrowDown />
+                </span>
+              </div>
+              <div className="input_div">
+                <input
+                  placeholder="in $"
+                  type="number"
+                  value={price2.price}
+                  onChange={(e) =>
+                    setPrice2({ ...price2, price: e.target.value })
+                  }
+                />
+              </div>
+              <div className="input_div">
+                <input
+                  placeholder="in $"
+                  type="number"
+                  value={price2.price}
+                  onChange={(e) =>
+                    setPrice2({ ...price2, price: e.target.value })
+                  }
+                />
+              </div>
+            </div>
+
+            {/* ---------------------premium---------------- */}
+
+            <div className="column1" id="premium">
+              <div className="input_div1">
+                {i.plantypes[2].plan_type.toUpperCase()}
+              </div>
+              <div className="input_div">
+                <textarea
+                  placeholder="Title"
+                  value={price3.title}
+                  onChange={(e) =>
+                    setPrice3({ ...price3, title: e.target.value })
+                  }
+                />
+                <span className="span_headd">
+                  <TiPencil />
+                </span>
+              </div>
+              <div className="input_div">
+                <textarea
+                  placeholder="Description"
+                  value={price3.description}
+                  onChange={(e) =>
+                    setPrice3({ ...price3, description: e.target.value })
+                  }
+                />
+                <span className="span_headd">
+                  <TiPencil />
+                </span>
+              </div>
+              <div className="input_div">
+                <textarea value={price3.delivery_time} readOnly />
+              </div>
+              <div className="input_div">
+                <textarea
+                  placeholder="1-10 Pages"
+                  value={price3.number_of_pages}
+                  onChange={(e) =>
+                    setPrice3({ ...price3, number_of_pages: e.target.value })
+                  }
+                />
+                <span className="span_svg">
+                  <IoIosArrowDown />
+                </span>
+              </div>
+              <div className="input_div">
+                <input
+                  type="checkbox"
+                  checked={price3.plugin_extension}
+                  readOnly
+                />
+              </div>
+              <div className="input_div">
+                <input
+                  type="checkbox"
+                  checked={price3.content_upload}
+                  readOnly
+                />
+              </div>
+              <div className="input_div">
+                <textarea
+                  placeholder="Revision = 1-10"
+                  value={price3.revision}
+                  onChange={(e) =>
+                    setPrice3({ ...price3, revision: e.target.value })
+                  }
+                />
+                <span className="span_svg">
+                  <IoIosArrowDown />
+                </span>
+              </div>
+              <div className="input_div">
+                <input
+                  placeholder="in $"
+                  type="number"
+                  value={price3.price}
+                  onChange={(e) =>
+                    setPrice3({ ...price3, price: e.target.value })
+                  }
+                />
+              </div>
+              <div className="input_div">
+                <input
+                  placeholder="in $"
+                  type="number"
+                  value={price3.price}
+                  onChange={(e) =>
+                    setPrice3({ ...price3, price: e.target.value })
+                  }
+                />
+              </div>
+            </div>
+          </>
+        ))}
       </div>
       <div className="div4">
         <a type="button" role="button" href="/gigs">
@@ -290,6 +597,67 @@ const Root = styled.section`
   }
   .div3 {
     margin-bottom: 52px;
+    display: flex;
+    border: 1px solid lightgray;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: inherit;
+    .column1 {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    
+      .input_div2 {
+        font-weight: 600;
+        background-color: #f5f5f5;
+        border-top: 1px solid lightgray;
+      }
+      .input_div {
+        background-color: #fff;
+        border-bottom: 1px solid lightgray;
+      }
+      .input_div1 {
+        text-align: center;
+        font-weight: 600;
+        padding: 8px;
+        border-bottom: 1px solid lightgray;
+      }
+      .input_div,
+      .input_div2,
+      .input_div1 {
+        width: 100%;
+        height: 60px;
+        border-right: 1px solid lightgray;
+        padding: 10px;
+        color: #7a7d85;
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        input {
+          border: 1px solid lightgray;
+          border-radius: 10px;
+          padding: 2px;
+        }
+        textarea {
+          width: 100%;
+          padding-right: 24px;
+          border: none;
+          font-size: 13px;
+          color: #7a7d85;
+          border-radius: 3px;
+          outline: none;
+        }
+        .span_headd {
+          text-align: end;
+          svg {
+            width: 14px;
+            height: 14px;
+            fill: rgb(197, 198, 201);
+          }
+        }
+      }
+    }
   }
   .div4 {
     width: 100%;
