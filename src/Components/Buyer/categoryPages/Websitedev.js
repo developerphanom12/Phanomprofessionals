@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useRef, useEffect } from "react";
 import {
   IoIosArrowDropleft,
@@ -6,9 +5,10 @@ import {
   IoIosArrowRoundForward,
 } from "react-icons/io";
 import styled from "styled-components";
+import axios from "axios";
 import { EXCHANGE_URLS } from "../../Important/URLS";
-import WebsiteSlider from "./WebsiteSlider";
 import { toast } from "react-toastify";
+import BrowserSlider1 from "./BrowserSlider1";
 import profile from "../../Images/Boyspic.png";
 
 function Websitedev() {
@@ -34,7 +34,7 @@ function Websitedev() {
 
   const totalSlides = gigData.length;
   const slidesToShow = 4;
-  const slideWidth = 300;
+  const slideWidth = 330; // Adjusted slide width
 
   const goToPreviousSlide = () => {
     setCurrentSlide((prev) =>
@@ -50,7 +50,7 @@ function Websitedev() {
 
   useEffect(() => {
     if (slideRef.current) {
-      slideRef.current.scrollBy(slideWidth * currentSlide, 0);
+      slideRef.current.scrollLeft = slideWidth * currentSlide; // Updated scrollLeft property
     }
   }, [currentSlide]);
 
@@ -58,8 +58,8 @@ function Websitedev() {
     <Sliderrrs>
       <div className="heading_button">
         <h2 className="main_heading">
-          Most popular Gigs in Website Development
-          <IoIosArrowRoundForward />
+        Most popular Gigs in Website Development
+         <IoIosArrowRoundForward />
         </h2>
         <div className="slide_btn">
           <button onClick={goToPreviousSlide}>
@@ -76,7 +76,7 @@ function Websitedev() {
             key={index}
             className={`slide ${index === currentSlide ? "active" : ""}`}
           >
-            <WebsiteSlider gigData={gig} />
+            <BrowserSlider1 gigData={gig} />
             <div className="footer">
               <div className="profile_footer">
                 <img src={profile} alt="img" />
@@ -86,7 +86,7 @@ function Websitedev() {
                 <p> {gig?.gigsData?.gig_title}</p>
               </div>
               <div>
-                <h5> Rating:5</h5>
+                <h5>Rating:5<span>(50)</span></h5>
               </div>
               <div>
                 <h4>From: $ {gig?.price?.price}</h4>
@@ -120,18 +120,18 @@ const Sliderrrs = styled.section`
 
   .slides-container {
     display: flex;
-    flex-wrap: wrap;
-    /* / / overflow-x: auto; / / */
+    overflow-x: hidden; // Updated overflow property
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
   }
 
   .slide {
     flex: 0 0 auto;
-    width: 330px;
-    scroll-snap-align: initial;
-    margin-right: 10px;
+    width:19%;
+    scroll-snap-align: start; 
+    margin-left:13px;
     padding: 10px;
+
     .footer {
       margin-top: 20px;
       display: flex;
@@ -156,12 +156,17 @@ const Sliderrrs = styled.section`
       }
 
       p {
-        font-size: 15px;
+        font-size: 17px;
         margin-top: 5px;
         color: #404145;
         font-weight: 400;
         margin-left: 10px;
         margin-bottom: 0px;
+        &:hover{
+          text-decoration: underline;
+          text-decoration-thickness: 1px;
+        }
+   
       }
 
       h5 {
@@ -170,6 +175,12 @@ const Sliderrrs = styled.section`
         font-size: 16px;
         font-weight: 700;
         color: #222325;
+        span{
+          color: #74767e;
+          font-size: 16px;
+          font-weight: 400;
+          margin-left:2px;
+        }
       }
       h4 {
         margin-left: 10px;

@@ -76,11 +76,7 @@ export default function PostNav() {
 
   return (
     <Root>
-      <Navbar
-        collapseOnSelect
-        expand="lg"
-        className="bg-body-tertiary nav-menu"
-      >
+      <Navbar expand="lg" className="bg-body-tertiary">
         <ContainerFluid fluid>
           <Navbar.Brand
             href="home"
@@ -92,9 +88,9 @@ export default function PostNav() {
             {" "}
             <img src={logo1} alt="img" />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav"></Navbar.Toggle>
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav>
+          <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
               <div className="top_nav_pages">
                 <Nav.Link className="dashboard">
                   <a
@@ -223,7 +219,7 @@ export default function PostNav() {
                         </div>
                         <div className="middle">
                           <IoNotificationsOffOutline />
-                          {/* <IoNotificationsOutline /> */}
+                          {/* {/ {/ <IoNotificationsOutline /> /} /} */}
                           <h5>No Notifications</h5>
                           <p>
                             Browse our amazing catalog of Gigs or offer your
@@ -233,7 +229,7 @@ export default function PostNav() {
                         <div className="bottom">
                           <div>
                             <IoVolumeHigh />
-                            {/* <IoMdVolumeOff /> */}
+                            {/* {/ {/ <IoMdVolumeOff /> /} /} */}
                             <IoMdSettings />
                           </div>
                         </div>
@@ -270,7 +266,7 @@ export default function PostNav() {
                         <div className="bottom">
                           <div>
                             <IoVolumeHigh />
-                            {/* <IoMdVolumeOff /> */}
+                            {/* {/ {/ <IoMdVolumeOff /> /} /} */}
                             <IoMdSettings />
                           </div>
                           <a>See All In Inbox</a>
@@ -297,12 +293,24 @@ export default function PostNav() {
                 {profileshow && (
                   <div className="profile_option">
                     <div className="profile_div">
-                      <button onClick={ () =>{navigate("/Profile")}}>Profile</button>
+                      <button
+                        onClick={() => {
+                          navigate("/Profile");
+                        }}
+                      >
+                        Profile
+                      </button>
                     </div>
-                    <hr/>
+                    <hr />
 
                     <div className="profile_div">
-                      <button onClick={ ()=> {navigate("/loginseller")}}>Switch to Seller</button>
+                      <button
+                        onClick={() => {
+                          navigate("/loginseller");
+                        }}
+                      >
+                        Switch to Seller
+                      </button>
                     </div>
                   </div>
                 )}
@@ -582,42 +590,74 @@ const Root = styled.section`
     border: 1px solid #c5c6c9;
     background: white;
     width: 18%;
-    padding:10px;
+    padding: 10px;
     .profile_div {
-      display:flex;
-      justify-content:center;
-      margin-top:5px;
+      display: flex;
+      justify-content: center;
+      margin-top: 5px;
       button {
-        padding:5px 16px;
-        color:#95979d;
-        background-color:#fff0;
-        border:1px solid transparent;
+        padding: 5px 16px;
+        color: #95979d;
+        background-color: #fff0;
+        border: 1px solid transparent;
       }
     }
-    hr{
-      margin:10px;
+    hr {
+      margin: 10px;
     }
   }
 
-@media (max-width: 567px){
-  .profile_option {
-    position: absolute;
-    top: 240px;
-    z-index: 11;
-    border: 1px solid #c5c6c9;
-    background: white;
-    width: 50%;
-    padding:10px;
-    
+  @media (max-width: 567px) {
+    .notifyy {
+      justify-content: center;
+    }
+
+    .top_nav_pages {
+      padding: 0;
+      justify-content: center;
+    }
+
+    a.dashboard.nav-link {
+      margin-right: 10px;
+    }
+
+    .top_nav_pages .business .optn_div {
+      left: -80px;
+    }
+
+    .top_nav_pages .dashboard a,
+    .top_nav_pages .business a,
+    .top_nav_pages .dashboard button,
+    .top_nav_pages .business button {
+      padding: 0 1px;
+    }
+
+    .profile_option {
+      position: absolute;
+      top: 240px;
+      z-index: 11;
+      border: 1px solid #c5c6c9;
+      background: white;
+      width: 50%;
+      padding: 10px;
+    }
   }
-  
+
+  @media (min-width: 567px) and (max-width: 992px){
+    .profile_option{
+      top:120px;
+      width:25%;
+      left:101px;
+    }
+.show {
+    display: flex;
+}
+.top_nav_pages {
+    padding:0px; 
 }
 
-@media (min-width :567px) and (max-width: 992px){
-.profile_option {
-    top: 120px;
-    width: 25%;
-    left: 101px;
-}
-}
+
+
+
+  }
 `;

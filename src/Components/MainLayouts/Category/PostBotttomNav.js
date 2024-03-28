@@ -1,7 +1,10 @@
 import { useState } from "react";
+
 import ContainerFluid from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+// import NavDropdown from 'react-bootstrap/NavDropdown';
+
 import styled from "styled-components";
 import GraphicsDesign from "./GraphicsDesign";
 import ProgrammingTech from "./ProgrammingTech";
@@ -101,15 +104,16 @@ function PostBotttomNav() {
     setIsListOpen10(false);
   };
 
-  return (
+    return (
     <Root>
-      <Navbar  collapseOnSelect
-        expand="lg"
-         bg="light" data-bs-theme="light">
+   <Navbar expand="lg" className="bg-body-tertiary">
+
         <ContainerFluid fluid>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav"></Navbar.Toggle>
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav>
+
+          <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
+
+          <Navbar.Collapse id="basic-navbar-nav" >
+            <Nav className="me-auto">
               <div
                 onMouseEnter={handleMouseEnter1}
                 onMouseLeave={handleMouseLeave1}
@@ -279,7 +283,19 @@ const Root = styled.section`
 
   @media (max-width: 567px){
     .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
-    justify-content: end;
+    justify-content:end;
+    padding-bottom:8px;
 }
+
+  }
+
+  @media (min-width: 567px) and (max-width: 992px){
+    .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+    justify-content:end;
+    padding-bottom:8px;
+}
+    
+
+
   }
 `;

@@ -60,7 +60,7 @@ const Sliderrrs = styled.section`
   .img {
     width: 100%;
     border-radius: 10px;
-    height: 30vh;
+    height: 140px;
     object-fit: cover;
   }
   .slick-prev,
@@ -72,5 +72,17 @@ const Sliderrrs = styled.section`
   }
   .slick-next {
     right: 10px;
+  }
+
+  @media (max-width: 567px) {
+ .img {
+    height: 100%;
+}
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    .img {
+    height: 100%;
+}
   }
 `;

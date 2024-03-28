@@ -30,11 +30,7 @@ export default function Table1({
               <td>
                 <div className="title_input">
                   <textarea
-                    value={
-                      i.plantypes.find(
-                        (plantype) => plantype.plan_type === "basic"
-                      )?.title || ""
-                    }
+                    value={i.plantypes[0].title}
                     id="basic"
                     onChange={(e) => {
                       const updatedPrice = { ...price, title: e.target.value };
@@ -49,11 +45,7 @@ export default function Table1({
               <td>
                 <div className="title_input">
                   <textarea
-                    value={
-                      i.plantypes.find(
-                        (plantype) => plantype.plan_type === "standard"
-                      )?.title || ""
-                    }
+                    value={i.plantypes[1].title}
                     id="standard"
                     onChange={(e) =>
                       setPrice2({ ...price2, title: e.target.value })
@@ -67,11 +59,7 @@ export default function Table1({
               <td>
                 <div className="title_input">
                   <textarea
-                    value={
-                      i.plantypes.find(
-                        (plantype) => plantype.plan_type === "premium"
-                      )?.title || ""
-                    }
+                    value={i.plantypes[2].title}
                     id="premium"
                     onChange={(e) =>
                       setPrice3({ ...price3, title: e.target.value })

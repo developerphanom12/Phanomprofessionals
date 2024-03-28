@@ -5,15 +5,14 @@ import {
   IoIosArrowRoundForward,
 } from "react-icons/io";
 import styled from "styled-components";
-import SliderrGig from "./SliderrGig";
 import axios from "axios";
 import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
+import BrowserSlider1 from "./BrowserSlider1";
 import profile from "../../Images/Boyspic.png";
 
 function GigsSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slideRef = useRef();
   const [gigData, setGigData] = useState([]);
 
   useEffect(() => {
@@ -31,9 +30,11 @@ function GigsSlider() {
     getSliderApi();
   }, []);
 
+  const slideRef = useRef();
+
   const totalSlides = gigData.length;
   const slidesToShow = 4;
-  const slideWidth = 310; // Adjusted slide width to match styling
+  const slideWidth = 330; // Adjusted slide width
 
   const goToPreviousSlide = () => {
     setCurrentSlide((prev) =>
@@ -49,18 +50,18 @@ function GigsSlider() {
 
   useEffect(() => {
     if (slideRef.current) {
-      slideRef.current.scrollBy(slideWidth * currentSlide, 0);
+      slideRef.current.scrollLeft = slideWidth * currentSlide; // Updated scrollLeft property
     }
   }, [currentSlide]);
 
   return (
-    <Root className="slider-container">
+    <Sliderrrs>
       <div className="heading_button">
         <h2 className="main_heading">
-          Gigs you may like
+        Gigs you may like
           <IoIosArrowRoundForward />
         </h2>
-        <div>
+        <div className="slide_btn">
           <button onClick={goToPreviousSlide}>
             <IoIosArrowDropleft />
           </button>
@@ -75,33 +76,31 @@ function GigsSlider() {
             key={index}
             className={`slide ${index === currentSlide ? "active" : ""}`}
           >
-            <SliderrGig gigData={gig} />
+            <BrowserSlider1 gigData={gig} />
             <div className="footer">
               <div className="profile_footer">
                 <img src={profile} alt="img" />
-                <h6>{gig?.seller?.username}</h6>
+                <h6> {gig?.seller?.username}</h6>
               </div>
               <div>
-                <p>{gig?.gigsData?.gig_title}</p>
+                <p> {gig?.gigsData?.gig_title}</p>
               </div>
               <div>
-                <h5>Rating:5</h5>
+                <h5>Rating:5 <span>(50)</span></h5>
               </div>
               <div>
                 <h4>From: $ {gig?.price?.price}</h4>
               </div>
-
             </div>
           </div>
         ))}
       </div>
-    </Root>
+    </Sliderrrs>
   );
 }
-
 export default GigsSlider;
 
-const Root = styled.section`
+const Sliderrrs = styled.section`
   width: 100vw;
   .slider-container {
     display: flex;
@@ -121,17 +120,16 @@ const Root = styled.section`
 
   .slides-container {
     display: flex;
-    flex-wrap: wrap;
-    /* / / overflow-x: auto; / / */
+    overflow-x: hidden; // Updated overflow property
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
   }
 
   .slide {
     flex: 0 0 auto;
-    width: 330px;
-    scroll-snap-align: initial;
-    margin-right: 10px;
+    width: 19%;
+    scroll-snap-align: start; 
+    margin-left:13px;
     padding: 10px;
 
     .footer {
@@ -158,12 +156,17 @@ const Root = styled.section`
       }
 
       p {
-        font-size: 15px;
+        font-size: 17px;
         margin-top: 5px;
         color: #404145;
         font-weight: 400;
         margin-left: 10px;
         margin-bottom: 0px;
+        &:hover{
+          text-decoration: underline;
+          text-decoration-thickness: 1px;
+        }
+   
       }
 
       h5 {
@@ -172,6 +175,12 @@ const Root = styled.section`
         font-size: 16px;
         font-weight: 700;
         color: #222325;
+        span{
+          color: #74767e;
+          font-size: 16px;
+          font-weight: 400;
+          margin-left:2px;
+        }
       }
       h4 {
         margin-left: 10px;
