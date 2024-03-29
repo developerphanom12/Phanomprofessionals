@@ -174,6 +174,6 @@ function Userone() {
       <button onClick={sendMessage}>Send</button>
     </div>
   );
-}
+}      
 
 export default Userone;
