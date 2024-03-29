@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
-
+import styled from "styled-components";
+import { FaRegUser } from "react-icons/fa";
+import { SlOptions } from "react-icons/sl";
+import LoginBuyer from "../CommonPages/loginPages/LoginBuyer";
+import moment from "moment";
 
 const token = localStorage.getItem("token");
 const socket = io("http://localhost:4000", {
@@ -17,8 +21,8 @@ function Userone() {
   const [users, setUsers] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [selectedUser, setSelectedUser] = useState(null); 
+  const [passsword, setPassword] = useState("");
+  const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -33,7 +37,10 @@ function Userone() {
       fetchChatHistory(selectedUser);
       socket.emit("joinRoom", selectedUser); // Join room to receive new messages for selected user
     }
-  
+    socket.on("chatHistory", (data) => {
+      setMessages(data.chatHistory);
+    });
+
     // Clean up function
     return () => {
       if (selectedUser) {
@@ -41,7 +48,7 @@ function Userone() {
       }
     };
   }, [selectedUser]);
-  
+
   useEffect(() => {
     socket.on("newMessage", (data) => {
       if (data.senderId === selectedUser || data.receiver === selectedUser) {
@@ -53,13 +60,29 @@ function Userone() {
       socket.off("newMessage");
     };
   }, [selectedUser]);
+
+  useEffect(() => {
+    socket.on("newMessage", (data) => {
+      if (
+        (data.senderId === selectedUser && data.receiver === id) ||
+        (data.senderId === id && data.receiver === selectedUser)
+      ) {
+        setMessages((prevMessages) => [...prevMessages, data]);
+      }
+    });
+
+    return () => {
+      socket.off("newMessage");
+    };
+  }, [selectedUser, id]);
+
   const login = () => {
     fetch("http://localhost:4000/api/admin/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username: username, password: password }),
+      body: JSON.stringify({ username: username, passsword: passsword }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -88,14 +111,14 @@ function Userone() {
       message: messageInput,
     });
     setMessageInput("");
+    fetchChatHistory(selectedUser);
   };
 
   const startChat = (userId) => {
-    setSelectedUser(userId); // Set selected user
+    setSelectedUser(userId);
     fetchChatHistory(userId); // Fetch chat history for selected user
   };
 
-  
   const fetchChatHistory = (userId) => {
     socket.emit("getChatHistory", { userId: userId });
   };
@@ -109,71 +132,228 @@ function Userone() {
       .then((response) => response.json())
       .then((data) => {
         setUsers(data.users);
-        console.log("datausers",data.users)
+        console.log("datausers", data.users);
       })
       .catch((error) => console.error("Error fetching users:", error));
   };
 
   if (!isLoggedIn) {
     return (
+      // <div>
+      //   <h1>Login Page</h1>
+      //   <input
+      //     type="text"
+      //     placeholder="Username"
+      //     value={username}
+      //     onChange={(e) => setUsername(e.target.value)}
+      //   />
+      //   <input
+      //     type="password"
+      //     placeholder="Password"
+      //     value={passsword}
+      //     onChange={(e) => setPassword(e.target.value)}
+      //   />
+      //   <button onClick={login}>Login</button>
+      // </div>
       <div>
-        <h1>Login Page</h1>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={login}>Login</button>
+        <LoginBuyer />
       </div>
     );
   }
 
   return (
-    <div>
-      <h1>Chat App</h1>
-      <div className="message-container">
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`message ${message.senderId === id ? "sent" : "received"}`}
-          >
-            <div>
-              {message.senderId === id ? (
-                <strong>You:</strong>
-              ) : (
-                <strong>{message.sender}:</strong>
-              )}
-              {message.message}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div>
-        <h2>Users</h2>
+    <Root>
+      <div className="user_area">
+        <h5>All Messages</h5>
         <ul>
           {users.map((user, index) => (
             <li key={index}>
-              {user.username}{" "}
-              <button onClick={() => startChat(user.id)}>Chat</button>{" "}
+              <button onClick={() => startChat(user.id)}>
+                <FaRegUser />
+                {user.username}
+              </button>{" "}
+              <SlOptions />
             </li>
           ))}
         </ul>
       </div>
-      <input
-        type="text"
-        value={messageInput}
-        onChange={(e) => setMessageInput(e.target.value)}
-      />
-      <button onClick={sendMessage}>Send</button>
-    </div>
+      <div className="chat_area">
+       
+          <div className="heading_name">
+            <h5>Chat App</h5>
+            {/* <h5>{selectedUser ? selectedUser.username : "Chat App"}</h5> */}
+          </div>
+        
+        <div className="message-container">
+          {messages.map((message, index) => (
+            <>
+              <div
+                key={index}
+                className={`message ${
+                  message.senderId === id ? "sent" : "received"
+                }`}
+              >
+                <div className="msg_box">
+                  {message.senderId === id ? (
+                    <strong className="user_name">
+                      You:
+                      <span className="timestamp">
+                        {moment(message.timestamp).format("HH:mm:ss")}
+                      </span>
+                    </strong>
+                  ) : (
+                    <strong className="user_name">
+                      {message.sender}
+
+                      <span className="timestamp">
+                        {moment(message.timestamp).format("HH:mm:ss")}
+                      </span>
+                    </strong>
+                  )}
+                  {message.message}
+                </div>
+              </div>
+            </>
+          ))}
+        </div>
+        <div className="input_button">
+          <input
+            type="text"
+            placeholder="Send Message..."
+            value={messageInput}
+            onChange={(e) => setMessageInput(e.target.value)}
+          />
+          <button className="offer_btn">Create an Offer</button>
+          <button onClick={sendMessage}>Send</button>
+        </div>
+      </div>
+    </Root>
   );
-}      
+}
 
 export default Userone;
+const Root = styled.section`
+  display: flex;
+  width: 100vw;
+  height: 70vh;
+  margin-bottom: 10px;
+  .user_area {
+    overflow-y: auto;
+    padding: 10px;
+    width: 270px;
+    min-width: 100px;
+    ul {
+      list-style: none;
+      padding: 0px;
+      li {
+        display: flex;
+        margin: 10px 0px;
+        align-items: end;
+        width: 100%;
+        font-weight: 600;
+        border-radius: 7px;
+        padding: 7px;
+        background-color: #dee2e675;
+        color: #000000c7;
+        justify-content: space-between;
+        button {
+          display: flex;
+          border: 1px solid transparent;
+          text-align: left;
+          align-items: center;
+          font-weight: 600;
+          font-size: 14px;
+          text-transform: capitalize;
+          svg {
+            margin-right: 7px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50px;
+            border: 1px solid #000;
+            padding: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .chat_area {
+    margin: 10px 10px 10px 40px;
+    width: 60vw;
+    height: 70vh;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    .heading_name {
+      height: 50px;
+      padding: 10px;
+      border-bottom: 1px solid lightgray;
+      &:hover {
+        box-shadow: 0px 2px 2px 0px lightgray;
+      }
+    }
+    .message-container {
+      overflow-y: auto;
+      height: 50vh;
+      padding: 20px;
+
+      .message {
+        display: flex;
+      }
+      .msg_box {
+        width: 80%;
+        padding: 4px;
+        background-color: #7db7f114;
+        margin: 7px 0px;
+        display: flex;
+        flex-direction: column;
+        border-left: 2px solid #70b5fb;
+        text-transform: capitalize;
+        border-radius: 5px;
+        .user_name {
+          font-size: 12px;
+          color: #3a97f5;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .timestamp {
+            font-size: 11px;
+          }
+        }
+      }
+    }
+    .input_button {
+      position: relative;
+      top: 1px;
+      width: 80%;
+      border: 1px solid lightgray;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      margin: 20px;
+      margin-top: 5px;
+      .offer_btn {
+        color: #fff;
+        background-color: black;
+        border-radius: 10px;
+        border: 1px solid black;
+        padding: 6px;
+        font-size: 13px;
+      }
+      input {
+        border-radius: 10px;
+        width: 60%;
+        color: lightgray;
+        outline: none;
+        border: 1px solid #fff;
+        margin-left: 3px;
+      }
+      button {
+        border: none;
+        font-weight: 600;
+        color: #000;
+        background-color: transparent;
+      }
+    }
+  }
+`;

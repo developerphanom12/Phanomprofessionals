@@ -7,9 +7,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import axios from "axios";
 import { toast } from "react-toastify";
-import {  EXCHANGE_URLS_BUYER } from "../../Important/URLS";
+import { EXCHANGE_URLS_BUYER } from "../../Important/URLS";
 import { useForm } from "react-hook-form";
-import { setUserRoleAction, userCheckAction, userDataAction } from "../../../redux/users/action";
+import { userCheckAction, userDataAction } from "../../../redux/users/action";
 
 const schema = yup.object().shape({
   username: yup.string().required("Username is required."),
@@ -38,8 +38,6 @@ export default function LoginBuyer() {
       if (res?.status === 200) {
         navigate("/innerpages");
         localStorage.setItem("token", res?.data?.data?.token);
-        localStorage.setItem("role", "buyer");
-        dispatch(setUserRoleAction('buyer'));
         dispatch(userDataAction(res?.data?.data));
         dispatch(userCheckAction(true));
         toast.success("Login Successfully");
@@ -60,6 +58,7 @@ export default function LoginBuyer() {
   return (
     <Root>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h6>Logged In As Buyer</h6>
         <div>
           <div className="user_name">
             <label>User name or email address</label>

@@ -1,7 +1,7 @@
 const initialState = {
   user: {},
   userCheck: false,
-  role: "buyer",
+  role: "",
   appDetails: {},
   isLoading: false,
   gigId: "",
@@ -34,11 +34,7 @@ const UserReducer = (state = initialState, action) => {
         ...state,
         appDetails: action.payload,
       };
-      case "SET_USER_ROLE": // New action type to set user role
-      return {
-        ...state,
-        role: action.payload,
-      };
+      
     default:
       return state;
   }

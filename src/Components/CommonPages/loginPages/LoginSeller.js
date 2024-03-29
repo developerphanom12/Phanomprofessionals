@@ -38,8 +38,6 @@ export default function LoginSeller() {
       if (res?.status === 200) {
         navigate("/dashboard");
         localStorage.setItem("token", res?.data?.data?.token);
-        localStorage.setItem("role", "seller");
-        dispatch(setUserRoleAction('seller'));
         dispatch(userDataAction(res?.data?.data));
         dispatch(userCheckAction(true));
         toast.success("Login Successfully");
@@ -60,6 +58,7 @@ export default function LoginSeller() {
   return (
     <Root>
       <form onSubmit={handleSubmit(onSubmit)}>
+      <h6>Logged In As Seller</h6>
         <div>
           <div className="user_name">
             <label>User name or email address</label>

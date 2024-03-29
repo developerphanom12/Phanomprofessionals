@@ -23,7 +23,7 @@ import axios from "axios";
 import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import SliderImage from "./SliderImage";
 // import SliderText from "./SliderText";
 
@@ -33,6 +33,7 @@ export default function Page1() {
   const [showMessageBox, setShowMessageBox] = useState(false);
   const [gigData, setGigData] = useState([]);
   const [active, setActive] = useState("basic");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getSliderApi = async () => {
@@ -241,7 +242,11 @@ export default function Page1() {
                                     </div>
                                   </div>
                                   <div className="continue_button">
-                                    <button>
+                                    <button
+                                      onClick={() => {
+                                        navigate("/user");
+                                      }}
+                                    >
                                       ContactMe <FaArrowRightLong />
                                     </button>
                                   </div>
@@ -899,5 +904,52 @@ const Root = styled.section`
   }
   .table > :not(caption) > * > * {
     padding: 0px;
+  }
+
+  @media (max-width: 567px) {
+    .main_section .main_barr .profile_contain {
+      gap: 0;
+      display: unset;
+    }
+    .main_section .main_barr .profile_contain .pro_detail {
+      padding: 10px 5px;
+    }
+    .slick-list {
+      height: 222px;
+    }
+
+    .main_section .side_barr {
+      width: 100vw;
+    }
+
+    .main_section .main_barr .msg_writing_box {
+      width: 350px;
+    }
+
+    .main_section .main_barr .msg_writing_box .msg_writing_foot {
+      padding: 14px 19px;
+    }
+
+    /* .main_section .main_barr .profile_contain {
+   width: 500px;
+} */
+
+    .main_section .main_barr .About_this_gig {
+      margin-top: 30px;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    .main_section .main_barr .About_this_gig {
+      margin-top: 30px;
+    }
+
+    .main_section .main_barr {
+      margin-right: 0;
+      width: 100%;
+    }
+    .main_section .side_barr {
+      width: 98%;
+    }
   }
 `;

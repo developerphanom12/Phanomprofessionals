@@ -44,16 +44,9 @@ export default function PostNav() {
   const dispatch = useDispatch();
 
   const handleLogoutClick = () => {
-    // Clear token from local storage
     localStorage.setItem("token", "");
-    // Update user check status in Redux store
     dispatch(userCheckAction(false));
-    // Update user role in local storage to "buyer"
-    localStorage.setItem("role", "buyer");
-    // Dispatch action to set user role to "buyer" in Redux store
-    dispatch(setUserRoleAction("buyer"));
-    // Navigate to innerpages
-    navigate("/innerpages");
+    navigate("/home");
   };
 
   const toggleMessage = () => {
@@ -331,7 +324,7 @@ export default function PostNav() {
                     <hr />
 
                     <div className="profile_div">
-                      {userDetails.role === "seller" ? (
+                     
                         <button
                           onClick={() => {
                             handleLogoutClick();
@@ -339,15 +332,7 @@ export default function PostNav() {
                         >
                           logout
                         </button>
-                      ) : (
-                        <button
-                          onClick={() => {
-                            navigate("/loginseller");
-                          }}
-                        >
-                          Switch to Seller
-                        </button>
-                      )}
+                     
                     </div>
                   </div>
                 )}

@@ -4,6 +4,8 @@ import { IoIosAdd, IoMdArrowDropdown } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { BsThreeDots } from "react-icons/bs";
+
 import {
   EXCHANGE_URLS,
   EXCHANGE_URLS_IMAGES,
@@ -38,7 +40,7 @@ export default function PausedGigs() {
         axiosConfig
       );
       if (res?.status === 201) {
-        // navigate("/dashboard");
+        navigate("/gigs");
         toast.success("activate successfull");
       }
     } catch (err) {
@@ -59,7 +61,7 @@ export default function PausedGigs() {
         axiosConfig
       );
       if (res?.status === 201) {
-        // navigate("/dashboard");
+        navigate("/gigs");
         toast.success("Gig  Delete Permanent successfull");
       }
     } catch (err) {
@@ -137,7 +139,7 @@ export default function PausedGigs() {
           <IoIosAdd />
         </div>
         <div className="text_gig">
-          {/* {/ <b onClick={navigate("/create")}>Create a new gig</b> /} */}
+        <b onClick={navigate("/create")}>Create a new gig</b> 
         </div>
       </div>
       {gigGet.map((gigData, index) => (
@@ -159,7 +161,8 @@ export default function PausedGigs() {
 
             <td colSpan={2}>
               <div className="dropdown_wrapper">
-                <IoMdArrowDropdown onClick={() => handleDropdownClick(index)} />
+              <BsThreeDots className="threedot_icon
+                "  onClick={() => handleDropdownClick(index)}/>
                 {showDropdown[index] && (
                   <div className="dropdown_menu">
                     <ul>
@@ -272,6 +275,20 @@ const Root = styled.section`
     display: flex;
     flex-wrap: wrap;
   }
+  .dropdown_menu {
+    padding: 10px 20px 10px 10px;
+}
+
+.dropdown_wrapper {
+    position: absolute;
+
+    left: 69%;
+    top: 227px;
+    background-color: #fff;
+}
+svg.threedot_icon {
+    margin-left: 101px;
+}
 
   @media (max-width: 567px){
 

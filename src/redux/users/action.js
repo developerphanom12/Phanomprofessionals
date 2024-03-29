@@ -36,7 +36,3 @@ export const UserDetails = (data) => {
     };
   };
 
-export const setUserRoleAction = (role) => ({
-  type: "SET_USER_ROLE",
-  payload: role,
-});

@@ -23,7 +23,6 @@ import VettingProcess from "./Components/CommonPages/WhyPhanom/VettingProcess/Ve
 import HirePpcExpert from "./Components/CommonPages/HireIndianTalent/HireDigitalMarketing/HirePpcExpert/HirePpcExpert";
 import HireSeoExpert from "./Components/CommonPages/HireIndianTalent/HireDigitalMarketing/HireSeoExpert/HireSeoExpert";
 import InnerPages from "./Components/Buyer/categoryPages/InnerPages";
-import InternalPages from "./Components/Buyer/profilePlanPages/InternalPages";
 import Layout from "./Components/MainLayouts/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import Dashboard from "./Components/Seller/TopNavPages/Dashboard/Dashboard";
@@ -33,7 +32,6 @@ import Profile from "./Components/Seller/TopNavPages/MyBusiness/profile/Profile"
 import Earnings from "./Components/Seller/TopNavPages/MyBusiness/earning/Earnings";
 import Overview from "./Components/Seller/TopNavPages/Analytics/Overview";
 import CreatePage from "./Components/Seller/create/CreatePage";
-import Message from "./Components/MainLayouts/message/Message";
 import PageNF from "./Components/Important/PageNF";
 import { loaderAction } from "./redux/users/action";
 import { useEffect } from "react";
@@ -44,14 +42,12 @@ import Pricing from "./Components/Seller/create/pricing/Pricing";
 import DescriptionFAQ from "./Components/Seller/create/description/DescriptionFAQ";
 import Gallery from "./Components/Seller/create/gallery/Gallery";
 import Requirements from "./Components/Seller/create/requirements/Requirements";
-import InnPage from "./Components/MainLayouts/subcategory/InnPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EditGigsPage from "./Components/Seller/TopNavPages/MyBusiness/gigs/editGigs/EditGigsPage";
 import Topkeywords from "./Components/Seller/TopNavPages/Analytics/Topkeywords";
 import LoginBuyer from "./Components/CommonPages/loginPages/LoginBuyer";
 import Page1 from "./Components/Buyer/profilePlanPages/Page1";
-import Chat from "./Components/Chat/Chat";
 import Userone from "./Components/Chat/Userone";
 // import ChatSection from "./Components/MainLayouts/message/ChatSection";
 
@@ -69,70 +65,71 @@ function App() {
     <div>
       <Layout>
         <Routes>
-          <>
-            <Route path="/message" element={<Message />} />
-            {/* <Route path="/chat" element={<ChatSection />} /> */}
-            <Route path="/innpage" element={<InnPage />} />
-            <Route path="/innerpages" element={<InnerPages />} />
-            <Route path="/internalpage" element={<InternalPages />} />
-            <Route path="editgigspages/:id" element={<Page1 />} />
-
+          {userCheck && token ? (
             <>
-              {/* buyer pagess--------------------------------------------------------------- */}
+              <Route path="/user" element={<Userone />} />
+              {/* <Route path="/message" element={<Message />} /> */}
+              {/* <Route path="/chat" element={<ChatSection />} /> */}
+              {/* <Route path="/internalpage" element={<InternalPages />} /> */}
+              {userDetails.role === "buyer" ? (
+                <>
+                  {/* buyer pagess--------------------------------------------------------------- */}
+                  <Route path="editgigspages/:id" element={<Page1 />} />
+                  <Route path="/innerpages" element={<InnerPages />} />
+
+                </>
+              ) : userDetails.role === "seller" ? (
+                <>
+                  {/* seller pages ---------------------------------------------------------------*/}
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/orders" element={<Orders />} />
+                  <Route path="/gigs" element={<Gigs />} />
+                  <Route path="/pricing" element={<Pricing />} />
+                  <Route path="/description" element={<DescriptionFAQ />} />
+                  <Route path="/requirements" element={<Requirements />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/create" element={<CreatePage />} />
+                  <Route path="editgigspages" element={<EditGigsPage />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/earnings" element={<Earnings />} />
+                  <Route path="/analytics" element={<Analytics />} />
+                  <Route path="/overview" element={<Overview />} />
+                  <Route path="/topkeywords" element={<Topkeywords />} />
+                </>
+              ) : (
+                ""
+              )}
+            </>
+          ) : (
+            <>
+              {/* common pages -------------------------------------------------------------- */}
+
+              <Route path="/home" element={<Home />} />
+              <Route path="*" element={<PageNF />} />
+              <Route path="/vettingprocess" element={<VettingProcess />} />
+              <Route path="/hiremobile" element={<HireMobileApp />} />
+              <Route path="/hiresoftware" element={<HireSoftware />} />
+              <Route path="/hireandroid" element={<HireAndroid />} />
+              <Route path="/hirewordpress" element={<HireWordPress />} />
+              <Route path="/hirephp" element={<HirePHP />} />
+              <Route path="/hireshopify" element={<HireShopify />} />
+              <Route path="/hirelaravel" element={<HireLaravel />} />
+              <Route path="/hirenode" element={<HireNodejs />} />
+              <Route path="/hirereact" element={<HireReactJs />} />
+              <Route path="/hiregraphic" element={<HireGraphic />} />
+              <Route path="/hireuiux" element={<HireUiuxDesigner />} />
+              <Route path="/hireweb" element={<HireWebDesigner />} />
+              <Route path="/hirepa" element={<HirePA />} />
+              <Route path="/hireseo" element={<HireSeoExpert />} />
+              <Route path="/hireppc" element={<HirePpcExpert />} />
+              <Route path="/hireios" element={<HireIOS />} />
+              <Route path="/hirereactnative" element={<HireReactNative />} />
+              <Route path="/whyindia" element={<WhyIndia />} />
+              <Route path="/howitworks" element={<HowItWorks />} />
+              <Route path="/loginBuyer" element={<LoginBuyer />} />
               <Route path="/loginseller" element={<LoginSeller />} />
             </>
-
-            <>
-              {/* seller pages ---------------------------------------------------------------*/}
-              <Route path="/dashboard" element={<Dashboard />} />
-
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/gigs" element={<Gigs />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/description" element={<DescriptionFAQ />} />
-              <Route path="/requirements" element={<Requirements />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/create" element={<CreatePage />} />
-              <Route path="editgigspages" element={<EditGigsPage />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/earnings" element={<Earnings />} />
-              <Route path="/analytics" element={<Analytics />} />
-              <Route path="/overview" element={<Overview />} />
-              <Route path="/topkeywords" element={<Topkeywords />} />
-              <Route path="/chat" element={<Chat />} />
-
-            </>
-          </>
-
-          <>
-            {/* common pages -------------------------------------------------------------- */}
-           
-            <Route path="/user" element={<Userone />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="*" element={<PageNF />} />
-            <Route path="/vettingprocess" element={<VettingProcess />} />
-            <Route path="/hiremobile" element={<HireMobileApp />} />
-            <Route path="/hiresoftware" element={<HireSoftware />} />
-            <Route path="/hireandroid" element={<HireAndroid />} />
-            <Route path="/hirewordpress" element={<HireWordPress />} />
-            <Route path="/hirephp" element={<HirePHP />} />
-            <Route path="/hireshopify" element={<HireShopify />} />
-            <Route path="/hirelaravel" element={<HireLaravel />} />
-            <Route path="/hirenode" element={<HireNodejs />} />
-            <Route path="/hirereact" element={<HireReactJs />} />
-            <Route path="/hiregraphic" element={<HireGraphic />} />
-            <Route path="/hireuiux" element={<HireUiuxDesigner />} />
-            <Route path="/hireweb" element={<HireWebDesigner />} />
-            <Route path="/hirepa" element={<HirePA />} />
-            <Route path="/hireseo" element={<HireSeoExpert />} />
-            <Route path="/hireppc" element={<HirePpcExpert />} />
-            <Route path="/hireios" element={<HireIOS />} />
-            <Route path="/hirereactnative" element={<HireReactNative />} />
-            <Route path="/whyindia" element={<WhyIndia />} />
-            <Route path="/howitworks" element={<HowItWorks />} />
-            <Route path="/loginBuyer" element={<LoginBuyer />} />
-
-          </>
+          )}
         </Routes>
         <Loader />
         <ToastContainer />

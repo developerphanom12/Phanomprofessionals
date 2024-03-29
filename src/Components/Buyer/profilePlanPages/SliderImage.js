@@ -83,6 +83,7 @@ const Sliderimage = styled.section`
     width: 53vw ;
     height: 70vh ;
     border-radius: 20px;
+    object-fit:contain;
     @media (max-width: 576px) {
       width: 86vw ;
       height: 53vh;
@@ -170,4 +171,17 @@ const Sliderimage = styled.section`
       width: 86vw;
     }
   } */
+
+@media (max-width: 567px){
+    margin: 10px;
+
+ .main_section .main_barr .profile_contain {
+    gap: 0;
+
+}
+.slick-list {
+    height:200px;
+}
+
+}
 `;

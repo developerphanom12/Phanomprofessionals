@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { IoIosAdd, IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { BsThreeDots } from "react-icons/bs";
 import {
   EXCHANGE_URLS,
   EXCHANGE_URLS_IMAGES,
@@ -72,7 +73,7 @@ export default function ActiveGigs() {
         axiosConfig
       );
       if (res?.status === 201) {
-        navigate("/dashboard");
+        navigate("/gigs");
         toast.success("Gig  Pause successfull check now on pause");
       }
     } catch (err) {
@@ -110,7 +111,7 @@ export default function ActiveGigs() {
         axiosConfig
       );
       if (res?.status === 201) {
-        navigate("/dashboard");
+        navigate("/gigs");
         toast.success("Gig  Delete Permanent successfull");
       }
     } catch (err) {
@@ -169,9 +170,13 @@ export default function ActiveGigs() {
 
               <td colSpan={2}>
                 <div className="dropdown_wrapper">
-                  <IoMdArrowDropdown
+                <BsThreeDots className="threedot_icon
+                "  onClick={() => handleDropdownClick(index)}/>
+
+                  {/* <IoMdArrowDropdown
                     onClick={() => handleDropdownClick(index)}
-                  />
+                  /> */}
+
                   {showDropdown[index] && (
                     <div className="dropdown_menu">
                       <ul>
@@ -290,6 +295,22 @@ const Root = styled.section`
     flex-wrap: wrap;
   }
 
+
+  .dropdown_menu {
+    padding: 10px 20px 10px 10px;
+}
+
+.dropdown_wrapper {
+    position: absolute;
+    /* / left: -30px; / */
+    left: 69%;
+    top: 227px;
+    background-color: #fff;
+}
+svg.threedot_icon {
+    margin-left: 101px;
+}
+
   @media (max-width: 567px) {
     .gig_box {
       width: 100%;
@@ -298,6 +319,18 @@ const Root = styled.section`
     tbody {
       width: 100%;
     }
+
+    /* .dropdown_wrapper {
+    position: absolute;
+    left: 69%;
+    top: 227px;
+    background-color: #fff;
+}
+svg.threedot_icon {
+    margin-left: 101px;
+} */
+
+
   }
 
   @media (min-width: 567px) and (max-width: 992px) {

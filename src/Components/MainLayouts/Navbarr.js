@@ -8,7 +8,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import ContainerFluid from "react-bootstrap/Container";
-
+import PostNav from "./PostNav";
 
 export default function Navbarr() {
   const [activePop, setActivePop] = useState(false);
@@ -17,7 +17,8 @@ export default function Navbarr() {
   const [isListOpen3, setIsListOpen3] = useState(false);
   const [isListOpen4, setIsListOpen4] = useState(false);
   const [isListOpen5, setIsListOpen5] = useState(false);
-  const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useState(false);
+  // const navigate = useNavigate();
   const handleMouseEnter = () => {
     setIsListOpen(true);
   };
@@ -52,6 +53,14 @@ export default function Navbarr() {
 
   const handleMouseLeave5 = () => {
     setIsListOpen5(false);
+  };
+
+  const handleLoginOn = () => {
+    setIsLogin(true);
+  };
+
+  const handleLoginOff = () => {
+    setIsLogin(false);
   };
 
   return (
@@ -227,7 +236,26 @@ export default function Navbarr() {
             </Nav>
 
             <Nav>
-              <Nav.Link href="loginBuyer">Be a Buyer</Nav.Link>
+              <Nav.Link href="#login">
+                <div
+                  onMouseEnter={handleLoginOn}
+                  onMouseLeave={handleLoginOff}
+                  onClick={() => {
+                    setIsLogin(!isLogin);
+                  }}
+                  className="profileLogin"
+                >
+                  Login
+                  <div className={isLogin ? "option_list2" : "off"}>
+                    <p>
+                      <Link to="/loginBuyer">buyer</Link>
+                    </p>
+                    <p>
+                      <Link to="/loginSeller">Seller</Link>
+                    </p>
+                  </div>
+                </div>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </ContainerFluid>
@@ -246,103 +274,103 @@ const Root = styled.section`
   div#responsive-navbar-nav {
     display: flex;
     justify-content: space-evenly;
-}
-  .nav-menu{
+  }
+  .nav-menu {
     width: 100vw;
   }
-  a{
+  a {
     margin: 0px;
   }
   img {
     width: 200px;
     padding: 0px 15px;
   }
-  .main_nav_bar {
-    .profile {
-      display: flex;
-      font-size: 15px;
-      color: #000000;
-      padding: 5px;
-      margin: 5px;
-      gap: 7px;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      cursor: pointer;
-      &:hover {
-        color: #147888;
-      }
 
-      > div {
-        font-size: 14px;
-        svg {
-          width: 13px;
-          height: 13px;
-        }
-      }
-      .option_list_list {
-        left: -23px;
-        top: 100%;
-        position: absolute;
-        .mini_option_list {
-          padding: 10px;
-          p {
-            margin: 0;
-            padding: 20px;
-            &:hover {
-              background-color: #0093ab;
-            }
-          }
-        }
-      }
-      .option_list {
-        left: -23px;
-        top: 100%;
-        position: absolute;
-      }
-      .option_list2 {
-        right: -170px;
-        top: 0;
-        position: absolute;
-      }
-      .option_list3 {
-        right: -170px;
-        top: 50%;
-        position: absolute;
-      }
-      .option_list4 {
-        right: -170px;
-        top: 70%;
-        position: absolute;
-      }
+  .profile,
+  .profileLogin {
+    display: flex;
+    font-size: 15px;
+    color: #000000;
+    padding: 5px;
+    margin: 5px;
+    gap: 7px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    &:hover {
+      color: #147888;
+    }
 
-      .option_list,
-      .option_list_list,
-      .option_list2,
-      .option_list3,
-      .option_list4 {
-        z-index: 1;
-        text-decoration: none;
-        min-width: 220px;
-        border: 1px solid #147888;
-        background-color: #147888;
-        color: #fff;
+    > div {
+      font-size: 14px;
+      svg {
+        width: 13px;
+        height: 13px;
+      }
+    }
+    .option_list_list {
+      left: -20px;
+      top: 100%;
+      position: absolute;
+      .mini_option_list {
+        padding: 10px;
         p {
           margin: 0;
-          padding: 15px;
+          padding: 20px;
           &:hover {
             background-color: #0093ab;
           }
         }
-        a {
-          text-decoration: none;
-          color: white;
+      }
+    }
+    .option_list {
+      left: -23px;
+      top: 100%;
+      position: absolute;
+    }
+    .option_list2 {
+      right: -170px;
+      top: 0;
+      position: absolute;
+    }
+    .option_list3 {
+      right: -170px;
+      top: 50%;
+      position: absolute;
+    }
+    .option_list4 {
+      right: -170px;
+      top: 70%;
+      position: absolute;
+    }
+
+    .option_list,
+    .option_list_list,
+    .option_list2,
+    .option_list3,
+    .option_list4 {
+      z-index: 1;
+      text-decoration: none;
+      min-width: 220px;
+      border: 1px solid #147888;
+      background-color: #147888;
+      color: #fff;
+      p {
+        margin: 0;
+        padding: 15px;
+        &:hover {
+          background-color: #0093ab;
         }
       }
-
-      .off {
-        display: none;
+      a {
+        text-decoration: none;
+        color: white;
       }
+    }
+
+    .off {
+      display: none;
     }
   }
 
