@@ -46,6 +46,7 @@ export default function PostNav() {
   const handleLogoutClick = () => {
     localStorage.setItem("token", "");
     dispatch(userCheckAction(false));
+    toast.success("Logout Successfully");
     navigate("/home");
   };
 
