@@ -1,10 +1,10 @@
+import moment from "moment/moment";
 import React, { useState, useEffect } from "react";
+import { FaRegUser } from "react-icons/fa6";
+import { SlOptions } from "react-icons/sl";
 import io from "socket.io-client";
 import styled from "styled-components";
-import { FaRegUser } from "react-icons/fa";
-import { SlOptions } from "react-icons/sl";
-import LoginBuyer from "../CommonPages/loginPages/LoginBuyer";
-import moment from "moment";
+
 
 const token = localStorage.getItem("token");
 const socket = io("http://localhost:4000", {
@@ -22,8 +22,9 @@ function Userone() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [passsword, setPassword] = useState("");
-  const [selectedUser, setSelectedUser] = useState(null);
-
+  const [selectedUser, setSelectedUser] = useState(null); 
+  const [selectedUserName, setSelectedUserName] = useState(""); // State to store the selected user's name
+console.log("name",selectedUserName)
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
@@ -40,15 +41,14 @@ function Userone() {
     socket.on("chatHistory", (data) => {
       setMessages(data.chatHistory);
     });
-
-    // Clean up function
+  
     return () => {
       if (selectedUser) {
         socket.emit("leaveRoom", selectedUser); // Leave room when component unmounts
       }
     };
   }, [selectedUser]);
-
+  
   useEffect(() => {
     socket.on("newMessage", (data) => {
       if (data.senderId === selectedUser || data.receiver === selectedUser) {
@@ -63,18 +63,15 @@ function Userone() {
 
   useEffect(() => {
     socket.on("newMessage", (data) => {
-      if (
-        (data.senderId === selectedUser && data.receiver === id) ||
-        (data.senderId === id && data.receiver === selectedUser)
-      ) {
-        setMessages((prevMessages) => [...prevMessages, data]);
-      }
+        if ((data.senderId === selectedUser && data.receiver === id) || (data.senderId === id && data.receiver === selectedUser)) {
+            setMessages((prevMessages) => [...prevMessages, data]);
+        }
     });
 
     return () => {
-      socket.off("newMessage");
+        socket.off("newMessage");
     };
-  }, [selectedUser, id]);
+}, [selectedUser, id]);
 
   const login = () => {
     fetch("http://localhost:4000/api/admin/login", {
@@ -112,13 +109,17 @@ function Userone() {
     });
     setMessageInput("");
     fetchChatHistory(selectedUser);
+
   };
 
-  const startChat = (userId) => {
-    setSelectedUser(userId);
+  const startChat = (userId,userName) => {
+    setSelectedUser(userId); // Set selected user
     fetchChatHistory(userId); // Fetch chat history for selected user
+    setSelectedUserName(userName); 
+
   };
 
+  
   const fetchChatHistory = (userId) => {
     socket.emit("getChatHistory", { userId: userId });
   };
@@ -132,7 +133,7 @@ function Userone() {
       .then((response) => response.json())
       .then((data) => {
         setUsers(data.users);
-        console.log("datausers", data.users);
+        console.log("datausers",data.users)
       })
       .catch((error) => console.error("Error fetching users:", error));
   };
@@ -156,11 +157,10 @@ function Userone() {
       //   <button onClick={login}>Login</button>
       // </div>
       <div>
-        <LoginBuyer />
+        { <LoginBuyer /> }
       </div>
     );
   }
-
   return (
     <Root>
       <div className="user_area">
@@ -168,7 +168,7 @@ function Userone() {
         <ul>
           {users.map((user, index) => (
             <li key={index}>
-              <button onClick={() => startChat(user.id)}>
+              <button onClick={() => startChat(user.id, user.username)}>
                 <FaRegUser />
                 {user.username}
               </button>{" "}
@@ -178,42 +178,27 @@ function Userone() {
         </ul>
       </div>
       <div className="chat_area">
-       
-          <div className="heading_name">
-            <h5>Chat App</h5>
-            {/* <h5>{selectedUser ? selectedUser.username : "Chat App"}</h5> */}
-          </div>
-        
+        <div className="heading_name">
+          <h5>                <FaRegUser />
+{selectedUserName ? `${selectedUserName}` : "Chat App"}
+</h5>
+<p><p>Last seen: 1 hour ago</p></p>
+
+        </div>
         <div className="message-container">
           {messages.map((message, index) => (
-            <>
-              <div
-                key={index}
-                className={`message ${
-                  message.senderId === id ? "sent" : "received"
-                }`}
-              >
-                <div className="msg_box">
-                  {message.senderId === id ? (
-                    <strong className="user_name">
-                      You:
-                      <span className="timestamp">
-                        {moment(message.timestamp).format("HH:mm:ss")}
-                      </span>
-                    </strong>
-                  ) : (
-                    <strong className="user_name">
-                      {message.sender}
-
-                      <span className="timestamp">
-                        {moment(message.timestamp).format("HH:mm:ss")}
-                      </span>
-                    </strong>
-                  )}
-                  {message.message}
-                </div>
+            <div key={index} className={`message ${message.senderId === id ? "sent" : "received"}`}>
+              <div className="msg_box">
+                <strong className="user_name">
+                  {message.senderId === id ? "You:" : message.sender}
+                  <span className="timestamp">
+                    
+                  {moment(message.timestamp).format("MMMM DD, YY, h:mm A")}
+                  </span>
+                </strong>
+                {message.message}
               </div>
-            </>
+            </div>
           ))}
         </div>
         <div className="input_button">
@@ -230,7 +215,6 @@ function Userone() {
     </Root>
   );
 }
-
 export default Userone;
 const Root = styled.section`
   display: flex;
@@ -284,11 +268,26 @@ const Root = styled.section`
     border: 1px solid lightgray;
     border-radius: 20px;
     .heading_name {
-      height: 50px;
+      height: 80px;
       padding: 10px;
       border-bottom: 1px solid lightgray;
+      font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
       &:hover {
         box-shadow: 0px 2px 2px 0px lightgray;
+      }
+
+      h5{
+        font-size: 25px;
+    gap: 7px;
+    align-items: center;
+    display: flex;
+    margin: 0px;
+    font-family: "Nunito Sans", sans-serif;
+    }
+      p{
+        margin-left: 17px;
       }
     }
     .message-container {
