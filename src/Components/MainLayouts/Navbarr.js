@@ -71,7 +71,7 @@ export default function Navbarr() {
         className="bg-body-tertiary nav-menu"
       >
         <ContainerFluid fluid>
-          <Navbar.Brand href="home">
+          <Navbar.Brand href="/">
             {" "}
             <img src={logo} alt="img" />
           </Navbar.Brand>
@@ -236,7 +236,7 @@ export default function Navbarr() {
             </Nav>
 
             <Nav>
-              <Nav.Link href="#login">
+              <Nav.Link href=" ">
                 <div
                   onMouseEnter={handleLoginOn}
                   onMouseLeave={handleLoginOff}

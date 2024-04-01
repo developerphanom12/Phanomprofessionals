@@ -103,7 +103,7 @@ function App() {
           ) : (
             <>
               {/* common pages -------------------------------------------------------------- */}
-
+              <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
               <Route path="*" element={<PageNF />} />
               <Route path="/vettingprocess" element={<VettingProcess />} />
