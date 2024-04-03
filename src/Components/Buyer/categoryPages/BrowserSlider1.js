@@ -56,11 +56,14 @@ export default function BrowserSlider1({ gigData }) {
 }
 
 const Sliderrrs = styled.section`
-  width: 100%;
+  .slick-slider.slick-initialized {
+    width: 260px;
+    margin: 10px;
+  }
   .img {
-    width: 100%;
+    width: 260px !important;
     border-radius: 10px;
-    height: 140px;
+    height: 160px;
     object-fit: cover;
   }
   .slick-prev,
@@ -68,21 +71,16 @@ const Sliderrrs = styled.section`
     z-index: 1;
   }
   .slick-prev {
-    left: 10px;
+    left: 0px;
   }
   .slick-next {
-    right: 10px;
+    right: 0px;
   }
 
-  @media (max-width: 567px) {
- .img {
-    height: 100%;
-}
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 35px !important;
+    z-index: 111111;
   }
-
-  @media (min-width: 567px) and (max-width: 992px) {
-    .img {
-    height: 100%;
-}
-  }
+ 
 `;

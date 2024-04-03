@@ -86,7 +86,7 @@ export default function PostNav() {
     <Root>
       <Navbar expand="lg" className="bg-body-tertiary">
         <ContainerFluid fluid>
-          <Navbar.Brand href="home" className="logo_img">
+          <Navbar.Brand href="innerpages" className="logo_img">
             {" "}
             <img src={logo1} alt="img" />
           </Navbar.Brand>
@@ -121,7 +121,7 @@ export default function PostNav() {
                   </Nav.Link>
                   <Nav.Link className="business">
                     <button
-                      onClick={() => {
+                      onMouseEnter={() => {
                         toggleBusiness();
                       }}
                     >
@@ -129,7 +129,12 @@ export default function PostNav() {
                       <IoIosArrowDown />
                     </button>
                     {showToggles.showBusiness && (
-                      <div className="optn_div">
+                      <div
+                        className="optn_div"
+                        onMouseLeave={() => {
+                          closeAllToggles();
+                        }}
+                      >
                         <div className="top">
                           <button
                             onClick={() => {
@@ -179,9 +184,14 @@ export default function PostNav() {
                       </div>
                     )}
                   </Nav.Link>
-                  <Nav.Link className="business">
+                  <Nav.Link
+                    className="business"
+                    onMouseEnter={() => {
+                      toggleAnalytics();
+                    }}
+                  >
                     <button
-                      onClick={() => {
+                      onMouseEnter={() => {
                         toggleAnalytics();
                       }}
                     >
@@ -190,7 +200,12 @@ export default function PostNav() {
                     </button>
 
                     {showToggles.showAnalytics && (
-                      <div className="optn_div">
+                      <div
+                        className="optn_div"
+                        onMouseLeave={() => {
+                          closeAllToggles();
+                        }}
+                      >
                         <div className="top">
                           <button
                             onClick={() => {
@@ -257,7 +272,7 @@ export default function PostNav() {
                       </div>
                     )}
                   </Nav.Link>
-                  <Nav.Link className="msg" >
+                  <Nav.Link className="msg">
                     <a
                       data-tooltip-id="my-tooltip"
                       data-tooltip-content="Message"
@@ -270,8 +285,13 @@ export default function PostNav() {
                     <Tooltip id="my-tooltip" />
 
                     {showToggles.showMessage && (
-                      <div className="message_div" onClick={()=>{navigate("/chat")}}>
-                        <div className="top" >
+                      <div
+                        className="message_div"
+                        onClick={() => {
+                          navigate("/chat");
+                        }}
+                      >
+                        <div className="top">
                           {" "}
                           <CiMail /> Inbox (0){" "}
                         </div>
@@ -312,7 +332,7 @@ export default function PostNav() {
                   <img src={logoimg} alt="img" />
                 </Nav.Link>
                 {profileshow && (
-                  <div className="profile_option">
+                  <div className="profile_option" onClick={()=>{setShow(false)}}>X
                     <div className="profile_div">
                       <button
                         onClick={() => {
@@ -325,15 +345,13 @@ export default function PostNav() {
                     <hr />
 
                     <div className="profile_div">
-                     
-                        <button
-                          onClick={() => {
-                            handleLogoutClick();
-                          }}
-                        >
-                          logout
-                        </button>
-                     
+                      <button
+                        onClick={() => {
+                          handleLogoutClick();
+                        }}
+                      >
+                        logout
+                      </button>
                     </div>
                   </div>
                 )}
@@ -406,6 +424,7 @@ const Root = styled.section`
       padding: 0px 10px;
       word-spacing: 2px;
       background-color: transparent;
+      outline: none;
     }
   }
   .top_nav_pages {
@@ -459,7 +478,7 @@ const Root = styled.section`
         flex-direction: column;
         position: absolute;
         padding: 5px;
-        top: 71px;
+        top: 35px;
         z-index: 11;
         left: -40px;
         border: 1px solid #c5c6c9;

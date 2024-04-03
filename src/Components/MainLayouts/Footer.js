@@ -22,7 +22,7 @@ export default function Footer() {
             <li>Writing & Translation</li>
             <li>Video & Animation</li>
             <li>Music & Audio</li>
-            <li>Fiverr Logo Maker</li>
+            <li>Phanom Logo Maker</li>
             <li>Programming & Tech</li>
             <li>Data</li>
             <li>Business</li>
@@ -49,11 +49,11 @@ export default function Footer() {
           <ul>
             <li>Help & Support</li>
             <li>Trust & Safety</li>
-            <li>Selling on Fiverr</li>
-            <li>Buying on Fiverr</li>
-            <li>Fiverr Guides</li>
+            <li>Selling on Phanom</li>
+            <li>Buying on Phanom</li>
+            <li>Phanom Guides</li>
             <li>
-              Fiverr Workspace <br />
+              Phanom Workspace <br />
               <a href="#"> Invoice Software</a>
             </li>
             <li>
@@ -83,8 +83,8 @@ export default function Footer() {
           <h6>Business Solutions</h6>
           <ul>
             <li>About Business Solutions</li>
-            <li>Fiverr Pro</li>
-            <li>Fiverr Certified</li>
+            <li>Phanom Pro</li>
+            <li>Phanom Certified</li>
             <li>Become an Agency</li>
             <li>Fiverr Enterprise</li>
             <li>
@@ -109,16 +109,18 @@ export default function Footer() {
               <FaXTwitter />
             </li>
           </ul>
-          <button>
-            <MdLanguage />
-            English
-          </button>
-          <button>
-            <MdOutlineCurrencyRupee />
-            INR
-          </button>
-          <div className="human_icon">
-            <IoMan />
+          <div className="foot">
+            <button>
+              <MdLanguage />
+              English
+            </button>
+            <button>
+              <MdOutlineCurrencyRupee />
+              INR
+            </button>
+            <div className="human_icon">
+              <IoMan />
+            </div>
           </div>
         </div>
       </div>
@@ -128,20 +130,16 @@ export default function Footer() {
 const Root = styled.section`
   padding: 30px 20px;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
-  @media (max-width: 567px) {
-    padding: 30px 10px;
-  }
   .footer_div {
     display: flex;
     justify-content: space-evenly;
     .part1 {
       display: flex;
       flex-direction: column;
-      align-items: left;
-      padding: 0px 10px;
+      padding: 0px;
       @media (max-width: 567px) {
-        padding: 5px;
-      }
+          padding: 0px 4px;
+        }
       h6 {
         padding: 0px 0px 20px;
         color: #404145;
@@ -154,12 +152,13 @@ const Root = styled.section`
       ul {
         list-style: none;
         padding: 0;
+      
         li {
           padding: 10px 0px;
           color: #74767e;
           font-size: 16px;
           @media (max-width: 567px) {
-            font-size: 12px;
+            font-size: 10px;
           }
         }
       }
@@ -173,12 +172,18 @@ const Root = styled.section`
     padding: 20px 20px 0px;
     @media (max-width: 576px) {
       flex-direction: column;
+      padding: 0px;
     }
     .logoo {
       display: flex;
+      @media (max-width: 576px) {
+        width: 100%;
+        justify-content: space-between;
+      }
       h4 {
         font-weight: 600;
         color: #74767e;
+        margin: 0px;
       }
       p {
         display: flex;
@@ -192,6 +197,11 @@ const Root = styled.section`
       display: flex;
       color: #74767e;
       align-items: center;
+      @media (max-width: 576px) {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
 
       ul {
         list-style: none;
@@ -205,23 +215,35 @@ const Root = styled.section`
         width: 20px;
         height: 20px;
         margin: 10px;
-      }
-      button {
-        border: none;
-        background-color: white;
-        font-size: 15px;
-        color: #74767e;
-        font-weight: 600;
-        svg {
-          width: 16px;
-          height: 16px;
-          margin: 2px 2px 3px 2px;
+        @media (max-width: 576px) {
+          margin: 5px;
+          width: 17px;
+          height: 17px;
         }
       }
-      .human_icon {
-        border: 1px solid #74767e;
-        border-radius: 50px;
-        margin-left: 10px;
+      .foot {
+        display: flex;
+        button {
+          border: none;
+          background-color: white;
+          font-size: 15px;
+          color: #74767e;
+          font-weight: 600;
+          svg {
+            width: 16px;
+            height: 16px;
+            margin: 2px 2px 3px 2px;
+          }
+        }
+        .human_icon {
+          border: 1px solid #74767e;
+          border-radius: 50px;
+          margin-left: 10px;
+          svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
       }
     }
   }

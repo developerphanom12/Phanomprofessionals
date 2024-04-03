@@ -10,12 +10,12 @@ import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import BrowserSlider1 from "./BrowserSlider1";
 import profile from "../../Images/Boyspic.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function BrowseHistory() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [gigData, setGigData] = useState([]);
- 
+
   useEffect(() => {
     const getSliderApi = async () => {
       try {
@@ -30,30 +30,34 @@ function BrowseHistory() {
 
     getSliderApi();
   }, []);
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const slideRef = useRef();
 
   const totalSlides = gigData.length;
   const slidesToShow = 5;
   const slideWidth = 330;
-
   const goToPreviousSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === 0 ? totalSlides - slidesToShow : prev - 1
-    );
+    setCurrentSlide(prev => {
+      const newIndex = prev === 0 ? totalSlides - slidesToShow : prev - 1;
+      slideRef.current.scrollLeft = slideWidth * newIndex;
+      return newIndex;
+    });
   };
 
   const goToNextSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === totalSlides - slidesToShow ? 0 : prev + 1
-    );
+    setCurrentSlide(prev => {
+      const newIndex = (prev + 1) % totalSlides;
+      slideRef.current.scrollLeft = slideWidth * newIndex;
+      return newIndex;
+    });
   };
 
   useEffect(() => {
     if (slideRef.current) {
-      slideRef.current.scrollLeft = slideWidth * currentSlide; // Updated scrollLeft property
+      slideRef.current.scrollLeft = slideWidth * currentSlide;
     }
   }, [currentSlide]);
+
 
   return (
     <Sliderrrs>
@@ -71,39 +75,39 @@ const navigate = useNavigate();
           </button>
         </div>
       </div>
-     
-        <div className="slides-container" ref={slideRef}>
-          {gigData.map((gig, index) => (
-              <div
-              key={index}
-              className={`slide ${index === currentSlide ? "active" : ""}`}
+
+      <div className="slides-container" ref={slideRef}>
+        {gigData.map((gig, index) => (
+          <div
+            key={index}
+            className={`slide ${index === currentSlide ? "active" : ""}`}
+          >
+            <BrowserSlider1 gigData={gig} />
+            <div
+              className="footer"
               onClick={() => {
                 navigate(`/editgigspages/${gig?.gigsData?.gig_ids}`);
               }}
             >
-              <BrowserSlider1 gigData={gig} />
-              <div className="footer">
-                <div className="profile_footer">
-                  <img src={profile} alt="img" />
-                  <h6> {gig?.seller?.username}</h6>
-                </div>
-                <div>
-                  <p> {gig?.gigsData?.gig_title}</p>
-                </div>
-                <div>
-                  <h5>
-                    Rating:5<span>(50)</span>
-                  </h5>
-                </div>
-                <div>
-                  <h4>From: $ {gig?.price?.price}</h4>
-                </div>
-                
+              <div className="profile_footer">
+                <img src={profile} alt="img" />
+                <h6> {gig?.seller?.username}</h6>
+              </div>
+              <div>
+                <p> {gig?.gigsData?.gig_title}</p>
+              </div>
+              <div>
+                <h5>
+                  Rating:5<span>(50)</span>
+                </h5>
+              </div>
+              <div>
+                <h4>From: $ {gig?.price?.price}</h4>
               </div>
             </div>
-          ))}
-        </div>
-     
+          </div>
+        ))}
+      </div>
     </Sliderrrs>
   );
 }
@@ -136,11 +140,9 @@ const Sliderrrs = styled.section`
 
   .slide {
     flex: 0 0 auto;
-    width: 19%;
     scroll-snap-align: start;
     padding: 10px;
-    margin-left: 13px;
-
+    width: 280px;
     .footer {
       margin-top: 20px;
       display: flex;
@@ -219,9 +221,6 @@ const Sliderrrs = styled.section`
   @media (max-width: 567px) {
     .slide_btn {
       display: flex;
-    }
-    .slide {
-      width: 100%;
     }
   }
 

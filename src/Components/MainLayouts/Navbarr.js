@@ -246,7 +246,7 @@ export default function Navbarr() {
                   className="profileLogin"
                 >
                   Login
-                  <div className={isLogin ? "option_list2" : "off"}>
+                  <div className={isLogin ? "option_list" : "off"}>
                     <p>
                       <Link to="/loginBuyer">buyer</Link>
                     </p>
@@ -310,7 +310,7 @@ const Root = styled.section`
       }
     }
     .option_list_list {
-      left: -20px;
+      left: -23px;
       top: 100%;
       position: absolute;
       .mini_option_list {
@@ -330,7 +330,7 @@ const Root = styled.section`
       position: absolute;
     }
     .option_list2 {
-      right: -170px;
+      right: -210px;
       top: 0;
       position: absolute;
     }

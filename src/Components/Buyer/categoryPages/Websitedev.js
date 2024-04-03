@@ -78,12 +78,14 @@ function Websitedev() {
           <div
             key={index}
             className={`slide ${index === currentSlide ? "active" : ""}`}
-            onClick={() => {
-              navigate(`/editgigspages/${gig?.gigsData?.gig_ids}`);
-            }}
           >
             <BrowserSlider1 gigData={gig} />
-            <div className="footer">
+            <div
+              className="footer"
+              onClick={() => {
+                navigate(`/editgigspages/${gig?.gigsData?.gig_ids}`);
+              }}
+            >
               <div className="profile_footer">
                 <img src={profile} alt="img" />
                 <h6> {gig?.seller?.username}</h6>
@@ -135,11 +137,9 @@ const Sliderrrs = styled.section`
 
   .slide {
     flex: 0 0 auto;
-    width: 19%;
     scroll-snap-align: start;
-    margin-left: 13px;
     padding: 10px;
-
+    width: 280px;
     .footer {
       margin-top: 20px;
       display: flex;
@@ -218,9 +218,6 @@ const Sliderrrs = styled.section`
   @media (max-width: 567px) {
     .slide_btn {
       display: flex;
-    }
-    .slide {
-      width: 100%;
     }
   }
 

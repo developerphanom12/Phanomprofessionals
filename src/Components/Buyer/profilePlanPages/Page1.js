@@ -689,8 +689,9 @@ const Root = styled.section`
       display: flex;
       flex-direction: column;
       width: 35%;
-      position: sticky !important;
+      position: sticky;
       top: 0;
+      z-index: 1000;
       @media (max-width: 576px) {
         width: 90vw;
       }
@@ -930,10 +931,6 @@ const Root = styled.section`
       padding: 14px 19px;
     }
 
-    /* .main_section .main_barr .profile_contain {
-   width: 500px;
-} */
-
     .main_section .main_barr .About_this_gig {
       margin-top: 30px;
     }
@@ -953,3 +950,37 @@ const Root = styled.section`
     }
   }
 `;
+
+
+// window.addEventListener("scroll", function () {
+//   var sidebar = document.querySelector(".side_barr");
+//   var sticky = sidebar.offsetTop;
+
+//   if (window.pageYOffset > sticky) {
+//     sidebar.style.position = "fixed";
+//     sidebar.style.top = "60";
+//     sidebar.style.right = "1";
+//   } else {
+//     sidebar.style.position = "static";
+//   }
+// });
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var sidebar = document.querySelector(".side_barr");
+
+  if (sidebar) {
+    window.addEventListener("scroll", function() {
+      var sticky = sidebar.offsetTop;
+
+      if (window.pageYOffset > sticky) {
+        sidebar.style.position = "fixed";
+        sidebar.style.top = "60px"; // Adjust the top position as needed
+        sidebar.style.right = "10px"; // Adjust the right position as needed
+      } else {
+        sidebar.style.position = "static";
+      }
+    });
+  }
+});

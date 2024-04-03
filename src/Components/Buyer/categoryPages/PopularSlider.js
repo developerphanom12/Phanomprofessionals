@@ -56,11 +56,14 @@ export default function PopularSlider({ gigData }) {
 }
 
 const Sliderrrs = styled.section`
-  width: 100%;
+  .slick-slider.slick-initialized {
+    width: 260px;
+    margin: 10px;
+  }
   .img {
-    width: 100%;
-    height: 193px;
+    width: 260px !important;
     border-radius: 10px;
+    height: 160px;
     object-fit: cover;
   }
   .slick-prev,
@@ -68,9 +71,16 @@ const Sliderrrs = styled.section`
     z-index: 1;
   }
   .slick-prev {
-    left: 10px;
+    left: 0px;
   }
   .slick-next {
-    right: 10px;
+    right: 0px;
   }
+
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 35px !important;
+    z-index: 111111;
+  }
+
 `;

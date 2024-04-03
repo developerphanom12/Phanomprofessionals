@@ -12,9 +12,7 @@ export default function Layout({ children }) {
         {token && userCheck ? <PostNav /> : <Navbarr />}
       </div>
       <div className="main_body">{children}</div>
-      <div>
-        <Footer />
-      </div>
+      
     </Root>
   );
 }

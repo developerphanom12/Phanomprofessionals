@@ -38,28 +38,33 @@ function Populargigs() {
   const slideWidth = 330; // Adjusted slide width
 
   const goToPreviousSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === 0 ? totalSlides - slidesToShow : prev - 1
-    );
+    setCurrentSlide(prev => {
+      const newIndex = prev === 0 ? totalSlides - slidesToShow : prev - 1;
+      slideRef.current.scrollLeft = slideWidth * newIndex;
+      return newIndex;
+    });
   };
 
   const goToNextSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === totalSlides - slidesToShow ? 0 : prev + 1
-    );
+    setCurrentSlide(prev => {
+      const newIndex = (prev + 1) % totalSlides;
+      slideRef.current.scrollLeft = slideWidth * newIndex;
+      return newIndex;
+    });
   };
 
   useEffect(() => {
     if (slideRef.current) {
-      slideRef.current.scrollLeft = slideWidth * currentSlide; // Updated scrollLeft property
+      slideRef.current.scrollLeft = slideWidth * currentSlide;
     }
   }, [currentSlide]);
-const navigate = useNavigate();
+
+  const navigate = useNavigate();
   return (
     <Sliderrrs>
       <div className="heading_button">
         <h2 className="main_heading">
-        Most popular Gigs in Software Development 
+          Most popular Gigs in Software Development
           <IoIosArrowRoundForward />
         </h2>
         <div className="slide_btn">
@@ -71,18 +76,20 @@ const navigate = useNavigate();
           </button>
         </div>
       </div>
-      
+
       <div className="slides-container" ref={slideRef}>
         {gigData.map((gig, index) => (
-           <div
-           key={index}
-           className={`slide ${index === currentSlide ? "active" : ""}`}
-           onClick={() => {
-             navigate(`/editgigspages/${gig?.gigsData?.gig_ids}`);
-           }}
-         >
+          <div
+            key={index}
+            className={`slide ${index === currentSlide ? "active" : ""}`}
+          >
             <BrowserSlider1 gigData={gig} />
-            <div className="footer">
+            <div
+              className="footer"
+              onClick={() => {
+                navigate(`/editgigspages/${gig?.gigsData?.gig_ids}`);
+              }}
+            >
               <div className="profile_footer">
                 <img src={profile} alt="img" />
                 <h6> {gig?.seller?.username}</h6>
@@ -91,7 +98,9 @@ const navigate = useNavigate();
                 <p> {gig?.gigsData?.gig_title}</p>
               </div>
               <div>
-                <h5>Rating:5<span>(50)</span></h5>
+                <h5>
+                  Rating:5<span>(50)</span>
+                </h5>
               </div>
               <div>
                 <h4>From: $ {gig?.price?.price}</h4>
@@ -100,7 +109,6 @@ const navigate = useNavigate();
           </div>
         ))}
       </div>
-      
     </Sliderrrs>
   );
 }
@@ -133,11 +141,9 @@ const Sliderrrs = styled.section`
 
   .slide {
     flex: 0 0 auto;
-    width: 19%;
-    scroll-snap-align: start; 
+    scroll-snap-align: start;
     padding: 10px;
-    margin-left:13px;
-
+    width: 280px;
     .footer {
       margin-top: 20px;
       display: flex;
@@ -168,11 +174,10 @@ const Sliderrrs = styled.section`
         font-weight: 400;
         margin-left: 10px;
         margin-bottom: 0px;
-        &:hover{
+        &:hover {
           text-decoration: underline;
           text-decoration-thickness: 1px;
         }
-   
       }
 
       h5 {
@@ -181,11 +186,11 @@ const Sliderrrs = styled.section`
         font-size: 16px;
         font-weight: 700;
         color: #222325;
-        span{
+        span {
           color: #74767e;
           font-size: 16px;
           font-weight: 400;
-          margin-left:2px;
+          margin-left: 2px;
         }
       }
       h4 {
@@ -217,9 +222,6 @@ const Sliderrrs = styled.section`
   @media (max-width: 567px) {
     .slide_btn {
       display: flex;
-    }
-    .slide {
-      width: 100%;
     }
   }
 

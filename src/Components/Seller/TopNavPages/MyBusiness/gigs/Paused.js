@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { IoMdArrowDropdown } from "react-icons/io";
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { EXCHANGE_URLS, EXCHANGE_URLS_IMAGES } from "../../../../Important/URLS";
+import {
+  EXCHANGE_URLS,
+  EXCHANGE_URLS_IMAGES,
+} from "../../../../Important/URLS";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 
 export default function Paused() {
   const gigId = useSelector((state) => state.users.gigId);
-  const [isChecked, setIsChecked] = useState(false);
   const [showDropdown, setShowDropdown] = useState([]);
   const [formData, setFormData] = useState({
     id: gigId,
@@ -43,7 +45,6 @@ export default function Paused() {
     }
   };
 
-
   const appApidelete = async (updatedDatadelete) => {
     try {
       const axiosConfig = {
@@ -70,10 +71,8 @@ export default function Paused() {
     await appApi(updatedData);
   };
 
-
   const handleSubmitfordelete = async (gigId) => {
-    const updatedDatadelete = { ...formDatadeleted,    id: JSON.stringify(gigId),
-    };
+    const updatedDatadelete = { ...formDatadeleted, id: JSON.stringify(gigId) };
     await appApidelete(updatedDatadelete);
   };
 
@@ -108,20 +107,13 @@ export default function Paused() {
     newDropdownStates[index] = !newDropdownStates[index];
     setShowDropdown(newDropdownStates);
   };
-
+  
   const navigate = useNavigate();
-
-  // const handleDelete = (index) => {
-  //   const updatedGigGet = [...gigGet];
-  //   updatedGigGet.splice(index, 1);
-  //   setGigGet(updatedGigGet);
-  // };
 
   const handleActivate = (gigId) => {
     setFormData({ ...formData, is_open: 1 });
     handleSubmit(gigId);
   };
-
 
   const handleDeleted = (gigId) => {
     setFormDatadeleted({ ...formDatadeleted, is_deleted: 1 });
@@ -129,7 +121,7 @@ export default function Paused() {
   };
 
   return (
-    <Root>
+    <Root >
       <table>
         <thead>
           <tr className="head">
@@ -163,7 +155,7 @@ export default function Paused() {
         </thead>
         <tbody>
           {gigGet.map((gigData, index) => (
-            <tr key={index}>
+            <tr key={index} >
               <td colSpan={2}>
                 <img
                   className="img"
@@ -178,7 +170,6 @@ export default function Paused() {
                 <span>0</span>
               </td>
               <td></td>
-
               <td colSpan={2}>
                 <span>0</span>{" "}
               </td>
@@ -197,7 +188,13 @@ export default function Paused() {
                   {showDropdown[index] && (
                     <div className="dropdown_menu">
                       <ul>
-                      <li onClick={()=>{navigate("/internalpage")}}>Preview</li>
+                        <li
+                          onClick={() => {
+                            navigate("/internalpage");
+                          }}
+                        >
+                          Preview
+                        </li>
                         <li
                           onClick={() => {
                             navigate("/editgigspages");
@@ -208,7 +205,9 @@ export default function Paused() {
                         <li onClick={() => handleActivate(gigData.gig_ids)}>
                           Activate
                         </li>
-                        <li onClick={() => handleDeleted(gigData.gig_ids)}>Delete</li>
+                        <li onClick={() => handleDeleted(gigData.gig_ids)}>
+                          Delete
+                        </li>
                       </ul>
                     </div>
                   )}
@@ -313,8 +312,9 @@ const Root = styled.section`
 
     .dropdown_menu {
       position: absolute;
-      top: 59px;
+      top: 22px;
       left: -70px;
+      z-index: 1111;
       background-color: #fff;
       border: 1px solid #5556;
       border-radius: 4px;

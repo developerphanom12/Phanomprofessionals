@@ -58,14 +58,14 @@ export default function LoginSeller() {
   return (
     <Root>
       <form onSubmit={handleSubmit(onSubmit)}>
-      <h6>Logged In As Seller</h6>
         <div>
+        <h5>Be a seller</h5>
           <div className="user_name">
-            <label>User name or email address</label>
+            <label>User Name or Email Address</label>
             <input type="username" {...register("username")} />
             {errors.username && <p>{errors.username.message}</p>}
           </div>
-          <div>
+          <div className="user_name">
             <label>Password</label>
             <div className="pswrd">
               <input
@@ -87,28 +87,41 @@ export default function LoginSeller() {
   );
 }
 const Root = styled.section`
-  margin: 20px;
   padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid transparent;
   width: 100%;
+  /* background-color: #147888; */
+  background-image: linear-gradient(to bottom right, #147888,  #1478883d, #147888);
   form {
     display: flex;
     flex-direction: column;
     width: 40vw;
-    border-radius: 20px;
-    box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.13),
-      0 1px 4px 0 rgba(0, 0, 0, 0.11);
-    padding: 50px 50px;
+    border-radius: 10px;
+    box-shadow: 0 7px 15px 0 rgb(0 0 0 / 53%), 0 1px 4px 0 rgb(0 0 0 / 29%);
+      background-color: white;
+      >div{
+        h5{
+          text-align: center;
+          font-weight: 600;
+          text-transform: uppercase;
+          color: darkcyan;
+        }
+      padding: 50px 50px;
+      /* background-color: #1478888f; */
+
+    }
+
     input {
       border: 1px solid #c9c0c0;
+      outline: none;
     }
 
     label {
       margin-left: 10px;
+      font-weight: 600;
     }
 
     .user_name {
@@ -118,7 +131,7 @@ const Root = styled.section`
     }
     .pswrd {
       input {
-        width: 95%;
+        width: 93%;
       }
       button.btn {
         margin-left: -47px;
@@ -133,6 +146,11 @@ const Root = styled.section`
       padding: 8px 60px;
       margin-top: 22px;
       border: 1px solid #c9c0c0;
+      width: 95%;
+      &:hover{
+
+        background-image: linear-gradient(to bottom right, #147888,  #1478883d, #147888);
+      }
     }
   }
   input,
@@ -142,30 +160,27 @@ const Root = styled.section`
     border-radius: 10px;
   }
 
-  /* .main_div{
-  display:flex;
-  justify-content: center;
-} */
+  @media (max-width: 567px) {
+    margin: 0;
+    padding: 0;
+    form {
+      width: unset;
+      margin: 20px;
+    }
+    form .pswrd button.btn {
+      margin-left: -60px;
+    }
+  }
 
-@media(max-width: 567px){
-    margin:0; 
-    padding:0;
-form {
-    width:unset;
-}
- form .pswrd button.btn {
-    margin-left: -60px;
-}
-}
-
-@media(min-width: 567px) and (max-width: 992px){
-  margin:0; 
-    padding:0;
-form {
-    width:90%;
-}
- form .pswrd button.btn {
-    margin-left: -60px;
-}
-}
+  @media (min-width: 567px) and (max-width: 992px) {
+    margin: 0;
+    padding: 0;
+    form {
+      width: unset;
+      margin: 20px;
+    }
+    form .pswrd button.btn {
+      margin-left: -60px;
+    }
+  }
 `;
