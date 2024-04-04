@@ -11,11 +11,7 @@ import logoimg from "../Images/Boyspic.png";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 
-import {
-  IoIosArrowDown,
-  IoIosNotificationsOutline,
-  IoMdSettings,
-} from "react-icons/io";
+import { IoIosNotificationsOutline, IoMdSettings } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -24,6 +20,7 @@ import PostBotttomNav from "./Category/PostBotttomNav";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import ContainerFluid from "react-bootstrap/Container";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 export default function PostNav() {
   const userCheck = useSelector((state) => state?.users?.userCheck);
@@ -105,7 +102,7 @@ export default function PostNav() {
             ""
           )}
           <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse id="basic-navbar-nav" className="basic-navbar-nav">
             {userDetails.role === "seller" ? (
               <Nav className="me-auto">
                 <div className="top_nav_pages">
@@ -120,112 +117,97 @@ export default function PostNav() {
                     </a>
                   </Nav.Link>
                   <Nav.Link className="business">
-                    <button
-                      onMouseEnter={() => {
-                        toggleBusiness();
-                      }}
-                    >
-                      <span>My Business</span>
-                      <IoIosArrowDown />
-                    </button>
-                    {showToggles.showBusiness && (
-                      <div
-                        className="optn_div"
-                        onMouseLeave={() => {
-                          closeAllToggles();
-                        }}
+                    <FormControl sx={{ m: 1, minWidth: 120 }}>
+                      <Select
+                        displayEmpty
+                        inputProps={{ "aria-label": "Without label" }}
+                        // sx={{ border: 'none', outline: 'none' }}
                       >
-                        <div className="top">
-                          <button
-                            onClick={() => {
-                              navigate("/orders");
-                              closeAllToggles();
-                            }}
-                          >
-                            Orders
-                          </button>
-                        </div>
-                        <div className="middle">
-                          <button
-                            onClick={() => {
-                              navigate("/gigs");
-                              closeAllToggles();
-                            }}
-                          >
-                            Gigs
-                          </button>
-                          <button
-                            onClick={() => {
-                              navigate("/profile");
-                              closeAllToggles();
-                            }}
-                          >
-                            Profiles
-                          </button>
-                        </div>
-                        <div className="bottom">
-                          <button
-                            onClick={() => {
-                              navigate("/earnings");
-                              closeAllToggles();
-                            }}
-                          >
-                            Earnings
-                          </button>
-                          <button
-                            onClick={() => {
-                              navigate("/phanomworkspace");
-                              closeAllToggles();
-                            }}
-                          >
-                            Phanom Workspace
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                  </Nav.Link>
-                  <Nav.Link
-                    className="business"
-                    onMouseEnter={() => {
-                      toggleAnalytics();
-                    }}
-                  >
-                    <button
-                      onMouseEnter={() => {
-                        toggleAnalytics();
-                      }}
-                    >
-                      <span>Analytics</span>
-                      <IoIosArrowDown />
-                    </button>
-
-                    {showToggles.showAnalytics && (
-                      <div
-                        className="optn_div"
-                        onMouseLeave={() => {
-                          closeAllToggles();
-                        }}
-                      >
-                        <div className="top">
-                          <button
-                            onClick={() => {
-                              navigate("/analytics");
-                              closeAllToggles();
-                            }}
-                          >
-                            Overview
-                          </button>
-                          {/* <button
+                        <InputLabel
+                          id="demo-simple-select-helper-label"
+                          // style={{ border: "none", outline: "none", fontWeight:"600"}}
+                        >
+                          {" "}
+                          My Business
+                        </InputLabel>
+                        <MenuItem
+                          value="order"
                           onClick={() => {
-                            navigate("/analytics");
-                            closeAllToggles();
+                            navigate("/orders");
                           }}
                         >
-                          Repeat Business
-                        </button> */}
-                        </div>
-                      </div>
-                    )}
+                          Orders
+                        </MenuItem>
+                        <MenuItem
+                          value="gigs"
+                          onClick={() => {
+                            navigate("/gigs");
+                          }}
+                        >
+                          Gigs
+                        </MenuItem>
+                        <MenuItem
+                          value="profile"
+                          onClick={() => {
+                            navigate("/profile");
+                          }}
+                        >
+                          Profile
+                        </MenuItem>
+                        <MenuItem
+                          value="earning"
+                          onClick={() => {
+                            navigate("/earnings");
+                          }}
+                        >
+                          Earning
+                        </MenuItem>
+                        <MenuItem
+                          value="workspace"
+                          onClick={() => {
+                            navigate("/phanomworkspace");
+                          }}
+                        >
+                          Phanom Workspace
+                        </MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Nav.Link>
+                  <Nav.Link className="business">
+                    <FormControl sx={{ m: 1, minWidth: 120 }}>
+                      <Select
+                        displayEmpty
+                        inputProps={{ "aria-label": "Without label" }}
+                        // sx={{ border: 'none', outline: 'none' }}
+                      >
+                        <InputLabel
+                          id="demo-simple-select-helper-label"
+                          // style={{ border: "none", outline: "none" }}
+                        >
+                          {" "}
+                          Analytics
+                        </InputLabel>
+                        <MenuItem
+                          value="order"
+                          onClick={() => {
+                            navigate("/analytics");
+                          }}
+                        >
+                          Overview
+                        </MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Nav.Link>
+
+                  <Nav.Link className="dashboard">
+                    <a
+                      href="dashboard"
+                      onClick={() => {
+                        navigate("/dashboard");
+                      }}
+                    >
+                      Growth & Markitng
+                    </a>
                   </Nav.Link>
                 </div>
               </Nav>
@@ -287,9 +269,9 @@ export default function PostNav() {
                     {showToggles.showMessage && (
                       <div
                         className="message_div"
-                        onClick={() => {
-                          navigate("/chat");
-                        }}
+                        // onClick={() => {
+                        //   navigate("/user");
+                        // }}
                       >
                         <div className="top">
                           {" "}
@@ -332,7 +314,13 @@ export default function PostNav() {
                   <img src={logoimg} alt="img" />
                 </Nav.Link>
                 {profileshow && (
-                  <div className="profile_option" onClick={()=>{setShow(false)}}>X
+                  <div
+                    className="profile_option"
+                    onClick={() => {
+                      setShow(false);
+                    }}
+                  >
+                    X
                     <div className="profile_div">
                       <button
                         onClick={() => {
@@ -343,7 +331,6 @@ export default function PostNav() {
                       </button>
                     </div>
                     <hr />
-
                     <div className="profile_div">
                       <button
                         onClick={() => {
@@ -358,22 +345,34 @@ export default function PostNav() {
               </div>
             </Nav>
           </Navbar.Collapse>
+          <Navbar.Collapse id="basic-navbar-navv" className="basic-navbar-navv">
+            <Nav>{userDetails.role === "buyer" ? <PostBotttomNav /> : ""}</Nav>
+          </Navbar.Collapse>
         </ContainerFluid>
       </Navbar>
-      {userDetails.role === "buyer" ? <PostBotttomNav /> : ""}
     </Root>
   );
 }
 const Root = styled.section`
   font-family: "Macan", Helvetica Neue, Helvetica, Arial, sans-serif;
-  width: 100vw;
-
+  /* width: 100vw; */
   .logo_img {
     margin-right: 32px;
     img {
       width: 150px;
     }
   }
+
+  nav.bg-body-tertiary.navbar.navbar-expand-lg.navbar-light {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  div#basic-navbar-nav {
+    align-items: center;
+    justify-content: end;
+  }
+
   div#responsive-navbar-nav {
     justify-content: space-between;
     position: relative;
@@ -429,6 +428,7 @@ const Root = styled.section`
   }
   .top_nav_pages {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     padding: 10px 20px;
 
@@ -483,28 +483,11 @@ const Root = styled.section`
         left: -40px;
         border: 1px solid #c5c6c9;
         background: white;
-        .middle {
-          display: flex;
-          flex-direction: column;
-          border-top: 1px solid #c5c6c9;
-          border-bottom: 1px solid #c5c6c9;
-          color: #62646a;
-          cursor: pointer;
-        }
-        .top,
-        .middle,
-        .bottom {
-          padding: 10px 0;
-          button {
-            min-width: 200px;
-            width: 100%;
-            padding: 5px 16px;
-          }
-        }
       }
     }
   }
-
+  
+  
   .notifyy {
     display: flex;
     align-items: center;
@@ -611,9 +594,22 @@ const Root = styled.section`
       color: green;
     }
   }
-
   .container-fluid {
-    border-bottom: 1px solid #dadbdd;
+    padding: 0px !important;
+  }
+
+  .navbar > .container,
+  .navbar > .container-fluid,
+  .navbar > .container-lg,
+  .navbar > .container-md,
+  .navbar > .container-sm,
+  .navbar > .container-xl,
+  .navbar > .container-xxl {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    width: 100vw;
+    justify-content: space-between;
   }
 
   .profile {

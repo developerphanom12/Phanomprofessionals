@@ -82,6 +82,7 @@ function App() {
                 <>
                   {/* seller pages ---------------------------------------------------------------*/}
                   <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="editgigspages/:id" element={<Page1 />} />
                   <Route path="/orders" element={<Orders />} />
                   <Route path="/gigs" element={<Gigs />} />
                   <Route path="/pricing" element={<Pricing />} />

@@ -62,10 +62,10 @@ export default function ProgrammingTech() {
   );
 }
 const Root = styled.section`
-  padding: 30px 20px;
+  padding: 20px;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
-  @media (max-width: 567px) {
-    padding: 30px 10px;
+  @media (max-width: 567px){
+    padding: 20px 10px;
   }
   .footer_div {
     display: flex;
@@ -75,12 +75,12 @@ const Root = styled.section`
       display: flex;
       flex-direction: column;
       align-items: left;
-      padding: 0px 10px;
+      padding: 0px 7px;
       @media (max-width: 567px) {
         padding: 5px;
       }
       h6 {
-        padding: 0px 0px 20px;
+        padding: 0px 0px 10px;
         color: #404145;
         margin: 0;
         font-weight: 700;
@@ -92,9 +92,9 @@ const Root = styled.section`
         list-style: none;
         padding: 0;
         li {
-          padding: 10px 0px;
+          padding: 6px 0px;
           color: #74767e;
-          font-size: 16px;
+          font-size: 13px;
           @media (max-width: 567px) {
             font-size: 12px;
           }

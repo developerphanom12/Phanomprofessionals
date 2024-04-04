@@ -1,11 +1,10 @@
 import moment from "moment/moment";
 import React, { useState, useEffect } from "react";
-import { FaRegUser } from "react-icons/fa6";
+import { FaCircle, FaRegUser } from "react-icons/fa6";
 import { SlOptions } from "react-icons/sl";
 import io from "socket.io-client";
 import styled from "styled-components";
 import LoginBuyer from "../CommonPages/loginPages/LoginBuyer";
-
 
 const token = localStorage.getItem("token");
 const socket = io("http://localhost:4000", {
@@ -23,9 +22,11 @@ function Userone() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [passsword, setPassword] = useState("");
-  const [selectedUser, setSelectedUser] = useState(null); 
-  const [selectedUserName, setSelectedUserName] = useState(""); // State to store the selected user's name
-console.log("name",selectedUserName)
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedUserName, setSelectedUserName] = useState("");
+  const [connectedUsers, setConnectedUsers] = useState({});
+
+  console.log("name", selectedUserName);
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
@@ -37,19 +38,19 @@ console.log("name",selectedUserName)
   useEffect(() => {
     if (selectedUser) {
       fetchChatHistory(selectedUser);
-      socket.emit("joinRoom", selectedUser); // Join room to receive new messages for selected user
+      socket.emit("joinRoom", selectedUser);
     }
     socket.on("chatHistory", (data) => {
       setMessages(data.chatHistory);
     });
-  
+
     return () => {
       if (selectedUser) {
         socket.emit("leaveRoom", selectedUser); // Leave room when component unmounts
       }
     };
   }, [selectedUser]);
-  
+
   useEffect(() => {
     socket.on("newMessage", (data) => {
       if (data.senderId === selectedUser || data.receiver === selectedUser) {
@@ -64,15 +65,18 @@ console.log("name",selectedUserName)
 
   useEffect(() => {
     socket.on("newMessage", (data) => {
-        if ((data.senderId === selectedUser && data.receiver === id) || (data.senderId === id && data.receiver === selectedUser)) {
-            setMessages((prevMessages) => [...prevMessages, data]);
-        }
+      if (
+        (data.senderId === selectedUser && data.receiver === id) ||
+        (data.senderId === id && data.receiver === selectedUser)
+      ) {
+        setMessages((prevMessages) => [...prevMessages, data]);
+      }
     });
 
     return () => {
-        socket.off("newMessage");
+      socket.off("newMessage");
     };
-}, [selectedUser, id]);
+  }, [selectedUser, id]);
 
   const login = () => {
     fetch("http://localhost:4000/api/admin/login", {
@@ -110,17 +114,14 @@ console.log("name",selectedUserName)
     });
     setMessageInput("");
     fetchChatHistory(selectedUser);
-
   };
 
-  const startChat = (userId,userName) => {
-    setSelectedUser(userId); // Set selected user
-    fetchChatHistory(userId); // Fetch chat history for selected user
-    setSelectedUserName(userName); 
-
+  const startChat = (userId, userName) => {
+    setSelectedUser(userId);
+    fetchChatHistory(userId);
+    setSelectedUserName(userName);
   };
 
-  
   const fetchChatHistory = (userId) => {
     socket.emit("getChatHistory", { userId: userId });
   };
@@ -134,34 +135,20 @@ console.log("name",selectedUserName)
       .then((response) => response.json())
       .then((data) => {
         setUsers(data.users);
-        console.log("datausers",data.users)
+        console.log("datausers", data.users);
       })
       .catch((error) => console.error("Error fetching users:", error));
   };
+  useEffect(() => {
+    socket.on("connectedUsers", (data) => {
+      setConnectedUsers(data.connectedUsers);
+    });
+  }, []);
 
   if (!isLoggedIn) {
-    return (
-      // <div>
-      //   <h1>Login Page</h1>
-      //   <input
-      //     type="text"
-      //     placeholder="Username"
-      //     value={username}
-      //     onChange={(e) => setUsername(e.target.value)}
-      //   />
-      //   <input
-      //     type="password"
-      //     placeholder="Password"
-      //     value={passsword}
-      //     onChange={(e) => setPassword(e.target.value)}
-      //   />
-      //   <button onClick={login}>Login</button>
-      // </div>
-      <div>
-        { <LoginBuyer /> }
-      </div>
-    );
+    return <LoginBuyer />;
   }
+
   return (
     <Root>
       <div className="user_area">
@@ -173,28 +160,49 @@ console.log("name",selectedUserName)
                 <FaRegUser />
                 {user.username}
               </button>{" "}
+              <div className="hadin">
+                {connectedUsers[user.id]?.online ? (
+                  <FaCircle style={{ color: "green", margin: "12px" }} />
+                ) : (
+                  <FaCircle style={{ color: "red" }} />
+                )}
+              </div>
               <SlOptions />
             </li>
           ))}
         </ul>
       </div>
       <div className="chat_area">
-        <div className="heading_name">
-          <h5>                <FaRegUser />
-{selectedUserName ? `${selectedUserName}` : "Chat App"}
-</h5>
-<p><p>Last seen: 1 hour ago</p></p>
-
+        <div
+          className="heading_name"
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <div className="dd">
+            <FaRegUser />
+            {connectedUsers[selectedUser]?.online && (
+              <div className="dd1">
+                <FaCircle style={{ color: "green", height: "11px" }} />
+              </div>
+            )}
+          </div>
+          <h5>
+            {selectedUserName ? `${selectedUserName}` : "Chat App"}
+            <p className="active2">Active Now</p>
+          </h5>
         </div>
         <div className="message-container">
           {messages.map((message, index) => (
-            <div key={index} className={`message ${message.senderId === id ? "sent" : "received"}`}>
+            <div
+              key={index}
+              className={`message ${
+                message.senderId === id ? "sent" : "received"
+              }`}
+            >
               <div className="msg_box">
                 <strong className="user_name">
                   {message.senderId === id ? "You:" : message.sender}
                   <span className="timestamp">
-                    
-                  {moment(message.timestamp).format("MMMM DD, YY, h:mm A")}
+                    {moment(message.timestamp).format("MMMM DD, YY, h:mm A")}
                   </span>
                 </strong>
                 {message.message}
@@ -273,22 +281,63 @@ const Root = styled.section`
       padding: 10px;
       border-bottom: 1px solid lightgray;
       font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+      font-optical-sizing: auto;
+      font-style: normal;
+      .dd {
+        position: relative;
+        margin-right: 8px;
+        border: 1px solid black;
+        font-size: 24px;
+        border-radius: 15px;
+        margin: 0px;
+        font-size: 23px;
+        width: 41px;
+        margin: 12px;
+        height: 40px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+      }
+
+      .active2 {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0px;
+        font-size: 16px;
+        color: #198754;
+      }
+
+      .dd1 {
+        position: absolute;
+        top: 0px;
+        right: -10px;
+        font-size: 16px;
+        margin-top: 21px;
+        margin-right: 5px;
+      }
+      p {
+        display: flex;
+        margin-left: 23px;
+        width: 100%;
+        gap: 8px;
+        text-align: center;
+        align-items: center;
+      }
       &:hover {
         box-shadow: 0px 2px 2px 0px lightgray;
       }
 
-      h5{
-        font-size: 25px;
-    gap: 7px;
-    align-items: center;
-    display: flex;
-    margin: 0px;
-    font-family: "Nunito Sans", sans-serif;
-    }
-      p{
-        margin-left: 17px;
+      h5 {
+        font-size: 24px;
+        color: #9c8ea2;
+        /* / align-items: center; / */
+        display: flex;
+        margin: 0px;
+        margin-top: 41px;
+        display: flex;
+        font-weight: 900;
+        font-family: "EB Garamond", serif;
+        flex-direction: column;
       }
     }
     .message-container {
@@ -323,7 +372,7 @@ const Root = styled.section`
     }
     .input_button {
       position: relative;
-      top: 1px;
+      bottom: 26px;
       width: 80%;
       border: 1px solid lightgray;
       border-radius: 10px;

@@ -1,20 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { IoIosAdd, IoMdArrowDropdown } from "react-icons/io";
+import { IoIosAdd } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { BsThreeDots } from "react-icons/bs";
+
 import {
   EXCHANGE_URLS,
   EXCHANGE_URLS_IMAGES,
 } from "../../../../Important/URLS";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { MenuItem, Select } from "@mui/material";
 
 export default function ActiveGigs() {
   const gigId = useSelector((state) => state.users.gigId);
-  const [isChecked, setIsChecked] = useState(false);
-  const [showDropdown, setShowDropdown] = useState([]);
+  // const [showDropdown, setShowDropdown] = useState([]);
   const [formDatadeleted, setFormDatadeleted] = useState({
     id: gigId,
     is_deleted: 1,
@@ -50,15 +50,15 @@ export default function ActiveGigs() {
 
     getSliderApi();
   }, []);
-  useEffect(() => {
-    const initializeDropdownStates = () => {
-      // Initialize dropdown states for each row
-      const dropdownStates = new Array(gigGet.length).fill(false);
-      setShowDropdown(dropdownStates);
-    };
+  // useEffect(() => {
+  //   const initializeDropdownStates = () => {
+  //     // Initialize dropdown states for each row
+  //     const dropdownStates = new Array(gigGet.length).fill(false);
+  //     setShowDropdown(dropdownStates);
+  //   };
 
-    initializeDropdownStates();
-  }, [gigGet]);
+  //   initializeDropdownStates();
+  // }, [gigGet]);
 
   const appApipause = async (updatedDatapause) => {
     try {
@@ -91,12 +91,12 @@ export default function ActiveGigs() {
     handleSubmitforpause(gigId);
   };
 
-  const handleDropdownClick = (index) => {
-    // Toggle dropdown state for the clicked row
-    const newDropdownStates = [...showDropdown];
-    newDropdownStates[index] = !newDropdownStates[index];
-    setShowDropdown(newDropdownStates);
-  };
+  // const handleDropdownClick = (index) => {
+  //   // Toggle dropdown state for the clicked row
+  //   const newDropdownStates = [...showDropdown];
+  //   newDropdownStates[index] = !newDropdownStates[index];
+  //   setShowDropdown(newDropdownStates);
+  // };
 
   const appApidelete = async (updatedDatadelete) => {
     try {
@@ -128,6 +128,7 @@ export default function ActiveGigs() {
     setFormDatadeleted({ ...formDatadeleted, is_deleted: 1 });
     handleSubmitfordelete(gigId);
   };
+
   return (
     <Root>
       <div className="gig_box">
@@ -148,6 +149,39 @@ export default function ActiveGigs() {
         gigGet.map((gigData, index) => (
           <tbody>
             <tr>
+              {" "}
+              <div className="dropdown_wrapper">
+                <Select className="dropdown_menu">
+                  <MenuItem
+                    value="preview"
+                    onClick={() => {
+                      navigate(`/editgigspages/${gigData?.gig_ids}`);
+                    }}
+                  >
+                    Preview
+                  </MenuItem>
+                  <MenuItem
+                    value="edit"
+                    onClick={() => {
+                      navigate("/editgigspages");
+                    }}
+                  >
+                    Edit
+                  </MenuItem>
+                  <MenuItem
+                    value="activate"
+                    onClick={() => handlepause(gigData.gig_ids)}
+                  >
+                    Paused
+                  </MenuItem>
+                  <MenuItem
+                    value="delete"
+                    onClick={() => handleDeleted(gigData.gig_ids)}
+                  >
+                    Delete
+                  </MenuItem>
+                </Select>
+              </div>
               <td colSpan={2}>
                 <img
                   className="img"
@@ -161,50 +195,14 @@ export default function ActiveGigs() {
               <td className="title" colSpan={2}>
                 <span
                   onClick={() => {
-                    navigate("/internalpage");
+                    // navigate("/internalpage");
+                    navigate(`/editgigspages/${gigData?.gig_ids}`);
                   }}
                 >
                   {gigData?.gig_title}
                 </span>
               </td>
-
-              <td colSpan={2}>
-                <div className="dropdown_wrapper">
-                <BsThreeDots className="threedot_icon
-                "  onClick={() => handleDropdownClick(index)}/>
-
-                  {/* <IoMdArrowDropdown
-                    onClick={() => handleDropdownClick(index)}
-                  /> */}
-
-                  {showDropdown[index] && (
-                    <div className="dropdown_menu">
-                      <ul>
-                        <li
-                          onClick={() => {
-                            navigate("/internalpage");
-                          }}
-                        >
-                          Preview
-                        </li>
-                        <li
-                          onClick={() => {
-                            navigate("/editgigspages");
-                          }}
-                        >
-                          Edit
-                        </li>
-                        <li onClick={() => handlepause(gigData.gig_ids)}>
-                          Paused
-                        </li>
-                        <li onClick={() => handleDeleted(gigData.gig_ids)}>
-                          Delete
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </td>
+              <td colSpan={2}></td>
             </tr>
           </tbody>
         ))}
@@ -244,22 +242,19 @@ const Root = styled.section`
     .text_gig {
       width: 100%;
       text-align: center;
-      a {
+      b {
         color: #555;
         font-size: 14px;
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-          cursor: pointer;
-        }
       }
     }
   }
+
   tbody {
     display: flex;
     flex-wrap: wrap;
     width: 31%;
     padding: 20px;
+    padding-top: 5px;
     background-color: #fff;
     border: 1px solid #dadbdd;
     img {
@@ -293,23 +288,23 @@ const Root = styled.section`
   tbody tr {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
 
-
-  .dropdown_menu {
-    padding: 10px 20px 10px 10px;
-}
-
-.dropdown_wrapper {
-    position: absolute;
-    /* / left: -30px; / */
-    left: 69%;
-    top: 227px;
-    background-color: #fff;
-}
-svg.threedot_icon {
-    margin-left: 101px;
-}
+  .dropdown_wrapper {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+    font-size: 0rem;
+  }
+  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding-right: 18px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 19px;
+  }
 
   @media (max-width: 567px) {
     .gig_box {
@@ -319,18 +314,6 @@ svg.threedot_icon {
     tbody {
       width: 100%;
     }
-
-    /* .dropdown_wrapper {
-    position: absolute;
-    left: 69%;
-    top: 227px;
-    background-color: #fff;
-}
-svg.threedot_icon {
-    margin-left: 101px;
-} */
-
-
   }
 
   @media (min-width: 567px) and (max-width: 992px) {

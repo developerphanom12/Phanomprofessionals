@@ -23,9 +23,9 @@ export default function Profile2() {
           </div>
           <div>
             <GigButton
-              className={active === "pausedgigs" ? "btn_1 active" : "btn_1"}
+              className={active === "paused" ? "btn_1 active" : "btn_1"}
               onClick={() => {
-                setActive("pausedgigs");
+                setActive("paused");
               }}
             >
               PAUSED
@@ -39,7 +39,7 @@ export default function Profile2() {
             <div className="col-lg-12">
               {active === "activegigs" ? (
                 <ActiveGigs detail={user} />
-              ) : active === "pausedgigs" ? (
+              ) : active === "paused" ? (
                 <PausedGigs />
               ) : (
                 <ActiveGigs />

@@ -8,17 +8,16 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import ContainerFluid from "react-bootstrap/Container";
-import PostNav from "./PostNav";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 export default function Navbarr() {
-  const [activePop, setActivePop] = useState(false);
   const [isListOpen, setIsListOpen] = useState(false);
   const [isListOpen2, setIsListOpen2] = useState(false);
   const [isListOpen3, setIsListOpen3] = useState(false);
   const [isListOpen4, setIsListOpen4] = useState(false);
   const [isListOpen5, setIsListOpen5] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleMouseEnter = () => {
     setIsListOpen(true);
   };
@@ -55,13 +54,6 @@ export default function Navbarr() {
     setIsListOpen5(false);
   };
 
-  const handleLoginOn = () => {
-    setIsLogin(true);
-  };
-
-  const handleLoginOff = () => {
-    setIsLogin(false);
-  };
 
   return (
     <Root>
@@ -236,25 +228,26 @@ export default function Navbarr() {
             </Nav>
 
             <Nav>
-              <Nav.Link href=" ">
-                <div
-                  onMouseEnter={handleLoginOn}
-                  onMouseLeave={handleLoginOff}
-                  onClick={() => {
-                    setIsLogin(!isLogin);
-                  }}
-                  className="profileLogin"
-                >
-                  Login
-                  <div className={isLogin ? "option_list" : "off"}>
-                    <p>
-                      <Link to="/loginBuyer">buyer</Link>
-                    </p>
-                    <p>
-                      <Link to="/loginSeller">Seller</Link>
-                    </p>
-                  </div>
+              <Nav.Link href="">
+                <div className="profileLogin">
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Login</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      label="Login"
+                    >
+                      <MenuItem onClick={()=>{navigate("/loginBuyer")}}>
+                       Buyer
+                      </MenuItem>
+                      <MenuItem onClick={()=>{navigate("/loginSeller")}}>
+                         Seller 
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                
                 </div>
+              
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -280,14 +273,17 @@ const Root = styled.section`
   }
   a {
     margin: 0px;
+    text-decoration: none;
   }
   img {
     width: 200px;
     padding: 0px 15px;
   }
-
-  .profile,
   .profileLogin {
+    width: 100px;
+    
+  }
+  .profile {
     display: flex;
     font-size: 15px;
     color: #000000;

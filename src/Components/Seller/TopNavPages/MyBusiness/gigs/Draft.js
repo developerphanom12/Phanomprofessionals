@@ -13,7 +13,7 @@ export default function Draft() {
   const handleDropdownClick = () => {
     setShowDropdown(!showDropdown);
   };
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <Root>
       <table>
@@ -99,10 +99,20 @@ export default function Draft() {
                 {showDropdown && (
                   <div className="dropdown_menu">
                     <ul>
-                    <li onClick={()=>{navigate("/internalpage")}}>Preview</li>
-                      <li   onClick={() => {
+                      <li
+                        onClick={() => {
+                          navigate("/internalpage");
+                        }}
+                      >
+                        Preview
+                      </li>
+                      <li
+                        onClick={() => {
                           navigate("/editgigspages");
-                        }}>Edit</li>
+                        }}
+                      >
+                        Edit
+                      </li>
                       <li>Activate</li>
                       <li>Delete</li>
                     </ul>
@@ -207,34 +217,17 @@ const Root = styled.section`
     .dropdown_wrapper {
       position: relative;
     }
-
-    .dropdown_menu {
-      position: absolute;
-      top: 59px;
-      left: -70px;
-      background-color: #fff;
-      border: 1px solid #5556;
-      border-radius: 4px;
-      padding: 8px;
+    .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+      font-size: 0rem;
     }
-
-    .dropdown_menu ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
+    .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+      border: none;
     }
-
-    .dropdown_menu ul li {
-      padding: 4px 0;
-      cursor: pointer;
-      font-weight: 500;
-      color: #777;
-      text-transform: uppercase;
-      font-size: 13px;
-    }
-
-    .dropdown_menu ul li:hover {
-      background-color: #f2f2f2;
+    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+      padding-right: 18px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      padding-left: 19px;
     }
   }
   .table td:first-child {
@@ -242,6 +235,6 @@ const Root = styled.section`
   }
 
   @media (max-width: 567px) {
-      overflow:auto;
-    }
+    overflow: auto;
+  }
 `;

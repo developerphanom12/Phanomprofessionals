@@ -11,6 +11,7 @@ import {
   EXCHANGE_URLS_IMAGES,
 } from "../../../../Important/URLS";
 import { toast } from "react-toastify";
+import { MenuItem, Select } from "@mui/material";
 
 export default function PausedGigs() {
   const gigId = useSelector((state) => state.users.gigId);
@@ -139,12 +140,51 @@ export default function PausedGigs() {
           <IoIosAdd />
         </div>
         <div className="text_gig">
-        <b onClick={navigate("/create")}>Create a new gig</b> 
+          <b
+            onClick={() => {
+              navigate("/create");
+            }}
+          >
+            Create a new gig
+          </b>
         </div>
       </div>
       {gigGet.map((gigData, index) => (
         <tbody>
           <tr key={index}>
+            
+            <div className="dropdown_wrapper">
+              <Select className="dropdown_menu">
+                <MenuItem
+                  value="preview"
+                  onClick={() => {
+                    navigate(`/editgigspages/${gigData?.gig_ids}`);
+                  }}
+                >
+                  Preview
+                </MenuItem>
+                <MenuItem
+                  value="edit"
+                  onClick={() => {
+                    navigate("/editgigspages");
+                  }}
+                >
+                  Edit
+                </MenuItem>
+                <MenuItem
+                  value="activate"
+                  onClick={() => handleActivate(gigData.gig_ids)}
+                >
+                  Activate
+                </MenuItem>
+                <MenuItem
+                  value="delete"
+                  onClick={() => handleDeleted(gigData.gig_ids)}
+                >
+                  Delete
+                </MenuItem>
+              </Select>
+            </div>
             <td colSpan={2}>
               <img
                 className="img"
@@ -155,42 +195,7 @@ export default function PausedGigs() {
             <td className="title" colSpan={2}>
               <span>{gigData?.gig_title}</span>
             </td>
-
-
-
-
-            <td colSpan={2}>
-              <div className="dropdown_wrapper">
-              <BsThreeDots className="threedot_icon
-                "  onClick={() => handleDropdownClick(index)}/>
-                {showDropdown[index] && (
-                  <div className="dropdown_menu">
-                    <ul>
-                      <li
-                        onClick={() => {
-                          navigate("/internalpage");
-                        }}
-                      >
-                        Preview
-                      </li>
-                      <li
-                        onClick={() => {
-                          navigate("/editgigspages");
-                        }}
-                      >
-                        Edit
-                      </li>
-                      <li onClick={() => handleActivate(gigData.gig_ids)}>
-                        Activate
-                      </li>
-                      <li onClick={() => handleDeleted(gigData.gig_ids)}>
-                        Delete
-                      </li>
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </td>
+            <td colSpan={2}></td>
           </tr>
         </tbody>
       ))}
@@ -200,7 +205,7 @@ export default function PausedGigs() {
 const Root = styled.section`
   display: flex;
   flex-wrap: wrap;
-  gap:20px;
+  gap: 20px;
   .gig_box {
     display: flex;
     flex-direction: column;
@@ -242,21 +247,23 @@ const Root = styled.section`
     flex-wrap: wrap;
     width: 31%;
     padding: 20px;
+    padding-top: 5px;
     background-color: #fff;
     border: 1px solid #dadbdd;
     img {
       height: 100%;
       width: 100%;
-      &:hover{
-      cursor:pointer;
-    }
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
   .title {
     text-align: center;
     margin-top: 10px;
-    width:100%;
+    width: 100%;
   }
+
   span {
     font-size: 14px;
     padding-top: 10px;
@@ -265,8 +272,8 @@ const Root = styled.section`
     height: 40px;
     text-align: center;
     margin-bottom: 10px;
-    &:hover{
-      cursor:pointer;
+    &:hover {
+      cursor: pointer;
       text-decoration: underline;
     }
   }
@@ -274,41 +281,42 @@ const Root = styled.section`
   tbody tr {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
-  .dropdown_menu {
-    padding: 10px 20px 10px 10px;
-}
 
-.dropdown_wrapper {
-    position: absolute;
+  .dropdown_wrapper {
+    width: 100%;
+    margin-bottom: 5px;
 
-    left: 69%;
-    top: 227px;
-    background-color: #fff;
-}
-svg.threedot_icon {
-    margin-left: 101px;
-}
+  }
+  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+    font-size: 0rem;
+  }
+  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding-right: 18px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 19px;
+  }
 
-  @media (max-width: 567px){
+  @media (max-width: 567px) {
+    .gig_box {
+      width: 100%;
+    }
 
-.gig_box {
-     width: 100%; 
-}
+    tbody {
+      width: 100%;
+    }
+  }
 
-tbody {
-   width: 100%;
-}
+  @media (min-width: 567px) and (max-width: 992px) {
+    .gig_box {
+      width: 45%;
+    }
 
- }
-
- @media (min-width: 567px) and (max-width: 992px){
-   .gig_box {
-     width: 45%; 
-}
-
-tbody {
-   width: 45%;
-}
- }
+    tbody {
+      width: 45%;
+    }
+  }
 `;

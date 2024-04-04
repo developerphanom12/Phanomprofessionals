@@ -9,6 +9,7 @@ import {
 } from "../../../../Important/URLS";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { MenuItem, Select } from "@mui/material";
 
 export default function Paused() {
   const gigId = useSelector((state) => state.users.gigId);
@@ -107,7 +108,7 @@ export default function Paused() {
     newDropdownStates[index] = !newDropdownStates[index];
     setShowDropdown(newDropdownStates);
   };
-  
+
   const navigate = useNavigate();
 
   const handleActivate = (gigId) => {
@@ -121,7 +122,7 @@ export default function Paused() {
   };
 
   return (
-    <Root >
+    <Root>
       <table>
         <thead>
           <tr className="head">
@@ -155,7 +156,7 @@ export default function Paused() {
         </thead>
         <tbody>
           {gigGet.map((gigData, index) => (
-            <tr key={index} >
+            <tr key={index}>
               <td colSpan={2}>
                 <img
                   className="img"
@@ -182,35 +183,36 @@ export default function Paused() {
               <td></td>
               <td colSpan={2}>
                 <div className="dropdown_wrapper">
-                  <IoMdArrowDropdown
-                    onClick={() => handleDropdownClick(index)}
-                  />
-                  {showDropdown[index] && (
-                    <div className="dropdown_menu">
-                      <ul>
-                        <li
-                          onClick={() => {
-                            navigate("/internalpage");
-                          }}
-                        >
-                          Preview
-                        </li>
-                        <li
-                          onClick={() => {
-                            navigate("/editgigspages");
-                          }}
-                        >
-                          Edit
-                        </li>
-                        <li onClick={() => handleActivate(gigData.gig_ids)}>
-                          Activate
-                        </li>
-                        <li onClick={() => handleDeleted(gigData.gig_ids)}>
-                          Delete
-                        </li>
-                      </ul>
-                    </div>
-                  )}
+                  <Select className="dropdown_menu">
+                    <MenuItem
+                      value="preview"
+                      onClick={() => {
+                        navigate(`/editgigspages/${gigData?.gig_ids}`);
+                      }}
+                    >
+                      Preview
+                    </MenuItem>
+                    <MenuItem
+                      value="edit"
+                      onClick={() => {
+                        navigate("/editgigspages");
+                      }}
+                    >
+                      Edit
+                    </MenuItem>
+                    <MenuItem
+                      value="activate"
+                      onClick={() => handleActivate(gigData.gig_ids)}
+                    >
+                      Activate
+                    </MenuItem>
+                    <MenuItem
+                      value="delete"
+                      onClick={() => handleDeleted(gigData.gig_ids)}
+                    >
+                      Delete
+                    </MenuItem>
+                  </Select>
                 </div>
               </td>
             </tr>
@@ -309,35 +311,17 @@ const Root = styled.section`
     .dropdown_wrapper {
       position: relative;
     }
-
-    .dropdown_menu {
-      position: absolute;
-      top: 22px;
-      left: -70px;
-      z-index: 1111;
-      background-color: #fff;
-      border: 1px solid #5556;
-      border-radius: 4px;
-      padding: 8px;
+    .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+      font-size: 0rem;
     }
-
-    .dropdown_menu ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
+    .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+      border: none;
     }
-
-    .dropdown_menu ul li {
-      padding: 4px 0;
-      cursor: pointer;
-      font-weight: 500;
-      color: #777;
-      text-transform: uppercase;
-      font-size: 13px;
-    }
-
-    .dropdown_menu ul li:hover {
-      background-color: #f2f2f2;
+    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+      padding-right: 18px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      padding-left: 19px;
     }
   }
   .table td:first-child {

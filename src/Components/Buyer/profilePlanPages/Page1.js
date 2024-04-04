@@ -244,7 +244,8 @@ export default function Page1() {
                                   <div className="continue_button">
                                     <button
                                       onClick={() => {
-                                        navigate("/user");
+                                        // navigate("/user");
+                                        navigate(`/user/${gig?.gigs_id}`);
                                       }}
                                     >
                                       ContactMe <FaArrowRightLong />
@@ -307,7 +308,12 @@ export default function Page1() {
                                     </div>
                                   </div>
                                   <div className="continue_button">
-                                    <button>
+                                    <button
+                                      onClick={() => {
+                                        // navigate("/user");
+                                        navigate(`/user/${gig?.gigs_id}`);
+                                      }}
+                                    >
                                       ContactMe <FaArrowRightLong />
                                     </button>
                                   </div>
@@ -368,7 +374,12 @@ export default function Page1() {
                                     </div>
                                   </div>
                                   <div className="continue_button">
-                                    <button>
+                                    <button
+                                      onClick={() => {
+                                        // navigate("/user");
+                                        navigate(`/user/${gig?.gigs_id}`);
+                                      }}
+                                    >
                                       ContactMe <FaArrowRightLong />
                                     </button>
                                   </div>
@@ -951,7 +962,6 @@ const Root = styled.section`
   }
 `;
 
-
 // window.addEventListener("scroll", function () {
 //   var sidebar = document.querySelector(".side_barr");
 //   var sticky = sidebar.offsetTop;
@@ -965,13 +975,11 @@ const Root = styled.section`
 //   }
 // });
 
-
-
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   var sidebar = document.querySelector(".side_barr");
 
   if (sidebar) {
-    window.addEventListener("scroll", function() {
+    window.addEventListener("scroll", function () {
       var sticky = sidebar.offsetTop;
 
       if (window.pageYOffset > sticky) {

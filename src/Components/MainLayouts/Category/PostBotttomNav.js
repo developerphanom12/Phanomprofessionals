@@ -104,15 +104,13 @@ function PostBotttomNav() {
     setIsListOpen10(false);
   };
 
-    return (
+  return (
     <Root>
-   <Navbar expand="lg" className="bg-body-tertiary">
-
+      <Navbar expand="lg" className="bg-body-tertiary">
         <ContainerFluid fluid>
+          {/* <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
 
-          <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
-
-          <Navbar.Collapse id="basic-navbar-nav" >
+          <Navbar.Collapse id="basic-navbar-nav"> */}
             <Nav className="me-auto">
               <div
                 onMouseEnter={handleMouseEnter1}
@@ -244,7 +242,7 @@ function PostBotttomNav() {
                 )}
               </div>
             </Nav>
-          </Navbar.Collapse>
+          {/* </Navbar.Collapse> */}
         </ContainerFluid>
       </Navbar>
     </Root>
@@ -253,6 +251,9 @@ function PostBotttomNav() {
 
 export default PostBotttomNav;
 const Root = styled.section`
+    border-bottom: 1px solid #dadbdd;
+    border-top: 1px solid #dadbdd;
+ 
   nav.navbar.navbar-expand.navbar-light.bg-light {
     border: 1px solid #e4e5e7;
     position: relative;
@@ -271,31 +272,40 @@ const Root = styled.section`
   }
   .option_list_list {
     position: absolute;
-    top: 40px;
+    top: 47px;
     width: 100vw;
     background-color: #fff;
     z-index: 11111;
     left: 0;
+    font-size: 14px;
   }
   nav.navbar.navbar-expand.navbar-light.bg-light {
     padding: 0px;
   }
 
-  @media (max-width: 567px){
-    .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
-    justify-content:end;
-    padding-bottom:8px;
-}
-
+  @media (max-width: 567px) {
+    .navbar > .container,
+    .navbar > .container-fluid,
+    .navbar > .container-lg,
+    .navbar > .container-md,
+    .navbar > .container-sm,
+    .navbar > .container-xl,
+    .navbar > .container-xxl {
+      justify-content: end;
+      padding-bottom: 8px;
+    }
   }
 
-  @media (min-width: 567px) and (max-width: 992px){
-    .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
-    justify-content:end;
-    padding-bottom:8px;
-}
-    
-
-
+  @media (min-width: 567px) and (max-width: 992px) {
+    .navbar > .container,
+    .navbar > .container-fluid,
+    .navbar > .container-lg,
+    .navbar > .container-md,
+    .navbar > .container-sm,
+    .navbar > .container-xl,
+    .navbar > .container-xxl {
+      justify-content: end;
+      padding-bottom: 8px;
+    }
   }
 `;
