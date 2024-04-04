@@ -244,8 +244,8 @@ export default function Page1() {
                                   <div className="continue_button">
                                     <button
                                       onClick={() => {
-                                        // navigate("/user");
-                                        navigate(`/user/${gig?.gigs_id}`);
+                                        navigate("/user");
+                                        // navigate(`/user/${gig?.gigs_id}`);
                                       }}
                                     >
                                       ContactMe <FaArrowRightLong />
@@ -310,8 +310,8 @@ export default function Page1() {
                                   <div className="continue_button">
                                     <button
                                       onClick={() => {
-                                        // navigate("/user");
-                                        navigate(`/user/${gig?.gigs_id}`);
+                                        navigate("/user");
+                                        // navigate(`/user/${gig?.gigs_id}`);
                                       }}
                                     >
                                       ContactMe <FaArrowRightLong />
@@ -376,8 +376,8 @@ export default function Page1() {
                                   <div className="continue_button">
                                     <button
                                       onClick={() => {
-                                        // navigate("/user");
-                                        navigate(`/user/${gig?.gigs_id}`);
+                                        navigate("/user");
+                                        // navigate(`/user/${gig?.gigs_id}`);
                                       }}
                                     >
                                       ContactMe <FaArrowRightLong />
