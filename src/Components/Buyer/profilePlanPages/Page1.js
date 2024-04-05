@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import styled from "styled-components";
 import pro from "../../Images/Boyspic.png";
-import { HiOutlineTrophy } from "react-icons/hi2";
 import msgimg from "../../Images/Boyspic.png";
 import { RxCross2 } from "react-icons/rx";
 import { ImAttachment } from "react-icons/im";
@@ -311,7 +310,7 @@ export default function Page1() {
                                     <button
                                       onClick={() => {
                                         navigate("/user");
-                                        // navigate(`/user/${gig?.gigs_id}`);
+                                     
                                       }}
                                     >
                                       ContactMe <FaArrowRightLong />
@@ -440,7 +439,10 @@ export default function Page1() {
                                     </div>
                                   </div>
                                   <div className="continue_button">
-                                    <button>
+                                    <button onClick={() => {
+                                        navigate("/user");
+                                        // navigate(`/user/${gig?.gigs_id}`);
+                                      }}>
                                       ContactMe <FaArrowRightLong />
                                     </button>
                                   </div>
@@ -968,8 +970,9 @@ const Root = styled.section`
 
 //   if (window.pageYOffset > sticky) {
 //     sidebar.style.position = "fixed";
-//     sidebar.style.top = "60";
 //     sidebar.style.right = "1";
+//     sidebar.style.top = "60";
+
 //   } else {
 //     sidebar.style.position = "static";
 //   }
@@ -984,8 +987,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (window.pageYOffset > sticky) {
         sidebar.style.position = "fixed";
-        sidebar.style.top = "60px"; // Adjust the top position as needed
-        sidebar.style.right = "10px"; // Adjust the right position as needed
+        sidebar.style.top = "60px"; 
+        sidebar.style.right = "10px";
       } else {
         sidebar.style.position = "static";
       }

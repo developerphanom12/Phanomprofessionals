@@ -5,6 +5,10 @@ import { SlOptions } from "react-icons/sl";
 import io from "socket.io-client";
 import styled from "styled-components";
 import LoginBuyer from "../CommonPages/loginPages/LoginBuyer";
+import { BsEmojiSmile } from "react-icons/bs";
+import { IoIosAttach } from "react-icons/io";
+import { Button, Popover, Typography } from "@mui/material";
+import MileStone from "./MileStone";
 
 const token = localStorage.getItem("token");
 const socket = io("http://localhost:4000", {
@@ -26,6 +30,18 @@ function Userone() {
   const [selectedUserName, setSelectedUserName] = useState("");
   const [connectedUsers, setConnectedUsers] = useState({});
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const idd = open ? "simple-popover" : undefined;
+
   console.log("name", selectedUserName);
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -46,7 +62,7 @@ function Userone() {
 
     return () => {
       if (selectedUser) {
-        socket.emit("leaveRoom", selectedUser); // Leave room when component unmounts
+        socket.emit("leaveRoom", selectedUser);
       }
     };
   }, [selectedUser]);
@@ -159,14 +175,14 @@ function Userone() {
               <button onClick={() => startChat(user.id, user.username)}>
                 <FaRegUser />
                 {user.username}
+                <div className="hadin">
+                  {connectedUsers[user.id]?.online ? (
+                    <FaCircle style={{ color: "green", margin: "12px" }} />
+                  ) : (
+                    <FaCircle style={{ color: "red" }} />
+                  )}
+                </div>
               </button>{" "}
-              <div className="hadin">
-                {connectedUsers[user.id]?.online ? (
-                  <FaCircle style={{ color: "green", margin: "12px" }} />
-                ) : (
-                  <FaCircle style={{ color: "red" }} />
-                )}
-              </div>
               <SlOptions />
             </li>
           ))}
@@ -185,10 +201,10 @@ function Userone() {
               </div>
             )}
           </div>
-          <h5>
+          <h4>
             {selectedUserName ? `${selectedUserName}` : "Chat App"}
-            <p className="active2">Active Now</p>
-          </h5>
+            <p className="active2">Active now</p>
+          </h4>
         </div>
         <div className="message-container">
           {messages.map((message, index) => (
@@ -205,7 +221,7 @@ function Userone() {
                     {moment(message.timestamp).format("MMMM DD, YY, h:mm A")}
                   </span>
                 </strong>
-                {message.message}
+                <p className="msg_paragraph">{message.message}</p>
               </div>
             </div>
           ))}
@@ -217,8 +233,40 @@ function Userone() {
             value={messageInput}
             onChange={(e) => setMessageInput(e.target.value)}
           />
-          <button className="offer_btn">Create an Offer</button>
-          <button onClick={sendMessage}>Send</button>
+        </div>
+        <div className="emoji_attach_offer">
+          <div className="emoji_attach">
+            <BsEmojiSmile />
+            <IoIosAttach />
+          </div>
+          <div className="offer_save">
+            {/* <button className="offer_btn">Create an Offer</button> */}
+            <Button
+              aria-describedby={idd}
+              variant="contained"
+              onClick={handleClick}
+              className="offer_btn"
+            >
+              Create an Offer
+            </Button>
+            <Popover
+              id={idd}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+            >
+              <Typography sx={{ p: 0 }}>
+                <MileStone />
+              </Typography>
+            </Popover>
+            <button className="savee" onClick={sendMessage}>
+              Send
+            </button>
+          </div>
         </div>
       </div>
     </Root>
@@ -229,7 +277,9 @@ const Root = styled.section`
   display: flex;
   width: 100vw;
   height: 70vh;
-  margin-bottom: 10px;
+  margin: 0px 10px;
+  padding: 10px 0px;
+
   .user_area {
     overflow-y: auto;
     padding: 10px;
@@ -241,7 +291,7 @@ const Root = styled.section`
       li {
         display: flex;
         margin: 10px 0px;
-        align-items: end;
+        /* align-items: end; */
         width: 100%;
         font-weight: 600;
         border-radius: 7px;
@@ -262,8 +312,17 @@ const Root = styled.section`
             width: 40px;
             height: 40px;
             border-radius: 50px;
-            border: 1px solid #000;
+            border: 1px solid #6c757db8;
             padding: 5px;
+            color: #6c757db8;
+          }
+          .hadin {
+            svg {
+              width: 17px;
+              height: 17px;
+              border: 1px solid #dee2e675;
+              margin-bottom: 10px;
+            }
           }
         }
       }
@@ -272,10 +331,51 @@ const Root = styled.section`
 
   .chat_area {
     margin: 10px 10px 10px 40px;
-    width: 60vw;
-    height: 70vh;
+    width: 55vw;
+    height: 73vh;
     border: 1px solid lightgray;
     border-radius: 20px;
+    margin-bottom: 20px;
+    .emoji_attach_offer {
+      width: 100%;
+      display: flex;
+      padding: 10px;
+      margin: 10px 23px;
+      .emoji_attach {
+        border-right: 1px solid lightgray;
+        padding: 0px 10px;
+        margin: 0px 5px;
+        width: 15%;
+        display: flex;
+        justify-content: space-around;
+        svg {
+          color: #444;
+          font-size: 20px;
+        }
+      }
+      .offer_save {
+        display: flex;
+        width: 78%;
+        justify-content: space-between;
+        padding: 0px 20px;
+        .offer_btn {
+          color: #fff;
+          background-color: #222325;
+          border-radius: 10px;
+          border: 1px solid black;
+          padding: 6px;
+          font-weight: 600;
+          font-size: 14px;
+          margin: 0px 5px;
+        }
+        .savee {
+          border: none;
+          font-weight: 600;
+          color: #000;
+          background-color: transparent;
+        }
+      }
+    }
     .heading_name {
       height: 80px;
       padding: 10px;
@@ -292,18 +392,22 @@ const Root = styled.section`
         margin: 0px;
         font-size: 23px;
         width: 41px;
-        margin: 12px;
+        margin: 0px 12px;
         height: 40px;
         justify-content: center;
         display: flex;
         align-items: center;
       }
-
+      h4 {
+        font-weight: 600;
+        font-size: 16px;
+        text-transform: capitalize;
+      }
       .active2 {
         display: flex;
         flex-direction: column;
-        margin-left: 0px;
-        font-size: 16px;
+        margin: 0px;
+        font-size: 13px;
         color: #198754;
       }
 
@@ -330,7 +434,6 @@ const Root = styled.section`
       h5 {
         font-size: 24px;
         color: #9c8ea2;
-        /* / align-items: center; / */
         display: flex;
         margin: 0px;
         margin-top: 41px;
@@ -342,26 +445,37 @@ const Root = styled.section`
     }
     .message-container {
       overflow-y: auto;
-      height: 50vh;
+      height: 40vh;
       padding: 20px;
 
       .message {
         display: flex;
       }
       .msg_box {
-        width: 80%;
+        width: 480px;
         padding: 4px;
-        background-color: #7db7f114;
+        background-color: #fff;
         margin: 7px 0px;
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
-        border-left: 2px solid #70b5fb;
+        border: 1px solid #ccc;
         text-transform: capitalize;
-        border-radius: 5px;
+        border-radius: 3px;
+        .msg_paragraph {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0;
+          color: #74767e;
+          font-size: 13px;
+          word-wrap: break-word;
+          overflow-wrap: anywhere;
+        }
         .user_name {
           font-size: 12px;
-          color: #3a97f5;
+          color: #444;
           display: flex;
+          width: 460px;
           align-items: center;
           justify-content: space-between;
           .timestamp {
@@ -371,24 +485,15 @@ const Root = styled.section`
       }
     }
     .input_button {
-      position: relative;
-      bottom: 26px;
-      width: 80%;
+      width: 93%;
       border: 1px solid lightgray;
       border-radius: 10px;
       display: flex;
       justify-content: space-between;
       padding: 10px;
-      margin: 20px;
+      margin: 10px 20px;
       margin-top: 5px;
-      .offer_btn {
-        color: #fff;
-        background-color: black;
-        border-radius: 10px;
-        border: 1px solid black;
-        padding: 6px;
-        font-size: 13px;
-      }
+
       input {
         border-radius: 10px;
         width: 60%;

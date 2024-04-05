@@ -623,11 +623,12 @@ const Root = styled.section`
   .profile_option {
     position: absolute;
     top: 70px;
-    z-index: 11;
+    z-index: 11111;
     border: 1px solid #c5c6c9;
     background: white;
     width: 18%;
     padding: 10px;
+    cursor: pointer;
     .profile_div {
       display: flex;
       justify-content: center;
@@ -672,7 +673,7 @@ const Root = styled.section`
     .profile_option {
       position: absolute;
       top: 240px;
-      z-index: 11;
+      z-index: 1111;
       border: 1px solid #c5c6c9;
       background: white;
       width: 50%;
