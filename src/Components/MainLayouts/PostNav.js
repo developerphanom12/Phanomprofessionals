@@ -355,7 +355,7 @@ export default function PostNav() {
 }
 const Root = styled.section`
   font-family: "Macan", Helvetica Neue, Helvetica, Arial, sans-serif;
-  /* width: 100vw; */
+  max-width: 100vw;
   .logo_img {
     margin-right: 32px;
     img {
@@ -370,7 +370,7 @@ const Root = styled.section`
   }
   div#basic-navbar-nav {
     align-items: center;
-    justify-content: end;
+    justify-content: space-evenly;
   }
 
   div#responsive-navbar-nav {
@@ -611,7 +611,7 @@ const Root = styled.section`
     width: 100vw;
     justify-content: space-between;
   }
-
+ 
   .profile {
     img {
       border-radius: 50px;

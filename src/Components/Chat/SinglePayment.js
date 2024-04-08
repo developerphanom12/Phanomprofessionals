@@ -2,13 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import imgg from "../Images/chainimg.png";
 import { IoInformationCircleOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
+import { Link } from "@mui/icons-material";
 
-export default function MileStone() {
+export default function SinglePayment() {
+  const navigate = useNavigate();
+
   return (
     <Root>
       <div className="Single_milestone_page">
         <div className="create_heading">
-          <h5>Create a Milestone offer</h5>
+          <h5>Create a single-payment offer</h5>
         </div>
         <div className="heading_body">
           <header>
@@ -24,26 +28,15 @@ export default function MileStone() {
             </div>
           </div>
         </div>
-        {/* ------------------------------mmmmmmm----------------------------- */}
-
-        <div className="milestone_to_single_div">
+        {/* -----------------------------ssssss------------------------------ */}
+        <div className="single_to_milestone_div">
           <h6>
             Set up your offer or
-            <button>Switch to Single payment</button>
+            <button>Switch to Milestones</button>
           </h6>
-          <p>
-            Divide your work into pre-defined steps with specific goals (minimum
-            $50 for each milestone).
-          </p>
-
+          <p>Define the terms of your offer and what it includes.</p>
           <div className="list_section">
             <ul>
-              <li>
-                <b>1st milestone name</b>
-                <div>
-                  <input placeholder="enter a mildstone name" />
-                </div>
-              </li>
               <li>
                 <b>Revision (Optional)</b>
                 <div>
@@ -64,30 +57,17 @@ export default function MileStone() {
                 <b>Price</b>
                 <div>
                   $
-                  <textarea placeholder="0" />
+                  <textarea placeholder=" 20000max" />
                 </div>
               </li>
             </ul>
-          </div>
-          <div className="below_list_section">
             <div>
-              <textarea placeholder="Describe your offer in detail (optional)" />
+              <div>
+                <input type="checkbox" />
+                <b>Add a coupon</b>
+              </div>
+              <div>Offers with coupons are more likely to be accepted.</div>
             </div>
-            <p>Adding a description helps set expectations with buyers.</p>
-          </div>
-          <div>
-            {" "}
-            <button>Save</button>
-          </div>
-          <div className="total_day_pay">
-            <p>
-              {" "}
-              Total: 0 days
-              <b class="amount">$0</b>
-            </p>
-            <p>
-              You'll get paid for each milestone once it's marked as completed.
-            </p>
           </div>
         </div>
         <ul>
@@ -171,9 +151,8 @@ export default function MileStone() {
     </Root>
   );
 }
-
 const Root = styled.section`
-img{
-  width: 200px;
-}
+  img {
+    width: 200px;
+  }
 `;

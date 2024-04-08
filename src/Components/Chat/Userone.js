@@ -7,8 +7,12 @@ import styled from "styled-components";
 import LoginBuyer from "../CommonPages/loginPages/LoginBuyer";
 import { BsEmojiSmile } from "react-icons/bs";
 import { IoIosAttach } from "react-icons/io";
-import { Button, Popover, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import MileStone from "./MileStone";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import MainSingleMilestone from "./MainSingleMilestone";
+import CreateSingMile from "./CreateSingMile";
 
 const token = localStorage.getItem("token");
 const socket = io("http://localhost:4000", {
@@ -30,17 +34,9 @@ function Userone() {
   const [selectedUserName, setSelectedUserName] = useState("");
   const [connectedUsers, setConnectedUsers] = useState({});
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const idd = open ? "simple-popover" : undefined;
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   console.log("name", selectedUserName);
   useEffect(() => {
@@ -241,28 +237,21 @@ function Userone() {
           </div>
           <div className="offer_save">
             {/* <button className="offer_btn">Create an Offer</button> */}
-            <Button
-              aria-describedby={idd}
-              variant="contained"
-              onClick={handleClick}
-              className="offer_btn"
-            >
+            <Button onClick={handleOpen} className="offer_btn">
               Create an Offer
             </Button>
-            <Popover
-              id={idd}
+
+            <Modal
               open={open}
-              anchorEl={anchorEl}
               onClose={handleClose}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
             >
-              <Typography sx={{ p: 0 }}>
-                <MileStone />
-              </Typography>
-            </Popover>
+              <Box sx={style}>
+                {/* <MainSingleMilestone /> */}
+                <CreateSingMile/>
+              </Box>
+            </Modal>
             <button className="savee" onClick={sendMessage}>
               Send
             </button>
@@ -511,3 +500,14 @@ const Root = styled.section`
     }
   }
 `;
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  height: 450,
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  borderRadius: 1,
+  overflow: "auto",
+};
