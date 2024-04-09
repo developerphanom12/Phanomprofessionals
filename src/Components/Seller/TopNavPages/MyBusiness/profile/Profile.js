@@ -1,34 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import profile from "../../../../Images/Boyspic.png";
+import profilee from "../../../../Images/Boyspic.png";
 import { CreateButton } from "../../../../../GlobalStyles";
 import { CiEdit } from "react-icons/ci";
 import { FaLocationDot, FaUser } from "react-icons/fa6";
 import Profile2 from "./Profile2";
-
+import { toast } from "react-toastify";
+import axios from "axios";
+import { EXCHANGE_URLS } from "../../../../Important/URLS";
 
 export default function Profile() {
   const [isEdit, setIsEdit] = useState(false);
+  const [profile, setProfile] = useState();
 
   const toggleEdit = () => {
     setIsEdit(!isEdit);
   };
+
+  useEffect(() => {
+    const getSliderApi = async () => {
+      try {
+        const axiosConfig = {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        };
+        const res = await axios.get(
+          `${EXCHANGE_URLS}/sellerProfile`,
+          axiosConfig
+        );
+        // console.log("profile", res.data.message[0]);
+
+        if (res?.status === 201) {
+          setProfile(res?.data?.message || []);
+        }
+      } catch (err) {
+        toast.error(err, "Error");
+      }
+    };
+
+    getSliderApi();
+  }, []);
+
   return (
     <Root>
+      {profile  && (
       <div className="main_div1">
         <div className="profile_div">
           <div className="profile_image">
             <p>
               <span>online</span>
             </p>
-            <img src={profile} />
+            <img src={profilee} alt="img"/>
           </div>
           <div className="username">
             <div className="user_button">
-              <button>PhanomdeveloperBoy</button>
+              <button>{profile[0].username}</button>
               <CiEdit />
             </div>
-            <b>@phanombuddy</b>
+            <b>{profile[0].technology_name}</b>
           </div>
           <div className="editing">
             <CiEdit onClick={toggleEdit} />
@@ -36,7 +66,7 @@ export default function Profile() {
               <div className="edit_page">
                 <input placeholder="What's your story in one line?" />
                 <div className="update_button">
-                  <button className="button">Cancle</button>
+                  <button className="button"  onClick={()=>{toggleEdit(false)}}>Cancle</button>
                   <CreateButton>Update</CreateButton>
                 </div>
               </div>
@@ -127,6 +157,7 @@ export default function Profile() {
           </div>
         </div>
       </div>
+      )}
       <div className="main_div2">
         <Profile2 />
       </div>

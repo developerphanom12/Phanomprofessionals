@@ -11,7 +11,7 @@ import { Button, Typography } from "@mui/material";
 import MileStone from "./MileStone";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import MainSingleMilestone from "./MainSingleMilestone";
+import Tooltip from "@mui/material/Tooltip";
 import CreateSingMile from "./CreateSingMile";
 
 const token = localStorage.getItem("token");
@@ -236,10 +236,24 @@ function Userone() {
             <IoIosAttach />
           </div>
           <div className="offer_save">
-            {/* <button className="offer_btn">Create an Offer</button> */}
-            <Button onClick={handleOpen} className="offer_btn">
-              Create an Offer
-            </Button>
+            <Tooltip
+              title={
+                <Typography
+                  style={{
+                    fontSize: "16px",
+                  }}
+                >
+                  Create and send your customer a unique offer based on their
+                  specific request.
+                </Typography>
+              }
+              arrow
+            >
+              <Button onClick={handleOpen} className="offer_btn">
+                {" "}
+                Create an Offer
+              </Button>
+            </Tooltip>
 
             <Modal
               open={open}
@@ -249,7 +263,7 @@ function Userone() {
             >
               <Box sx={style}>
                 {/* <MainSingleMilestone /> */}
-                <CreateSingMile/>
+                <CreateSingMile />
               </Box>
             </Modal>
             <button className="savee" onClick={sendMessage}>
@@ -356,6 +370,10 @@ const Root = styled.section`
           font-weight: 600;
           font-size: 14px;
           margin: 0px 5px;
+          &:hover {
+            background-color: #676767;
+            border: 1px solid #676767;
+          }
         }
         .savee {
           border: none;

@@ -54,7 +54,7 @@ export default function RenderPages() {
   };
 
   const handleGigCreate = () => {
-    toast.warn("Complete Steps In Sequence");
+    toast.info("Complete Steps In Sequence");
     navigate("/create");
   };
   return (

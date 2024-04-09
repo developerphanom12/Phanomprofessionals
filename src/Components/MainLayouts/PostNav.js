@@ -10,12 +10,11 @@ import { CiHeart, CiMail } from "react-icons/ci";
 import logoimg from "../Images/Boyspic.png";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
-
 import { IoIosNotificationsOutline, IoMdSettings } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { setUserRoleAction, userCheckAction } from "../../redux/users/action";
+import {  userCheckAction } from "../../redux/users/action";
 import PostBotttomNav from "./Category/PostBotttomNav";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -486,8 +485,7 @@ const Root = styled.section`
       }
     }
   }
-  
-  
+
   .notifyy {
     display: flex;
     align-items: center;
@@ -611,7 +609,7 @@ const Root = styled.section`
     width: 100vw;
     justify-content: space-between;
   }
- 
+
   .profile {
     img {
       border-radius: 50px;
@@ -693,5 +691,23 @@ const Root = styled.section`
     .top_nav_pages {
       padding: 0px;
     }
+  }
+  .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+    border: none;
+    font-weight: 700;
+  }
+
+  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding-right: 32px;
+    color: #62646a;
+    font-weight: 600;
+    height: 42px;
+    line-height: 42px;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding: 0;
   }
 `;
