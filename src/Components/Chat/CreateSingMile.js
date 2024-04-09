@@ -3,7 +3,7 @@ import styled from "styled-components";
 import imgg from "../Images/chainimg.png";
 import { GiCornerFlag } from "react-icons/gi";
 import { IoInformationCircleOutline } from "react-icons/io5";
-import { BackButton, BlueButton } from "../../GlobalStyles";
+import { BackButton, BlueButton, CreateButton } from "../../GlobalStyles";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 export default function CreateSingMile() {
@@ -168,77 +168,76 @@ export default function CreateSingMile() {
               (minimum $50 for each milestone).
             </p>
 
-            <div className="border_only">
-              <div className="list_section">
-                <ul>
-                  <li>
-                    <b>1st milestone name</b>
-                    <div className="input_div">
-                      <textarea placeholder="enter a mildstone name"></textarea>
-                    </div>
-                  </li>
-                  <li>
-                    <b>Revision (Optional)</b>
-                    <div>
-                      <FormControl sx={{ m: 1, minWidth: 120 }}>
-                        <Select
-                          value={select}
-                          onChange={handleChange}
-                          displayEmpty
-                          inputProps={{ "aria-label": "Without label" }}
-                        >
-                          <MenuItem value=""></MenuItem>
-                          <MenuItem value={10}>Ten</MenuItem>
-                          <MenuItem value={20}>Twenty</MenuItem>
-                          <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </div>
-                  </li>
-                  <li>
-                    <b>Delivery</b>
-                    <div>
-                      <FormControl sx={{ m: 1, minWidth: 120 }}>
-                        <Select
-                          value={select}
-                          onChange={handleChange}
-                          displayEmpty
-                          inputProps={{ "aria-label": "Without label" }}
-                        >
-                          <MenuItem value=""></MenuItem>
-                          <MenuItem value={10}>Ten</MenuItem>
-                          <MenuItem value={20}>Twenty</MenuItem>
-                          <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </div>
-                  </li>
-                  <li>
-                    <b>Price</b>
-                    <div className="input_div">
-                      $
-                      <textarea placeholder=" 0" />
-                    </div>
-                  </li>
-                </ul>
-              </div>
+            <div className="list_section">
+              <ul>
+                <li>
+                  <b>1st milestone name</b>
+                  <div className="input_div">
+                    <textarea placeholder="enter a mildstone name"></textarea>
+                  </div>
+                </li>
+                <li>
+                  <b>Revision (Optional)</b>
+                  <div>
+                    <FormControl sx={{ m: 1, minWidth: 120 }}>
+                      <Select
+                        value={select}
+                        onChange={handleChange}
+                        displayEmpty
+                        inputProps={{ "aria-label": "Without label" }}
+                      >
+                        <MenuItem value=""></MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                        <MenuItem value={20}>Twenty</MenuItem>
+                        <MenuItem value={30}>Thirty</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </div>
+                </li>
+                <li>
+                  <b>Delivery</b>
+                  <div>
+                    <FormControl sx={{ m: 1, minWidth: 120 }}>
+                      <Select
+                        value={select}
+                        onChange={handleChange}
+                        displayEmpty
+                        inputProps={{ "aria-label": "Without label" }}
+                      >
+                        <MenuItem value=""></MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                        <MenuItem value={20}>Twenty</MenuItem>
+                        <MenuItem value={30}>Thirty</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </div>
+                </li>
+                <li>
+                  <b>Price</b>
+                  <div className="input_div">
+                    $
+                    <textarea placeholder=" 0" />
+                  </div>
+                </li>
+              </ul>
+
               <div className="below_list_section">
                 <div className="text_div">
                   <textarea placeholder="Describe your offer in detail (optional)" />
                 </div>
                 <p>Adding a description helps set expectations with buyers.</p>
               </div>
-              <div>
+              <div className="green_btn_div">
                 {" "}
-                <button>Save</button>
+                <CreateButton className="green_btn">Save </CreateButton>
               </div>
               <div className="total_day_pay">
-                <p>
+                <p className="upper_p">
                   {" "}
                   Total: 0 days
                   <b class="amount">$0</b>
                 </p>
-                <p>
+                <p className="lower_p">
                   You'll get paid for each milestone once it's marked as
                   completed.
                 </p>
@@ -247,82 +246,105 @@ export default function CreateSingMile() {
           </div>
         </div>
       )}
-      <ul>
-        <li>
-          <div>
-            <input type="checkbox" />
-            <b>Offer expires in</b>
-          </div>
-          <select>
-            <option>1 Day</option>
-          </select>
-        </li>
-        <li>
-          <div>
-            <input type="checkbox" />
-            <b>Request for requirements</b>
-          </div>
-          <div>
-            <IoInformationCircleOutline />
-            <span>
-              The order will start immediately upon payment. Make sure you have
-              all of the required information to start working.
-            </span>
-          </div>
-        </li>
-      </ul>
-      <div>
-        <h6>Offer includes</h6>
-        <ul>
+      <div className="below_all_section">
+        <ul className="ull">
           <li>
-            <label>
+            <div className="div">
               <input type="checkbox" />
-              <b>Number of pages</b>
-            </label>
-            <input />
+              <b>Offer expires in</b>
+            </div>
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+              <Select
+                value={select}
+                onChange={handleChange}
+                displayEmpty
+                inputProps={{ "aria-label": "Without label" }}
+                style={{
+                  background: "#efeff0",
+                  color: "#c5c6c9",
+                  outline: "none",
+                }}
+              >
+                <MenuItem value="">select</MenuItem>
+                <MenuItem value={10}>select</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
           </li>
-          <li>
-            <label>
+          <li className="request">
+            <div className="div">
               <input type="checkbox" />
-              <b>Design customization</b>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" />
-              <b>Content upload</b>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" />
-              <b>Responsive design</b>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" />
-              <b>Include Source Code</b>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" />
-              <b>Licensed images</b>
-            </label>
-            <input />
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" />
-              <b>Detailed code comments</b>
-            </label>
+              <b>Request for requirements</b>
+            </div>
+            <div className="info_div">
+              <div>
+                <IoInformationCircleOutline />
+              </div>
+              <div>
+                <span>
+                  The order will start immediately upon payment.
+                  <br /> Make sure you have all of the required information to
+                  start working.
+                </span>
+              </div>
+            </div>
           </li>
         </ul>
-      </div>
-      <div>
-        <button>Back</button>
-        <button>Send Offer</button>
+
+        <div className="offer_includes">
+          <h6>Offer includes</h6>
+          <ul>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <b>Number of pages</b>
+              </label>
+              <textarea placeholder="1"></textarea>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <b>Design customization</b>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <b>Content upload</b>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <b>Responsive design</b>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <b>Include Source Code</b>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <b>Licensed images</b>
+              </label>
+              <textarea placeholder="1"></textarea>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <b>Detailed code comments</b>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div className="last_section">
+          <button>Back</button>
+          <CreateButton style={{fontSize:"16px"}}>Send Offer</CreateButton>
+        </div>
       </div>
     </Root>
   );
@@ -421,13 +443,14 @@ const Root = styled.section`
             border: none;
             text-decoration: none;
             height: 100%;
+            width: 100%;
           }
         }
       }
     }
     .milestone_to_single_div,
     .single_to_milestone_div {
-      padding: 20px 20px 0px;
+      padding: 20px 20px;
       h6 {
         display: flex;
         color: #404145;
@@ -444,6 +467,38 @@ const Root = styled.section`
         border: 1px solid rgb(197, 198, 201);
         border-radius: 4px;
         padding: 20px;
+        .green_btn_div {
+          width: 100%;
+          display: flex;
+          padding-bottom: 20px;
+          margin: 10px;
+          border-bottom: 1px solid lightgray;
+          justify-content: end;
+          .green_btn {
+            font-size: 16px;
+            font-weight: 600;
+            padding: 8px 12px;
+          }
+        }
+        .total_day_pay {
+          .upper_p {
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+            font-weight: 600;
+            margin: 0;
+            b {
+              padding: 0px 20px;
+            }
+          }
+          .lower_p {
+            padding-bottom: 0px;
+            margin: 0;
+            color: #95979d;
+            font-size: 14px;
+            line-height: 21px;
+          }
+        }
         ul {
           display: flex;
           padding: 0;
@@ -476,33 +531,118 @@ const Root = styled.section`
             }
           }
         }
-      }
-      .below_list_section {
-        padding-top: 12px;
-        .text_div {
-          width: 100%;
-          background-color: #fff;
-          padding-bottom: 45px;
-          textarea {
-            border: 1px solid #c5c6c9;
-            border-radius: 4px;
+        .below_list_section {
+          padding-top: 12px;
+          .text_div {
             width: 100%;
-            box-sizing: border-box;
-            color: #404145;
-            height: 150px;
-            padding: 12px 14px;
-            position: relative;
-            transition: 0.15s ease-in-out;
+            background-color: #fff;
+
+            textarea {
+              border: 1px solid #c5c6c9;
+              border-radius: 4px;
+              width: 100%;
+              box-sizing: border-box;
+              color: #404145;
+              height: 150px;
+              padding: 12px 14px;
+              position: relative;
+              transition: 0.15s ease-in-out;
+            }
           }
         }
       }
     }
+  }
 
-    .milestone_to_single_div {
-      .border_only {
-        border: 1px solid #c5c6c9;
-        border-radius: 4px;
-        padding: 20px;
+  .below_all_section {
+    .ull {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        border-top: 1px solid #e4e5e7;
+        color: #404145;
+        display: flex;
+        margin: 0 20px;
+        min-height: 75px;
+        label {
+          padding: 16px 0;
+          width: 100%;
+        }
+        .div {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          input {
+            width: 20px;
+            height: 20px;
+            margin-right: 7px;
+          }
+        }
+      }
+      .request {
+        display: flex;
+        flex-direction: column;
+        .info_div {
+          display: flex;
+          > div {
+            padding-right: 7px;
+          }
+          svg {
+            font-size: 20px;
+          }
+          span {
+            font-size: 14px;
+            color: #95979d;
+            line-height: 21px;
+          }
+        }
+      }
+    }
+    .offer_includes {
+      h6 {
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #dadbdd;
+        border-top: 1px solid #dadbdd;
+        font-weight: 600;
+        padding: 16px 20px;
+        font-size: 16px;
+        line-height: 140%;
+        color: #404145;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        li {
+          border-bottom: 1px solid #e4e5e7;
+          margin: 0 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          min-height: 75px;
+          label {
+            display: flex;
+            align-items: center;
+            input {
+              width: 20px;
+              height: 20px;
+              margin-right: 7px;
+            }
+            b {
+              font-weight: 500;
+              color: #404145;
+            }
+          }
+          textarea {
+            width: 80px;
+            height: 40px;
+            border: 1px solid #dadbdd;
+            border-radius: 4px;
+            background-color: #f5f5f5;
+            color: #404145;
+            padding: 5px;
+          }
+        }
       }
     }
   }
