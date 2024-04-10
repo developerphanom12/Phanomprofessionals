@@ -3,12 +3,26 @@ import styled from "styled-components";
 import imgg from "../Images/chainimg.png";
 import { GiCornerFlag } from "react-icons/gi";
 import { IoInformationCircleOutline } from "react-icons/io5";
-import { BackButton, BlueButton, CreateButton } from "../../GlobalStyles";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import {
+  BackButton,
+  BlackButton,
+  BlueButton,
+  CreateButton,
+} from "../../GlobalStyles";
+import { FormControl, MenuItem, Modal, Box, Select } from "@mui/material";
 
 export default function CreateSingMile() {
   const [isSinglePayment, setIsSinglePayment] = useState(true);
   const [select, setSelect] = React.useState("");
+  const [isChecked, setIsChecked] = useState(false);
+
+  const [openn, setOpenn] = React.useState(false);
+  const handleOpenn = () => setOpenn(true);
+  const handleClose = () => setOpenn(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   const handleChange = (event) => {
     setSelect(event.target.value);
@@ -27,7 +41,11 @@ export default function CreateSingMile() {
         </p>
         <li>
           <GiCornerFlag />
-          <div>
+          <div
+            onClick={() => {
+              handleOpenn();
+            }}
+          >
             <h6 onClick={() => setIsSinglePayment(true)}>Single Payment</h6>
             <span>Get paid in full after each order is completed.</span>
           </div>
@@ -35,7 +53,11 @@ export default function CreateSingMile() {
 
         <li>
           <GiCornerFlag />
-          <div>
+          <div
+            onClick={() => {
+              handleOpenn();
+            }}
+          >
             <h6 onClick={() => setIsSinglePayment(false)}> Milestone</h6>
             <span>
               Work in gradual steps and get paid for each completed milestone.
@@ -44,308 +66,311 @@ export default function CreateSingMile() {
         </li>
       </ul>
 
-      {isSinglePayment ? (
-        <div className="Single_milestone_page">
-          <div className="create_heading">
-            <h5>Create a single-payment offer</h5>
-          </div>
-          <div className="heading_body">
-            <header>
-              <h6>title</h6>
-              <BackButton>Select a Package</BackButton>
-            </header>
-            <div className="input_img_textarea">
-              <span>
-                <img src={imgg} alt="img" />
-              </span>
-              <div>
-                <textarea placeholder="Describe your offer"></textarea>
+      <Modal
+        open={openn}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          {isSinglePayment ? (
+            <div className="Single_milestone_page">
+              <div className="create_heading">
+                <h5>Create a single-payment offer</h5>
+              </div>
+              <div className="heading_body">
+                <header>
+                  <h6>title titletitle</h6>
+                  <BackButton>Select a Package</BackButton>
+                </header>
+                <div className="input_img_textarea">
+                  <span>
+                    <img src={imgg} alt="img" />
+                  </span>
+                  <div>
+                    <textarea placeholder="Describe your offer"></textarea>
+                  </div>
+                </div>
+              </div>
+              {/* -----------------------------singlepayment------------------------------ */}
+              <div className="single_to_milestone_div">
+                <h6>
+                  Set up your offer or
+                  <BlueButton onClick={handleSwitch}>
+                    {isSinglePayment
+                      ? "Switch to Milestone"
+                      : "Switch to Single Payment"}
+                  </BlueButton>
+                </h6>
+                <p>Define the terms of your offer and what it includes.</p>
+                <div className="list_section">
+                  <ul>
+                    <li>
+                      <b>Revision (Optional)</b>
+                      <div>
+                        <FormControl sx={{ m: 1, minWidth: 120 }}>
+                          <Select
+                            value={select}
+                            onChange={handleChange}
+                            displayEmpty
+                            inputProps={{ "aria-label": "Without label" }}
+                          >
+                            <MenuItem value=""></MenuItem>
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </div>
+                    </li>
+                    <li>
+                      <b>Delivery</b>
+                      <div>
+                        <FormControl sx={{ m: 1, minWidth: 120 }}>
+                          <Select
+                            value={select}
+                            onChange={handleChange}
+                            displayEmpty
+                            inputProps={{ "aria-label": "Without label" }}
+                          >
+                            <MenuItem value=""></MenuItem>
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </div>
+                    </li>
+                    <li>
+                      <b>Price</b>
+                      <div className="input_div">
+                        $
+                        <textarea placeholder=" 20000max" />
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-          {/* -----------------------------singlepayment------------------------------ */}
-          <div className="single_to_milestone_div">
-            <h6>
-              Set up your offer or
-              <BlueButton onClick={handleSwitch}>
-                {isSinglePayment
-                  ? "Switch to Milestone"
-                  : "Switch to Single Payment"}
-              </BlueButton>
-            </h6>
-            <p>Define the terms of your offer and what it includes.</p>
-            <div className="list_section">
-              <ul>
-                <li>
-                  <b>Revision (Optional)</b>
+          ) : (
+            <div className="Single_milestone_page">
+              <div className="create_heading">
+                <h5>Create a milestones offer</h5>
+              </div>
+              <div className="heading_body">
+                <header>
+                  <h6> title</h6>
+                  <BackButton>Select a Package</BackButton>
+                </header>
+                <div className="input_img_textarea">
+                  <span>
+                    <img src={imgg} alt="img" />
+                  </span>
                   <div>
-                    <FormControl sx={{ m: 1, minWidth: 120 }}>
-                      <Select
-                        value={select}
-                        onChange={handleChange}
-                        displayEmpty
-                        inputProps={{ "aria-label": "Without label" }}
-                      >
-                        <MenuItem value=""></MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
-                      </Select>
-                    </FormControl>
+                    <textarea placeholder="Describe your offer"></textarea>
                   </div>
-                </li>
-                <li>
-                  <b>Delivery</b>
-                  <div>
-                    <FormControl sx={{ m: 1, minWidth: 120 }}>
-                      <Select
-                        value={select}
-                        onChange={handleChange}
-                        displayEmpty
-                        inputProps={{ "aria-label": "Without label" }}
-                      >
-                        <MenuItem value=""></MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
-                      </Select>
-                    </FormControl>
+                </div>
+              </div>
+              <div className="milestone_to_single_div">
+                <h6>
+                  Set up your offer or
+                  <BlueButton onClick={handleSwitch}>
+                    {isSinglePayment
+                      ? " Switch to Milestone"
+                      : " Switch to Single Payment"}
+                  </BlueButton>
+                </h6>
+                <p>
+                  Divide your work into pre-defined steps with specific goals
+                  (minimum $50 for each milestone).
+                </p>
+
+                <div className="list_section">
+                  <ul>
+                    <li>
+                      <b>1st milestone name</b>
+                      <div className="input_div">
+                        <textarea placeholder="enter a mildstone name"></textarea>
+                      </div>
+                    </li>
+                    <li>
+                      <b>Revision (Optional)</b>
+                      <div>
+                        <FormControl sx={{ m: 1, minWidth: 120 }}>
+                          <Select
+                            value={select}
+                            onChange={handleChange}
+                            displayEmpty
+                            inputProps={{ "aria-label": "Without label" }}
+                          >
+                            <MenuItem value=""></MenuItem>
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </div>
+                    </li>
+                    <li>
+                      <b>Delivery</b>
+                      <div>
+                        <FormControl sx={{ m: 1, minWidth: 120 }}>
+                          <Select
+                            value={select}
+                            onChange={handleChange}
+                            displayEmpty
+                            inputProps={{ "aria-label": "Without label" }}
+                          >
+                            <MenuItem value=""></MenuItem>
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </div>
+                    </li>
+                    <li>
+                      <b>Price</b>
+                      <div className="input_div">
+                        $
+                        <textarea placeholder=" 0" />
+                      </div>
+                    </li>
+                  </ul>
+
+                  <div className="below_list_section">
+                    <div className="text_div">
+                      <textarea placeholder="Describe your offer in detail (optional)" />
+                    </div>
+                    <p>
+                      Adding a description helps set expectations with buyers.
+                    </p>
                   </div>
-                </li>
-                <li>
-                  <b>Price</b>
-                  <div className="input_div">
-                    $
-                    <textarea placeholder=" 20000max" />
+                  <div className="green_btn_div">
+                    {" "}
+                    <CreateButton className="green_btn">Save </CreateButton>
                   </div>
-                </li>
-              </ul>
-              <div>
-                <div>
+                  <div className="total_day_pay">
+                    <p className="upper_p">
+                      {" "}
+                      Total: 0 days
+                      <b class="amount">$0</b>
+                    </p>
+                    <p className="lower_p">
+                      You'll get paid for each milestone once it's marked as
+                      completed.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="below_all_section">
+            <ul className="ull">
+              <li>
+                <div className="div">
                   <input type="checkbox" />
-                  <b>Add a coupon</b>
+                  <b>Offer expires in</b>
                 </div>
-                <div>Offers with coupons are more likely to be accepted.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="Single_milestone_page">
-          <div className="create_heading">
-            <h5>Create a milestones offer</h5>
-          </div>
-          <div className="heading_body">
-            <header>
-              <h6>
-                {" "}
-                titletitletitletitletitletitletitletitl
-                titletitletitletitletitletitletitle
-                etitletitletitletitletitletitle titletitle
-              </h6>
-              <BackButton>Select a Package</BackButton>
-            </header>
-            <div className="input_img_textarea">
-              <span>
-                <img src={imgg} alt="img" />
-              </span>
-              <div>
-                <textarea placeholder="Describe your offer"></textarea>
-              </div>
-            </div>
-          </div>
-          <div className="milestone_to_single_div">
-            <h6>
-              Set up your offer or
-              <BlueButton onClick={handleSwitch}>
-                {isSinglePayment
-                  ? " Switch to Milestone"
-                  : " Switch to Single Payment"}
-              </BlueButton>
-            </h6>
-            <p>
-              Divide your work into pre-defined steps with specific goals
-              (minimum $50 for each milestone).
-            </p>
+                <FormControl sx={{ m: 1, minWidth: 120 }}>
+                  <Select
+                    value={select}
+                    onChange={handleChange}
+                    displayEmpty
+                    inputProps={{ "aria-label": "Without label" }}
+                    style={{
+                      background: "#efeff0",
+                      color: "#c5c6c9",
+                      outline: "none",
+                    }}
+                  >
+                    <MenuItem value="">select</MenuItem>
+                    <MenuItem value={10}>select</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
+                </FormControl>
+              </li>
+              <li className="request">
+                <div className="div">
+                  <input type="checkbox" onChange={handleCheckboxChange} />
+                  <b>Request for requirements</b>
+                </div>
+                {!isChecked && (
+                  <div className="info_div">
+                    <div>
+                      <IoInformationCircleOutline />
+                    </div>
+                    <div>
+                      <span>
+                        The order will start immediately upon payment.
+                        <br /> Make sure you have all of the required
+                        information to start working.
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </li>
+            </ul>
 
-            <div className="list_section">
+            <div className="offer_includes">
+              <h6>Offer includes</h6>
               <ul>
                 <li>
-                  <b>1st milestone name</b>
-                  <div className="input_div">
-                    <textarea placeholder="enter a mildstone name"></textarea>
-                  </div>
+                  <label>
+                    <input type="checkbox" />
+                    <b>Number of pages</b>
+                  </label>
+                  <textarea placeholder="1"></textarea>
                 </li>
                 <li>
-                  <b>Revision (Optional)</b>
-                  <div>
-                    <FormControl sx={{ m: 1, minWidth: 120 }}>
-                      <Select
-                        value={select}
-                        onChange={handleChange}
-                        displayEmpty
-                        inputProps={{ "aria-label": "Without label" }}
-                      >
-                        <MenuItem value=""></MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </div>
+                  <label>
+                    <input type="checkbox" />
+                    <b>Design customization</b>
+                  </label>
                 </li>
                 <li>
-                  <b>Delivery</b>
-                  <div>
-                    <FormControl sx={{ m: 1, minWidth: 120 }}>
-                      <Select
-                        value={select}
-                        onChange={handleChange}
-                        displayEmpty
-                        inputProps={{ "aria-label": "Without label" }}
-                      >
-                        <MenuItem value=""></MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </div>
+                  <label>
+                    <input type="checkbox" />
+                    <b>Content upload</b>
+                  </label>
                 </li>
                 <li>
-                  <b>Price</b>
-                  <div className="input_div">
-                    $
-                    <textarea placeholder=" 0" />
-                  </div>
+                  <label>
+                    <input type="checkbox" />
+                    <b>Responsive design</b>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" />
+                    <b>Include Source Code</b>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" />
+                    <b>Licensed images</b>
+                  </label>
+                  <textarea placeholder="1"></textarea>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" />
+                    <b>Detailed code comments</b>
+                  </label>
                 </li>
               </ul>
-
-              <div className="below_list_section">
-                <div className="text_div">
-                  <textarea placeholder="Describe your offer in detail (optional)" />
-                </div>
-                <p>Adding a description helps set expectations with buyers.</p>
-              </div>
-              <div className="green_btn_div">
-                {" "}
-                <CreateButton className="green_btn">Save </CreateButton>
-              </div>
-              <div className="total_day_pay">
-                <p className="upper_p">
-                  {" "}
-                  Total: 0 days
-                  <b class="amount">$0</b>
-                </p>
-                <p className="lower_p">
-                  You'll get paid for each milestone once it's marked as
-                  completed.
-                </p>
-              </div>
+            </div>
+            <div className="last_section">
+              <BlackButton>Back</BlackButton>
+              <CreateButton style={{ fontSize: "16px" }}>
+                Send Offer
+              </CreateButton>
             </div>
           </div>
-        </div>
-      )}
-      <div className="below_all_section">
-        <ul className="ull">
-          <li>
-            <div className="div">
-              <input type="checkbox" />
-              <b>Offer expires in</b>
-            </div>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <Select
-                value={select}
-                onChange={handleChange}
-                displayEmpty
-                inputProps={{ "aria-label": "Without label" }}
-                style={{
-                  background: "#efeff0",
-                  color: "#c5c6c9",
-                  outline: "none",
-                }}
-              >
-                <MenuItem value="">select</MenuItem>
-                <MenuItem value={10}>select</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
-          </li>
-          <li className="request">
-            <div className="div">
-              <input type="checkbox" />
-              <b>Request for requirements</b>
-            </div>
-            <div className="info_div">
-              <div>
-                <IoInformationCircleOutline />
-              </div>
-              <div>
-                <span>
-                  The order will start immediately upon payment.
-                  <br /> Make sure you have all of the required information to
-                  start working.
-                </span>
-              </div>
-            </div>
-          </li>
-        </ul>
-
-        <div className="offer_includes">
-          <h6>Offer includes</h6>
-          <ul>
-            <li>
-              <label>
-                <input type="checkbox" />
-                <b>Number of pages</b>
-              </label>
-              <textarea placeholder="1"></textarea>
-            </li>
-            <li>
-              <label>
-                <input type="checkbox" />
-                <b>Design customization</b>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="checkbox" />
-                <b>Content upload</b>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="checkbox" />
-                <b>Responsive design</b>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="checkbox" />
-                <b>Include Source Code</b>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="checkbox" />
-                <b>Licensed images</b>
-              </label>
-              <textarea placeholder="1"></textarea>
-            </li>
-            <li>
-              <label>
-                <input type="checkbox" />
-                <b>Detailed code comments</b>
-              </label>
-            </li>
-          </ul>
-        </div>
-        <div className="last_section">
-          <button>Back</button>
-          <CreateButton style={{fontSize:"16px"}}>Send Offer</CreateButton>
-        </div>
-      </div>
+        </Box>
+      </Modal>
     </Root>
   );
 }
@@ -398,255 +423,6 @@ const Root = styled.section`
     }
   }
 
-  .Single_milestone_page {
-    .heading_body {
-      padding: 20px 20px 0px;
-      header {
-        padding-bottom: 20px;
-        display: flex;
-        justify-content: space-between;
-        h6 {
-          font-size: 16px;
-          color: #404145;
-          line-height: 140%;
-          font-weight: 600;
-          height: auto;
-        }
-        .BackButton {
-          margin-left: 20px;
-        }
-      }
-      .input_img_textarea {
-        padding-bottom: 20px;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        img {
-          width: 180px;
-          height: 100%;
-          object-fit: contain;
-        }
-
-        > div {
-          border: 1px solid #c5c6c9;
-          border-radius: 4px;
-          box-sizing: border-box;
-          color: #404145;
-          display: inline-block;
-          height: 150px;
-          padding: 12px 14px;
-          width: 65%;
-          position: relative;
-          transition: 0.15s ease-in-out;
-          textarea {
-            outline: none;
-            border: none;
-            text-decoration: none;
-            height: 100%;
-            width: 100%;
-          }
-        }
-      }
-    }
-    .milestone_to_single_div,
-    .single_to_milestone_div {
-      padding: 20px 20px;
-      h6 {
-        display: flex;
-        color: #404145;
-        align-items: center;
-        font-weight: 600;
-        margin: 0;
-        align-items: center;
-      }
-      p {
-        padding: 10px 0px;
-        color: #62646a;
-      }
-      .list_section {
-        border: 1px solid rgb(197, 198, 201);
-        border-radius: 4px;
-        padding: 20px;
-        .green_btn_div {
-          width: 100%;
-          display: flex;
-          padding-bottom: 20px;
-          margin: 10px;
-          border-bottom: 1px solid lightgray;
-          justify-content: end;
-          .green_btn {
-            font-size: 16px;
-            font-weight: 600;
-            padding: 8px 12px;
-          }
-        }
-        .total_day_pay {
-          .upper_p {
-            display: flex;
-            width: 100%;
-            justify-content: flex-end;
-            font-weight: 600;
-            margin: 0;
-            b {
-              padding: 0px 20px;
-            }
-          }
-          .lower_p {
-            padding-bottom: 0px;
-            margin: 0;
-            color: #95979d;
-            font-size: 14px;
-            line-height: 21px;
-          }
-        }
-        ul {
-          display: flex;
-          padding: 0;
-          color: #62646a;
-          font-size: 14px;
-          list-style: none;
-          li {
-            flex-direction: column;
-            padding-bottom: 0px;
-            padding-right: 16px;
-            b {
-              display: flex;
-              padding-bottom: 8px;
-              white-space: nowrap;
-            }
-            .input_div {
-              border: 1px solid lightgray;
-              border-radius: 4px;
-              display: flex;
-              padding: 0px 5px;
-              margin-top: 7px;
-              input,
-              textarea {
-                border: none;
-                width: 120px;
-                outline: none;
-                background-color: transparent;
-                font: inherit;
-              }
-            }
-          }
-        }
-        .below_list_section {
-          padding-top: 12px;
-          .text_div {
-            width: 100%;
-            background-color: #fff;
-
-            textarea {
-              border: 1px solid #c5c6c9;
-              border-radius: 4px;
-              width: 100%;
-              box-sizing: border-box;
-              color: #404145;
-              height: 150px;
-              padding: 12px 14px;
-              position: relative;
-              transition: 0.15s ease-in-out;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .below_all_section {
-    .ull {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      li {
-        border-top: 1px solid #e4e5e7;
-        color: #404145;
-        display: flex;
-        margin: 0 20px;
-        min-height: 75px;
-        label {
-          padding: 16px 0;
-          width: 100%;
-        }
-        .div {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          input {
-            width: 20px;
-            height: 20px;
-            margin-right: 7px;
-          }
-        }
-      }
-      .request {
-        display: flex;
-        flex-direction: column;
-        .info_div {
-          display: flex;
-          > div {
-            padding-right: 7px;
-          }
-          svg {
-            font-size: 20px;
-          }
-          span {
-            font-size: 14px;
-            color: #95979d;
-            line-height: 21px;
-          }
-        }
-      }
-    }
-    .offer_includes {
-      h6 {
-        background-color: #f5f5f5;
-        border-bottom: 1px solid #dadbdd;
-        border-top: 1px solid #dadbdd;
-        font-weight: 600;
-        padding: 16px 20px;
-        font-size: 16px;
-        line-height: 140%;
-        color: #404145;
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        li {
-          border-bottom: 1px solid #e4e5e7;
-          margin: 0 20px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          min-height: 75px;
-          label {
-            display: flex;
-            align-items: center;
-            input {
-              width: 20px;
-              height: 20px;
-              margin-right: 7px;
-            }
-            b {
-              font-weight: 500;
-              color: #404145;
-            }
-          }
-          textarea {
-            width: 80px;
-            height: 40px;
-            border: 1px solid #dadbdd;
-            border-radius: 4px;
-            background-color: #f5f5f5;
-            color: #404145;
-            padding: 5px;
-          }
-        }
-      }
-    }
-  }
-
   .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
     border: 1px solid lightgray;
     font-weight: 700;
@@ -666,3 +442,295 @@ const Root = styled.section`
     padding: 0px 5px;
   }
 `;
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  height: 470,
+  bgcolor: "background.paper", // This seems incorrect, bgcolor should be a string value like "white" or "#ffffff"
+  boxShadow: 24,
+  borderRadius: 1,
+  overflow: "auto",
+  flex: "1",
+  ".Single_milestone_page": {
+    h5: {
+      padding: "16px 20px",
+      background: "#f5f5f5",
+      borderTopLeftRadius: "5px",
+      borderTopRightRadius: "5px",
+      fontWeight: "600",
+      borderBottom: "1px solid lightgray",
+    },
+    ".heading_body": {
+      padding: "20px 20px 0px",
+      width: "50vw",
+      "@media (max-width: 768px)": {
+        width: "90vw",
+      },
+      header: {
+        paddingBottom: "20px",
+        display: "flex",
+        width: "100%",
+        justifyContent: "space-between",
+        h6: {
+          fontSize: "16px",
+          color: "#404145",
+          lineHeight: "140%",
+          fontWeight: 600,
+          height: "auto",
+        },
+        ".BackButton": {
+          marginLeft: "20px",
+        },
+      },
+      ".input_img_textarea": {
+        paddingBottom: "20px",
+        display: "flex",
+
+        justifyContent: "space-between",
+        width: "100%",
+        margin: "10px",
+        "@media (max-width: 768px)": {
+          flexWrap: "wrap",
+        },
+        img: {
+          width: "160px",
+          minWidth: "100px",
+          height: "100%",
+          objectFit: "contain",
+          margin: "10px",
+
+        },
+        "> div": {
+          border: "1px solid #c5c6c9",
+          borderRadius: "4px",
+          boxSizing: "border-box",
+          color: "#404145",
+          display: "inline-block",
+          height: "150px",
+          padding: "12px 14px",
+          width: "65vw",
+          position: "relative",
+          transition: "0.15s ease-in-out",
+          textarea: {
+            outline: "none",
+            border: "none",
+            textDecoration: "none",
+            height: "100%",
+            width: "100%",
+          },
+          "@media (max-width: 768px)": {
+            width: "74vw",
+            height: "100px",
+            marginTop:"10px",
+          },
+        },
+      },
+    },
+    ".milestone_to_single_div, .single_to_milestone_div": {
+      padding: "20px",
+      h6: {
+        display: "flex",
+        color: "#404145",
+        alignItems: "center",
+        fontWeight: 600,
+        margin: 0,
+      },
+      p: {
+        padding: "20px ",
+        color: "#62646a",
+      },
+      ".list_section": {
+        border: "1px solid rgb(197, 198, 201)",
+        borderRadius: "4px",
+        padding: "20px",
+        ".green_btn_div": {
+          width: "100%",
+          display: "flex",
+          paddingBottom: "20px",
+          margin: "10px",
+          borderBottom: "1px solid lightgray",
+          justifyContent: "end",
+          ".green_btn": {
+            fontSize: "16px",
+            fontWeight: 600,
+            padding: "8px 12px",
+          },
+        },
+        ".total_day_pay": {
+          ".upper_p": {
+            display: "flex",
+            width: "100%",
+            justifyContent: "flex-end",
+            fontWeight: 600,
+            margin: 0,
+            b: {
+              padding: "0px 20px",
+            },
+          },
+          ".lower_p": {
+            paddingBottom: 0,
+            margin: 0,
+            color: "#95979d",
+            fontSize: "14px",
+            lineHeight: "21px",
+          },
+        },
+        ul: {
+          display: "flex",
+          flexWrap: "wrap",
+          padding: 0,
+          color: "#62646a",
+          fontSize: "14px",
+          listStyle: "none",
+          justifyContent: "space-between",
+          li: {
+            flexDirection: "column",
+            paddingBottom: 0,
+            // paddingRight: "16px",
+            b: {
+              display: "flex",
+              paddingBottom: "8px",
+              whiteSpace: "nowrap",
+            },
+            ".input_div": {
+              border: "1px solid lightgray",
+              borderRadius: "4px",
+              display: "flex",
+              padding: "6px",
+              marginTop: "7px",
+              textarea: {
+                border: "none",
+                width: "100px",
+                backgroundColor: "transparent",
+                font: "inherit",
+                outline: "none",
+              },
+            },
+          },
+        },
+        ".below_list_section": {
+          paddingTop: "12px",
+          ".text_div": {
+            width: "100%",
+            backgroundColor: "#fff",
+            textarea: {
+              border: "1px solid #c5c6c9",
+              borderRadius: "4px",
+              width: "100%",
+              boxSizing: "border-box",
+              color: "#404145",
+              height: "150px",
+              padding: "12px 14px",
+              position: "relative",
+              transition: "0.15s ease-in-out",
+              outline: "none",
+            },
+          },
+        },
+      },
+    },
+  },
+  ".below_all_section": {
+    width: "100%",
+    ".ull": {
+      listStyle: "none",
+      padding: 0,
+      margin: 0,
+      li: {
+        borderTop: "1px solid #e4e5e7",
+        color: "#404145",
+        display: "flex",
+        margin: "0 20px",
+        minHeight: "75px",
+        label: {
+          padding: "16px 0",
+          width: "100%",
+        },
+        ".div": {
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          input: {
+            width: "20px",
+            height: "20px",
+            marginRight: "7px",
+          },
+        },
+      },
+      ".request": {
+        display: "flex",
+        paddingTop: "20px",
+        flexDirection: "column",
+        ".info_div": {
+          display: "flex",
+          padding: "10px 0px",
+          "> div": {
+            paddingRight: "7px",
+          },
+          svg: {
+            fontSize: "20px",
+          },
+          span: {
+            fontSize: "14px",
+            color: "#95979d",
+            lineHeight: "21px",
+          },
+        },
+      },
+    },
+    ".offer_includes": {
+      h6: {
+        backgroundColor: "#f5f5f5",
+        borderBottom: "1px solid #dadbdd",
+        borderTop: "1px solid #dadbdd",
+        fontWeight: 600,
+        padding: "16px 20px",
+        fontSize: "16px",
+        lineHeight: "140%",
+        color: "#404145",
+      },
+      ul: {
+        listStyle: "none",
+        padding: 0,
+        li: {
+          borderBottom: "1px solid #e4e5e7",
+          margin: "0 20px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          minHeight: "75px",
+          label: {
+            display: "flex",
+            alignItems: "center",
+            input: {
+              width: "20px",
+              height: "20px",
+              marginRight: "7px",
+            },
+            b: {
+              fontWeight: 500,
+              color: "#404145",
+            },
+          },
+          textarea: {
+            width: "80px",
+            height: "40px",
+            border: "1px solid #dadbdd",
+            borderRadius: "4px",
+            backgroundColor: "#f5f5f5",
+            color: "#404145",
+            padding: "5px",
+          },
+        },
+      },
+    },
+    ".last_section": {
+      padding: "15px 20px 20px",
+      display: "flex",
+      justifyContent: "space-between",
+    },
+  },
+};

@@ -8,7 +8,6 @@ import LoginBuyer from "../CommonPages/loginPages/LoginBuyer";
 import { BsEmojiSmile } from "react-icons/bs";
 import { IoIosAttach } from "react-icons/io";
 import { Button, Typography } from "@mui/material";
-import MileStone from "./MileStone";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";

@@ -49,8 +49,6 @@ import Topkeywords from "./Components/Seller/TopNavPages/Analytics/Topkeywords";
 import LoginBuyer from "./Components/CommonPages/loginPages/LoginBuyer";
 import Page1 from "./Components/Buyer/profilePlanPages/Page1";
 import Userone from "./Components/Chat/Userone";
-import MileStone from "./Components/Chat/MileStone";
-import SinglePayment from "./Components/Chat/SinglePayment";
 // import ChatSection from "./Components/MainLayouts/message/ChatSection";
 
 function App() {
@@ -83,8 +81,7 @@ function App() {
               ) : userDetails.role === "seller" ? (
                 <>
                   {/* seller pages ---------------------------------------------------------------*/}
-                  {/* <Route path="/milestone" element={<MileStone/>} />
-                  <Route path="/single" element={<SinglePayment/>} /> */}
+                  
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/editgigspages/:id" element={<Page1 />} />
                   <Route path="/orders" element={<Orders />} />

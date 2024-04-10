@@ -28,9 +28,9 @@ export const CreateButton = styled.button`
   font-weight: 700;
   color: #fff !important;
   border: 1px solid transparent;
-  padding: 5px 10px;
+  padding: 7px 10px;
   font-size: 12px;
-  border-radius: 5px;
+  border-radius: 4px;
   &:hover {
     background: #19a463;
   }
@@ -59,4 +59,19 @@ export const BlueButton = styled.button`
   line-height: 24px;
   padding:0px 7px;
   font-weight: 600;
+`;
+
+export const BlackButton = styled.button`
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 100%;
+    padding: 12px 24px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
 `;
