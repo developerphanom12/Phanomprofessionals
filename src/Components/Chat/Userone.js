@@ -521,8 +521,8 @@ const Root = styled.section`
     .user_area {
       overflow-x: auto;
       width: 95%;
-      border: 1px solid black;
-      height: 200px;
+      height: 232px;
+      padding: 0;
     }
 
     .chat_area {
@@ -533,6 +533,56 @@ const Root = styled.section`
     .chat_area .emoji_attach_offer {
       margin: 10px 0px;
     }
+
+    .chat_area .message-container .msg_box {
+      width: 100%;
+    }
+
+    .chat_area .message-container .msg_box .user_name {
+      width: unset;
+    }
+  }
+
+  @media (min-width: 567px) and (max-width: 992px) {
+    flex-wrap: wrap;
+
+    .user_area {
+      overflow-x: auto;
+      width: 96%;
+      height: 232px;
+      padding: 0;
+    }
+
+    .chat_area {
+      margin: 10px 0px 10px 0px;
+      width: 96%;
+      height: 700px;
+
+    }
+
+    .chat_area .emoji_attach_offer {
+      margin: 10px 0px;
+    }
+
+    .chat_area .message-container .msg_box {
+      width: 100%;
+    }
+
+    .chat_area .message-container .msg_box .user_name {
+      width: unset;
+    }
+    /* .chat_area .message-container .msg_box .user_name {
+      width: unset;
+    }
+    .chat_area {
+      height: unset;
+      margin-bottom: 0;
+    }
+
+  .chat_area .emoji_attach_offer {
+  
+    margin: 0;
+} */
   }
 `;
 const style = {
