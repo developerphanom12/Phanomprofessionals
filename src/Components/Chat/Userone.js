@@ -37,7 +37,6 @@ function Userone() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  console.log("name", selectedUserName);
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
@@ -514,6 +513,25 @@ const Root = styled.section`
         color: #000;
         background-color: transparent;
       }
+    }
+  }
+  @media (max-width: 567px) {
+    flex-wrap: wrap;
+
+    .user_area {
+      overflow-x: auto;
+      width: 95%;
+      border: 1px solid black;
+      height: 200px;
+    }
+
+    .chat_area {
+      margin: 10px 0px 10px 0px;
+      width: 95%;
+    }
+
+    .chat_area .emoji_attach_offer {
+      margin: 10px 0px;
     }
   }
 `;

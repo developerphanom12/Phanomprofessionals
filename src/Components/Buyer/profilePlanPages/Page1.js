@@ -51,6 +51,11 @@ export default function Page1() {
   const toggleMessageBox = () => {
     setShowMessageBox(!showMessageBox);
   };
+
+  const handleContactClick = (sellerId) => {
+    navigate(`/user/${sellerId}`);
+  };
+
   return (
     <Root>
       {gigData.map((gig) => (
@@ -244,8 +249,11 @@ export default function Page1() {
                                     <button
                                       onClick={() => {
                                         navigate("/user");
-                                        // navigate(`/user/${gig?.gigs_id}`);
+                                        
                                       }}
+                                      // onClick={() =>
+                                      //   handleContactClick(gig.seller.seller_id)
+                                      // }
                                     >
                                       ContactMe <FaArrowRightLong />
                                     </button>
@@ -310,7 +318,6 @@ export default function Page1() {
                                     <button
                                       onClick={() => {
                                         navigate("/user");
-                                     
                                       }}
                                     >
                                       ContactMe <FaArrowRightLong />
@@ -439,10 +446,12 @@ export default function Page1() {
                                     </div>
                                   </div>
                                   <div className="continue_button">
-                                    <button onClick={() => {
+                                    <button
+                                      onClick={() => {
                                         navigate("/user");
                                         // navigate(`/user/${gig?.gigs_id}`);
-                                      }}>
+                                      }}
+                                    >
                                       ContactMe <FaArrowRightLong />
                                     </button>
                                   </div>
@@ -987,7 +996,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (window.pageYOffset > sticky) {
         sidebar.style.position = "fixed";
-        sidebar.style.top = "60px"; 
+        sidebar.style.top = "60px";
         sidebar.style.right = "10px";
       } else {
         sidebar.style.position = "static";
