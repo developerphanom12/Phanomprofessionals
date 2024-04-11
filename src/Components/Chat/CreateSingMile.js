@@ -3,6 +3,7 @@ import styled from "styled-components";
 import imgg from "../Images/chainimg.png";
 import { GiCornerFlag } from "react-icons/gi";
 import { IoInformationCircleOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 import {
   BackButton,
   BlackButton,
@@ -10,26 +11,91 @@ import {
   CreateButton,
 } from "../../GlobalStyles";
 import { FormControl, MenuItem, Modal, Box, Select } from "@mui/material";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { EXCHANGE_URLS } from "../Important/URLS";
+
 
 export default function CreateSingMile() {
+  // const gigId = useSelector((state) => state.users.gigId);
   const [isSinglePayment, setIsSinglePayment] = useState(true);
   const [select, setSelect] = React.useState("");
   const [isChecked, setIsChecked] = useState(false);
-
+  const navigate = useNavigate();
   const [openn, setOpenn] = React.useState(false);
   const handleOpenn = () => setOpenn(true);
   const handleClose = () => setOpenn(false);
+  const [offer, setOffer] = useState({
+    gigs_id:"1",
+    offer_type: "singlepayment",
+    receive_id: "1",
+    offer_expire:"",
+    describe_offer: "",
+    revision: "",
+    delivery_day: "",
+    price: "",
+  });
+
+  const offerApi = async () => {
+    try {
+      const axiosConfig = {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+
+      const res = await axios.post(
+        `${EXCHANGE_URLS}/offercreate`,
+        offer,
+        axiosConfig
+      );
+      if (res?.status === 201) {
+        toast.success("Updated");
+        navigate("/gallery");
+      }
+    } catch (err) {
+      toast.error("error");
+    }
+  };
+
+  const handleSubmit = () => {
+    offerApi();
+  };
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
 
   const handleChange = (event) => {
-    setSelect(event.target.value);
+    const { value } = event.target;
+    setSelect(value);
+    const newOffer = {
+      ...offer,
+      describe_offer: isSinglePayment
+        ? value === "singlepayment"
+          ? ""
+          : offer.describe_offer
+        : value === "singlepayment"
+        ? ""
+        : offer.describe_offer,
+    };
+
+    setOffer(newOffer);
   };
   const handleSwitch = () => {
     setIsSinglePayment(!isSinglePayment);
+    setOffer({
+      ...offer,
+      offer_type: isSinglePayment ? "singlepayment" : "milestone",
+      describe_offer: isSinglePayment ? "" : offer.describe_offer,
+      revision: isSinglePayment ? 0 : offer.revision,
+      delivery_day: isSinglePayment ? 0 : offer.delivery_day,
+      price: isSinglePayment ? 0 : offer.price,
+    });
   };
+
+  // console.log("gigId", gigId);
+
   return (
     <Root>
       <h5>Choose how you want to get paid</h5>
@@ -44,9 +110,14 @@ export default function CreateSingMile() {
           <div
             onClick={() => {
               handleOpenn();
+              setIsSinglePayment(true);
+              setOffer({
+                ...offer,
+                offer_type: "singlepayment", // Update offer_type
+              });
             }}
           >
-            <h6 onClick={() => setIsSinglePayment(true)}>Single Payment</h6>
+            <h6>Single Payment</h6>
             <span>Get paid in full after each order is completed.</span>
           </div>
         </li>
@@ -56,9 +127,14 @@ export default function CreateSingMile() {
           <div
             onClick={() => {
               handleOpenn();
+              setIsSinglePayment(false);
+              setOffer({
+                ...offer,
+                offer_type: "milestone", // Update offer_type
+              });
             }}
           >
-            <h6 onClick={() => setIsSinglePayment(false)}> Milestone</h6>
+            <h6>Milestone</h6>
             <span>
               Work in gradual steps and get paid for each completed milestone.
             </span>
@@ -88,7 +164,13 @@ export default function CreateSingMile() {
                     <img src={imgg} alt="img" />
                   </span>
                   <div>
-                    <textarea placeholder="Describe your offer"></textarea>
+                    <textarea
+                      placeholder="Describe your offer"
+                      value={offer.describe_offer}
+                      onChange={(e) =>
+                        setOffer({ ...offer, describe_offer: e.target.value })
+                      }
+                    ></textarea>
                   </div>
                 </div>
               </div>
@@ -106,46 +188,66 @@ export default function CreateSingMile() {
                 <div className="list_section">
                   <ul>
                     <li>
-                      <b>Revision (Optional)</b>
-                      <div>
-                        <FormControl sx={{ m: 1, minWidth: 120 }}>
-                          <Select
-                            value={select}
-                            onChange={handleChange}
-                            displayEmpty
-                            inputProps={{ "aria-label": "Without label" }}
-                          >
-                            <MenuItem value=""></MenuItem>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                          </Select>
-                        </FormControl>
+                      <b>Revision</b>
+                      <div className="input_div">
+                        <input
+                          placeholder="1-10"
+                          style={{
+                            width: "110px",
+                            border: "none",
+                            padding: "10px 7px ",
+                            borderRadius: "3px",
+                            color: "rgb(68 68 74 / 81%);",
+                            outline: "none",
+                          }}
+                          type="number"
+                          value={offer.revision}
+                          onChange={(e) =>
+                            setOffer({ ...offer, revision: e.target.value })
+                          }
+                        />
                       </div>
                     </li>
                     <li>
                       <b>Delivery</b>
-                      <div>
-                        <FormControl sx={{ m: 1, minWidth: 120 }}>
-                          <Select
-                            value={select}
-                            onChange={handleChange}
-                            displayEmpty
-                            inputProps={{ "aria-label": "Without label" }}
-                          >
-                            <MenuItem value=""></MenuItem>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                          </Select>
-                        </FormControl>
+                      <div className="input_div">
+                        <input
+                          placeholder="day:0"
+                          style={{
+                            width: "110px",
+                            border: "none",
+                            padding: "10px 7px ",
+                            borderRadius: "3px",
+                            color: "rgb(68 68 74 / 81%);",
+                            outline: "none",
+                          }}
+                          type="number"
+                          value={offer.delivery_day}
+                          onChange={(e) =>
+                            setOffer({ ...offer, delivery_day: e.target.value })
+                          }
+                        />
                       </div>
                     </li>
                     <li>
                       <b>Price</b>
                       <div className="input_div">
                         $
-                        <textarea placeholder=" 20000max" />
+                        <input
+                          style={{
+                            width: "110px",
+                            border: "none",
+                            padding: "10px 7px ",
+                            borderRadius: "3px",
+                            color: "rgb(68 68 74 / 81%);",
+                            outline: "none",
+                          }}
+                          type="number"
+                          value={offer.price}
+                          onChange={(e) =>
+                            setOffer({ ...offer, price: e.target.value })
+                          }
+                        />
                       </div>
                     </li>
                   </ul>
@@ -272,24 +374,23 @@ export default function CreateSingMile() {
                   <input type="checkbox" />
                   <b>Offer expires in</b>
                 </div>
-                <FormControl sx={{ m: 1, minWidth: 120 }}>
-                  <Select
-                    value={select}
-                    onChange={handleChange}
-                    displayEmpty
-                    inputProps={{ "aria-label": "Without label" }}
+                <div>
+                  <input
                     style={{
-                      background: "#efeff0",
-                      color: "#c5c6c9",
+                      width: "120px",
+                      border: "1px solid lightgray",
+                      padding: "10px 7px ",
+                      borderRadius: "3px",
+                      color: "rgb(68 68 74 / 81%);",
                       outline: "none",
                     }}
-                  >
-                    <MenuItem value="">select</MenuItem>
-                    <MenuItem value={10}>select</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
-                </FormControl>
+                    type="date"
+                    value={offer.offer_expire}
+                    onChange={(e) =>
+                      setOffer({ ...offer, offer_expire: e.target.value })
+                    }
+                  />
+                </div>
               </li>
               <li className="request">
                 <div className="div">
@@ -364,7 +465,7 @@ export default function CreateSingMile() {
             </div>
             <div className="last_section">
               <BlackButton>Back</BlackButton>
-              <CreateButton style={{ fontSize: "16px" }}>
+              <CreateButton style={{ fontSize: "16px" }} onClick={handleSubmit}>
                 Send Offer
               </CreateButton>
             </div>
@@ -441,6 +542,10 @@ const Root = styled.section`
   .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
     padding: 0px 5px;
   }
+
+  .MuiBackdrop-root.MuiModal-backdrop.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
+    opacity: 0 !important;
+  }
 `;
 
 const style = {
@@ -488,7 +593,6 @@ const style = {
       ".input_img_textarea": {
         paddingBottom: "20px",
         display: "flex",
-
         justifyContent: "space-between",
         width: "100%",
         margin: "10px",
@@ -501,7 +605,6 @@ const style = {
           height: "100%",
           objectFit: "contain",
           margin: "10px",
-
         },
         "> div": {
           border: "1px solid #c5c6c9",
@@ -524,7 +627,7 @@ const style = {
           "@media (max-width: 768px)": {
             width: "74vw",
             height: "100px",
-            marginTop:"10px",
+            marginTop: "10px",
           },
         },
       },
@@ -643,6 +746,7 @@ const style = {
         borderTop: "1px solid #e4e5e7",
         color: "#404145",
         display: "flex",
+        alignItems: "center",
         margin: "0 20px",
         minHeight: "75px",
         label: {

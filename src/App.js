@@ -49,6 +49,7 @@ import Topkeywords from "./Components/Seller/TopNavPages/Analytics/Topkeywords";
 import LoginBuyer from "./Components/CommonPages/loginPages/LoginBuyer";
 import Page1 from "./Components/Buyer/profilePlanPages/Page1";
 import Userone from "./Components/Chat/Userone";
+import CreateSingMile from "./Components/Chat/CreateSingMile";
 // import ChatSection from "./Components/MainLayouts/message/ChatSection";
 
 function App() {
@@ -82,6 +83,7 @@ function App() {
                 <>
                   {/* seller pages ---------------------------------------------------------------*/}
                   
+                  <Route path="/createsingmile" element={<CreateSingMile />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/editgigspages/:id" element={<Page1 />} />
                   <Route path="/orders" element={<Orders />} />

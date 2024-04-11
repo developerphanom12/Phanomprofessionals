@@ -21,14 +21,14 @@ import SliderText from "./SliderText";
 import axios from "axios";
 import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 // import SliderImage from "./SliderImage";
 // import SliderText from "./SliderText";
 
 export default function Page1() {
   const { id } = useParams();
-  const userDetails = useSelector((state) => state.users.user);
+  // const userDetails = useSelector((state) => state.users.user);
   const [showMessageBox, setShowMessageBox] = useState(false);
   const [gigData, setGigData] = useState([]);
   const [active, setActive] = useState("basic");
@@ -62,11 +62,11 @@ export default function Page1() {
         <div className="main_section">
           <div className="main_barr">
             <div className="path_value">
-              <a>
+              <a href="img">
                 <IoHomeOutline />
               </a>{" "}
-              <p>/</p> <a>{gig?.category?.category_name}</a>
-              <p>/</p> <a>{gig?.subcategory?.name}</a>
+              <p>/</p> <a href="img">{gig?.category?.category_name}</a>
+              <p>/</p> <a href="img">{gig?.subcategory?.name}</a>
             </div>
 
             <div className="heading_point">
@@ -247,13 +247,13 @@ export default function Page1() {
                                   </div>
                                   <div className="continue_button">
                                     <button
-                                      onClick={() => {
-                                        navigate("/user");
+                                      // onClick={() => {
+                                      //   navigate("/user");
                                         
-                                      }}
-                                      // onClick={() =>
-                                      //   handleContactClick(gig.seller.seller_id)
-                                      // }
+                                      // }}
+                                      onClick={() =>
+                                        handleContactClick(gig.seller.seller_id)
+                                      }
                                     >
                                       ContactMe <FaArrowRightLong />
                                     </button>
