@@ -55,7 +55,7 @@ export default function SliderImage({ gigData }) {
 }
 const Sliderimage = styled.section`
   width: 53vw;
-  height: 70vh ;
+  height: 70vh;
 
   @media (max-width: 576px) {
     width: 86vw;
@@ -80,12 +80,12 @@ const Sliderimage = styled.section`
   }
 
   .img {
-    width: 53vw ;
-    height: 70vh ;
+    width: 53vw;
+    height: 70vh;
     border-radius: 20px;
-    object-fit:contain;
+    object-fit: contain;
     @media (max-width: 576px) {
-      width: 86vw ;
+      width: 86vw;
       height: 53vh;
     }
   }
@@ -113,7 +113,7 @@ const Sliderimage = styled.section`
     height: 70vh;
     @media (max-width: 576px) {
       width: 86vw !important;
-      height: 53vh !important;;
+      height: 53vh !important;
     }
   }
   .slick-track {
@@ -172,16 +172,14 @@ const Sliderimage = styled.section`
     }
   } */
 
-@media (max-width: 567px){
+  @media (max-width: 567px) {
     margin: 10px;
 
- .main_section .main_barr .profile_contain {
-    gap: 0;
-
-}
-.slick-list {
-    height:200px;
-}
-
-}
+    .main_section .main_barr .profile_contain {
+      gap: 0;
+    }
+    .slick-list {
+      height: 200px;
+    }
+  }
 `;

@@ -2,6 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { TiPencil } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
+import * as Yup from "yup";
+
+const schema = Yup.object().shape({
+  title: Yup.string().required("Title is required"),
+  description: Yup.string().required("Description is required"),
+  delivery_time: Yup.string().required("Delivery time is required"),
+});
 
 export default function Table1({
   data,
@@ -11,6 +18,20 @@ export default function Table1({
   data3,
   setData3,
 }) {
+  // Function to handle data change and validation
+  const handleDataChange = (newData, setDataFunc) => {
+    setDataFunc(newData); // Update data state
+    schema
+      .validate(newData, { abortEarly: false }) // Validate data against schema
+      .then(() => {})
+      .catch((error) => {
+        error.inner.forEach((err) => {
+          console.log(err.message); // Log validation errors
+          // Show toast message or handle errors as needed
+        });
+      });
+  };
+
   return (
     <Root>
       <table>
@@ -18,20 +39,20 @@ export default function Table1({
           <tr>
             <th className="first_table_col"></th>
             <th
-              // value={data.plan_type}
-              // onChange={(e) => setData({ ...data, plan_type: e.target.value })}
+            // value={data.plan_type}
+            // onChange={(e) => setData({ ...data, plan_type: e.target.value })}
             >
               Basic
             </th>
             <th
-              // value={data2.plan_type}
-              // onChange={(e) => setData2({ ...data2, plan_type: e.target.value })}
+            // value={data2.plan_type}
+            // onChange={(e) => setData2({ ...data2, plan_type: e.target.value })}
             >
               Standard
             </th>
             <th
-              // value={data3.plan_type}
-              // onChange={(e) => setData3({ ...data3, plan_type: e.target.value })}
+            // value={data3.plan_type}
+            // onChange={(e) => setData3({ ...data3, plan_type: e.target.value })}
             >
               Premium
             </th>
@@ -44,8 +65,15 @@ export default function Table1({
               <div className="title_input">
                 <textarea
                   value={data.title}
+                  placeholder=" Basic Plan Title"
                   id="basic"
-                  onChange={(e) => setData({ ...data, title: e.target.value })}
+                  onChange={(e) =>
+                    handleDataChange(
+                      { ...data, title: e.target.value },
+                      setData
+                    )
+                  }
+                  
                 />
                 <span className="span_headd">
                   <TiPencil />
@@ -56,9 +84,13 @@ export default function Table1({
               <div className="title_input">
                 <textarea
                   value={data2.title}
-                  id="premium"
+                  id="standard"
+                  placeholder="Standard Plan Title"
                   onChange={(e) =>
-                    setData2({ ...data2, title: e.target.value })
+                    handleDataChange(
+                      { ...data2, title: e.target.value },
+                      setData2
+                    )
                   }
                 />
                 <span className="span_headd">
@@ -69,10 +101,14 @@ export default function Table1({
             <td>
               <div className="title_input">
                 <textarea
-                  id="standard"
+                  id="premium"
+                  placeholder="Premium Plan Title"
                   value={data3.title}
                   onChange={(e) =>
-                    setData3({ ...data3, title: e.target.value })
+                    handleDataChange(
+                      { ...data3, title: e.target.value },
+                      setData3
+                    )
                   }
                 />
                 <span className="span_headd">
@@ -87,8 +123,12 @@ export default function Table1({
               <div className="title_input">
                 <textarea
                   value={data.description}
+                  placeholder="Description"
                   onChange={(e) =>
-                    setData({ ...data, description: e.target.value })
+                    handleDataChange(
+                      { ...data, description: e.target.value },
+                      setData
+                    )
                   }
                 />
                 <span className="span_headd">
@@ -100,8 +140,12 @@ export default function Table1({
               <div className="title_input">
                 <textarea
                   value={data2.description}
+                  placeholder="Description"
                   onChange={(e) =>
-                    setData2({ ...data2, description: e.target.value })
+                    handleDataChange(
+                      { ...data2, description: e.target.value },
+                      setData2
+                    )
                   }
                 />
                 <span className="span_headd">
@@ -113,8 +157,12 @@ export default function Table1({
               <div className="title_input">
                 <textarea
                   value={data3.description}
+                  placeholder="Description"
                   onChange={(e) =>
-                    setData3({ ...data3, description: e.target.value })
+                    handleDataChange(
+                      { ...data3, description: e.target.value },
+                      setData3
+                    )
                   }
                 />
                 <span className="span_headd">
@@ -133,8 +181,12 @@ export default function Table1({
                       {" "}
                       <textarea
                         value={data.delivery_time}
+                        placeholder="Min 1 Day"
                         onChange={(e) =>
-                          setData({ ...data, delivery_time: e.target.value })
+                          handleDataChange(
+                            { ...data, delivery_time: e.target.value },
+                            setData
+                          )
                         }
                       />
                     </div>
@@ -155,8 +207,12 @@ export default function Table1({
                       {" "}
                       <textarea
                         value={data2.delivery_time}
+                        placeholder="Min 1 Day"
                         onChange={(e) =>
-                          setData2({ ...data2, delivery_time: e.target.value })
+                          handleDataChange(
+                            { ...data, delivery_time: e.target.value },
+                            setData2
+                          )
                         }
                       />
                     </div>
@@ -177,8 +233,12 @@ export default function Table1({
                       {" "}
                       <textarea
                         value={data3.delivery_time}
+                        placeholder="Min 1 Day"
                         onChange={(e) =>
-                          setData3({ ...data3, delivery_time: e.target.value })
+                          handleDataChange(
+                            { ...data, delivery_time: e.target.value },
+                            setData3
+                          )
                         }
                       />
                     </div>
@@ -295,13 +355,16 @@ const Root = styled.section`
   @media (max-width: 567px) {
     table thead tr th,
     .gAvFUA table tbody tr th {
-      padding:0;
-      font-size:12px;
+      padding: 0;
+      font-size: 12px;
     }
 
- table thead tr .first_table_col, .knwZRi table tbody tr .first_table_col {
-    width: 150px;
-}
+    table thead tr .first_table_col,
+    .knwZRi table tbody tr .first_table_col {
+      width: 150px;
+    }
   }
-
+  textarea::placeholder {
+    color: #7a7d8575;
+  }
 `;

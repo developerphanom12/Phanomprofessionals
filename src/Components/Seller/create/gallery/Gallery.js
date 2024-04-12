@@ -52,9 +52,9 @@ export default function Gallery() {
     }
   };
 
-  const handleSubmit = () => {
-    appApi();
-  };
+  // const handleSubmit = () => {
+  //   appApi();
+  // };
 
   const handleImageChange = (e, imageKey) => {
     setImageFiles({
@@ -63,7 +63,6 @@ export default function Gallery() {
     });
   };
 
- 
   const handleVideoChange = (e) => {
     const file = e.target.files[0];
     // Check if the selected file is an MP4 video
@@ -75,6 +74,19 @@ export default function Gallery() {
         vedio: file,
       });
     }
+  };
+
+  const handleSubmit = () => {
+    if (
+      !imageFiles.image1 ||
+      !imageFiles.image2 ||
+      !imageFiles.image3 ||
+      !imageFiles.vedio
+    ) {
+      toast.error("Please upload all images and the video.");
+      return;
+    }
+    appApi();
   };
 
   return (
@@ -111,15 +123,30 @@ export default function Gallery() {
           </h3>
           <ul>
             <div className="ul_div">
-            <li>image 1
-              <input type="file" accept="image/*" onChange={(e) => handleImageChange(e, "image1")} />
-            </li>
-            <li>image 2
-              <input type="file" accept="image/*" onChange={(e) => handleImageChange(e, "image2")} />
-            </li>
-            <li>image 3
-              <input type="file" accept="image/*" onChange={(e) => handleImageChange(e, "image3")} />
-            </li>
+              <li>
+                image 1
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => handleImageChange(e, "image1")}
+                />
+              </li>
+              <li>
+                image 2
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => handleImageChange(e, "image2")}
+                />
+              </li>
+              <li>
+                image 3
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => handleImageChange(e, "image3")}
+                />
+              </li>
             </div>
           </ul>
         </div>
@@ -136,10 +163,14 @@ export default function Gallery() {
 
           <ul>
             <div className="ul_div">
-            <li>video 1
-            <input type="file" accept="video/*" onChange={handleVideoChange} />
-            </li>
-           
+              <li>
+                video 1
+                <input
+                  type="file"
+                  accept="video/*"
+                  onChange={handleVideoChange}
+                />
+              </li>
             </div>
           </ul>
         </div>
@@ -313,40 +344,40 @@ const Root = styled.section`
     margin: 0;
     padding: 0;
     width: 100vw;
-    ol, ul {
-     padding-left:unset; 
-}
-.main_gallery_div .img_div_add ul .ul_div {
-display: unset; 
+    ol,
+    ul {
+      padding-left: unset;
+    }
+    .main_gallery_div .img_div_add ul .ul_div {
+      display: unset;
+    }
+    .main_gallery_div .img_div_add ul li {
+      width: unset;
+    }
 
-}
-.main_gallery_div .img_div_add ul li {
-width: unset;
-}
-
- .div4 {
-    width: 90%;
-}
-
+    .div4 {
+      width: 90%;
+    }
   }
 
-  @media (min-width: 567px) and (max-width: 992px){
+  @media (min-width: 567px) and (max-width: 992px) {
     margin: 0;
     padding: 0;
     width: 100vw;
-    ol, ul {
-     padding-left:unset; 
-}
-/* .main_gallery_div .img_div_add ul .ul_div {
+    ol,
+    ul {
+      padding-left: unset;
+    }
+    /* .main_gallery_div .img_div_add ul .ul_div {
 display: unset; 
 
 } */
-.main_gallery_div .img_div_add ul li {
-width: unset;
-}
+    .main_gallery_div .img_div_add ul li {
+      width: unset;
+    }
 
- .div4 {
-    width: 90%;
-}
+    .div4 {
+      width: 90%;
+    }
   }
 `;

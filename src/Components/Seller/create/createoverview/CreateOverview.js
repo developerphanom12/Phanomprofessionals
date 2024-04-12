@@ -8,8 +8,18 @@ import { EXCHANGE_URLS, EXCHANGE_URLS_CATEGORY } from "../../../Important/URLS";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateGigId } from "../../../../redux/users/action";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+  gigTitle: Yup.string().required("Gig title is required"),
+  categoryId: Yup.string().required("Category is required"),
+  subcategoryId: Yup.string().required("Subcategory is required"),
+  serviceType: Yup.string().required("Service type is required"),
+  tags: Yup.string().required("Tags are required"),
+});
 
 export default function CreateOverview() {
+  const [errors, setErrors] = useState({});
   const [active, setActive] = useState("page1");
   const [gigTitle, setGigTitle] = useState("");
   const [categoryId, setCategoryId] = useState("");
@@ -76,8 +86,33 @@ export default function CreateOverview() {
     }
   };
 
-  const handleSubmit = () => {
-    appApi();
+  const handleSubmit = async () => {
+    try {
+      // Validate the data object
+      await validationSchema.validate(
+        {
+          gigTitle,
+          categoryId,
+          subcategoryId,
+          serviceType,
+          tags,
+        },
+        { abortEarly: false }
+      ); // abortEarly option will show all validation errors at once
+
+      // If validation succeeds, proceed with other logic
+      appApi();
+    } catch (error) {
+      // Handle validation errors
+      const validationErrors = {};
+      if (error.inner) {
+        error.inner.forEach((err) => {
+          validationErrors[err.path] = err.message;
+        });
+      }
+
+      setErrors(validationErrors);
+    }
   };
 
   const getCategoryApi = async () => {
@@ -94,10 +129,11 @@ export default function CreateOverview() {
       if (res?.status === 201) {
         setGetCategory(res?.data?.message);
       }
-    } catch (err) {
-      toast.error(err, "Error");
+    } catch (errors) {
+      toast.error(errors, "Error");
     }
   };
+
   useEffect(() => {
     getCategoryApi();
   }, []);
@@ -112,11 +148,21 @@ export default function CreateOverview() {
             buyers would likely use to search for a service like yours.
           </div>
           <div className="input_div">
-            <textarea
-              placeholder="text"
-              value={gigTitle}
-              onChange={(e) => setGigTitle(e.target.value)}
-            />
+            <div style={{ display: "flex", flexDirection: "column", width:"100%" }}>
+              <textarea
+                placeholder="Title : Short but Effective"
+                value={gigTitle}
+                onChange={(e) => setGigTitle(e.target.value)}
+              />
+              {gigTitle.length < 100 && !gigTitle && (
+                <p
+                  className="error"
+                  style={{ color: "red", fontSize: "11px", margin: "0" }}
+                >
+                  Please enter Gig title.
+                </p>
+              )}
+            </div>
           </div>
         </div>
         <div className="input_group">
@@ -125,38 +171,58 @@ export default function CreateOverview() {
             Choose the category and sub-category most suitable for your Gig.
           </div>
           <div className="input_div">
-            <select
-              // value={categoryId}
-              onChange={(e) => {
-                setCategoryId(e.target.value); // Set categoryId directly with the selected value
-              }}
-            >
-              <option value="">Select Category</option>
-              {getCategory &&
-                getCategory.map((category, index) => (
-                  <option key={index} value={category.category_id}>
-                    {category.category_name}
-                  </option>
-                ))}
-            </select>
-
-            <select
-              value={subcategoryId}
-              onChange={(e) => setSubcategoryId(e.target.value)}
-            >
-              <option value="">Select Subcategory</option>
-              {getCategory &&
-                getCategory.map((category) =>
-                  category.subcategories.map((subcategory) => (
-                    <option
-                      key={subcategory.subcategory_id}
-                      value={subcategory.subcategory_id}
-                    >
-                      {subcategory.subcategory_name}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <select
+                // value={categoryId}
+                onChange={(e) => {
+                  setCategoryId(e.target.value); // Set categoryId directly with the selected value
+                }}
+              >
+                <option value="">Select Category</option>
+                {getCategory &&
+                  getCategory.map((category, index) => (
+                    <option key={index} value={category.category_id}>
+                      {category.category_name}
                     </option>
-                  ))
-                )}
-            </select>
+                  ))}
+              </select>
+
+              {!categoryId && (
+                <p
+                  className="error"
+                  style={{ color: "red", fontSize: "11px", margin: "0" }}
+                >
+                  Please select category.
+                </p>
+              )}
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <select
+                value={subcategoryId}
+                onChange={(e) => setSubcategoryId(e.target.value)}
+              >
+                <option value="">Select Subcategory</option>
+                {getCategory &&
+                  getCategory.map((category) =>
+                    category.subcategories.map((subcategory) => (
+                      <option
+                        key={subcategory.subcategory_id}
+                        value={subcategory.subcategory_id}
+                      >
+                        {subcategory.subcategory_name}
+                      </option>
+                    ))
+                  )}
+              </select>
+              {!subcategoryId && (
+                <p
+                  className="error"
+                  style={{ color: "red", fontSize: "11px", margin: "0" }}
+                >
+                  Please select subcategory.
+                </p>
+              )}
+            </div>
           </div>
         </div>
         <div className="input_group">
@@ -164,13 +230,23 @@ export default function CreateOverview() {
             <span>Service type</span>
           </div>
           <div className="input_div">
-            <textarea
-              className="text"
-              placeholder="Ex: e-commerce website"
-              type="text"
-              value={serviceType}
-              onChange={(e) => setServiceType(e.target.value)}
-            />
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <textarea
+                className="text"
+                placeholder="Ex: e-commerce website"
+                type="text"
+                value={serviceType}
+                onChange={(e) => setServiceType(e.target.value)}
+              />
+              {!serviceType && (
+                <p
+                  className="error"
+                  style={{ color: "red", fontSize: "11px", margin: "0" }}
+                >
+                  Please enter Service type.
+                </p>
+              )}
+            </div>
           </div>
         </div>
 
@@ -223,6 +299,14 @@ export default function CreateOverview() {
                         </li>
                       ))}
                     </ul>
+                    {!selectedProgrammingLanguages && (
+                      <p
+                        className="error"
+                        style={{ color: "red", fontSize: "11px", margin: "0" }}
+                      >
+                        Please select Language.
+                      </p>
+                    )}
                   </div>
                 </div>
               ) : active === "pagess" ? (
@@ -248,6 +332,14 @@ export default function CreateOverview() {
                         )
                       )}
                     </ul>
+                    {!selectedWebsiteFeatures && (
+                      <p
+                        className="error"
+                        style={{ color: "red", fontSize: "11px", margin: "0" }}
+                      >
+                        Please select feature.
+                      </p>
+                    )}
                   </div>
                 </div>
               ) : (
@@ -312,11 +404,14 @@ export default function CreateOverview() {
                 setTags(e.target.value);
               }}
             />
-            {/* <input
-              placeholder="Enter tags separated by comma"
-              value={tags}
-              onChange={(e) => setTags(e.target.value)}
-            />*/}
+            {!tags && (
+              <p
+                className="error"
+                style={{ color: "red", fontSize: "11px", margin: "0" }}
+              >
+                Please enter atleast one Tag.
+              </p>
+            )}
           </div>
         </div>
         <div className="input_group">
@@ -527,6 +622,7 @@ const Root = styled.section`
         padding: 10px;
         justify-content: space-between;
         display: flex;
+        /* flex-direction: column; */
         align-items: center;
         select,
         .text {
@@ -673,7 +769,7 @@ const Root = styled.section`
     }
 
     .main_div_section .input_group .input_divv .all_pages .button_page ul {
-      padding-left:0px;
+      padding-left: 0px;
     }
 
     .main_div_section .input_group .information {
@@ -686,19 +782,17 @@ const Root = styled.section`
     }
   }
 
-  @media (min-width: 567px) and (max-width: 992px){
+  @media (min-width: 567px) and (max-width: 992px) {
     margin: 0;
     padding: 0;
-  .main_div_section {
-    width: 90vw;
-}
- .main_div_section .input_group .input_label {
-    width: unset;
-
-}
-.main_div_section .input_group .input_div .text {
+    .main_div_section {
+      width: 90vw;
+    }
+    .main_div_section .input_group .input_label {
+      width: unset;
+    }
+    .main_div_section .input_group .input_div .text {
       width: 85vw;
     }
   }
-
 `;

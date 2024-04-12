@@ -16,8 +16,6 @@ export default function DescriptionFAQ() {
   console.log("valudfee", valuee);
   const navigate = useNavigate();
 
-  
-
   const appApi = async () => {
     try {
       const axiosConfig = {
@@ -136,16 +134,14 @@ const Root = styled.section`
     }
   }
 
-  @media (max-width: 567px){
-    margin:0;
-    padding:0;
-     .main_div_section{
-    width: 90vw;
-}
- .div4 {
-   width: unset; 
-
-}
+  @media (max-width: 567px) {
+    margin: 0;
+    padding: 0;
+    .main_div_section {
+      width: 90vw;
+    }
+    .div4 {
+      width: unset;
+    }
   }
 `;
-

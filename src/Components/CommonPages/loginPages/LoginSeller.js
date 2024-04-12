@@ -93,7 +93,6 @@ const Root = styled.section`
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* background-color: #147888; */
   background-image: linear-gradient(to bottom right, #147888,  #1478883d, #147888);
   form {
     display: flex;

@@ -1,7 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Table3({ data, setData ,data2, setData2 ,data3, setData3}) {
+export default function Table3({
+  data,
+  setData,
+  data2,
+  setData2,
+  data3,
+  setData3,
+}) {
   return (
     <Root>
       <table>
@@ -127,21 +134,19 @@ const Root = styled.section`
     }
   }
 
-  @media (max-width: 567px){
-   table tbody tr td .txt_div {
-    overflow: hidden;
-}
-table tbody tr .first_table_col {
+  @media (max-width: 567px) {
+    table tbody tr td .txt_div {
+      overflow: hidden;
+    }
+    table tbody tr .first_table_col {
       width: 150px;
     }
-
- 
-}
+  }
 
   @media (min-width: 567px) and (max-width: 992px) {
     table tbody tr td .txt_div {
-    overflow: hidden;
-}
-
+      overflow: hidden;
+    }
   }
+ 
 `;

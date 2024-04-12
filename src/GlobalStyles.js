@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const ToggleButton = styled.button`
   padding: 5px 12px;
   font-size: 14px;
@@ -16,6 +17,7 @@ export const ToggleButton = styled.button`
     background-color: ${({ toggle }) => (toggle ? "#1dbf73" : "#1dbf73")};
   }
 `;
+
 export const GigButton = styled.button`
   border: none;
   background-color: transparent;

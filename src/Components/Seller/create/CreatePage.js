@@ -17,7 +17,9 @@ export default function CreatePage() {
           <div>
             <div>
               <GigButton
-                className={active === "createoverview" ? "btn_1 active" : "btn_1"}
+                className={
+                  active === "createoverview" ? "btn_1 active" : "btn_1"
+                }
                 onClick={() => {
                   setActive("createoverview");
                 }}
@@ -179,10 +181,9 @@ const Root = styled.section`
   }
 
   @media (max-width: 567px) {
-
     .fizYSn .tab_button_area .nav_tab .btn_1 {
-    font-size: 11px;
-}
+      font-size: 11px;
+    }
 
     .tab_button_area .nav_tab {
       padding: unset;
@@ -195,7 +196,7 @@ const Root = styled.section`
     }
   }
   @media (min-width: 567px) and (max-width: 992px) {
-     .tab_button_area .nav_tab {
+    .tab_button_area .nav_tab {
       padding: 0px 120px;
     }
   }

@@ -69,7 +69,6 @@ export default function Pricing() {
       if (res?.status === 201) {
         // toast.success("Updated");
         navigate("/description");
-
       }
       const updatedData2 = { ...data2, gig_id: gigId };
       const res2 = await axios.post(
@@ -98,9 +97,32 @@ export default function Pricing() {
   };
 
   const handleSubmit = () => {
+    // Check if any required field is empty in any of the pricing data objects
+    // if (
+    //   !data.title ||
+    //   !data.description ||
+    //   !data.delivery_time ||
+    //   !data.number_of_pages ||
+    //   !data.revision ||
+    //   !data.price ||
+    //   !data2.title ||
+    //   !data2.description ||
+    //   !data2.delivery_time ||
+    //   !data2.number_of_pages ||
+    //   !data2.revision ||
+    //   !data2.price ||
+    //   !data3.title ||
+    //   !data3.description ||
+    //   !data3.delivery_time ||
+    //   !data3.number_of_pages ||
+    //   !data3.revision ||
+    //   !data3.price
+    // ) {
+    //   toast.error("Please fill in all required fields.");
+    //   return;
+    // }
     appPricing();
   };
-
   return (
     <Root>
       <div className="div1">
@@ -325,16 +347,15 @@ const Root = styled.section`
     }
   }
 
-  @media (max-width: 567px){
-    margin:0;
-    padding:5px;
-    width:100vw;
+  @media (max-width: 567px) {
+    margin: 0;
+    padding: 5px;
+    width: 100vw;
   }
 
-  @media (min-width: 567px) and (max-width: 992px){
-    margin:0;
-    padding:30px;
-    width:100vw;
+  @media (min-width: 567px) and (max-width: 992px) {
+    margin: 0;
+    padding: 30px;
+    width: 100vw;
   }
-
 `;

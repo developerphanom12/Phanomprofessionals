@@ -249,7 +249,7 @@ export default function Page1() {
                                     <button
                                       // onClick={() => {
                                       //   navigate("/user");
-                                        
+
                                       // }}
                                       onClick={() =>
                                         handleContactClick(gig.seller.seller_id)

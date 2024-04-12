@@ -46,10 +46,6 @@ export default function Requirements() {
     }
   };
 
-  const handleSubmit = () => {
-    appQues();
-  };
-
   const handleQuestionChange = (index, e) => {
     const newData = [...data.questionsAnswers];
     newData[index].question = e.target.value;
@@ -71,6 +67,18 @@ export default function Requirements() {
       ],
     });
   };
+
+  const handleSubmit = () => {
+    const isAtLeastOnePairFilled = data.questionsAnswers.some(
+      (pair) => pair.question.trim() !== "" && pair.answer.trim() !== ""
+    );
+    if (!isAtLeastOnePairFilled) {
+      toast.error("Please fill in at least one question-answer pair.");
+      return;
+    }
+    appQues();
+  };
+
   return (
     <Root>
       <div className="main_req_div">
@@ -439,7 +447,7 @@ const Root = styled.section`
     }
   }
 
-  @media (max-width: 567px){
+  @media (max-width: 567px) {
     margin: 0;
     padding: 0;
     width: unset;
@@ -452,7 +460,7 @@ const Root = styled.section`
       margin-left: 0;
     }
     .main_req_div .your_question {
-      margin-top:20px;
+      margin-top: 20px;
       margin-left: 0;
     }
   }
@@ -461,6 +469,5 @@ const Root = styled.section`
     margin: 0;
     padding: 30px;
     width: 100vw;
-
   }
 `;

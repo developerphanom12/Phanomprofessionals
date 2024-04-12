@@ -26,24 +26,59 @@ function TextEditor({ valuee, setValuee }) {
     ]
   };
 
+  // const handleChange = (html, delta, source, editor) => {
+  //   const plainText = editor.getText().trim();
+  //   setCharacterCount(plainText.length);
+    
+  //   if (plainText.length <= 1200) {
+  //     setEditorHtml(html);
+  //     if (setValuee) {
+  //       setValuee({ ...valuee, content: html });
+  //     }
+  //   } else {
+  //     const truncatedHtml = editor.clipboard.dangerouslyPasteHTML(0, html.substring(0, 1200));
+  //     setEditorHtml(truncatedHtml);
+  //     if (setValuee) {
+  //       setValuee({ ...valuee, content: truncatedHtml });
+  //     }
+  //   }
+  // };
+
+
   const handleChange = (html, delta, source, editor) => {
     const plainText = editor.getText().trim();
-    setCharacterCount(plainText.length);
-    
-    if (plainText.length <= 1200) {
-      setEditorHtml(html);
+    const textLength = plainText.length;
+  
+    // Check if input is empty
+    if (textLength === 0) {
+      setCharacterCount(0);
+      setEditorHtml(""); // Clear the editor content
       if (setValuee) {
-        setValuee({ ...valuee, content: html });
+        setValuee({ ...valuee, content: "" });
       }
-    } else {
-      const truncatedHtml = editor.clipboard.dangerouslyPasteHTML(0, html.substring(0, 1200));
+      return; // Stop further execution of the function
+    }
+  
+    // Check if input length exceeds 1200 characters
+    if (textLength > 1200) {
+      // Truncate the input to 1200 characters
+      const truncatedText = plainText.substring(0, 1200);
+      const truncatedHtml = editor.clipboard.dangerouslyPasteHTML(0, truncatedText);
       setEditorHtml(truncatedHtml);
+      setCharacterCount(1200); // Update character count to 1200
       if (setValuee) {
         setValuee({ ...valuee, content: truncatedHtml });
       }
+    } else {
+      // If input length is within the limit, update the editor content and character count
+      setEditorHtml(html);
+      setCharacterCount(textLength);
+      if (setValuee) {
+        setValuee({ ...valuee, content: html });
+      }
     }
   };
-
+  
   return (
     <div>
       <ReactQuill

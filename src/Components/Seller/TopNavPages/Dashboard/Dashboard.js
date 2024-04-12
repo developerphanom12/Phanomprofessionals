@@ -83,11 +83,11 @@ export default function Dashboard() {
           </div>
 
           <div className="steps_main_div">
-            <h4>3 steps to become a top seller on Fiverr</h4>
+            <h4>3 steps to become a top seller on Phanom</h4>
             <p>
-              The key to your success on Fiverr is the brand you build for
-              yourself through your Fiverr reputation. We gathered some tips and
-              resources to help you become a leading seller on Fiverr.
+              The key to your success on Phanom is the brand you build for
+              yourself through your Phanom reputation. We gathered some tips and
+              resources to help you become a leading seller on Phanom.
             </p>
             <ul className="keys-container">
               <li>
@@ -147,10 +147,7 @@ export default function Dashboard() {
 }
 const Root = styled.section`
   background-color: #f5f5f5;
-  /* / {
-    padding:0;
-    margin:0;
-  } */
+
   .main_div {
     display: flex;
     padding: 20px 20px 0;
@@ -341,6 +338,7 @@ const Root = styled.section`
           padding: 11px;
           border: 1px solid #c5c6c9;
           color: #74767e;
+          outline: none;
         }
       }
     }
@@ -488,9 +486,6 @@ const Root = styled.section`
     .main_div_two {
       width: 100%;
       margin: 0 0 30px 0px;
-      /* .steps_main_div .keys-container li {
-        flex: unset;
-      } */
     }
   }
 `;
