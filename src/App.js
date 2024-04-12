@@ -50,6 +50,7 @@ import LoginBuyer from "./Components/CommonPages/loginPages/LoginBuyer";
 import Page1 from "./Components/Buyer/profilePlanPages/Page1";
 import Userone from "./Components/Chat/Userone";
 import CreateSingMile from "./Components/Chat/CreateSingMile";
+import SellerRegister from "./Components/CommonPages/loginPages/SellerRegister";
 // import ChatSection from "./Components/MainLayouts/message/ChatSection";
 
 function App() {
@@ -132,6 +133,8 @@ function App() {
               <Route path="/howitworks" element={<HowItWorks />} />
               <Route path="/loginBuyer" element={<LoginBuyer />} />
               <Route path="/loginseller" element={<LoginSeller />} />
+              <Route path="/sellerregister" element={<SellerRegister/>} />
+
             </>
           )}
         </Routes>
