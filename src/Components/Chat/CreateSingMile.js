@@ -54,7 +54,7 @@ export default function CreateSingMile() {
         navigate("/gallery");
       }
     } catch (err) {
-      toast.error("error");
+      toast.error("Fill all fields");
     }
   };
 

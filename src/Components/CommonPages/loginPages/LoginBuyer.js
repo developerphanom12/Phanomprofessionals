@@ -7,9 +7,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { EXCHANGE_URLS_BUYER } from "../../Important/URLS";
 import { useForm } from "react-hook-form";
 import { userCheckAction, userDataAction } from "../../../redux/users/action";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { EXCHANGE_URLS_BUYER } from "../../Important/URLS";
 
 const schema = yup.object().shape({
   username: yup.string().required("Username is required."),
@@ -17,11 +28,9 @@ const schema = yup.object().shape({
     .string()
     .required("Password is required.")
     .min(5, "Password should be at least 5 characters."),
-  // .matches(
-  //   /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/,
-  //   "Password should contain at least one uppercase letter, lowercase letter, digit, and special symbol."
-  // ),
+
 });
+const defaultTheme = createTheme();
 
 export default function LoginBuyer() {
   const [showPassword, setShowPassword] = useState(false);
@@ -58,129 +67,173 @@ export default function LoginBuyer() {
   return (
     <Root>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-        <h5>Be a Buyer</h5>
-          <div className="user_name">
-            <label>User Name or Email Address</label>
-            <input type="username" {...register("username")} />
-            {errors.username && <p>{errors.username.message}</p>}
-          </div>
-          <div className="user_name">
-            <label>Password</label>
-            <div className="pswrd">
-              <input
-                type={showPassword ? "text" : "password"}
-                {...register("password")}
-              />
-              <button className="btn" onClick={togglePasswordVisibility}>
-                {showPassword ? <IoEyeSharp /> : <IoEyeOffSharp />}
-              </button>
-              {errors.password && <p>{errors.password.message}</p>}{" "}
-            </div>
-          </div>
-          <div className="login">
-            <button type="submit">Login</button>
-          </div>
-        </div>
+        <ThemeProvider theme={defaultTheme}>
+          <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <Box
+              sx={{
+                marginTop: 5,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography
+                component="h1"
+                variant="h5"
+                style={{
+                  fontWeight: "600",
+                  textTransform: "uppercase",
+                  color: "darkcyan",
+                  fontSize: "18px",
+                }}
+              >
+                Sign in as buyer
+              </Typography>
+              <Box
+                component="formm"
+                onSubmit={handleSubmit}
+                noValidate
+                sx={{ mt: 3 }}
+              >
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <TextField
+                      autoComplete="given-name"
+                      name="username"
+                      required
+                      fullWidth
+                      id="Name"
+                      label="Name"
+                      autoFocus
+                      type="username"
+                      {...register("username")}
+                    />
+                  </Grid>
+                  {errors.username && (
+                    <p
+                      style={{
+                        padding: "0px 20px",
+                        color: "red",
+                        fontSize: "10px",
+                        margin: "0",
+                      }}
+                    >
+                      {errors.username.message}
+                    </p>
+                  )}
+                  <Grid
+                    item
+                    xs={12}
+                    style={{ display: "flex", position: "relative" }}
+                  >
+                    <TextField
+                      autoComplete="given-name"
+                      name="Password"
+                      required
+                      fullWidth
+                      id="Password"
+                      label="Password"
+                      autoFocus
+                      type={showPassword ? "text" : "password"}
+                      {...register("password")}
+                    />
+                    <button
+                      className="btn"
+                      onClick={() => {
+                        togglePasswordVisibility();
+                      }}
+                      style={{
+                        position: "absolute",
+                        right: "0px",
+                        top: "22px",
+                      }}
+                    >
+                      {showPassword ? <IoEyeSharp /> : <IoEyeOffSharp />}
+                    </button>
+                  </Grid>
+                  {errors.password && (
+                    <p
+                      style={{
+                        padding: "0px 20px",
+                        color: "red",
+                        fontSize: "10px",
+                        margin: "0",
+                      }}
+                    >
+                      {errors.password.message}
+                    </p>
+                  )}{" "}
+                </Grid>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{
+                    mt: 3,
+                    mb: 2,
+                    p: 1.5,
+                    bgcolor: "#147888",
+                    "&:hover": {
+                      backgroundImage:
+                        "linear-gradient(to bottom right, #147888, #1478883d, #147888)",
+                    },
+                  }}
+                >
+                  Sign In
+                </Button>
+                <Grid container>
+                  <Grid item xs>
+                    <Link href="#" variant="body2" sx={{ color: "darkcyan" }}>
+                      Forgot password?
+                    </Link>
+                  </Grid>
+                  <Grid item>
+                    <Link
+                      href="sellerregister"
+                      variant="body2"
+                      sx={{ color: "darkcyan" }}
+                    >
+                      {"Don't have an account? Sign Up"}
+                    </Link>
+                  </Grid>
+                </Grid>
+              </Box>
+            </Box>
+          </Container>
+        </ThemeProvider>
       </form>
     </Root>
   );
 }
 const Root = styled.section`
-  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* background-color: #147888; */
-  background-image: linear-gradient(to bottom right, #147888,  #1478883d, #147888);
+  height: 100vh;
+  background-image: linear-gradient(
+    to bottom right,
+    #147888,
+    #1478883d,
+    #147888
+  );
+  .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    color: #17191a;
+  }
+  .css-md26zr-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
+    .MuiOutlinedInput-notchedOutline {
+    border-color: #17191a;
+    border-width: 2px;
+  }
   form {
-    display: flex;
-    flex-direction: column;
-    width: 40vw;
     border-radius: 10px;
     box-shadow: 0 7px 15px 0 rgb(0 0 0 / 53%), 0 1px 4px 0 rgb(0 0 0 / 29%);
-      background-color: white;
-      >div{
-        h5{
-          text-align: center;
-          font-weight: 600;
-          text-transform: uppercase;
-          color: darkcyan;
-        }
-      padding: 50px 50px;
-      /* background-color: #1478888f; */
-
-    }
-
-    input {
-      border: 1px solid #c9c0c0;
-      outline: none;
-    }
-
-    label {
-      margin-left: 10px;
-      font-weight: 600;
-    }
-
-    .user_name {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 15px;
-    }
-    .pswrd {
-      input {
-        width: 93%;
-      }
-      button.btn {
-        margin-left: -47px;
-      }
-      p {
-        font-size: 14px;
-        margin-left: 10px;
-      }
-    }
-
-    .login button {
-      padding: 8px 60px;
-      margin-top: 22px;
-      border: 1px solid #c9c0c0;
-      width: 95%;
-      &:hover{
-
-        background-image: linear-gradient(to bottom right, #147888,  #1478883d, #147888);
-      }
-    }
-  }
-  input,
-  button {
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-  }
-
-  @media (max-width: 567px) {
-    margin: 0;
-    padding: 0;
-    form {
-      width: unset;
-      margin: 20px;
-    }
-    form .pswrd button.btn {
-      margin-left: -60px;
-    }
-  }
-
-  @media (min-width: 567px) and (max-width: 992px) {
-    margin: 0;
-    padding: 0;
-    form {
-      width: unset;
-      margin: 20px;
-    }
-    form .pswrd button.btn {
-      margin-left: -60px;
-    }
+    background-color: white;
+    padding-bottom: 30px;
   }
 `;

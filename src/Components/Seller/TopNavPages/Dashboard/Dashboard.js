@@ -71,6 +71,7 @@ export default function Dashboard() {
             <div className="dropdown_list">
               <select>
                 <option>Active orders (0)</option>
+                <option>Delivered</option>
                 <option>Completed</option>
                 <option>Canceled</option>
               </select>

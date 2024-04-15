@@ -51,6 +51,7 @@ import Page1 from "./Components/Buyer/profilePlanPages/Page1";
 import Userone from "./Components/Chat/Userone";
 import CreateSingMile from "./Components/Chat/CreateSingMile";
 import SellerRegister from "./Components/CommonPages/loginPages/SellerRegister";
+import Portfolio from "./Components/Portfolio/Portfolio";
 // import ChatSection from "./Components/MainLayouts/message/ChatSection";
 
 function App() {
@@ -134,7 +135,7 @@ function App() {
               <Route path="/loginBuyer" element={<LoginBuyer />} />
               <Route path="/loginseller" element={<LoginSeller />} />
               <Route path="/sellerregister" element={<SellerRegister/>} />
-
+              <Route path="/portfolio" element={<Portfolio/>} />
             </>
           )}
         </Routes>

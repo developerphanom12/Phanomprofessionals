@@ -10,11 +10,13 @@ import { EXCHANGE_URLS } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import BrowserSlider1 from "./BrowserSlider1";
 import profile from "../../Images/Boyspic.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function BrowseHistory() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [gigData, setGigData] = useState([]);
+  // const id = useParams();
+ 
 
   useEffect(() => {
     const getSliderApi = async () => {
@@ -37,7 +39,7 @@ function BrowseHistory() {
   const slidesToShow = 5;
   const slideWidth = 330;
   const goToPreviousSlide = () => {
-    setCurrentSlide(prev => {
+    setCurrentSlide((prev) => {
       const newIndex = prev === 0 ? totalSlides - slidesToShow : prev - 1;
       slideRef.current.scrollLeft = slideWidth * newIndex;
       return newIndex;
@@ -45,7 +47,7 @@ function BrowseHistory() {
   };
 
   const goToNextSlide = () => {
-    setCurrentSlide(prev => {
+    setCurrentSlide((prev) => {
       const newIndex = (prev + 1) % totalSlides;
       slideRef.current.scrollLeft = slideWidth * newIndex;
       return newIndex;
@@ -57,7 +59,6 @@ function BrowseHistory() {
       slideRef.current.scrollLeft = slideWidth * currentSlide;
     }
   }, [currentSlide]);
-
 
   return (
     <Sliderrrs>
