@@ -15,7 +15,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { EXCHANGE_URLS } from "../Important/URLS";
 
-
 export default function CreateSingMile() {
   // const gigId = useSelector((state) => state.users.gigId);
   const [isSinglePayment, setIsSinglePayment] = useState(true);
@@ -26,10 +25,10 @@ export default function CreateSingMile() {
   const handleOpenn = () => setOpenn(true);
   const handleClose = () => setOpenn(false);
   const [offer, setOffer] = useState({
-    gigs_id:"1",
+    gigs_id: "1",
     offer_type: "singlepayment",
     receive_id: "1",
-    offer_expire:"",
+    offer_expire: "",
     describe_offer: "",
     revision: "",
     delivery_day: "",
@@ -170,7 +169,18 @@ export default function CreateSingMile() {
                       onChange={(e) =>
                         setOffer({ ...offer, describe_offer: e.target.value })
                       }
-                    ></textarea>
+                    ></textarea>{" "}
+                    {offer.describe_offer.length === 0 && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontSize: "10px",
+                          padding: "10px",
+                        }}
+                      >
+                        Not Valid Empty field
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -205,7 +215,18 @@ export default function CreateSingMile() {
                           onChange={(e) =>
                             setOffer({ ...offer, revision: e.target.value })
                           }
-                        />
+                        />{" "}
+                        {offer.revision.length === 0 && offer.revision.length > 10 && (
+                          <p
+                            style={{
+                              color: "red",
+                              fontSize: "10px",
+                              padding: "10px",
+                            }}
+                          >
+                            Fill in Numbers between 1-10
+                          </p>
+                        )}
                       </div>
                     </li>
                     <li>
