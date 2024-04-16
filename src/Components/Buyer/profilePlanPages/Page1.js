@@ -28,6 +28,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export default function Page1() {
   const { id } = useParams();
+
   // const userDetails = useSelector((state) => state.users.user);
   const [showMessageBox, setShowMessageBox] = useState(false);
   const [gigData, setGigData] = useState([]);
@@ -52,8 +53,8 @@ export default function Page1() {
     setShowMessageBox(!showMessageBox);
   };
 
-  const handleContactClick = (sellerId) => {
-    navigate(`/user/${sellerId}`);
+  const handleContactClick = (id) => {
+    navigate(`/user/${id}`);
   };
 
   return (
@@ -247,13 +248,18 @@ export default function Page1() {
                                   </div>
                                   <div className="continue_button">
                                     <button
-                                      // onClick={() => {
-                                      //   navigate("/user");
-
-                                      // }}
-                                      onClick={() =>
-                                        handleContactClick(gig.seller.seller_id)
-                                      }
+                                      onClick={() => {
+                                        console.log("Navigating", gigData, "anduserId", id);
+                                        navigate("/user", {
+                                          state: {
+                                            gigData: gigData,
+                                            userId: id,
+                                          },
+                                        });
+                                      }}
+                                      // onClick={() =>
+                                      //   handleContactClick(gig.seller.seller_id)
+                                      // }
                                     >
                                       ContactMe <FaArrowRightLong />
                                     </button>

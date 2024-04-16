@@ -24,9 +24,7 @@ export default function WritingTranslation() {
             <li>Proofreading & Editing</li>
             <li>AI Content Editing</li>
             <li>Writing Advice</li>
-            </ul>
-
-
+          </ul>
         </div>
         <div className="part1">
           <h6>Business & Marketing Copy</h6>
@@ -42,12 +40,7 @@ export default function WritingTranslation() {
             <li>Social Media Copywriting</li>
             <li>Press Releases</li>
             <li>UX Writing</li>
-  
           </ul>
-
-
-
-
         </div>
 
         <div className="part1">
@@ -55,7 +48,6 @@ export default function WritingTranslation() {
           <ul>
             <li>eLearning Content Development</li>
             <li>Technical Writing</li>
-
           </ul>
         </div>
 
@@ -66,7 +58,6 @@ export default function WritingTranslation() {
             <li>Book Editing</li>
             <li>Beta Reading</li>
             <li>Self-Publish Your Book</li>
-
           </ul>
         </div>
 
@@ -79,7 +70,6 @@ export default function WritingTranslation() {
             <li>News & Politics</li>
             <li>Marketing</li>
             <li>Real Estate</li>
-
           </ul>
         </div>
 
@@ -92,7 +82,7 @@ export default function WritingTranslation() {
             <li>Job Descriptions</li>
           </ul>
         </div>
-        
+
         <div className="part1">
           <h6>Translation & Transcription</h6>
           <ul>
@@ -101,8 +91,6 @@ export default function WritingTranslation() {
             <li>Transcription</li>
           </ul>
         </div>
-
-
       </div>
     </Root>
   );

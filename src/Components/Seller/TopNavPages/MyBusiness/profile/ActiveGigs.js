@@ -295,6 +295,7 @@ const Root = styled.section`
   .dropdown_wrapper {
     width: 100%;
     margin-bottom: 5px;
+    text-align: end;
   }
   .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
     font-size: 0rem;

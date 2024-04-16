@@ -12,6 +12,7 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";
 import CreateSingMile from "./CreateSingMile";
+import { useLocation } from "react-router-dom";
 
 const token = localStorage.getItem("token");
 const socket = io("http://localhost:4000", {
@@ -37,14 +38,23 @@ function Userone() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const location = useLocation();
+  const { gigData, userId } = location.state || {};
+
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
       setToken(storedToken);
       setIsLoggedIn(true);
+      setUserId(userId); // Set user ID from location state
       fetchUsers(storedToken);
+      fetchChatHistory(userId); // Fetch chat history for the selected user
+
+      // Set the selectedUser directly from the userId
+      setSelectedUser(userId);
     }
-  }, []);
+  }, [userId]); // Fetch user details and chat history when userId changes
+
   useEffect(() => {
     if (selectedUser) {
       fetchChatHistory(selectedUser);
@@ -161,6 +171,9 @@ function Userone() {
 
   return (
     <Root>
+      <p>User ID: {userId}</p>
+      {JSON.stringify(gigData) &&
+        gigData.map((i) => <p>Gig Data: {i.seller.username}</p>)}
       <div className="user_area">
         <h5>All Messages</h5>
         <ul>
@@ -196,7 +209,9 @@ function Userone() {
             )}
           </div>
           <h4>
-            {selectedUserName ? `${selectedUserName}` : "Chat App"}
+            {/* {selectedUserName ? `${selectedUserName}` : "Chat App"} */}
+            {JSON.stringify(gigData) &&
+              gigData.map((i) => <p>Gig Data: {i.seller.username}</p>)}
             <p className="active2">Active now</p>
           </h4>
         </div>
@@ -260,7 +275,7 @@ function Userone() {
               aria-describedby="modal-modal-description"
             >
               <Box sx={style}>
-                <CreateSingMile receiverId={selectedUser}  />
+                <CreateSingMile receiverId={selectedUser} />
               </Box>
             </Modal>
             <button className="savee" onClick={sendMessage}>
@@ -285,18 +300,23 @@ const Root = styled.section`
     padding: 10px;
     width: 270px;
     min-width: 100px;
+    h5 {
+      color: #222325;
+      font-size: 18px;
+      font-weight: 700;
+    }
     ul {
       list-style: none;
       padding: 0px;
       li {
         display: flex;
         margin: 10px 0px;
-        /* align-items: end; */
+        /* / align-items: end; / */
         width: 100%;
         font-weight: 600;
         border-radius: 7px;
-        padding: 7px;
-        background-color: #dee2e675;
+        padding: 13px;
+        background-color: #f5f5f5;
         color: #000000c7;
         justify-content: space-between;
         button {
@@ -377,6 +397,7 @@ const Root = styled.section`
           font-weight: 600;
           color: #000;
           background-color: transparent;
+          text-decoration: underline;
         }
       }
     }
@@ -471,12 +492,12 @@ const Root = styled.section`
           flex-wrap: wrap;
           margin: 0;
           color: #74767e;
-          font-size: 13px;
+          font-size: 14px;
           word-wrap: break-word;
           overflow-wrap: anywhere;
         }
         .user_name {
-          font-size: 12px;
+          font-size: 15px;
           color: #444;
           display: flex;
           width: 460px;
@@ -594,3 +615,14 @@ const style = {
   borderRadius: 1,
   overflow: "auto",
 };
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   height: 450,
+//   bgcolor: "background.paper",
+//   boxShadow: 24,
+//   borderRadius: 1,
+//   overflow: "auto",
+// };

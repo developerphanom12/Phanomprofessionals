@@ -26,7 +26,6 @@ export default function CreateSingMile({receiverId}) {
   const handleOpenn = () => setOpenn(true);
   const handleClose = () => setOpenn(false);
   const [offer, setOffer] = useState({
-    // gigs_id: gigId && gigId.toString(),
     gigs_id: gigId ? gigId.toString() : "1",
     offer_type: "singlepayment",
     receive_id: receiverId ? receiverId.toString() : "",
@@ -36,7 +35,7 @@ export default function CreateSingMile({receiverId}) {
     delivery_day: "",
     price: "",
   });
-
+console.log("offer",offer)
   const offerApi = async () => {
     try {
       const axiosConfig = {
