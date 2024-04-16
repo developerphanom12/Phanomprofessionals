@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { BsThreeDots } from "react-icons/bs";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 import {
   EXCHANGE_URLS,
@@ -153,7 +154,7 @@ export default function PausedGigs() {
         <tbody>
           <tr key={index}>
             <div className="dropdown_wrapper">
-              <Select className="dropdown_menu">
+              <Select className="dropdown_menu" IconComponent={MoreHorizIcon}>
                 <MenuItem
                   value="preview"
                   onClick={() => {
@@ -318,4 +319,13 @@ const Root = styled.section`
       width: 45%;
     }
   }
+  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused
+    .MuiOutlinedInput-notchedOutline {
+    border-color: #fff;
+    border-width: 2px;
+  }
+  .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+    border-color: #fff;
+  }
+  
 `;
