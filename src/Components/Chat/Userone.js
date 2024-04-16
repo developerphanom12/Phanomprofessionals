@@ -260,8 +260,7 @@ function Userone() {
               aria-describedby="modal-modal-description"
             >
               <Box sx={style}>
-                {/* <MainSingleMilestone /> */}
-                <CreateSingMile />
+                <CreateSingMile receiverId={selectedUser}  />
               </Box>
             </Modal>
             <button className="savee" onClick={sendMessage}>
@@ -557,7 +556,6 @@ const Root = styled.section`
       margin: 10px 0px 10px 0px;
       width: 96%;
       height: 700px;
-
     }
 
     .chat_area .emoji_attach_offer {

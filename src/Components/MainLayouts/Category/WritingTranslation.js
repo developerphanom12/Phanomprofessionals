@@ -15,7 +15,18 @@ export default function WritingTranslation() {
             <li>Podcast Writing</li>
             <li>Speechwriting</li>
             <li>Research & Summaries</li>
+            <li>Find an Expert Writer</li>
           </ul>
+        </div>
+        <div className="part1">
+          <h6>Editing & Critique</h6>
+          <ul>
+            <li>Proofreading & Editing</li>
+            <li>AI Content Editing</li>
+            <li>Writing Advice</li>
+            </ul>
+
+
         </div>
         <div className="part1">
           <h6>Business & Marketing Copy</h6>
@@ -24,54 +35,94 @@ export default function WritingTranslation() {
             <li>Business Names & Slogans</li>
             <li>Case Studies</li>
             <li>White Papers</li>
+            <li>Product Descriptions</li>
             <li>Ad Copy</li>
             <li>Sales Copy</li>
             <li>Email Copy</li>
-            <li>Social Media Copy</li>
+            <li>Social Media Copywriting</li>
             <li>Press Releases</li>
-            </ul>
-
-
-        </div>
-        <div className="part1">
-          <h6>Editing & Critique</h6>
-          <ul>
-            <li>Proofreading & Editing</li>
-            <li>AI Content Editing</li>
-            <li>Writing Advice</li>
+            <li>UX Writing</li>
+  
           </ul>
 
 
 
 
         </div>
+
+        <div className="part1">
+          <h6>Miscellaneous</h6>
+          <ul>
+            <li>eLearning Content Development</li>
+            <li>Technical Writing</li>
+
+          </ul>
+        </div>
+
+        <div className="part1">
+          <h6>Book & eBook Publishing</h6>
+          <ul>
+            <li>Book & eBook Writing</li>
+            <li>Book Editing</li>
+            <li>Beta Reading</li>
+            <li>Self-Publish Your Book</li>
+
+          </ul>
+        </div>
+
+        <div className="part1">
+          <h6>Industry Specific ContentNEW</h6>
+          <ul>
+            <li>Business, Finance & Law</li>
+            <li>Health & Medical</li>
+            <li>Internet & Technology</li>
+            <li>News & Politics</li>
+            <li>Marketing</li>
+            <li>Real Estate</li>
+
+          </ul>
+        </div>
+
         <div className="part1">
           <h6>Career Writing</h6>
           <ul>
             <li>Resume Writing</li>
+            <li>Cover Letters</li>
             <li>LinkedIn Profiles</li>
             <li>Job Descriptions</li>
           </ul>
         </div>
+        
+        <div className="part1">
+          <h6>Translation & Transcription</h6>
+          <ul>
+            <li>Translation</li>
+            <li>LocalizationNEW</li>
+            <li>Transcription</li>
+          </ul>
+        </div>
+
+
       </div>
     </Root>
   );
 }
+
 const Root = styled.section`
   padding: 20px;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
-  @media (max-width: 567px){
+
+  @media (max-width: 567px) {
     padding: 20px 10px;
   }
   .footer_div {
     display: flex;
-    justify-content: space-evenly;
-
+    flex-wrap: wrap;
     .part1 {
       display: flex;
       flex-direction: column;
-      align-items: left;
       padding: 0px 7px;
+      width: 14%;
       @media (max-width: 567px) {
         padding: 5px;
       }
@@ -88,7 +139,7 @@ const Root = styled.section`
         list-style: none;
         padding: 0;
         li {
-          padding: 6px 0px;
+          padding: 5px 0px;
           color: #74767e;
           font-size: 13px;
           @media (max-width: 567px) {

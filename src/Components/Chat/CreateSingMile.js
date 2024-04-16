@@ -14,9 +14,10 @@ import { FormControl, MenuItem, Modal, Box, Select } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { EXCHANGE_URLS } from "../Important/URLS";
+import { useSelector } from "react-redux";
 
-export default function CreateSingMile() {
-  // const gigId = useSelector((state) => state.users.gigId);
+export default function CreateSingMile({receiverId}) {
+  const gigId = useSelector((state) => state.users.gigId);
   const [isSinglePayment, setIsSinglePayment] = useState(true);
   const [select, setSelect] = React.useState("");
   const [isChecked, setIsChecked] = useState(false);
@@ -25,9 +26,10 @@ export default function CreateSingMile() {
   const handleOpenn = () => setOpenn(true);
   const handleClose = () => setOpenn(false);
   const [offer, setOffer] = useState({
-    gigs_id: "1",
+    // gigs_id: gigId && gigId.toString(),
+    gigs_id: gigId ? gigId.toString() : "1",
     offer_type: "singlepayment",
-    receive_id: "1",
+    receive_id: receiverId ? receiverId.toString() : "",
     offer_expire: "",
     describe_offer: "",
     revision: "",
@@ -42,7 +44,6 @@ export default function CreateSingMile() {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       };
-
       const res = await axios.post(
         `${EXCHANGE_URLS}/offercreate`,
         offer,

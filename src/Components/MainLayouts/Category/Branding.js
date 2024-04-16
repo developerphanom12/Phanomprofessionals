@@ -1,72 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function DigitalMarketing() {
+export default function Branding() {
   return (
     <Root>
       <div className="footer_div">
-        
         <div className="part1">
-          <h6>Search</h6>
+          <h6>General & Administrative</h6>
           <ul>
-            <li>Search Engine Optimization (SEO)</li>
-            <li>Search Engine Marketing (SEM)</li>
-            <li>Local SEO</li>
-            <li>E-Commerce SEO</li>
-            <li>Video SEO</li>
+            <li>Virtual Assistant</li>
+            <li>Project Management</li>
+            <li>HR Consulting</li>
+            <li>Online InvestigationsNEW</li>
+            <li>Supply Chain Management</li>
           </ul>
         </div>
-
-
-        <div className="part1">
-          <h6> Methods & Techniques</h6>
-          <ul>
-            <li>Video Marketing</li>
-            <li>E-Commerce Marketing</li>
-            <li>Email Marketing</li>
-            <li>Guest Posting</li>
-            <li>Affiliate Marketing</li>
-            <li>Display Advertising</li>
-            <li>Public Relations</li>
-            <li>Text Message Marketing</li>
-          </ul>
-        </div>
-
-
-        <div className="part1">
-          <h6>Channel Specific NEW</h6>
-          <ul>
-            <li>TikTok Shop</li>
-            <li>Facebook Ads Campaign</li>
-            <li>Instagram Marketing</li>
-            <li>Google SEM</li>
-            <li>Shopify Marketing</li>
-          </ul>
-        </div>
-
-
-        <div className="part1">
-          <h6>Industry & Purpose-Specific</h6>
-          <ul>
-            <li>Music Promotion</li>
-            <li>Podcast Marketing</li>
-            <li>Book & eBook Marketing</li>
-            <li>Mobile App Marketing</li>
-          </ul>
-        </div>
-
-
-        <div className="part1">
-          <h6> Social</h6>
-          <ul>
-            <li>Social Media Marketing</li>
-            <li>Paid Social Media</li>
-            <li>Influencer Marketing</li>
-            <li>Community Management</li>
-          </ul>
-        </div>
-
-
       </div>
     </Root>
   );

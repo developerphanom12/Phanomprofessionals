@@ -14,18 +14,11 @@ export default function VideoAnimation() {
             <li>Intro & Outro Videos</li>
             <li>Video Templates Editing</li>
             <li>Subtitles & Captions</li>
+            <li>Find a long-term video editor</li>
           </ul>
         </div>
-        <div className="part1">
-          <h6>Social & Marketing Videos</h6>
-          <ul>
-            <li>Video Ads & Commercials</li>
-            <li>Social Media Videos</li>
-            <li>UGC Videos </li>
-            <li>Music Videos</li>
-            <li>Slideshow Videos</li>
-          </ul>
-        </div>
+
+
         <div className="part1">
           <h6>Animation</h6>
           <ul>
@@ -37,13 +30,44 @@ export default function VideoAnimation() {
             <li>NFT Animation</li>
           </ul>
         </div>
+
+
         <div className="part1">
-          <h6> Product Videos</h6>
+          <h6>Explainer Videos</h6>
           <ul>
-            <li>3D Product Animation</li>
-            <li>E-Commerce Product Videos</li>
-            <li>Corporate Videos</li>
-            <li>App & Website Previews</li>
+            <li>Animated Explainers</li>
+            <li>Live Action Explainers</li>
+            <li>Spokesperson Videos</li>
+            <li>Screencasting Videos</li>
+            <li>eLearning Video Production</li>
+            <li>Crowdfunding Videos</li>
+          </ul>
+        </div>
+
+
+        <div className="part1">
+          <h6>Miscellaneous</h6>
+          <ul>
+            <li>Article to Video</li>
+            <li>Game Trailers</li>
+            <li>Game Recordings & Guides</li>
+            <li>Meditation Videos</li>
+            <li>Real Estate Promos</li>
+            <li>Book Trailers</li>
+            <li>Video Advice</li>
+            <li>Other</li>
+          </ul>
+        </div>
+
+
+        <div className="part1">
+          <h6>Social & Marketing Videos</h6>
+          <ul>
+            <li>Video Ads & Commercials</li>
+            <li>Social Media Videos</li>
+            <li>UGC Videos NEW</li>
+            <li>Music Videos</li>
+            <li>Slideshow Videos</li>
           </ul>
         </div>
 
@@ -55,6 +79,44 @@ export default function VideoAnimation() {
             <li>Text Animation</li>
           </ul>
         </div>
+
+        <div className="part1">
+          <h6>Product Videos</h6>
+          <ul>
+            <li>3D Product Animation</li>
+            <li>E-Commerce Product Videos</li>
+            <li>Corporate Videos</li>
+            <li>App & Website Previews</li>
+          </ul>
+        </div>
+
+        <div className="part1">
+          <h6>Photography</h6>
+          <ul>
+            <li>Product Photographers</li>
+            <li>Portrait Photographers</li>
+            <li>Lifestyle & Fashion Photographers</li>
+            <li>Local Photographers</li>
+          </ul>
+        </div>
+
+        <div className="part1">
+          <h6>Filmed Video Production</h6>
+          <ul>
+            <li>Videographers</li>
+            <li>Filmed Video Production</li>
+          </ul>
+        </div>
+        
+        <div className="part1">
+          <h6>AI Video</h6>
+          <ul>
+            <li>AI Video Art</li>
+            <li>AI Music Videos</li>
+            <li>AI Spokespersons Videos</li>
+          </ul>
+        </div>
+
       </div>
     </Root>
   );
@@ -62,18 +124,18 @@ export default function VideoAnimation() {
 const Root = styled.section`
   padding: 20px;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
-  @media (max-width: 567px){
+
+  @media (max-width: 567px) {
     padding: 20px 10px;
   }
   .footer_div {
     display: flex;
-    justify-content: space-evenly;
-
+    flex-wrap: wrap;
     .part1 {
       display: flex;
       flex-direction: column;
-      align-items: left;
       padding: 0px 7px;
+      width: 14%;
       @media (max-width: 567px) {
         padding: 5px;
       }
@@ -90,7 +152,7 @@ const Root = styled.section`
         list-style: none;
         padding: 0;
         li {
-          padding: 6px 0px;
+          padding: 5px 0px;
           color: #74767e;
           font-size: 13px;
           @media (max-width: 567px) {

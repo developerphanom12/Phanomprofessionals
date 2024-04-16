@@ -21,6 +21,7 @@ export default function GraphicsDesign() {
             <li>Brand Style Guides</li>
             <li>Business Cards & Stationery</li>
             <li>Font & Typography</li>
+            <li>Logo Maker Tool</li>
           </ul>
         </div>
         <div className="part1">
@@ -45,15 +46,82 @@ export default function GraphicsDesign() {
           </ul>
         </div>
         <div className="part1">
-          <h6> Marketing Design</h6>
+          <h6> Architecture & Building Design</h6>
+          <ul>
+            <li> Architecture & Interior Design</li>
+            <li>Landscape Design</li>
+            <li>Building Engineering</li>
+          </ul>
+        </div>
+        <div className="part1">
+          <h6>Fashion & Merchandise</h6>
+          <ul>
+            <li>T-Shirts & Merchandise</li>
+            <li>Fashion Design</li>
+            <li>Jewelry Design</li>
+          </ul>
+        </div>
+
+        <div className="part1">
+          <h6>Product & Gaming</h6>
+          <ul>
+            <li>Industrial & Product Design</li>
+            <li>Character Modeling</li>
+            <li>Game Art</li>
+            <li>Graphics for Streamers</li>
+          </ul>
+        </div>
+
+        <div className="part1">
+          <h6>Marketing Design</h6>
           <ul>
             <li>Social Media Design</li>
             <li>Social Posts & Banners</li>
-            <li>Email Design</li>
             <li>Web Banners</li>
             <li>Signage Design</li>
           </ul>
         </div>
+
+        <div className="part1">
+          <h6>Art & Illustration</h6>
+          <ul>
+            <li>Illustration</li>
+            <li>AI Artists</li>
+            <li>AI Avatar DesignNEW</li>
+            <li>Children's Book Illustration</li>
+            <li>Portraits & Caricatures</li>
+            <li>Cartoons & Comics</li>
+            <li>Pattern Design</li>
+            <li>Tattoo Design</li>
+            <li>Storyboards</li>
+            <li>NFT Art</li>
+          </ul>
+        </div>
+
+        <div className="part1">
+          <h6>3D Design</h6>
+          <ul>
+            <li>3D Architecture</li>
+            <li>3D Industrial Design</li>
+            <li>3D Fashion & Garment</li>
+            <li>3D Printing Characters</li>
+            <li>3D Landscape</li>
+            <li>3D Game Art</li>
+            <li>3D Jewelry Design</li>
+          </ul>
+        </div>
+
+        <div className="part1">
+          <h6>Print Design</h6>
+          <ul>
+            <li>Flyer Design</li>
+            <li>Brochure Design</li>
+            <li>Poster Design</li>
+            <li>Catalog Design</li>
+            <li>Menu Design</li>
+          </ul>
+        </div>
+
         <div className="part1">
           <h6>Packaging & Covers</h6>
           <ul>
@@ -67,21 +135,22 @@ export default function GraphicsDesign() {
     </Root>
   );
 }
+
 const Root = styled.section`
   padding: 20px;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
-  @media (max-width: 567px){
+
+  @media (max-width: 567px) {
     padding: 20px 10px;
   }
   .footer_div {
     display: flex;
-    justify-content: space-evenly;
-
+    flex-wrap: wrap;
     .part1 {
       display: flex;
       flex-direction: column;
-      align-items: left;
       padding: 0px 7px;
+      width: 14%;
       @media (max-width: 567px) {
         padding: 5px;
       }
@@ -98,7 +167,7 @@ const Root = styled.section`
         list-style: none;
         padding: 0;
         li {
-          padding: 6px 0px;
+          padding: 5px 0px;
           color: #74767e;
           font-size: 13px;
           @media (max-width: 567px) {

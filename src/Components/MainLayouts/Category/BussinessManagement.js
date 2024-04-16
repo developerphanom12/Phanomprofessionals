@@ -1,144 +1,105 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function ProgrammingTech() {
+export default function BussinessManagement() {
   return (
     <Root>
       <div className="footer_div">
         <div className="part1">
-          <h6>Website Development</h6>
+          <h6>General & Administrative</h6>
           <ul>
-            <li>Business Websites</li>
-            <li>E-Commerce Development</li>
-            <li>Landing Pages</li>
-            <li>Dropshipping Websites</li>
-            <li>Build a Complete Website</li>
+            <li>Virtual Assistant</li>
+            <li>Project Management</li>
+            <li>HR Consulting</li>
+            <li>Online InvestigationsNEW</li>
+            <li>Supply Chain Management</li>
           </ul>
         </div>
         <div className="part1">
-          <h6>AI Development</h6>
+          <h6>Business Management</h6>
           <ul>
-            <li>AI Chatbot</li>
-            <li>AI Applications</li>
-            <li>AI Integrations</li>
-            <li>AI Agents</li>
-            <li>AI Fine-Tuning</li>
-            <li>Custom GPT AppsNEW</li>
-          </ul>
+            <li>Business Registration</li>
+            <li>Business Plans</li>
+            <li>Business Consulting</li>
+            <li>Market Research</li>
+            <li>Presentations</li>
+            <li>Sustainability ConsultingNEW</li>
+            </ul>
+
+
         </div>
         <div className="part1">
-          <h6>Mobile App Development</h6>
+          <h6>Accounting & Finance</h6>
           <ul>
-            <li>Cross-platform Development</li>
-            <li>Android App Development</li>
-            <li>IOS App Development</li>
-            <li>Website to App</li>
-            <li>Mobile App Maintenance</li>
-          </ul>
-        </div>
-        <div className="part1">
-          <h6> Software Development</h6>
-          <ul>
-            <li>Web Applications</li>
-            <li>Desktop Applications</li>
-            <li>APIs & Integrations</li>
-            <li>Scripting</li>
-            <li>Browser Extensions</li>
-            <li>QA & Review</li>
-            <li>User Testing</li>
+            <li>Accounting & Bookkeeping</li>
+            <li>Tax Consulting</li>
+            <li>File Your Taxes</li>
+            <li>Financial Forecasting & Modeling</li>
+            <li>Financial Consulting</li>
           </ul>
         </div>
 
         <div className="part1">
-          <h6>Website Platforms</h6>
+          <h6>Sales & Customer Care</h6>
           <ul>
-            <li>WordPress</li>
-            <li>Shopify</li>
-            <li>Wix</li>
-            <li>Custom Websites</li>
-            <li>GoDaddy</li>
+            <li>Sales</li>
+            <li>Lead Generation</li>
+            <li>Call Center & Calling</li>
+            <li>Customer Care</li>
           </ul>
         </div>
 
         <div className="part1">
-          <h6>Chatbot Development</h6>
+          <h6>E-Commerce Management</h6>
           <ul>
-            <li>Discord</li>
-            <li>Telegram</li>
-            <li>Botpress</li>
-            <li>TikTok</li>
-            <li>Facebook Messenger</li>
+            <li>Product Research</li>
+            <li>Store Management</li>
+            <li>Amazon Experts</li>
+            <li>Shopify Experts</li>
+            <li>Etsy Experts</li>
           </ul>
         </div>
 
         <div className="part1">
-          <h6>Wearable App Development</h6>
+          <h6>Software Management</h6>
           <ul>
-            <li>Smartwatch Development</li>
-            <li>VR Headset Development</li>
+            <li>CRM Management</li>
+            <li>ERP Management</li>
           </ul>
         </div>
 
-
+        <div className="part1">
+          <h6>Legal Services</h6>
+          <ul>
+            <li>Applications & Registrations</li>
+            <li>Legal Documents & Contracts</li>
+            <li>Legal ReviewNEW</li>
+            <li>Legal Consulting</li>
+          </ul>
+        </div>
         
         <div className="part1">
-          <h6>Blockchain & Cryptocurrency</h6>
+          <h6>Professional Development</h6>
           <ul>
-            <li>Decentralized Apps</li>
-            <li>Cryptocurrencies & Tokens</li>
-
-            <li>Blockchain Protocol DevelopmentNEW</li>
-            <li>Chain AnalysisNEW</li>
-
-            <li>Exchange Platforms</li>
-            <li>E-wallet Development</li>
-
-            <li>Smart Contracts</li>
+            <li>Career Counseling</li>
+            <li>Life Coaching</li>
           </ul>
         </div>
 
         <div className="part1">
-          <h6>Website Maintenance</h6>
+          <h6>AI for Businesses</h6>
           <ul>
-            <li>Website Customization</li>
-            <li>Bug Fixes</li>
-
-            <li>Backup & Migration</li>
-            <li>Speed Optimization</li>
-
-
+            <li>AI StrategyNEW</li>
+            <li>AI LessonsNEW</li>
           </ul>
         </div>
 
-        <div className="part1">
-          <h6>Game Development</h6>
-          <ul>
-            <li>Gameplay Experience & FeedbackNEW</li>
-            <li>PC Games</li>
-            <li>Mobile Games</li>
-            <li>Console Games</li>
-            <li>VR Games</li>
-          </ul>
-        </div>
 
-  
-
-        <div className="part1">
-          <h6>Support & Cybersecurity</h6>
-          <ul>
-            <li>Support & IT</li>
-            <li>Cloud Computing</li>
-            <li>DevOps EngineeringNEW</li>
-            <li>Cybersecurity</li>
-            <li>Convert Files</li>
-          </ul>
-        </div>
-
-        
       </div>
     </Root>
   );
 }
+
 const Root = styled.section`
   padding: 20px;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;

@@ -1,144 +1,83 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function ProgrammingTech() {
+export default function ArtificialIntelligence(){
   return (
     <Root>
       <div className="footer_div">
-        <div className="part1">
-          <h6>Website Development</h6>
-          <ul>
-            <li>Business Websites</li>
-            <li>E-Commerce Development</li>
-            <li>Landing Pages</li>
-            <li>Dropshipping Websites</li>
-            <li>Build a Complete Website</li>
-          </ul>
-        </div>
+        
         <div className="part1">
           <h6>AI Development</h6>
           <ul>
-            <li>AI Chatbot</li>
             <li>AI Applications</li>
             <li>AI Integrations</li>
+            <li>AI Chatbot</li>
             <li>AI Agents</li>
             <li>AI Fine-Tuning</li>
-            <li>Custom GPT AppsNEW</li>
-          </ul>
-        </div>
-        <div className="part1">
-          <h6>Mobile App Development</h6>
-          <ul>
-            <li>Cross-platform Development</li>
-            <li>Android App Development</li>
-            <li>IOS App Development</li>
-            <li>Website to App</li>
-            <li>Mobile App Maintenance</li>
-          </ul>
-        </div>
-        <div className="part1">
-          <h6> Software Development</h6>
-          <ul>
-            <li>Web Applications</li>
-            <li>Desktop Applications</li>
-            <li>APIs & Integrations</li>
-            <li>Scripting</li>
-            <li>Browser Extensions</li>
-            <li>QA & Review</li>
-            <li>User Testing</li>
+            <li>Custom GPT AppsNE</li>
           </ul>
         </div>
 
         <div className="part1">
-          <h6>Website Platforms</h6>
+          <h6>AI Artists</h6>
           <ul>
-            <li>WordPress</li>
-            <li>Shopify</li>
-            <li>Wix</li>
-            <li>Custom Websites</li>
-            <li>GoDaddy</li>
+            <li>Midjourney Artists</li>
+            <li>DALL-E Artists</li>
+            <li>Stable Diffusion Artists</li>
+            <li>All AI Art Services</li>
+            </ul>
+
+
+        </div>
+
+        <div className="part1">
+          <h6>AI Video</h6>
+          <ul>
+            <li>AI Music Videos</li>
+            <li>AI Video Art</li>
+            <li>AI Spokespersons Videos</li>
           </ul>
         </div>
 
         <div className="part1">
-          <h6>Chatbot Development</h6>
+          <h6>Data</h6>
           <ul>
-            <li>Discord</li>
-            <li>Telegram</li>
-            <li>Botpress</li>
-            <li>TikTok</li>
-            <li>Facebook Messenger</li>
+            <li>Data Science & ML</li>
+            <li>Data Analytics</li>
+            <li>Data Visualization</li>
           </ul>
         </div>
 
         <div className="part1">
-          <h6>Wearable App Development</h6>
+          <h6>AI for Businesses</h6>
           <ul>
-            <li>Smartwatch Development</li>
-            <li>VR Headset Development</li>
-          </ul>
-        </div>
-
-
-        
-        <div className="part1">
-          <h6>Blockchain & Cryptocurrency</h6>
-          <ul>
-            <li>Decentralized Apps</li>
-            <li>Cryptocurrencies & Tokens</li>
-
-            <li>Blockchain Protocol DevelopmentNEW</li>
-            <li>Chain AnalysisNEW</li>
-
-            <li>Exchange Platforms</li>
-            <li>E-wallet Development</li>
-
-            <li>Smart Contracts</li>
+            <li>AI Consulting</li>
+            <li>AI StrategyNEW</li>
+            <li>AI LessonsNEW</li>
           </ul>
         </div>
 
         <div className="part1">
-          <h6>Website Maintenance</h6>
+          <h6>AI Audio</h6>
           <ul>
-            <li>Website Customization</li>
-            <li>Bug Fixes</li>
-
-            <li>Backup & Migration</li>
-            <li>Speed Optimization</li>
-
-
+            <li>Voice Synthesis & AI</li>
+            <li>Text to Speech</li>
           </ul>
         </div>
 
         <div className="part1">
-          <h6>Game Development</h6>
+          <h6>AI Content</h6>
           <ul>
-            <li>Gameplay Experience & FeedbackNEW</li>
-            <li>PC Games</li>
-            <li>Mobile Games</li>
-            <li>Console Games</li>
-            <li>VR Games</li>
+            <li>AI Content Editing</li>
+            <li>Custom Writing PromptsNEW</li>
           </ul>
         </div>
-
-  
-
-        <div className="part1">
-          <h6>Support & Cybersecurity</h6>
-          <ul>
-            <li>Support & IT</li>
-            <li>Cloud Computing</li>
-            <li>DevOps EngineeringNEW</li>
-            <li>Cybersecurity</li>
-            <li>Convert Files</li>
-          </ul>
-        </div>
-
         
       </div>
     </Root>
   );
 }
+
 const Root = styled.section`
   padding: 20px;
   font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;

@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import ContainerFluid from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -11,6 +10,10 @@ import ProgrammingTech from "./ProgrammingTech";
 import DigitalMarketing from "./DigitalMarketing";
 import VideoAnimation from "./VideoAnimation";
 import WritingTranslation from "./WritingTranslation";
+import BussinessManagement from "./BussinessManagement";
+import Branding from "./Branding";
+import ArtificialIntelligence from "./ArtificialIntelligence";
+
 
 function PostBotttomNav() {
   const [isListOpen1, setIsListOpen1] = useState(false);
@@ -21,8 +24,7 @@ function PostBotttomNav() {
   const [isListOpen6, setIsListOpen6] = useState(false);
   const [isListOpen7, setIsListOpen7] = useState(false);
   const [isListOpen8, setIsListOpen8] = useState(false);
-  const [isListOpen9, setIsListOpen9] = useState(false);
-  const [isListOpen10, setIsListOpen10] = useState(false);
+
 
   const handleMouseEnter1 = () => {
     setIsListOpen1(true);
@@ -88,21 +90,7 @@ function PostBotttomNav() {
     setIsListOpen8(false);
   };
 
-  const handleMouseEnter9 = () => {
-    setIsListOpen9(true);
-  };
 
-  const handleMouseLeave9 = () => {
-    setIsListOpen9(false);
-  };
-
-  const handleMouseEnter10 = () => {
-    setIsListOpen10(true);
-  };
-
-  const handleMouseLeave10 = () => {
-    setIsListOpen10(false);
-  };
 
   return (
     <Root>
@@ -111,7 +99,7 @@ function PostBotttomNav() {
           {/* <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
 
           <Navbar.Collapse id="basic-navbar-nav"> */}
-            <Nav className="me-auto">
+            <Nav>
               <div
                 onMouseEnter={handleMouseEnter1}
                 onMouseLeave={handleMouseLeave1}
@@ -182,10 +170,10 @@ function PostBotttomNav() {
                 onMouseLeave={handleMouseLeave6}
                 id="graphic"
               >
-                <Nav.Link href="#pricing">Music & Audio</Nav.Link>
+                <Nav.Link href="#pricing">Branding</Nav.Link>
                 {isListOpen6 && (
                   <div className="option_list_list">
-                    <GraphicsDesign />
+                    <Branding/>
                   </div>
                 )}
               </div>
@@ -195,10 +183,10 @@ function PostBotttomNav() {
                 onMouseLeave={handleMouseLeave7}
                 id="graphic"
               >
-                <Nav.Link href="#pricing">Business</Nav.Link>
+                <Nav.Link href="#pricing">Business Management</Nav.Link>
                 {isListOpen7 && (
                   <div className="option_list_list">
-                    <GraphicsDesign />
+                    <BussinessManagement/>
                   </div>
                 )}
               </div>
@@ -208,39 +196,15 @@ function PostBotttomNav() {
                 onMouseLeave={handleMouseLeave8}
                 id="graphic"
               >
-                <Nav.Link href="#pricing">Consulting</Nav.Link>
+                <Nav.Link href="#pricing">AI Services</Nav.Link>
                 {isListOpen8 && (
                   <div className="option_list_list">
-                    <GraphicsDesign />
+                     <ArtificialIntelligence/>
                   </div>
                 )}
               </div>
 
-              <div
-                onMouseEnter={handleMouseEnter9}
-                onMouseLeave={handleMouseLeave9}
-                id="graphic"
-              >
-                <Nav.Link href="#pricing">Data</Nav.Link>
-                {isListOpen9 && (
-                  <div className="option_list_list">
-                    <GraphicsDesign />
-                  </div>
-                )}
-              </div>
 
-              <div
-                onMouseEnter={handleMouseEnter10}
-                onMouseLeave={handleMouseLeave10}
-                id="graphic"
-              >
-                <Nav.Link href="#pricing">AI Services</Nav.Link>
-                {isListOpen10 && (
-                  <div className="option_list_list">
-                    <GraphicsDesign />
-                  </div>
-                )}
-              </div>
             </Nav>
           {/* </Navbar.Collapse> */}
         </ContainerFluid>
@@ -282,6 +246,9 @@ const Root = styled.section`
   nav.navbar.navbar-expand.navbar-light.bg-light {
     padding: 0px;
   }
+  .navbar-nav {
+    margin-left: 68px;
+}
 
   @media (max-width: 567px) {
     .navbar > .container,
