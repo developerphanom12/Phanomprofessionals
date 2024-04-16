@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { IoIosAdd } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import {
   EXCHANGE_URLS,
   EXCHANGE_URLS_IMAGES,
@@ -151,7 +151,7 @@ export default function ActiveGigs() {
             <tr>
               {" "}
               <div className="dropdown_wrapper">
-                <Select className="dropdown_menu">
+                <Select className="dropdown_menu" IconComponent={MoreHorizIcon}>
                   <MenuItem
                     value="preview"
                     onClick={() => {
