@@ -326,4 +326,12 @@ const Root = styled.section`
       width: 45%;
     }
   }
+  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused
+    .MuiOutlinedInput-notchedOutline {
+    border-color: #fff;
+    border-width: 2px;
+  }
+  .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+    border-color: #fff;
+  }
 `;

@@ -327,5 +327,7 @@ const Root = styled.section`
   .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
     border-color: #fff;
   }
-  
+  .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.dropdown_menu.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root:hover {
+    border-color: #fff  ;
+  }
 `;
