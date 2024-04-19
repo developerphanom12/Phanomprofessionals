@@ -8,11 +8,15 @@ import Profile2 from "./Profile2";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { EXCHANGE_URLS } from "../../../../Important/URLS";
+import { IoTimeOutline } from "react-icons/io5";
+import photo from "../../../../Images/project-placeholder.svg";
+import { IoMdAdd } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const [isEdit, setIsEdit] = useState(false);
   const [profile, setProfile] = useState();
-
+  const navigate = useNavigate();
   const toggleEdit = () => {
     setIsEdit(!isEdit);
   };
@@ -44,119 +48,155 @@ export default function Profile() {
 
   return (
     <Root>
-      {profile  && (
-      <div className="main_div1">
-        <div className="profile_div">
-          <div className="profile_image">
-            <p>
-              <span>online</span>
-            </p>
-            <img src={profilee} alt="img"/>
-          </div>
-          <div className="username">
-            <div className="user_button">
-              <button>{profile[0].username}</button>
-              <CiEdit />
-            </div>
-            <b>{profile[0].technology_name}</b>
-          </div>
-          <div className="editing">
-            <CiEdit onClick={toggleEdit} />
-            {isEdit && (
-              <div className="edit_page">
-                <input placeholder="What's your story in one line?" />
-                <div className="update_button">
-                  <button className="button"  onClick={()=>{toggleEdit(false)}}>Cancle</button>
-                  <CreateButton>Update</CreateButton>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="preview_button_div">
-            <button>Preview Phanom Profile</button>
-          </div>
-          <div className="list_div">
-            <ul>
-              <li>
-                <span>
-                  <FaLocationDot />
-                  From
-                </span>
-                <b>India</b>
-              </li>
-              <li>
-                <span>
-                  <FaUser />
-                  Member Since
-                </span>
-                <b>Feb 24</b>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="description_div">
-          <div className="descrip_box">
-            <div className="descrip_head">
-              <h3>Description</h3>
-              <a href="/edit">Edit Description</a>
-            </div>
-            <div className="descrip_body">
+      {profile && (
+        <div className="main_div1">
+          <div className="profile_div">
+            <div className="profile_image">
               <p>
-                Business consultant based in India, Phanom Professionals have
-                served many phenomenal services, which has been a great
-                milestone for lots of start-up proving them Digital Marketing,
-                Video Marketing, Packaging & Labeling, UIUX, 2D/3D Animation,
-                Graphic Designing, Branding, Web Development & Designing
-                assistance as well as to established companies. Steadfastness
-                comes from consistent satisfactory performances, which Phanom
-                Professional provides to their clients. Being an advertising
-                companion, the outcomes are immensely pleasing and blithe the
-                client, which reduce time consumption.
+                <span>online</span>
               </p>
+              <img src={profilee} alt="img" />
+            </div>
+            <div className="username">
+              <div className="user_button">
+                <button>{profile[0].username}</button>
+                <CiEdit />
+              </div>
+              <b>{profile[0].technology_name}</b>
+            </div>
+            <div className="editing">
+              <CiEdit onClick={toggleEdit} />
+              {isEdit && (
+                <div className="edit_page">
+                  <input placeholder="What's your story in one line?" />
+                  <div className="update_button">
+                    <button
+                      className="button"
+                      onClick={() => {
+                        toggleEdit(false);
+                      }}
+                    >
+                      Cancle
+                    </button>
+                    <CreateButton>Update</CreateButton>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="preview_button_div">
+              <button>Preview Phanom Profile</button>
+            </div>
+            <div className="list_div">
+              <ul>
+                <li>
+                  <span>
+                    <FaLocationDot />
+                    From
+                  </span>
+                  <b>India</b>
+                </li>
+                <li>
+                  <span>
+                    <FaUser />
+                    Member Since
+                  </span>
+                  <b>Feb 24</b>
+                </li>
+                <li>
+                  <span>
+                    <IoTimeOutline />
+                    Avg. Response Time
+                  </span>
+                  <b>1 hour🔥</b>
+                </li>
+              </ul>
             </div>
           </div>
-          <div className="descrip_box">
-            <div className="descrip_head">
-              <h3>Languages</h3>
-              <a href="/edit">Add New </a>
-            </div>
-            <div className="descrip_body">
-              <span>English -</span>
-              <span>Native/Bilingual</span>
-            </div>
-          </div>
-          <div className="descrip_box">
-            <div className="descrip_head">
-              <h3>Skills</h3>
-              <a href="/edit">Add New </a>
-            </div>
-            <div className="descrip_body">
-              <span>Business-</span>
-              <span>Business</span>
-            </div>
-          </div>
-          <div className="descrip_box">
-            <div className="descrip_head">
-              <h3>Education</h3>
-              <a href="/edit">Add New</a>
-            </div>
-            <div className="descrip_body">
-              <span>Business-</span>
-              <span>Business</span>
+          <div className="portfolio_div">
+            <div className="portfolio_box">
+              <div className="descrip_head">
+                <h3 style={{color:"#404145"}}>My Portfolio</h3>
+              </div>
+              <ul>
+                <li className="add_image" 
+                onClick={()=>{navigate("/createportfolio")}}
+                >
+                  <div>
+                    {" "}
+                    <IoMdAdd />
+                  </div>
+                  <b> Add a Project</b>
+                </li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
             </div>
           </div>
-          <div className="descrip_box">
-            <div className="descrip_head">
-              <h3>Certification</h3>
-              <a href="/edit">Add New</a>
+
+          <div className="description_div">
+            <div className="descrip_box">
+              <div className="descrip_head">
+                <h3>Description</h3>
+                <a href="/edit">Edit Description</a>
+              </div>
+              <div className="descrip_body">
+                <p>
+                  Business consultant based in India, Phanom Professionals have
+                  served many phenomenal services, which has been a great
+                  milestone for lots of start-up proving them Digital Marketing,
+                  Video Marketing, Packaging & Labeling, UIUX, 2D/3D Animation,
+                  Graphic Designing, Branding, Web Development & Designing
+                  assistance as well as to established companies. Steadfastness
+                  comes from consistent satisfactory performances, which Phanom
+                  Professional provides to their clients. Being an advertising
+                  companion, the outcomes are immensely pleasing and blithe the
+                  client, which reduce time consumption.
+                </p>
+              </div>
             </div>
-            <div className="descrip_body">
-              <span>Add your Certification.-</span>
-              <span>Business</span>
+            <div className="descrip_box">
+              <div className="descrip_head">
+                <h3>Languages</h3>
+                <a href="/edit">Add New </a>
+              </div>
+              <div className="descrip_body">
+                <span>English -</span>
+                <span>Native/Bilingual</span>
+              </div>
+            </div>
+            <div className="descrip_box">
+              <div className="descrip_head">
+                <h3>Skills</h3>
+                <a href="/edit">Add New </a>
+              </div>
+              <div className="descrip_body">
+                <span>Business-</span>
+                <span>Business</span>
+              </div>
+            </div>
+            <div className="descrip_box">
+              <div className="descrip_head">
+                <h3>Education</h3>
+                <a href="/edit">Add New</a>
+              </div>
+              <div className="descrip_body">
+                <span>Business-</span>
+                <span>Business</span>
+              </div>
+            </div>
+            <div className="descrip_box">
+              <div className="descrip_head">
+                <h3>Certification</h3>
+                <a href="/edit">Add New</a>
+              </div>
+              <div className="descrip_body">
+                <span>Add your Certification.-</span>
+                <span>Business</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       )}
       <div className="main_div2">
         <Profile2 />
@@ -324,7 +364,8 @@ const Root = styled.section`
         }
       }
     }
-    .description_div {
+    .description_div,
+    .portfolio_div {
       background-color: #fff;
       border: 1px solid #ddd;
       padding: 30px;
@@ -333,12 +374,52 @@ const Root = styled.section`
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      .descrip_box {
+      .portfolio_box {
+        border: none !important;
+        cursor: pointer;
+        ul {
+          padding: 0;
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          .add_image {
+            color: #446ee7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            background-image: none;
+            box-shadow: 0px 2px 5px 2px #e7e5e5;
+            border-radius: 3px;
+            border: none;
+            b {
+              font-size: 14px;
+            }
+            svg {
+              font-size: 20px;
+            }
+          }
+          li {
+            border: 1px solid #ddd;
+            width: 164px;
+            height: 110px;
+            background-color: #fafafa;
+            background-image: url(${photo});
+            background-repeat: no-repeat;
+            padding: 20px;
+            background-position: 50%;
+          }
+        }
+      }
+      .descrip_box,
+      .portfolio_box {
         width: 100%;
         border-bottom: 1.5px solid #dadbdd;
         .descrip_head {
           width: 100%;
-          padding-top: 20px;
+          /* padding-top: 20px; */
           display: flex;
           justify-content: space-between;
           h3 {

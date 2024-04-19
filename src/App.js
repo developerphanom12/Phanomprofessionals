@@ -52,6 +52,7 @@ import Userone from "./Components/Chat/Userone";
 import CreateSingMile from "./Components/Chat/CreateSingMile";
 import SellerRegister from "./Components/CommonPages/loginPages/SellerRegister";
 import Portfolio from "./Components/Portfolio/Portfolio";
+import CreatePortfolio from "./Components/Portfolio/CreatePortfolio";
 // import ChatSection from "./Components/MainLayouts/message/ChatSection";
 
 function App() {
@@ -71,7 +72,7 @@ function App() {
           {userCheck && token ? (
             <>
               <Route path="/user" element={<Userone />} />
-              {/* <Route path="/message" element={<Message />} /> */}
+              <Route path="/portfolio" element={<Portfolio/>} />
               {/* <Route path="/chat" element={<ChatSection />} /> */}
               {/* <Route path="/internalpage" element={<InternalPages />} /> */}
               {userDetails.role === "buyer" ? (
@@ -84,7 +85,7 @@ function App() {
               ) : userDetails.role === "seller" ? (
                 <>
                   {/* seller pages ---------------------------------------------------------------*/}
-                  
+                  <Route path="/createportfolio" element={<CreatePortfolio/>} />
                   <Route path="/createsingmile" element={<CreateSingMile />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/editgigspages/:id" element={<Page1 />} />
@@ -135,7 +136,6 @@ function App() {
               <Route path="/loginBuyer" element={<LoginBuyer />} />
               <Route path="/loginseller" element={<LoginSeller />} />
               <Route path="/sellerregister" element={<SellerRegister/>} />
-              <Route path="/portfolio" element={<Portfolio/>} />
             </>
           )}
         </Routes>

@@ -115,7 +115,7 @@ export default function PostNav() {
                       Dashboard
                     </a>
                   </Nav.Link>
-                  <Nav.Link className="business">
+                  <Nav.Link className="business"> 
                     <FormControl sx={{ m: 1, minWidth: 120 }}>
                       <Select
                         displayEmpty
