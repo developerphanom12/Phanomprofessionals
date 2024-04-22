@@ -249,7 +249,12 @@ export default function Page1() {
                                   <div className="continue_button">
                                     <button
                                       onClick={() => {
-                                        console.log("Navigating", gigData, "anduserId", id);
+                                        console.log(
+                                          "Navigating",
+                                          gigData,
+                                          "anduserId",
+                                          id
+                                        );
                                         navigate("/user", {
                                           state: {
                                             gigData: gigData,
