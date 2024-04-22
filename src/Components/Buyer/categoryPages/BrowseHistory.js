@@ -16,7 +16,6 @@ function BrowseHistory() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [gigData, setGigData] = useState([]);
   // const id = useParams();
- 
 
   useEffect(() => {
     const getSliderApi = async () => {

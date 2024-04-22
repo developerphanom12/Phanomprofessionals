@@ -9,7 +9,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { EXCHANGE_URLS } from "../../Important/URLS";
 import { useForm } from "react-hook-form";
-import { userCheckAction, userDataAction } from "../../../redux/users/action";
+import {
+  sellerLoginAction,
+  userCheckAction,
+  userDataAction,
+} from "../../../redux/users/action";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -59,6 +63,9 @@ export default function LoginSeller() {
       toast.error("An error occurred during login");
     }
   };
+
+  
+
   const {
     register,
     handleSubmit,

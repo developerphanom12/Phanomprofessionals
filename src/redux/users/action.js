@@ -1,3 +1,5 @@
+
+
 export const updateGigId = (gigId) => {
   console.log("gigggId",gigId)
   return{
@@ -36,3 +38,4 @@ export const UserDetails = (data) => {
     };
   };
 
+  

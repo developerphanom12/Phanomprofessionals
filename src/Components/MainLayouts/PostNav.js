@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import logo1 from "../Images/logo_final_web.webp";
+import { FiChevronDown } from "react-icons/fi";
 import {
   IoNotificationsOffOutline,
   IoSearch,
@@ -14,7 +15,7 @@ import { IoIosNotificationsOutline, IoMdSettings } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import {  userCheckAction } from "../../redux/users/action";
+import { userCheckAction } from "../../redux/users/action";
 import PostBotttomNav from "./Category/PostBotttomNav";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -22,7 +23,7 @@ import ContainerFluid from "react-bootstrap/Container";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 export default function PostNav() {
-  const userCheck = useSelector((state) => state?.users?.userCheck);
+  // const userCheck = useSelector((state) => state?.users?.userCheck);
   const userDetails = useSelector((state) => state?.users.user);
   const token = localStorage.getItem("token");
   const [showToggles, setShowToggles] = useState({
@@ -32,6 +33,24 @@ export default function PostNav() {
     showGrowth: false,
     showAnalytics: false,
   });
+
+  const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+
+  const toggleDropdown1 = () => {
+    setIsOpen1(!isOpen1);
+    setIsOpen2(false); // Close other dropdown when opening this one
+  };
+
+  const toggleDropdown2 = () => {
+    setIsOpen2(!isOpen2);
+    setIsOpen1(false); // Close other dropdown when opening this one
+  };
+
+  const closeDropdowns = () => {
+    setIsOpen1(false);
+    setIsOpen2(false);
+  };
   const [profileshow, setShow] = useState(false);
   function toggleShowName() {
     setShow((prevState) => !prevState);
@@ -55,18 +74,6 @@ export default function PostNav() {
       showNotification: !showToggles.showNotification,
     });
   };
-  const toggleBusiness = () => {
-    setShowToggles({ ...showToggles, showBusiness: !showToggles.showBusiness });
-  };
-  const toggleGrowth = () => {
-    setShowToggles({ ...showToggles, showGrowth: !showToggles.showGrowth });
-  };
-  const toggleAnalytics = () => {
-    setShowToggles({
-      ...showToggles,
-      showAnalytics: !showToggles.showAnalytics,
-    });
-  };
 
   const closeAllToggles = () => {
     setShowToggles({
@@ -80,6 +87,7 @@ export default function PostNav() {
 
   return (
     <Root>
+      <div onClick={closeAllToggles}></div>
       <Navbar expand="lg" className="bg-body-tertiary">
         <ContainerFluid fluid>
           <Navbar.Brand href="innerpages" className="logo_img">
@@ -115,87 +123,89 @@ export default function PostNav() {
                       Dashboard
                     </a>
                   </Nav.Link>
-                  <Nav.Link className="business"> 
-                    <FormControl sx={{ m: 1, minWidth: 120 }}>
-                      <Select
-                        displayEmpty
-                        inputProps={{ "aria-label": "Without label" }}
-                        // sx={{ border: 'none', outline: 'none' }}
-                      >
-                        <InputLabel
-                          id="demo-simple-select-helper-label"
-                          // style={{ border: "none", outline: "none", fontWeight:"600"}}
-                        >
-                          {" "}
-                          My Business
-                        </InputLabel>
-                        <MenuItem
-                          value="order"
-                          onClick={() => {
-                            navigate("/orders");
-                          }}
-                        >
-                          Orders
-                        </MenuItem>
-                        <MenuItem
-                          value="gigs"
-                          onClick={() => {
-                            navigate("/gigs");
-                          }}
-                        >
-                          Gigs
-                        </MenuItem>
-                        <MenuItem
-                          value="profile"
-                          onClick={() => {
-                            navigate("/profile");
-                          }}
-                        >
-                          Profile
-                        </MenuItem>
-                        <MenuItem
-                          value="earning"
-                          onClick={() => {
-                            navigate("/earnings");
-                          }}
-                        >
-                          Earning
-                        </MenuItem>
-                        <MenuItem
-                          value="workspace"
-                          onClick={() => {
-                            navigate("/phanomworkspace");
-                          }}
-                        >
-                          Phanom Workspace
-                        </MenuItem>
-                      </Select>
-                    </FormControl>
+                  <Nav.Link className="business">
+                    <DropdownContainer
+                      onClick={toggleDropdown1}
+                      // onBlur={closeDropdowns}
+                    >
+                      <DropdownButton id="1">
+                        <span>My Business</span>
+                        <ArrowIcon isOpen={isOpen1} />
+                      </DropdownButton>
+                      {isOpen1 && (
+                        <DropdownMenu>
+                          <MenuItems
+                            value="order"
+                            onClick={() => {
+                              navigate("/orders");
+                            }}
+                            onBlur={closeDropdowns}
+                          >
+                            Orders
+                          </MenuItems>
+                          <MenuItems
+                            value="gigs"
+                            onClick={() => {
+                              navigate("/gigs");
+                            }}
+                            onBlur={closeDropdowns}
+                          >
+                            Gigs
+                          </MenuItems>
+                          <MenuItems
+                            value="profile"
+                            onClick={() => {
+                              navigate("/profile");
+                            }}
+                            onBlur={closeDropdowns}
+                          >
+                            Profile
+                          </MenuItems>
+                          <MenuItems
+                            value="earning"
+                            onClick={() => {
+                              navigate("/earnings");
+                            }}
+                            onBlur={closeDropdowns}
+                          >
+                            Earning
+                          </MenuItems>
+                          <MenuItems
+                            value="workspace"
+                            onClick={() => {
+                              navigate("/phanomworkspace");
+                            }}
+                            onBlur={closeDropdowns}
+                          >
+                            Phanom Workspace
+                          </MenuItems>
+                        </DropdownMenu>
+                      )}
+                    </DropdownContainer>
                   </Nav.Link>
                   <Nav.Link className="business">
-                    <FormControl sx={{ m: 1, minWidth: 120 }}>
-                      <Select
-                        displayEmpty
-                        inputProps={{ "aria-label": "Without label" }}
-                        // sx={{ border: 'none', outline: 'none' }}
-                      >
-                        <InputLabel
-                          id="demo-simple-select-helper-label"
-                          // style={{ border: "none", outline: "none" }}
-                        >
-                          {" "}
-                          Analytics
-                        </InputLabel>
-                        <MenuItem
-                          value="order"
-                          onClick={() => {
-                            navigate("/analytics");
-                          }}
-                        >
-                          Overview
-                        </MenuItem>
-                      </Select>
-                    </FormControl>
+                    <DropdownContainer
+                      onClick={toggleDropdown2}
+                      // onBlur={closeDropdowns}
+                    >
+                      <DropdownButton id="2">
+                        <span>Analytics</span>
+                        <ArrowIcon isOpen={isOpen2} />
+                      </DropdownButton>
+                      {isOpen2 && (
+                        <DropdownMenu>
+                          <MenuItem
+                            value="order"
+                            onClick={() => {
+                              navigate("/analytics");
+                            }}
+                            onBlur={closeDropdowns}
+                          >
+                            Overview
+                          </MenuItem>
+                        </DropdownMenu>
+                      )}
+                    </DropdownContainer>
                   </Nav.Link>
 
                   <Nav.Link className="dashboard">
@@ -709,5 +719,43 @@ const Root = styled.section`
 
   .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
     padding: 0;
+  }
+`;
+
+const DropdownContainer = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+const DropdownButton = styled.button`
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+`;
+
+const ArrowIcon = styled(FiChevronDown)`
+  transition: transform 0.3s;
+  transform: ${({ isOpen }) => (isOpen ? "rotate(180deg)" : "rotate(0)")};
+`;
+
+const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+const MenuItems = styled.div`
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
   }
 `;

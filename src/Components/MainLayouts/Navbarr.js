@@ -16,6 +16,7 @@ export default function Navbarr() {
   const [isListOpen5, setIsListOpen5] = useState(false);
 
   const navigate = useNavigate();
+
   const handleMouseEnter = () => {
     setIsListOpen(true);
   };
@@ -54,6 +55,10 @@ export default function Navbarr() {
     setIsListOpen5(false);
   };
 
+  const handleSubMenuClick = (event) => {
+    event.stopPropagation(); // Prevent event propagation to parent elements
+  };
+
   return (
     <Root>
       <Navbar
@@ -81,6 +86,7 @@ export default function Navbarr() {
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                   id="whyPhanom"
+                  onClick={handleSubMenuClick}
                   // onClick={() => {
                   //   setIsListOpen(!isListOpen);
                   // }}
@@ -113,6 +119,7 @@ export default function Navbarr() {
                   onMouseEnter={handleMouseEnter2}
                   onMouseLeave={handleMouseLeave2}
                   id="hireIndianTalent"
+                  onClick={handleSubMenuClick}
                   // onClick={() => {
                   //   setIsListOpen2(!isListOpen2);
                   // }}

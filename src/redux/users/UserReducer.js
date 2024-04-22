@@ -1,3 +1,4 @@
+
 const initialState = {
   user: {},
   userCheck: false,
@@ -5,7 +6,6 @@ const initialState = {
   appDetails: {},
   isLoading: false,
   gigId: "",
-
 };
 const UserReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -19,11 +19,11 @@ const UserReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
-      case "LOADING_DATA":
-        return {
-          ...state,
-          isLoading: action.payload,
-        };
+    case "LOADING_DATA":
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
     case "USER_CHECK":
       return {
         ...state,
@@ -34,7 +34,6 @@ const UserReducer = (state = initialState, action) => {
         ...state,
         appDetails: action.payload,
       };
-      
     default:
       return state;
   }
