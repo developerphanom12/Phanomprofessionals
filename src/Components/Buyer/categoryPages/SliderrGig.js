@@ -8,7 +8,7 @@ import styled from 'styled-components';
 export default function SliderrGig({gigData}) {
 
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -75,12 +75,12 @@ const Sliderrrs = styled.section`
     left: 0px;
   }
   .slick-next {
-    right: 0px;
+    right: 12px;
   }
 
   .slick-prev:before,
   .slick-next:before {
-    font-size: 35px !important;
+    font-size: 32px !important;
     z-index: 111111;
   }
  

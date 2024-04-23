@@ -13,24 +13,24 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import styled from "styled-components";
 import axios from "axios";
-import { EXCHANGE_URLS } from "../../Important/URLS";
+import { EXCHANGE_URLS, EXCHANGE_URLS_CATEGORY } from "../../Important/URLS";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-form";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
-  name: yup.string().required("Name is required."),
-  // phone_number: yup.string.required("Phone Number is required"),
-  // email: yup.string.email.required("Email is required"),
-  // city: yup.string.required("city is required"),
-  // education: yup.string.required("education is required"),
-  // skills: yup.string.required("skill is required"),
-  // password: yup
-  //   .string()
-  //   .required("Password is required.")
-  //   .min(5, "Password should be at least 5 characters.")
+  username: yup.string().required("Name is required."),
+  phone_number: yup.string().required("Phone Number is required"),
+  email: yup.string().required("Email is required"),
+  city: yup.string().required("city is required"),
+  education: yup.string().required("education is required"),
+  category_id: yup.number().required("skill is required"),
+  password: yup
+    .string()
+    .required("Password is required.")
+    .min(5, "Password should be at least 5 characters."),
   //   .matches(
   //     /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/,
   //     "Password should contain at least one uppercase letter, lowercase letter, digit, and special symbol."
@@ -40,19 +40,14 @@ const schema = yup.object().shape({
 const defaultTheme = createTheme();
 
 export default function SellerRegister() {
-  const [skills, setSkills] = React.useState("");
-
-  const handleChange = (event) => {
-    setSkills(event.target.value);
-  };
   const navigate = useNavigate();
+  const [getCategory, setGetCategory] = React.useState([]);
 
   const onSubmit = async (data) => {
     try {
-      await schema.validate(data, { abortEarly: false });
-      const res = await axios.post(`${EXCHANGE_URLS}/loginseller`, data);
+      const res = await axios.post(`${EXCHANGE_URLS}/sellerRegister`, data);
       console.log("resres", res?.data?.data);
-      if (res?.status === 200) {
+      if (res?.status === 201) {
         navigate("/loginseller");
         toast.success("Registered Successfully");
       }
@@ -61,6 +56,24 @@ export default function SellerRegister() {
       toast.error("An error occurred during Register");
     }
   };
+
+  React.useEffect(() => {
+    const getCategoryApi = async () => {
+      try {
+        const res = await axios.get(
+          `${EXCHANGE_URLS_CATEGORY}/liscategory`
+           
+        );
+        if (res?.status === 201) {
+          setGetCategory(res?.data?.message);
+        }
+      } catch (errors) {
+        toast.error(errors, "Error");
+      }
+    };
+    getCategoryApi();
+  }, []);
+
   const {
     register,
     handleSubmit,
@@ -93,12 +106,7 @@ export default function SellerRegister() {
               >
                 Sign up
               </Typography>
-              <Box
-                component="formm"
-                noValidate
-                onSubmit={handleSubmit}
-                sx={{ mt: 3 }}
-              >
+              <Box sx={{ mt: 3 }}>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
                     <TextField
@@ -108,9 +116,12 @@ export default function SellerRegister() {
                       fullWidth
                       id="Name"
                       label="Name"
+                      type="text"
                       autoFocus
+                      {...register("username")}
                     />
                   </Grid>
+                  {errors.username && <p>{errors.username.message}</p>}
                   <Grid item xs={12} sm={6}>
                     <TextField
                       required
@@ -118,9 +129,12 @@ export default function SellerRegister() {
                       id="Phone Number"
                       label="Phone Number"
                       name="phoneNumber"
+                      type="number"
                       autoComplete="family-name"
+                      {...register("phone_number")}
                     />
                   </Grid>
+                  {errors.phone_number && <p>{errors.phone_number.message}</p>}
                   <Grid item xs={12}>
                     <TextField
                       required
@@ -128,9 +142,12 @@ export default function SellerRegister() {
                       id="email"
                       label="Email Address"
                       name="email"
+                      type="email"
                       autoComplete="email"
+                      {...register("email")}
                     />
                   </Grid>
+                  {errors.email && <p>{errors.email.message}</p>}
                   <Grid item xs={12}>
                     <TextField
                       required
@@ -140,8 +157,11 @@ export default function SellerRegister() {
                       type="password"
                       id="password"
                       autoComplete="new-password"
+                      {...register("password")}
                     />
                   </Grid>
+                  {errors.password && <p>{errors.password.message}</p>}
+
                   <Grid item xs={12} sm={6}>
                     <TextField
                       autoComplete="given-name"
@@ -151,8 +171,11 @@ export default function SellerRegister() {
                       id="City"
                       label="City"
                       autoFocus
+                      {...register("city")}
                     />
                   </Grid>
+                  {errors.city && <p>{errors.city.message}</p>}
+
                   <Grid item xs={12} sm={6}>
                     <TextField
                       required
@@ -161,8 +184,11 @@ export default function SellerRegister() {
                       label="Education"
                       name="education"
                       autoComplete="family-name"
+                      {...register("education")}
                     />
                   </Grid>
+                  {errors.education && <p>{errors.education.message}</p>}
+
                   <Grid item xs={12}>
                     <FormControl sx={{ m: 0, minWidth: 80, width: "100%" }}>
                       <InputLabel id="skills-label">Skills *</InputLabel>
@@ -170,30 +196,17 @@ export default function SellerRegister() {
                         label="Skills"
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value={skills}
-                        onChange={handleChange}
+                        type="number"
+                        {...register("category_id")}
                       >
-                        <MenuItem value="AI Services">AI Services</MenuItem>
-                        <MenuItem value="Branding">Branding</MenuItem>
-                        <MenuItem value="Business">
-                          Business Management
-                        </MenuItem>
-                        <MenuItem value="Digital Marketing">
-                          Digital Marketing
-                        </MenuItem>
-                        <MenuItem value="Graphic & Designing">
-                          Graphic & Designing
-                        </MenuItem>
-                        <MenuItem value="Programming & Tech">
-                          Programming & Tech
-                        </MenuItem>
-                        <MenuItem value="Video & Animation">
-                          Video & Animation
-                        </MenuItem>
-                        <MenuItem value="Video & Animation">
-                          Writing & Translation
-                        </MenuItem>
+                        {getCategory &&
+                          getCategory.map((category, index) => (
+                            <MenuItem key={index} value={category.category_id}>
+                              {category.category_name}
+                            </MenuItem>
+                          ))}
                       </Select>
+                      {errors.category_id && <p>{errors.category_name.message}</p>}
                     </FormControl>
                   </Grid>
                 </Grid>
@@ -217,7 +230,7 @@ export default function SellerRegister() {
                 <Grid container justifyContent="flex-end">
                   <Grid item>
                     <Link
-                      href="loginseller"
+                      href="/loginseller"
                       variant="body2"
                       sx={{ color: "darkcyan" }}
                     >
@@ -241,6 +254,12 @@ const Root = styled.section`
   align-items: center;
   width: 100%;
   /* height: 100vh; */
+  p {
+    padding: 0px 20px;
+    color: red;
+    font-size: 10px;
+    margin: 0;
+  }
   background-image: linear-gradient(
     to bottom right,
     #147888,

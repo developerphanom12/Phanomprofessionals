@@ -105,7 +105,7 @@ export default function LoginSeller() {
               </Typography>
               <Box
                 component="formm"
-                onSubmit={handleSubmit}
+                // onSubmit={handleSubmit}
                 noValidate
                 sx={{ mt: 3 }}
               >
@@ -197,13 +197,13 @@ export default function LoginSeller() {
                 </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link href="#" variant="body2" sx={{ color: "darkcyan" }}>
+                    <Link href="/" variant="body2" sx={{ color: "darkcyan" }}>
                       Forgot password?
                     </Link>
                   </Grid>
                   <Grid item>
                     <Link
-                      href="sellerregister"
+                      href="/sellerregister"
                       variant="body2"
                       sx={{ color: "darkcyan" }}
                     >

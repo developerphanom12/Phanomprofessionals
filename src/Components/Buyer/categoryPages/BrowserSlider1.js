@@ -7,7 +7,7 @@ import { EXCHANGE_URLS_IMAGES } from "../../Important/URLS";
 
 export default function BrowserSlider1({ gigData }) {
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -17,12 +17,12 @@ export default function BrowserSlider1({ gigData }) {
   return (
     <Sliderrrs>
       <Slider {...settings}>
-        {gigData ? (
+        {gigData ? (    
           <>
             <img
-              className="img"
+              className="imge"
               src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image1}`}
-              alt={`Image 1`}
+              alt="img"
             />
           </>
         ) : (
@@ -31,9 +31,9 @@ export default function BrowserSlider1({ gigData }) {
         {gigData ? (
           <>
             <img
-              className="img"
+              className="imge"
               src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image2}`}
-              alt={`Image 2`}
+              alt="img"
             />
           </>
         ) : (
@@ -42,9 +42,9 @@ export default function BrowserSlider1({ gigData }) {
         {gigData ? (
           <>
             <img
-              className="img"
+              className="imge"
               src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image3}`}
-              alt={`Image 3`}
+              alt="img"
             />
           </>
         ) : (
@@ -60,7 +60,7 @@ const Sliderrrs = styled.section`
     width: 260px;
     margin: 10px;
   }
-  .img {
+  .imge {
     width: 260px !important;
     border-radius: 10px;
     height: 160px;
@@ -74,12 +74,12 @@ const Sliderrrs = styled.section`
     left: 0px;
   }
   .slick-next {
-    right: 0px;
+    right: 12px;
   }
 
   .slick-prev:before,
   .slick-next:before {
-    font-size: 35px !important;
+    font-size: 32px !important;
     z-index: 111111;
   }
  

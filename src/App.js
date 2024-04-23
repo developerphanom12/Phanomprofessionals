@@ -54,6 +54,9 @@ import SellerRegister from "./Components/CommonPages/loginPages/SellerRegister";
 import Portfolio from "./Components/Portfolio/Portfolio";
 import CreatePortfolio from "./Components/Portfolio/CreatePortfolio";
 import NoInternetConnection from "./Components/Important/NoInternetConnection";
+import BuyerRegister from "./Components/CommonPages/loginPages/BuyerRegister";
+import Page from "./Components/Buyer/categoryPages/Page";
+import BrowseHistory from "./Components/Buyer/categoryPages/BrowseHistory";
 // import ChatSection from "./Components/MainLayouts/message/ChatSection";
 
 function App() {
@@ -81,6 +84,8 @@ function App() {
                   <>
                     {/* buyer pagess--------------------------------------------------------------- */}
                     <Route path="/editgigspages/:id" element={<Page1 />} />
+                    <Route path="/browser/:id" element={<BrowseHistory />} />
+                    <Route path="/browser" element={<BrowseHistory />} />
                     <Route path="/innerpages" element={<InnerPages />} />
                   </>
                 ) : userDetails.role === "seller" ? (
@@ -143,6 +148,7 @@ function App() {
                 <Route path="/loginBuyer" element={<LoginBuyer />} />
                 <Route path="/loginseller" element={<LoginSeller />} />
                 <Route path="/sellerregister" element={<SellerRegister />} />
+                <Route path="/buyerregister" element={<BuyerRegister />} />
               </>
             )}
           </Routes>

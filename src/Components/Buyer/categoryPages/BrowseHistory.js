@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import {
-  IoIosArrowDropleft,
-  IoIosArrowDropright,
+  IoIosArrowBack,
+  IoIosArrowForward,
   IoIosArrowRoundForward,
 } from "react-icons/io";
 import styled from "styled-components";
@@ -15,8 +15,9 @@ import { useNavigate, useParams } from "react-router-dom";
 function BrowseHistory() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [gigData, setGigData] = useState([]);
-  // const id = useParams();
+  const id = useParams();
 
+  console.log("weee", id);
   useEffect(() => {
     const getSliderApi = async () => {
       try {
@@ -30,7 +31,7 @@ function BrowseHistory() {
     };
 
     getSliderApi();
-  }, []);
+  }, [id]);
   const navigate = useNavigate();
   const slideRef = useRef();
 
@@ -67,11 +68,11 @@ function BrowseHistory() {
           <IoIosArrowRoundForward />
         </h2>
         <div className="slide_btn">
-          <button onClick={goToPreviousSlide}>
-            <IoIosArrowDropleft />
+          <button onClick={goToPreviousSlide} className="button">
+            <IoIosArrowForward />
           </button>
-          <button onClick={goToNextSlide}>
-            <IoIosArrowDropright />
+          <button onClick={goToNextSlide} className="button">
+            <IoIosArrowBack />
           </button>
         </div>
       </div>
@@ -202,22 +203,26 @@ const Sliderrrs = styled.section`
     }
   }
 
-  button {
-    border: none;
+  .button {
+    transform: scaleX(-1);
     cursor: pointer;
     outline: none;
-    color: lightgray;
-    width: 40px;
-    height: 40px;
-    z-index: 1;
-    border-radius: 100px;
+    color: gray;
+    background-color: #fff;
+    border: 2px solid #efeff0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 2px 6px;
     svg {
-      width: 40px;
-      height: 40px;
+      width: 20px;
+      height: 20px;
       font-weight: 700;
     }
   }
-
+  .slide_btn {
+    margin-right: 10px;
+  }
   @media (max-width: 567px) {
     .slide_btn {
       display: flex;

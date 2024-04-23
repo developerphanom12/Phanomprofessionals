@@ -104,7 +104,7 @@ export default function Dashboard() {
                 </div>
 
                 <div className="btn_container">
-                  <a href="/" target="_blank">
+                  <a href="/profile" >
                     Share Your Gigs
                   </a>
                 </div>

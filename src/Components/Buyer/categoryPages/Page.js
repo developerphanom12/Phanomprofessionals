@@ -6,7 +6,7 @@ import b1 from "../../Images/button1.webp";
 import b2 from "../../Images/button2.webp";
 import { useNavigate } from "react-router-dom";
 
-export default function Page1() {
+export default function Page() {
   const navigate = useNavigate();
   return (
     <Pageone>

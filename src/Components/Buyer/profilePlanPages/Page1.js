@@ -63,11 +63,11 @@ export default function Page1() {
         <div className="main_section">
           <div className="main_barr">
             <div className="path_value">
-              <a href="img">
+              <a href="/innerpages">
                 <IoHomeOutline />
               </a>{" "}
-              <p>/</p> <a href="img">{gig?.category?.category_name}</a>
-              <p>/</p> <a href="img">{gig?.subcategory?.name}</a>
+              <p>/</p> <a href="/innerpages">{gig?.category?.category_name}</a>
+              <p>/</p> <a href="/innerpages">{gig?.subcategory?.name}</a>
             </div>
 
             <div className="heading_point">
