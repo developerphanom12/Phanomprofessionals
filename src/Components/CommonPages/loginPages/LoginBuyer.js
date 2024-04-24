@@ -193,7 +193,7 @@ export default function LoginBuyer() {
                   </Grid>
                   <Grid item>
                     <Link
-                      href="sellerregister"
+                      href="buyerregister"
                       variant="body2"
                       sx={{ color: "darkcyan" }}
                     >

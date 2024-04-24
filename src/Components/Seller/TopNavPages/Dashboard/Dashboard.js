@@ -40,7 +40,7 @@ export default function Dashboard() {
               <p className="score_hypen">-</p>
             </div>
             <div className="btn">
-              <a href="/">Go to level overview</a>
+              <a href="level">Go to level overview</a>
             </div>
           </div>
 

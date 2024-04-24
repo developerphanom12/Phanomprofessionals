@@ -70,7 +70,7 @@ export default function Level() {
                 <h5>Success score</h5>
               </div>
               <h3>-</h3>
-              <Box sx={{ width: 300 }}>
+              <Box sx={{ width: "300px" }}>
                 <Slider
                   aria-label="Custom marks"
                   defaultValue={20}
@@ -93,7 +93,7 @@ export default function Level() {
                 <h5>Rating</h5>
               </div>
               <h3>-</h3>
-              <Box sx={{ width: 300 }}>
+              <Box sx={{ width: "300px" }}>
                 <Slider
                   aria-label="Custom marks"
                   defaultValue={20}
@@ -164,7 +164,7 @@ export default function Level() {
 
             <div className="score">
               <div className="score_heading">
-                <h5>Eanings</h5>
+                <h5>Earnings</h5>
                 <p>
                   <b>0</b>/3
                 </p>
@@ -214,7 +214,9 @@ const Root = styled.section`
     padding: 0 50px;
     gap: 50px;
     margin-top: -75px;
-
+    @media (max-width: 567px) {
+      flex-direction: column;
+    }
     .sub_div_one {
       width: 25%;
       padding: 25px 30px 16px;
