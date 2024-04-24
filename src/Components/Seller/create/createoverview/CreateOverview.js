@@ -6,7 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { EXCHANGE_URLS, EXCHANGE_URLS_CATEGORY } from "../../../Important/URLS";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { updateGigId } from "../../../../redux/users/action";
 import * as Yup from "yup";
 
@@ -19,6 +19,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function CreateOverview() {
+  const [idData,setIdData] = useState("");
   const [errors, setErrors] = useState({});
   const [active, setActive] = useState("page1");
   const [gigTitle, setGigTitle] = useState("");
@@ -31,6 +32,10 @@ export default function CreateOverview() {
   const [selectedWebsiteFeatures, setSelectedWebsiteFeatures] = useState([]);
 
   const [getCategory, setGetCategory] = useState([]);
+
+  const id = useParams();
+
+  console.log("aghdfsgdhsad",id)
 
   const handleProgrammingLanguageChange = (event) => {
     const { value, checked } = event.target;
@@ -136,6 +141,24 @@ export default function CreateOverview() {
   useEffect(() => {
     getCategoryApi();
   }, []);
+
+
+  useEffect(() => {
+    const getIdApi = async () => {
+      try {
+        const res = await axios.get(`${EXCHANGE_URLS}/liscategory/${id}`);
+        if (res?.status === 201) {
+          setIdData(res?.data?.message || []);
+        }
+      } catch (err) {
+        toast.error(err, "Error");
+      }
+    };
+
+    // Check if id is available before making the API call
+    getIdApi();
+  }, []);
+
   return (
     <Root>
       <div className="main_div_section">
@@ -147,7 +170,13 @@ export default function CreateOverview() {
             buyers would likely use to search for a service like yours.
           </div>
           <div className="input_div">
-            <div style={{ display: "flex", flexDirection: "column", width:"100%" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+              }}
+            >
               <textarea
                 placeholder="Title : Short but Effective"
                 value={gigTitle}

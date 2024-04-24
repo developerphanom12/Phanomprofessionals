@@ -9,52 +9,39 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { FaPlus } from "react-icons/fa6";
 import { EXCHANGE_URLS_BUYER } from "../../Important/URLS";
-
-const schema = yup.object().shape({
-  username: yup.string().required("Username is required."),
-  email: yup
-    .string()
-    .required("Email is required")
-    .email("Invalid email address"),
-  password: yup
-    .string()
-    .required("Password is required.")
-    .min(5, "Password should be at least 5 characters."),
-});
+import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
 export default function BuyerRegister() {
+  const navigate = useNavigate();
+
   const [imagePreview, setImagePreview] = React.useState("");
-  const {
-    register,
-    handleSubmit,
-    formState: { errors } = {},
-  } = useForm({
-    resolver: yupResolver(schema),
+  const [formData, setFormData] = React.useState({
+    username: "",
+    email: "",
+    password: "",
+    image: null,
   });
 
-  const onSubmit = async (data) => {
-    const formData = new FormData();
-    formData.append("image", data.image[0]);
-    formData.append("username", data.username);
-    formData.append("email", data.email);
-    formData.append("password", data.password);
-
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("image", formData.image);
+    data.append("username", formData.username);
+    data.append("email", formData.email);
+    data.append("password", formData.password);
     try {
       const res = await axios.post(
         `${EXCHANGE_URLS_BUYER}/buyerRegister`,
-        formData
+        data
       );
       if (res?.status === 201) {
+        navigate("/loginBuyer");
         toast.success("Buyer has been successfully registered");
       }
     } catch (err) {
@@ -66,17 +53,17 @@ export default function BuyerRegister() {
   const handleImagePreview = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // setFormData({ ...formData, image: file });
+      setFormData({ ...formData, image: file });
       setImagePreview(URL.createObjectURL(file));
     } else {
-      // setFormData({ ...formData, image: "" });
+      setFormData({ ...formData, image: "" });
       setImagePreview("");
     }
   };
 
   return (
     <Root>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={onSubmit}>
         <ThemeProvider theme={defaultTheme}>
           <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -88,13 +75,13 @@ export default function BuyerRegister() {
                 alignItems: "center",
               }}
             >
-              <label htmlFor="image-input">
+              <label htmlFor="image-input" style={{ textAlign: "center" }}>
                 <Avatar
                   sx={{
                     m: 1,
                     bgcolor: "#ccc",
-                    width: "60px",
-                    height: "60px",
+                    width: "160px",
+                    height: "160px",
                   }}
                 >
                   {imagePreview ? (
@@ -104,27 +91,16 @@ export default function BuyerRegister() {
                       style={{
                         width: "100%",
                         height: "100%",
-                        objectFit: "cover",
+                        objectFit: "contain",
                       }}
                     />
                   ) : (
-                    <FaPlus />
+                    ""
                   )}
                 </Avatar>
-                <input
-                  id="image-input"
-                  type="file"
-                  onChange={handleImagePreview}
-                  accept="image/*"
-                  {...register("image", { required: true })}
-                  style={{ display: "none" }}
-                />
+                <input type="file" onChange={handleImagePreview} />
               </label>
-              {errors.image && (
-                <Typography variant="caption" color="error">
-                  Image is required
-                </Typography>
-              )}
+
               <Typography
                 component="h1"
                 variant="h5"
@@ -132,12 +108,7 @@ export default function BuyerRegister() {
               >
                 Sign up
               </Typography>
-              <Box
-                component="formm"
-                noValidate
-                onSubmit={handleSubmit}
-                sx={{ mt: 3 }}
-              >
+              <Box component="formm" noValidate sx={{ mt: 3 }}>
                 <Grid container spacing={2} sx={{ marginBottom: "16px" }}>
                   <Grid item xs={12} sm={6}>
                     <TextField
@@ -149,10 +120,16 @@ export default function BuyerRegister() {
                       label="Name"
                       type="text"
                       autoFocus
-                      {...register("username")}
+                      value={formData?.username}
+                      onChange={(e) => {
+                        setFormData({
+                          ...formData,
+                          username: e.target.value,
+                        });
+                      }}
                     />
                   </Grid>
-                  {errors.username && <p>{errors.username.message}</p>}
+
                   <Grid item xs={12} sm={6}>
                     <TextField
                       required
@@ -162,10 +139,15 @@ export default function BuyerRegister() {
                       name="email"
                       type="email"
                       autoComplete="email"
-                      {...register("email")}
+                      value={formData?.email}
+                      onChange={(e) => {
+                        setFormData({
+                          ...formData,
+                          email: e.target.value,
+                        });
+                      }}
                     />
                   </Grid>
-                  {errors.email && <p>{errors.email.message}</p>}
                 </Grid>
 
                 <Grid item xs={12}>
@@ -177,10 +159,15 @@ export default function BuyerRegister() {
                     type="password"
                     id="password"
                     autoComplete="new-password"
-                    {...register("password")}
+                    value={formData?.password}
+                    onChange={(e) => {
+                      setFormData({
+                        ...formData,
+                        password: e.target.value,
+                      });
+                    }}
                   />
                 </Grid>
-                {errors.password && <p>{errors.password.message}</p>}
 
                 <Button
                   type="submit"

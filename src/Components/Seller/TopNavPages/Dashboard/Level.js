@@ -81,9 +81,9 @@ export default function Level() {
                 />
               </Box>
               <div className="quality_div">
-                <p>Quality for next level: 5</p>
+                <p>Quality for next level:5</p>
                 <div className="arrow">
-                  <IoIosArrowRoundForward />
+                  <IoIosArrowRoundForward/>
                 </div>
               </div>
             </div>
@@ -171,7 +171,7 @@ export default function Level() {
               </div>
               <div className="quality_div">
                 <div className="arrow">
-                  <IoIosArrowRoundForward />
+                  <IoIosArrowRoundForward/>
                 </div>
               </div>
             </div>
@@ -294,11 +294,13 @@ const Root = styled.section`
         gap: 20px;
         margin-top: 25px;
 
-        .score {
-          border: 1px solid #e1e1e1;
-          width: 31%;
-          border-radius: 10px;
-          padding: 24px;
+        .score{
+          border:1px solid #e1e1e1;
+          width:31%;
+          border-radius:10px;
+          padding:24px;
+          height:210px;
+         
           .score_heading {
             display: flex;
             justify-content: space-between;
@@ -316,8 +318,8 @@ const Root = styled.section`
             font-weight: 600;
           }
 
-          .quality_div {
-            display: none;
+          .quality_div{
+            display:none;
             p {
               font-size: 15px;
               color: #74767e;
@@ -325,17 +327,18 @@ const Root = styled.section`
               font-weight: 500;
               border-left: 2px solid rgb(29, 191, 115);
               padding-left: 5px;
+              margin-bottom:0;
             }
             .arrow {
               display: flex;
               justify-content: end;
               img,
-              svg {
-                height: 42px;
-                width: 42px;
-                border: 1px solid black;
-                border-radius: 5px;
-                padding: 0 10px;
+              svg{
+                height:42px;
+                width:42px;
+                border:1px solid #e1e1e1;
+                border-radius:5px;
+                padding:0 10px;
               }
             }
           }
@@ -346,12 +349,13 @@ const Root = styled.section`
       }
 
       .css-7o8aqz-MuiSlider-rail {
-        background-color: #cdc7c7;
-        height: 7px;
+        background-color:#cdc7c7;
+        height:7px;
       }
 
-      .css-ltlhnc-MuiSlider-root {
-        width: 50%;
+      .css-ltlhnc-MuiSlider-root{
+        width:50%;
+        margin-bottom:0;
       }
 
       .css-hzp7sc-MuiSlider-mark {
