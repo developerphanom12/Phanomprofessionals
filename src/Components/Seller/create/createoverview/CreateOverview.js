@@ -98,9 +98,8 @@ export default function CreateOverview() {
           tags,
         },
         { abortEarly: false }
-      ); // abortEarly option will show all validation errors at once
+      );
 
-      // If validation succeeds, proceed with other logic
       appApi();
     } catch (error) {
       // Handle validation errors

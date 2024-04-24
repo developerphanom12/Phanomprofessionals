@@ -21,6 +21,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import ContainerFluid from "react-bootstrap/Container";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { VscPackage } from "react-icons/vsc";
 
 export default function PostNav() {
   // const userCheck = useSelector((state) => state?.users?.userCheck);
@@ -36,6 +37,7 @@ export default function PostNav() {
 
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
+  const [order, setorder] = useState(false);
 
   const toggleDropdown1 = () => {
     setIsOpen1(!isOpen1);
@@ -84,6 +86,10 @@ export default function PostNav() {
       showAnalytics: false,
     });
   };
+
+  function toggleShow() {
+    setorder((prevState) => !prevState);
+  }
 
   return (
     <Root>
@@ -246,7 +252,7 @@ export default function PostNav() {
                         </div>
                         <div className="middle">
                           <IoNotificationsOffOutline />
-                          {/* {/ {/ <IoNotificationsOutline /> /} /} */}
+                          {/* <IoNotificationsOutline />  */}
                           <h5>No Notifications</h5>
                           <p>
                             Browse our amazing catalog of Gigs or offer your
@@ -256,7 +262,7 @@ export default function PostNav() {
                         <div className="bottom">
                           <div>
                             <IoVolumeHigh />
-                            {/* {/ {/ <IoMdVolumeOff /> /} /} */}
+                            {/* <IoMdVolumeOff />  */}
                             <IoMdSettings />
                           </div>
                         </div>
@@ -298,7 +304,7 @@ export default function PostNav() {
                         <div className="bottom">
                           <div>
                             <IoVolumeHigh />
-                            {/* {/ {/ <IoMdVolumeOff /> /} /} */}
+                            {/* <IoMdVolumeOff />  */}
                             <IoMdSettings />
                           </div>
                           <a>See All In Inbox</a>
@@ -316,7 +322,21 @@ export default function PostNav() {
                     <Tooltip id="my-tooltip" />
                   </Nav.Link>
                 </div>
-                <Nav.Link className="orders">Orders</Nav.Link>
+
+                <Nav.Link className="orders" onClick={toggleShow}>
+                  Orders
+                </Nav.Link>
+                {order && (
+                  <div className="order_div">
+                    <div className="icon_div">
+                      <VscPackage />
+                    </div>
+                    <h3>No Orders Yet</h3>
+                    <p>
+                      Use the search box to find the digital services you need.
+                    </p>
+                  </div>
+                )}
 
                 <Nav.Link href="" className="profile" onClick={toggleShowName}>
                   {" "}
@@ -650,6 +670,46 @@ const Root = styled.section`
     }
     hr {
       margin: 10px;
+    }
+  }
+
+  .order_div {
+    width: 380px;
+    height: 472px;
+    top: 80px;
+    position: absolute;
+    right: 215px;
+    background-color: #fff;
+    border: 1px solid #dadbdd;
+    border-radius: 3px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.05);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .icon_div {
+      background: #efeff0;
+      border-radius: 50%;
+      padding: 21px 24px;
+      margin-bottom: 20px;
+      svg {
+        height: 70px;
+        width: 70px;
+      }
+    }
+    h3 {
+      font-size: 18px;
+      line-height: 120%;
+      color: #404145;
+      font-weight: 700;
+    }
+    p {
+      text-align: center;
+      font-size: 15px;
+      line-height: 120%;
+      padding: 0 41px;
+      color: #404145;
     }
   }
 

@@ -57,6 +57,7 @@ import NoInternetConnection from "./Components/Important/NoInternetConnection";
 import BuyerRegister from "./Components/CommonPages/loginPages/BuyerRegister";
 import Page from "./Components/Buyer/categoryPages/Page";
 import BrowseHistory from "./Components/Buyer/categoryPages/BrowseHistory";
+import Level from "./Components/Seller/TopNavPages/Dashboard/Level";
 // import ChatSection from "./Components/MainLayouts/message/ChatSection";
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
               <>
                 <Route path="/user" element={<Userone />} />
                 <Route path="/portfolio" element={<Portfolio />} />
+                <Route path="/level" element={<Level />}/>
                 {/* <Route path="/chat" element={<ChatSection />} /> */}
                 {/* <Route path="/internalpage" element={<InternalPages />} /> */}
                 {userDetails.role === "buyer" ? (

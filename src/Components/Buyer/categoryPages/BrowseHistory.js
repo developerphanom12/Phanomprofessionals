@@ -13,11 +13,11 @@ import profile from "../../Images/Boyspic.png";
 import { useNavigate, useParams } from "react-router-dom";
 
 function BrowseHistory() {
+  const { cd } = useParams();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [gigData, setGigData] = useState([]);
-  const id = useParams();
 
-  console.log("weee", id);
+  console.log("weee", cd);
   useEffect(() => {
     const getSliderApi = async () => {
       try {
@@ -30,8 +30,10 @@ function BrowseHistory() {
       }
     };
 
+    // Check if id is available before making the API call
     getSliderApi();
-  }, [id]);
+  }, [cd]);
+
   const navigate = useNavigate();
   const slideRef = useRef();
 
@@ -83,6 +85,7 @@ function BrowseHistory() {
             key={index}
             className={`slide ${index === currentSlide ? "active" : ""}`}
           >
+            {gig.cd}
             <BrowserSlider1 gigData={gig} />
             <div
               className="footer"
