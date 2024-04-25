@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
 import { IoInformationCircle } from "react-icons/io5";
 import styled from "styled-components";
 import axios from "axios";
@@ -9,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { updateGigId } from "../../../../redux/users/action";
 import * as Yup from "yup";
+import { TagsInput } from "react-tag-input-component";
 
 const validationSchema = Yup.object().shape({
   gigTitle: Yup.string().required("Gig title is required"),
@@ -19,8 +19,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function CreateOverview() {
-  const [idData,setIdData] = useState("");
-  const [errors, setErrors] = useState({});
+  const [idData, setIdData] = useState([]);
   const [active, setActive] = useState("page1");
   const [gigTitle, setGigTitle] = useState("");
   const [categoryId, setCategoryId] = useState("");
@@ -30,12 +29,9 @@ export default function CreateOverview() {
   const [selectedProgrammingLanguages, setSelectedProgrammingLanguages] =
     useState([]);
   const [selectedWebsiteFeatures, setSelectedWebsiteFeatures] = useState([]);
-
   const [getCategory, setGetCategory] = useState([]);
 
-  const id = useParams();
-
-  console.log("aghdfsgdhsad",id)
+  const { id } = useParams();
 
   const handleProgrammingLanguageChange = (event) => {
     const { value, checked } = event.target;
@@ -91,32 +87,8 @@ export default function CreateOverview() {
     }
   };
 
-  const handleSubmit = async () => {
-    try {
-      // Validate the data object
-      await validationSchema.validate(
-        {
-          gigTitle,
-          categoryId,
-          subcategoryId,
-          serviceType,
-          tags,
-        },
-        { abortEarly: false }
-      );
-
-      appApi();
-    } catch (error) {
-      // Handle validation errors
-      const validationErrors = {};
-      if (error.inner) {
-        error.inner.forEach((err) => {
-          validationErrors[err.path] = err.message;
-        });
-      }
-
-      setErrors(validationErrors);
-    }
+  const handleSubmit = () => {
+    appApi();
   };
 
   const getCategoryApi = async () => {
@@ -132,6 +104,10 @@ export default function CreateOverview() {
       );
       if (res?.status === 201) {
         setGetCategory(res?.data?.message);
+        const categoryId = res?.data?.message.map(
+          (category) => category.category_id
+        );
+        setCategoryId(categoryId);
       }
     } catch (errors) {
       toast.error(errors, "Error");
@@ -140,24 +116,32 @@ export default function CreateOverview() {
 
   useEffect(() => {
     getCategoryApi();
-  }, []);
-
+  }, [id]);
 
   useEffect(() => {
     const getIdApi = async () => {
+      const axiosConfig = {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
       try {
-        const res = await axios.get(`${EXCHANGE_URLS}/liscategory/${id}`);
+        const res = await axios.get(
+          `${EXCHANGE_URLS_CATEGORY}/liscategory/${categoryId}`,
+          axiosConfig
+        );
         if (res?.status === 201) {
           setIdData(res?.data?.message || []);
+          console.log("aghdfsgdhsad", res);
         }
       } catch (err) {
         toast.error(err, "Error");
       }
     };
-
-    // Check if id is available before making the API call
-    getIdApi();
-  }, []);
+    if (categoryId) {
+      getIdApi();
+    }
+  }, [categoryId]);
 
   return (
     <Root>
@@ -201,9 +185,9 @@ export default function CreateOverview() {
           <div className="input_div">
             <div style={{ display: "flex", flexDirection: "column" }}>
               <select
-                // value={categoryId}
+                value={categoryId}
                 onChange={(e) => {
-                  setCategoryId(e.target.value); // Set categoryId directly with the selected value
+                  setCategoryId(e.target.value);
                 }}
               >
                 <option value="">Select Category</option>
@@ -230,8 +214,8 @@ export default function CreateOverview() {
                 onChange={(e) => setSubcategoryId(e.target.value)}
               >
                 <option value="">Select Subcategory</option>
-                {getCategory &&
-                  getCategory.map((category) =>
+                {idData &&
+                  idData.map((category) =>
                     category.subcategories.map((subcategory) => (
                       <option
                         key={subcategory.subcategory_id}
@@ -425,11 +409,13 @@ export default function CreateOverview() {
                 for your service.
               </span>
             </div>
-            <input
+            <pre>{JSON.stringify(tags)}</pre>
+            <TagsInput
               placeholder="tag here"
+              name="tags"
               value={tags}
-              onChange={(e) => {
-                setTags(e.target.value);
+              onChange={(newTags) => {
+                setTags(newTags); // Update the tags state when the value changes
               }}
             />
             {!tags && (
@@ -437,7 +423,7 @@ export default function CreateOverview() {
                 className="error"
                 style={{ color: "red", fontSize: "11px", margin: "0" }}
               >
-                Please enter atleast one Tag.
+                <em>press enter or comma to add new tag</em>
               </p>
             )}
           </div>

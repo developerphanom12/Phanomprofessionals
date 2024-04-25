@@ -6,10 +6,11 @@ import Requirements from "./requirements/Requirements";
 import Pricing from "./pricing/Pricing";
 import DescriptionFAQ from "./description/DescriptionFAQ";
 import CreateOverview from "./createoverview/CreateOverview";
+import { useParams } from "react-router-dom";
 
 export default function CreatePage() {
   const [active, setActive] = useState("createoverview");
-
+  const { id } = useParams(); 
   return (
     <Root>
       <div className="tab_button_area">
@@ -76,7 +77,7 @@ export default function CreatePage() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-12">
-              {active === "createoverview" ? (
+            {active === "createoverview" || (active === "createoverview" && id) ? (
                 <CreateOverview />
               ) : active === "pricing" ? (
                 <Pricing />

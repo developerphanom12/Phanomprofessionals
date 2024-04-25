@@ -18,6 +18,12 @@ export default function Gallery() {
     vedio: null,
   });
 
+  const [imagePreviews, setImagePreviews] = useState({
+    image1: null,
+    image2: null,
+    image3: null,
+  });
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const appApi = async () => {
@@ -45,7 +51,7 @@ export default function Gallery() {
         const gigId = res.data.data.id;
         dispatch(updateGigId(gigId));
         navigate("/gigs");
-        toast.success("All Steps Are Completed");
+        toast.success("All Steps Are Completed.See your gig in paused gigs");
       }
     } catch (err) {
       toast.error("Error occurred while uploading images and video.");
@@ -56,12 +62,12 @@ export default function Gallery() {
   //   appApi();
   // };
 
-  const handleImageChange = (e, imageKey) => {
-    setImageFiles({
-      ...imageFiles,
-      [imageKey]: e.target.files[0],
-    });
-  };
+  // const handleImageChange = (e, imageKey) => {
+  //   setImageFiles({
+  //     ...imageFiles,
+  //     [imageKey]: e.target.files[0],
+  //   });
+  // };
 
   const handleVideoChange = (e) => {
     const file = e.target.files[0];
@@ -87,6 +93,24 @@ export default function Gallery() {
       return;
     }
     appApi();
+  };
+
+  const handleImageChange = (e, imageKey) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagePreviews((prevState) => ({
+        ...prevState,
+        [imageKey]: reader.result,
+      }));
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+    setImageFiles({
+      ...imageFiles,
+      [imageKey]: file,
+    });
   };
 
   return (
@@ -125,6 +149,15 @@ export default function Gallery() {
             <div className="ul_div">
               <li>
                 image 1
+                <img
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                  src={imagePreviews.image1}
+                  alt="Preview 1"
+                />
                 <input
                   type="file"
                   accept="image/*"
@@ -133,6 +166,15 @@ export default function Gallery() {
               </li>
               <li>
                 image 2
+                <img
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                  src={imagePreviews.image2}
+                  alt="Preview 2"
+                />
                 <input
                   type="file"
                   accept="image/*"
@@ -141,6 +183,15 @@ export default function Gallery() {
               </li>
               <li>
                 image 3
+                <img
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                  src={imagePreviews.image3}
+                  alt="Preview 3"
+                />
                 <input
                   type="file"
                   accept="image/*"

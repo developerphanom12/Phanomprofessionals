@@ -58,6 +58,8 @@ import BuyerRegister from "./Components/CommonPages/loginPages/BuyerRegister";
 import Page from "./Components/Buyer/categoryPages/Page";
 import BrowseHistory from "./Components/Buyer/categoryPages/BrowseHistory";
 import Level from "./Components/Seller/TopNavPages/Dashboard/Level";
+import CreateOverview from "./Components/Seller/create/createoverview/CreateOverview";
+import ShowOrder from "./Components/Seller/TopNavPages/MyBusiness/orders/showOrders/ShowOrder";
 // import ChatSection from "./Components/MainLayouts/message/ChatSection";
 
 function App() {
@@ -101,6 +103,7 @@ function App() {
                       path="/createsingmile"
                       element={<CreateSingMile />}
                     />
+                    <Route path="/showorder" element={<ShowOrder />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/editgigspages/:id" element={<Page1 />} />
                     <Route path="/orders" element={<Orders />} />

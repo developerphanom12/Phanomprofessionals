@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { IoInformationCircle } from "react-icons/io5";
-
 import styled from "styled-components";
 import {
   EXCHANGE_URLS,
@@ -8,7 +7,6 @@ import {
 } from "../../../../../../Important/URLS";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export default function IndexG({ editGetGig }) {
@@ -19,7 +17,6 @@ export default function IndexG({ editGetGig }) {
     vedio: null,
   });
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const appGalApi = async () => {
     try {
@@ -59,20 +56,9 @@ export default function IndexG({ editGetGig }) {
       ? editGetGig[0].images.content_id
       : null;
   console.log("dccxxxxct", editGetGig[0].images.content_id);
-
-  const handleImageChange = (e, imageKey) => {
-    // Get the file from the input
-    const file = e.target.files[0];
-
-    // Update the state based on the image key
-    setImageFiles(prevState => ({
-      ...prevState,
-      [imageKey]: file,
-    }));
-  };
   const handleVideoChange = (e) => {
     const file = e.target.files[0];
-
+    
     if (file.type !== "video/mp4") {
       toast.error("Please upload an MP4 video file.");
     } else {
@@ -82,6 +68,17 @@ export default function IndexG({ editGetGig }) {
       });
     }
   };
+  
+    const handleImageChange = (e, imageKey) => {
+      // Get the file from the input
+      const file = e.target.files[0];
+  
+      // Update the state based on the image key
+      setImageFiles(prevState => ({
+        ...prevState,
+        [imageKey]: file,
+      }));
+    };
 
   return (
     <Root>

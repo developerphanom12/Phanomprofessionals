@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
@@ -159,14 +158,14 @@ export default function Paused() {
             <tr key={index}>
               <td colSpan={2}>
                 <img
-                  className="img"
+                  className="imgj"
                   src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image1}`}
-                  alt={`Image 1`}
+                  alt="img"
                 />
               </td>
-              <td colSpan={2}>
-                <span>{gigData?.gig_title}</span>
-              </td>
+              {/* <td colSpan={2}> */}
+              <span>{gigData?.gig_title}</span>
+              {/* </td> */}
               <td colSpan={2}>
                 <span>0</span>
               </td>
@@ -224,6 +223,7 @@ export default function Paused() {
 }
 const Root = styled.section`
   margin: -10px;
+  max-width: 100vw;
   table {
     width: 100%;
   }
@@ -255,7 +255,9 @@ const Root = styled.section`
     color: #999;
     vertical-align: middle;
     white-space: nowrap;
-    img {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    .imgj {
       width: 40px;
       height: 40px;
     }
@@ -269,6 +271,15 @@ const Root = styled.section`
     background-color: #f2f2f2;
     text-transform: uppercase;
   }
+  span {
+    color: #999;
+    font-size: 13px;
+    font-weight: 600;
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+  }
   td {
     h6 {
       font-weight: 600;
@@ -279,6 +290,9 @@ const Root = styled.section`
       color: #999;
       font-size: 13px;
       font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .button_select {
       display: flex;
@@ -328,6 +342,8 @@ const Root = styled.section`
     padding-left: 20px;
   }
   @media (max-width: 567px) {
-    overflow: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
