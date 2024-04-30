@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { IoLocationSharp } from "react-icons/io5";
 import { CiStar } from "react-icons/ci";
 import { IoMdMegaphone } from "react-icons/io";
+import CountdownTimer from "./CountdownTimer";
 
 export default function ShowOrder() {
   const targetDate = new Date("2024-05-01T00:00:00");
+  const [buttonText, setButtonText] = useState("Nudge Buyer");
+  const [showChildPage, setShowChildPage] = useState(false);
+
+  const handleNudgeClick = () => {
+    setButtonText("Buyer Nudged");
+    setShowChildPage(true);
+  };
 
   return (
     <Root>
@@ -18,7 +26,7 @@ export default function ShowOrder() {
             </b>
           </div>
           <div className="deliver_order">
-            <button>Nudge Buyer</button>
+            <button onClick={handleNudgeClick}>{buttonText}</button>
           </div>
         </header>
 
@@ -77,7 +85,13 @@ export default function ShowOrder() {
               </div>
             </div>
             <div style={{ textAlign: "end" }}>
-              <span style={{ fontWeight: "600", fontSize: "14px",padding:"5px 20px" }}>
+              <span
+                style={{
+                  fontWeight: "600",
+                  fontSize: "14px",
+                  padding: "5px 20px",
+                }}
+              >
                 {" "}
                 Total: 50
               </span>
@@ -101,13 +115,18 @@ export default function ShowOrder() {
             We are waiting for the buyer to submit the requirements.
             <br /> until then, the countdown for this order will not start
           </p>
-          <button>Nudge Buyer</button>
+          <button onClick={handleNudgeClick}>{buttonText}</button>
         </div>
+        {showChildPage && (
+          <div>
+            <CountdownTimer targetDate={targetDate} />
+          </div>
+        )}
       </>
-      {/* <CountdownTimer targetDate={targetDate} /> */}
     </Root>
   );
 }
+
 const Root = styled.section`
   background-color: #f8f9fa;
   width: 100vw;
@@ -224,7 +243,7 @@ const Root = styled.section`
     border: 1px solid lightgray;
     margin: 20px 0px;
     padding: 20px;
-    font-size: 16px;
+    font-size: 14px;
     width: 60vw;
     text-align: center;
     svg {
