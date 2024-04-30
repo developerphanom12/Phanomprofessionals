@@ -2,85 +2,108 @@ import React from "react";
 import styled from "styled-components";
 import { IoLocationSharp } from "react-icons/io5";
 import { CiStar } from "react-icons/ci";
+import { IoMdMegaphone } from "react-icons/io";
 
 export default function ShowOrder() {
   const targetDate = new Date("2024-05-01T00:00:00");
 
   return (
     <Root>
-      <header>
-        <div className="progress">
-          <b style={{ fontSize: "14px" }}>
-            {" "}
-            <IoLocationSharp /> Waiting for info from buyer
-          </b>
-        </div>
-        <div className="deliver_order">
-          <button>Nudge Buyer</button>
-        </div>
-      </header>
+      <>
+        <header>
+          <div className="progress">
+            <b style={{ fontSize: "14px" }}>
+              {" "}
+              <IoLocationSharp /> Waiting for info from buyer
+            </b>
+          </div>
+          <div className="deliver_order">
+            <button>Nudge Buyer</button>
+          </div>
+        </header>
 
-      <div className="wave" style={{ background: "white" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "baseline",
-          }}
-        >
-          {" "}
-          <h3>
-            {" "}
-            <CiStar /> Order #FO15ERF44599
-          </h3>{" "}
-          <h1>$ 5.00</h1>
-        </div>
-        <div
-          className="title_user"
-          style={{ display: "flex", color: "gray", alignItems: "center" }}
-        >
-          <p
+        <div className="wave" style={{ background: "white" }}>
+          <div
             style={{
-              padding: "0px 10px 0px 40px",
-              color: "gray",
-              fontSize: "13px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
             }}
           >
-            Buyer : <b style={{ color: "#0ba102" }}>Ankita </b>
-          </p>
-          |<span> May 12,2015</span>
-        </div>
-        <div className="app_table">
-          <div className="app_header">
-            <div>CAMS Id</div>
-            <div>Student Name</div>
-            <div>University Name</div>
-            <div>Course Name</div>
-          </div>
-
-          <div className="app_body">
-            <div>
-              <span>student_firstname</span>
-            </div>
-            <div>
-              <span>className</span>
-            </div>
-            <div>
-              <span>className</span>
-            </div>
-            <div>
-              <span>className</span>
-            </div>
-          </div>
-          <div style={{ textAlign: "end" }}>
-            <span style={{ fontWeight: "600", fontSize: "14px" }}>
+            {" "}
+            <h3>
               {" "}
-              Total:50
-            </span>
+              <CiStar /> Order #FO15ERF44599
+            </h3>{" "}
+            <h1>$ 5.00</h1>
+          </div>
+          <div
+            className="title_user"
+            style={{ display: "flex", color: "gray", alignItems: "center" }}
+          >
+            <p
+              style={{
+                padding: "0px 10px 0px 40px",
+                color: "gray",
+                fontSize: "13px",
+              }}
+            >
+              Buyer : <b style={{ color: "#0ba102" }}>Ankita </b>
+            </p>
+            |<span> May 12,2015</span>
+          </div>
+          <div className="app_table">
+            <div className="app_header">
+              <div style={{ width: "30vw", textAlign: "start" }}>item</div>
+              <div style={{ width: "100px" }}>Quantity</div>
+              <div style={{ width: "100px" }}>Duration</div>
+              <div style={{ width: "100px" }}>Amount</div>
+            </div>
+
+            <div className="app_body">
+              <div style={{ width: "30vw", textAlign: "start" }}>
+                <span style={{ width: "100%" }}>
+                  Provide a video testimonial
+                </span>
+              </div>
+              <div style={{ width: "100px" }}>
+                <span>+1</span>
+              </div>
+              <div style={{ width: "100px" }}>
+                <span>29 Days</span>
+              </div>
+              <div style={{ width: "100px" }}>
+                <span>$5.0</span>
+              </div>
+            </div>
+            <div style={{ textAlign: "end" }}>
+              <span style={{ fontWeight: "600", fontSize: "14px",padding:"5px 20px" }}>
+                {" "}
+                Total: 50
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-
+        <div className="order_not_yet">
+          <div style={{ color: "#05878f" }}>
+            <IoMdMegaphone />
+            <h6
+              style={{
+                fontWeight: "600",
+                textTransform: "uppercase",
+                fontSize: "14px",
+              }}
+            >
+              Order not started{" "}
+            </h6>
+          </div>
+          <p>
+            We are waiting for the buyer to submit the requirements.
+            <br /> until then, the countdown for this order will not start
+          </p>
+          <button>Nudge Buyer</button>
+        </div>
+      </>
       {/* <CountdownTimer targetDate={targetDate} /> */}
     </Root>
   );
@@ -131,7 +154,7 @@ const Root = styled.section`
   }
   .wave {
     border: 1px solid lightgray;
-    margin: 40px 0px;
+    margin: 40px 0px 10px;
     padding: 20px;
     width: 60vw;
     h1 {
@@ -156,34 +179,37 @@ const Root = styled.section`
     .app_table {
       display: flex;
       flex-direction: column;
-      padding: 5px;
+      padding: 5px 0px;
       font-family: "Roboto", "sana-serif";
       width: 100%;
-      margin: 10px;
+      margin: 10px 0px;
       .app_header {
         display: flex;
-        background: #f8f9fa;
+        background: #d9dadb52;
         text-align: center;
+        justify-content: space-between;
         color: gray;
+        font-weight: 600;
         border-bottom: 1px solid lightgray;
         > div {
-          flex: 1 1;
-          padding: 5px;
+          padding: 2px 15px;
           font-weight: 500;
-          font-size: 14px;
+          font-size: 13px;
+          text-transform: uppercase;
         }
       }
       .app_body {
         display: flex;
         font-family: "Roboto", sans-serif;
         background: #f8f9fa;
+        border-bottom: 1px solid lightgray;
+        justify-content: space-between;
         > div {
-          flex: 1;
-          border-bottom: 1px solid lightgray;
-          text-transform: capitalize;
           background-color: #fff;
           text-align: center;
-          padding: 5px;
+          padding: 5px 15px;
+          font-weight: 500;
+          font-size: 14px;
 
           span {
             font-weight: 600;
@@ -191,6 +217,32 @@ const Root = styled.section`
           }
         }
       }
+    }
+  }
+  .order_not_yet {
+    background-color: #fff;
+    border: 1px solid lightgray;
+    margin: 20px 0px;
+    padding: 20px;
+    font-size: 16px;
+    width: 60vw;
+    text-align: center;
+    svg {
+      transform: rotate(-24deg);
+      width: 47px;
+      height: 33px;
+    }
+    p {
+      text-align: center;
+      color: #686868;
+    }
+    button {
+      border: 1.5px solid lightgray;
+      background-color: #fff;
+      padding: 4px 14px;
+      color: #686868;
+      border-radius: 3px;
+      box-shadow: 1px 1px 7px 1px #d3d3d3a1;
     }
   }
 `;
