@@ -24,6 +24,7 @@
     "react-apexcharts": "^1.4.1",
     "react-bootstrap": "^2.10.2",
     "react-countdown": "^2.3.5",
+    "react-countdown-circle-timer": "^3.2.1",
     "react-countup": "^6.5.0",
     "react-dom": "^18.2.0",
     "react-drag-drop-files": "^2.3.10",

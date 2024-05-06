@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { IoLocationSharp } from "react-icons/io5";
+import { IoAttach, IoLocationSharp, IoMailOutline } from "react-icons/io5";
 import { CiStar } from "react-icons/ci";
-import { IoMdMegaphone } from "react-icons/io";
+import { IoMdArrowDropdown, IoMdMegaphone } from "react-icons/io";
 import CountdownTimer from "./CountdownTimer";
 
 export default function ShowOrder() {
-  const targetDate = new Date("2024-05-01T00:00:00");
+  const targetDate = new Date("2024-05-08T00:00:00");
   const [buttonText, setButtonText] = useState("Nudge Buyer");
   const [showChildPage, setShowChildPage] = useState(false);
 
@@ -117,11 +117,34 @@ export default function ShowOrder() {
           </p>
           <button onClick={handleNudgeClick}>{buttonText}</button>
         </div>
+
         {showChildPage && (
           <div>
             <CountdownTimer targetDate={targetDate} />
           </div>
         )}
+        <div className="quick_response">
+          <select>
+            <option>Use a Quick Response </option>
+            <option></option>
+            <option></option>
+          </select>
+          <div className="attach_file">
+            <textarea></textarea>
+            <div className="svg_attach">
+              <div style={{display:"flex",alignItems:"center"}}>
+                <div style={{border:'1px solid lightgray',borderRadius:"3px",padding:"5px",margin:"0px 4px"}}>
+                  {" "}
+                  <IoAttach /> Attach files
+                </div>{" "}
+                max. size: 30MB
+              </div>
+              <div style={{border:'1px solid lightgray',borderRadius:"3px",padding:"5px",margin:"0px 4px"}}>
+                <IoMailOutline /> Send
+              </div>
+            </div>
+          </div>
+        </div>
       </>
     </Root>
   );
@@ -130,7 +153,7 @@ export default function ShowOrder() {
 const Root = styled.section`
   background-color: #f8f9fa;
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -241,7 +264,7 @@ const Root = styled.section`
   .order_not_yet {
     background-color: #fff;
     border: 1px solid lightgray;
-    margin: 20px 0px;
+    margin: 20px 0px 0px;
     padding: 20px;
     font-size: 14px;
     width: 60vw;
@@ -262,6 +285,45 @@ const Root = styled.section`
       color: #686868;
       border-radius: 3px;
       box-shadow: 1px 1px 7px 1px #d3d3d3a1;
+    }
+  }
+  .quick_response {
+    border: 1px solid lightgray;
+    padding: 10px 20px 20px;
+    font-size: 14px;
+    width: 60vw;
+    select {
+      word-wrap: normal;
+      border: none;
+      background: transparent;
+      color: #0ba102;
+      outline: none;
+      font-weight: 600;
+    }
+    .attach_file {
+      background-color: #fff;
+      border: 1px solid lightgray;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      textarea {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 10px;
+        height: 250px;
+        overflow: auto;
+      }
+      .svg_attach {
+        display: flex;
+        align-items: center;
+        color: #b3b1b1;
+        justify-content: space-between;
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
     }
   }
 `;
