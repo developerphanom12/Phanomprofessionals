@@ -46,14 +46,12 @@ function Userone() {
     if (storedToken) {
       setToken(storedToken);
       setIsLoggedIn(true);
-      setUserId(userId); // Set user ID from location state
+      setUserId(userId);
       fetchUsers(storedToken);
-      fetchChatHistory(userId); // Fetch chat history for the selected user
-
-      // Set the selectedUser directly from the userId
+      fetchChatHistory(userId);
       setSelectedUser(userId);
     }
-  }, [userId]); // Fetch user details and chat history when userId changes
+  }, [userId]);
 
   useEffect(() => {
     if (selectedUser) {
@@ -99,7 +97,7 @@ function Userone() {
   }, [selectedUser, id]);
 
   const login = () => {
-    fetch("http://localhost:4000/api/admin/login", {
+    fetch("https://api-phanom.phanomprofessionals.com/api/admin/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -147,7 +145,7 @@ function Userone() {
   };
 
   const fetchUsers = (token) => {
-    fetch("http://localhost:4000/api/admin/users", {
+    fetch("https://api-phanom.phanomprofessionals.com/api/admin/users", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
       },

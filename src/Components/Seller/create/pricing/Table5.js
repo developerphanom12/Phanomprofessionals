@@ -44,7 +44,7 @@ export default function Table5({ data, setData ,data2, setData2 ,data3, setData3
                     <input  type="number"
                       value={data3.price}
                       onChange={(e) =>
-                        setData2({ ...data3, price: e.target.value })
+                        setData3({ ...data3, price: e.target.value })
                       } />
                   </div>
                 </span>

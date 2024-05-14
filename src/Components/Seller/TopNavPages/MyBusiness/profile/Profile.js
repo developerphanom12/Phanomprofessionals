@@ -16,7 +16,17 @@ import { useNavigate } from "react-router-dom";
 export default function Profile() {
   const [isEdit, setIsEdit] = useState(false);
   const [profile, setProfile] = useState();
+  const [updateData, setUpdateData] = useState({
+    username: "",
+    technology_name: "",
+    phone_number: "",
+    email: "",
+    city: "",
+    education: "",
+    languages: "",
+  });
   const navigate = useNavigate();
+
   const toggleEdit = () => {
     setIsEdit(!isEdit);
   };
@@ -33,10 +43,22 @@ export default function Profile() {
           `${EXCHANGE_URLS}/sellerProfile`,
           axiosConfig
         );
-        // console.log("profile", res.data.message[0]);
 
         if (res?.status === 201) {
           setProfile(res?.data?.message || []);
+          // Set initial values for updateData if profile is available
+          const profileData = res?.data?.message[0];
+          if (profileData) {
+            setUpdateData({
+              username: profileData.username,
+              technology_name: profileData.technology_name,
+              phone_number: profileData.phone_number,
+              email: profileData.email,
+              city: profileData.city,
+              education: profileData.education,
+              languages: profileData.languages,
+            });
+          }
         }
       } catch (err) {
         toast.error(err, "Error");
@@ -45,6 +67,41 @@ export default function Profile() {
 
     getSliderApi();
   }, []);
+
+  const updateProfileApi = async () => {
+    try {
+      const axiosConfig = {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+
+      const res = await axios.put(
+        `${EXCHANGE_URLS}/updateprofiledata`,
+        updateData,
+        axiosConfig
+      );
+      if (res?.status === 201) {
+        navigate("/dashboard");
+        toast.success("Your profile is updated ");
+      }
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
+  };
+
+  const handleSubmit = () => {
+    updateProfileApi();
+    setIsEdit(false); // Ensure edit mode is turned off after submission
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdateData({
+      ...updateData,
+      [name]: value,
+    });
+  };
 
   return (
     <Root>
@@ -58,36 +115,57 @@ export default function Profile() {
               <img src={profilee} alt="img" />
             </div>
             <div className="username">
+              <div className="editing">
+                <CiEdit onClick={toggleEdit} />
+                {isEdit && (
+                  <div className="edit_page">
+                    <div className="update_button">
+                      <button
+                        className="button"
+                        onClick={() => {
+                          setIsEdit(false); // Cancel edit mode
+                        }}
+                      >
+                        Cancel
+                      </button>
+                      <CreateButton onClick={handleSubmit}>
+                        Update
+                      </CreateButton>
+                    </div>
+                    <input
+                      name="username"
+                      placeholder="What's your story in one line?"
+                      value={updateData.username}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                )}
+              </div>
               <div className="user_button">
                 <button>{profile[0].username}</button>
                 <CiEdit />
               </div>
               <b>{profile[0].technology_name}</b>
             </div>
-            <div className="editing">
-              <CiEdit onClick={toggleEdit} />
-              {isEdit && (
-                <div className="edit_page">
-                  <input placeholder="What's your story in one line?" />
-                  <div className="update_button">
-                    <button
-                      className="button"
-                      onClick={() => {
-                        toggleEdit(false);
-                      }}
-                    >
-                      Cancle
-                    </button>
-                    <CreateButton>Update</CreateButton>
-                  </div>
-                </div>
-              )}
-            </div>
             <div className="preview_button_div">
               <button>Preview Phanom Profile</button>
             </div>
             <div className="list_div">
               <ul>
+              <li>
+                  <span>
+                    <FaLocationDot />
+                    Email
+                  </span>
+                  <b>example@gmail.com</b>
+                </li>
+                <li>
+                  <span>
+                    <FaLocationDot />
+                    Phone Number
+                  </span>
+                  <b>5657676878</b>
+                </li>
                 <li>
                   <span>
                     <FaLocationDot />

@@ -39,20 +39,24 @@ export default function Table1({
           <tr>
             <th className="first_table_col"></th>
             <th
-            // value={data.plan_type}
-            // onChange={(e) => setData({ ...data, plan_type: e.target.value })}
+              value={data.plan_type}
+              onChange={(e) => setData({ ...data, plan_type: e.target.value })}
             >
               Basic
             </th>
             <th
-            // value={data2.plan_type}
-            // onChange={(e) => setData2({ ...data2, plan_type: e.target.value })}
+              value={data2.plan_type}
+              onChange={(e) =>
+                setData2({ ...data2, plan_type: e.target.value })
+              }
             >
               Standard
             </th>
             <th
-            // value={data3.plan_type}
-            // onChange={(e) => setData3({ ...data3, plan_type: e.target.value })}
+              value={data3.plan_type}
+              onChange={(e) =>
+                setData3({ ...data3, plan_type: e.target.value })
+              }
             >
               Premium
             </th>
@@ -73,7 +77,6 @@ export default function Table1({
                       setData
                     )
                   }
-                  
                 />
                 <span className="span_headd">
                   <TiPencil />
@@ -122,6 +125,7 @@ export default function Table1({
             <td>
               <div className="title_input">
                 <textarea
+                  id="basic"
                   value={data.description}
                   placeholder="Description"
                   onChange={(e) =>
@@ -139,6 +143,7 @@ export default function Table1({
             <td>
               <div className="title_input">
                 <textarea
+                  id="standard"
                   value={data2.description}
                   placeholder="Description"
                   onChange={(e) =>
@@ -156,6 +161,7 @@ export default function Table1({
             <td>
               <div className="title_input">
                 <textarea
+                  id="premium"
                   value={data3.description}
                   placeholder="Description"
                   onChange={(e) =>
@@ -180,6 +186,7 @@ export default function Table1({
                     <div className="title_input_gchild">
                       {" "}
                       <textarea
+                      id="basic"
                         value={data.delivery_time}
                         placeholder="Min 1 Day"
                         onChange={(e) =>
@@ -206,11 +213,12 @@ export default function Table1({
                     <div className="title_input_gchild">
                       {" "}
                       <textarea
+                      id="standard"
                         value={data2.delivery_time}
                         placeholder="Min 1 Day"
                         onChange={(e) =>
                           handleDataChange(
-                            { ...data, delivery_time: e.target.value },
+                            { ...data2, delivery_time: e.target.value },
                             setData2
                           )
                         }
@@ -232,11 +240,12 @@ export default function Table1({
                     <div className="title_input_gchild">
                       {" "}
                       <textarea
+                      id="premium"
                         value={data3.delivery_time}
                         placeholder="Min 1 Day"
                         onChange={(e) =>
                           handleDataChange(
-                            { ...data, delivery_time: e.target.value },
+                            { ...data3, delivery_time: e.target.value },
                             setData3
                           )
                         }

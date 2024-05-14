@@ -416,7 +416,7 @@ export default function CreateOverview() {
               name="tags"
               value={tags}
               onChange={(newTags) => {
-                setTags(newTags); // Update the tags state when the value changes
+                setTags(newTags); 
               }}
             />
             {!tags && (

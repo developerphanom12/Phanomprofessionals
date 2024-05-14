@@ -21,6 +21,7 @@ export default function Table3({
                   <div className="txt_div">
                     <div className="dollar">$</div>
                     <input
+                      id="basic"
                       type="number"
                       value={data.price}
                       onChange={(e) =>
@@ -37,6 +38,7 @@ export default function Table3({
                   <div className="txt_div">
                     <div className="dollar">$</div>
                     <input
+                      id="standard"
                       type="number"
                       value={data2.price}
                       onChange={(e) =>
@@ -53,6 +55,7 @@ export default function Table3({
                   <div className="txt_div">
                     <div className="dollar">$</div>
                     <input
+                      id="premium"
                       type="number"
                       value={data3.price}
                       onChange={(e) =>
@@ -148,5 +151,4 @@ const Root = styled.section`
       overflow: hidden;
     }
   }
- 
 `;

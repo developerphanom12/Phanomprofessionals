@@ -43,6 +43,7 @@ export default function Table2({
                     <div className="title_input_gchild">
                       {" "}
                       <textarea
+                      id="basic"
                         value={data.number_of_pages}
                         placeholder="min. 1 pages"
                         onChange={(e) =>
@@ -68,11 +69,12 @@ export default function Table2({
                     <div className="title_input_gchild">
                       {" "}
                       <textarea
+                      id="standard"
                         value={data2.number_of_pages}
                         placeholder="min. 1 pages"
                         onChange={(e) =>
                           handleDataChange(
-                            { ...data, number_of_pages: e.target.value },
+                            { ...data2, number_of_pages: e.target.value },
                             setData2
                           )
                         }
@@ -93,11 +95,12 @@ export default function Table2({
                     <div className="title_input_gchild">
                       {" "}
                       <textarea
+                      id="premium"
                         value={data3.number_of_pages}
                         placeholder="min. 1 pages"
                         onChange={(e) =>
                           handleDataChange(
-                            { ...data, number_of_pages: e.target.value },
+                            { ...data3, number_of_pages: e.target.value },
                             setData3
                           )
                         }
@@ -189,6 +192,7 @@ export default function Table2({
               <div className="check_div">
                 <label className="check_label">
                   <input
+                  id="basic"
                     type="checkbox"
                     checked={true}
                     value={true}
@@ -210,6 +214,7 @@ export default function Table2({
               <div className="check_div">
                 <label className="check_label">
                   <input
+                  id="standard"
                     type="checkbox"
                     checked={true}
                     value={true}
@@ -231,6 +236,7 @@ export default function Table2({
               <div className="check_div">
                 <label className="check_label">
                   <input
+                  id="premium"
                     type="checkbox"
                     checked={true}
                     value={true}
@@ -257,6 +263,7 @@ export default function Table2({
                     <div className="title_input_gchild">
                       {" "}
                       <textarea
+                      id="basic"
                         value={data.revision}
                         placeholder="min. 1 time"
                         onChange={(e) =>
@@ -282,6 +289,7 @@ export default function Table2({
                     <div className="title_input_gchild">
                       {" "}
                       <textarea
+                      id="standard"
                         value={data2.revision}
                         placeholder="min. 1 time"
                         onChange={(e) =>
@@ -307,6 +315,7 @@ export default function Table2({
                     <div className="title_input_gchild">
                       {" "}
                       <textarea
+                      id="premium"
                         value={data3.revision}
                         placeholder="min. 1 time"
                         onChange={(e) =>
