@@ -38,7 +38,7 @@ export default function IndexD({ editGetGig }) {
     editGetGig && editGetGig.length > 0
       ? editGetGig[0].EditorData.texteditor_id
       : null;
-      console.log("updatedDataaaaaaaaa",c_id)
+      console.log("updatedData",c_id)
   const handleSubmit = () => {
     appApi();
   };

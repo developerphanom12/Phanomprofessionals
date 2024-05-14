@@ -16,15 +16,14 @@ import { toast } from "react-toastify";
 import { EXCHANGE_URLS } from "../Important/URLS";
 import { useSelector } from "react-redux";
 
-export default function CreateSingMile({receiverId}) {
+export default function CreateSingMile({ receiverId }) {
   const gigId = useSelector((state) => state.users.gigId);
   const [isSinglePayment, setIsSinglePayment] = useState(true);
   const [select, setSelect] = React.useState("");
   const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
   const [openn, setOpenn] = React.useState(false);
-  const handleOpenn = () => setOpenn(true);
-  const handleClose = () => setOpenn(false);
+ 
   const [offer, setOffer] = useState({
     gigs_id: gigId ? gigId.toString() : "1",
     offer_type: "singlepayment",
@@ -35,7 +34,10 @@ export default function CreateSingMile({receiverId}) {
     delivery_day: "",
     price: "",
   });
-console.log("offer",offer)
+  console.log("offer", offer);
+
+  const handleOpenn = () => setOpenn(true);
+  const handleClose = () => setOpenn(false);
   const offerApi = async () => {
     try {
       const axiosConfig = {
@@ -97,6 +99,13 @@ console.log("offer",offer)
 
   return (
     <Root>
+      <Helmet>
+        <title>Chat Section - Phanom Professionals</title>
+        <meta
+          name="description"
+          content=" Engage in lively discussions, seek advice, share experiences, and connect with like-minded individuals from around the globe. Whether you're here to learn, share, or simply unwind, our chat section provides a welcoming space for diverse conversations on topics ranging from technology."
+        />
+      </Helmet>
       <h5>Choose how you want to get paid</h5>
       <ul className="ul">
         <p>
@@ -144,8 +153,8 @@ console.log("offer",offer)
       <Modal
         open={openn}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        // aria-labelledby="modal-modal-title"
+        // aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
           {isSinglePayment ? (
@@ -216,17 +225,18 @@ console.log("offer",offer)
                             setOffer({ ...offer, revision: e.target.value })
                           }
                         />{" "}
-                        {offer.revision.length === 0 && offer.revision.length > 10 && (
-                          <p
-                            style={{
-                              color: "red",
-                              fontSize: "10px",
-                              padding: "10px",
-                            }}
-                          >
-                            Fill in Numbers between 1-10
-                          </p>
-                        )}
+                        {offer.revision.length === 0 &&
+                          offer.revision.length > 10 && (
+                            <p
+                              style={{
+                                color: "red",
+                                fontSize: "10px",
+                                padding: "10px",
+                              }}
+                            >
+                              Fill in Numbers between 1-10
+                            </p>
+                          )}
                       </div>
                     </li>
                     <li>

@@ -8,10 +8,10 @@ import {
   EXCHANGE_URLS,
   EXCHANGE_URLS_CATEGORY,
 } from "../../../../../../Important/URLS";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 export default function IndexO({ editGetGig }) {
-  const gigId = useSelector((state) => state.users.gigId);
+  // const gigId = useSelector((state) => state.users.gigId);
   const [active, setActive] = useState("page1");
   const [getCategory, setGetCategory] = useState([]);
   const [gigTitle, setGigTitle] = useState("");

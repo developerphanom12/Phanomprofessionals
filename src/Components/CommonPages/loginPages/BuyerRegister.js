@@ -63,6 +63,13 @@ export default function BuyerRegister() {
 
   return (
     <Root>
+      <Helmet>
+        <title>Register as Buyer - Phanom Professionals</title>
+        <meta
+          name="description"
+          content="Register as a buyer to access exclusive features. Phanom Professionals provides a seamless buying experience."
+        />
+      </Helmet>
       <form onSubmit={onSubmit}>
         <ThemeProvider theme={defaultTheme}>
           <Container component="main" maxWidth="xs">
@@ -98,7 +105,12 @@ export default function BuyerRegister() {
                     ""
                   )}
                 </Avatar>
-                <input type="file" onChange={handleImagePreview} />
+                <input
+                  type="file"
+                  id="image-input"
+                  accept="image/*"
+                  onChange={handleImagePreview}
+                />
               </label>
 
               <Typography

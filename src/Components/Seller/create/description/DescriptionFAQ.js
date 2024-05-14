@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import TextEditor from "./TextEditor";
 import styled from "styled-components";
 import { useSelector } from "react-redux";

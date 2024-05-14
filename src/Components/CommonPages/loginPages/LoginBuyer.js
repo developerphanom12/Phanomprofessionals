@@ -21,6 +21,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { EXCHANGE_URLS_BUYER } from "../../Important/URLS";
+import { Helmet } from "react-helmet";
+
 
 const schema = yup.object().shape({
   username: yup.string().required("Username is required."),
@@ -28,7 +30,6 @@ const schema = yup.object().shape({
     .string()
     .required("Password is required.")
     .min(5, "Password should be at least 5 characters."),
-
 });
 const defaultTheme = createTheme();
 
@@ -66,6 +67,13 @@ export default function LoginBuyer() {
 
   return (
     <Root>
+      <Helmet>
+        <title>Sign in as Buyer - Phanom Professionals</title>
+        <meta
+          name="description"
+          content="Sign in as a buyer to access exclusive features. Phanom Professionals provides a seamless buying experience."
+        />
+      </Helmet>
       <form onSubmit={handleSubmit(onSubmit)}>
         <ThemeProvider theme={defaultTheme}>
           <Container component="main" maxWidth="xs">
@@ -142,6 +150,7 @@ export default function LoginBuyer() {
                       {...register("password")}
                     />
                     <button
+                      type="button"
                       className="btn"
                       onClick={() => {
                         togglePasswordVisibility();

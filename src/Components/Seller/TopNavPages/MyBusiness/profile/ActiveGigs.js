@@ -50,15 +50,7 @@ export default function ActiveGigs() {
 
     getSliderApi();
   }, []);
-  // useEffect(() => {
-  //   const initializeDropdownStates = () => {
-  //     // Initialize dropdown states for each row
-  //     const dropdownStates = new Array(gigGet.length).fill(false);
-  //     setShowDropdown(dropdownStates);
-  //   };
-
-  //   initializeDropdownStates();
-  // }, [gigGet]);
+  
 
   const appApipause = async (updatedDatapause) => {
     try {
@@ -91,12 +83,6 @@ export default function ActiveGigs() {
     handleSubmitforpause(gigId);
   };
 
-  // const handleDropdownClick = (index) => {
-  //   // Toggle dropdown state for the clicked row
-  //   const newDropdownStates = [...showDropdown];
-  //   newDropdownStates[index] = !newDropdownStates[index];
-  //   setShowDropdown(newDropdownStates);
-  // };
 
   const appApidelete = async (updatedDatadelete) => {
     try {
@@ -186,7 +172,7 @@ export default function ActiveGigs() {
                 <img
                   className="img"
                   src={`${EXCHANGE_URLS_IMAGES}/${gigData?.gigsimages?.image1}`}
-                  alt={`Image 1`}
+                  alt="gig img"
                   onClick={() => {
                     navigate("/internalpage");
                   }}

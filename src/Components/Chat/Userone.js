@@ -15,7 +15,7 @@ import CreateSingMile from "./CreateSingMile";
 import { useLocation } from "react-router-dom";
 
 const token = localStorage.getItem("token");
-const socket = io("http://localhost:4000", {
+const socket = io("https://api-phanom.phanomprofessionals.com/", {
   auth: {
     token: token,
   },
@@ -171,6 +171,13 @@ function Userone() {
 
   return (
     <Root>
+      <Helmet>
+        <title>Chat Section - Phanom Professionals</title>
+        <meta
+          name="description"
+          content=" Engage in lively discussions, seek advice, share experiences, and connect with like-minded individuals from around the globe. Whether you're here to learn, share, or simply unwind, our chat section provides a welcoming space for diverse conversations on topics ranging from technology."
+        />
+      </Helmet>
       <p>User ID: {userId}</p>
       {JSON.stringify(gigData) &&
         gigData.map((i) => <p>Gig Data: {i.seller.username}</p>)}
@@ -590,18 +597,6 @@ const Root = styled.section`
     .chat_area .message-container .msg_box .user_name {
       width: unset;
     }
-    /* .chat_area .message-container .msg_box .user_name {
-      width: unset;
-    }
-    .chat_area {
-      height: unset;
-      margin-bottom: 0;
-    }
-
-  .chat_area .emoji_attach_offer {
-  
-    margin: 0;
-} */
   }
 `;
 const style = {
@@ -615,14 +610,3 @@ const style = {
   borderRadius: 1,
   overflow: "auto",
 };
-// const style = {
-//   position: "absolute",
-//   top: "50%",
-//   left: "50%",
-//   transform: "translate(-50%, -50%)",
-//   height: 450,
-//   bgcolor: "background.paper",
-//   boxShadow: 24,
-//   borderRadius: 1,
-//   overflow: "auto",
-// };

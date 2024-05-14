@@ -1,13 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-// import { IoMdArrowDropdown } from "react-icons/io";
+import axios from "axios";
+import { EXCHANGE_URLS } from "../../../../Important/URLS";
+import { toast } from "react-toastify";
 
 export default function Active() {
-  // const [isChecked, setIsChecked] = useState(false);
+  const [order, setOrder] = useState();
 
-  // const handleCheckboxChange = () => {
-  //   setIsChecked(!isChecked);
-  // };
+  useEffect(() => {
+    const getOrders = async () => {
+      try {
+        const axiosConfig = {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        };
+        const active = "pending";
+        // Use CORS proxy to bypass CORS restriction
+        const res = await axios.get(
+          `${EXCHANGE_URLS}/oderdata?active=${active}`,
+          axiosConfig
+        );
+        if (res?.status === 201) {
+          setOrder(res?.data?.data);
+        }
+      } catch (err) {
+        toast.error(err, "Error");
+      }
+    };
+
+    getOrders();
+  }, []);
+
   return (
     <Root>
       <table>
@@ -16,29 +40,10 @@ export default function Active() {
             <td colSpan={7}>
               <h6>Active Orders</h6>
             </td>
-            <td colSpan={8}>
-              {/* <div className="button_select">
-                {isChecked && (
-                  <>
-                    <button>Active</button>
-                    <button>Delete</button>
-                  </>
-                )}
-                <select>
-                  Last 30 Days
-                  <option>Last 7 Days</option>
-                  <option>Last 14 Days</option>
-                  <option>Last 30 Days</option>
-                  <option>Last 2 months</option>
-                  <option>Last 3 months</option>
-                </select>
-              </div> */}
-            </td>
+            <td colSpan={8}></td>
           </tr>
           <tr>
-            <td colSpan={2}>
-              {/* {/ <input type="checkbox" onChange={handleCheckboxChange} /> /} */}
-            </td>
+            <td colSpan={2}></td>
             <td colSpan={2}>
               <span>BUYER</span>
             </td>
@@ -60,45 +65,42 @@ export default function Active() {
             <td colSpan={2}>
               <span>STATUS</span>
             </td>
-            {/* <td></td>
-            <td></td> */}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td colSpan={2}>
-              {/* {/ <input type="checkbox" onChange={handleCheckboxChange} /> /} */}
-            </td>
-            <td colSpan={2}>
-              <span>0</span>
-            </td>
-            <td colSpan={2}>
-              {" "}
-              <span>0</span>
-            </td>
-            <td colSpan={2}>
-              {" "}
-              <span>0</span>
-            </td>
+          {order && order.length > 0 ? (
+            order.map((i) => (
+              <tr>
+                <td colSpan={2}></td>
+                <td colSpan={2}>
+                  <span>{i?.receiver_name}</span>
+                </td>
+                <td colSpan={2}>
+                  {" "}
+                  <span>{i.gigs_id}</span>
+                </td>
+                <td colSpan={2}>
+                  {" "}
+                  <span>{i.offer.delivery_day}</span>
+                </td>
 
-            <td colSpan={2}>
-              <span>0</span>{" "}
-            </td>
-            <td colSpan={2}>
-              <span>0</span>{" "}
-            </td>
-            <td colSpan={2}>
-              {" "}
-              <span>0</span>
-            </td>
-            {/* {/ <td></td> /} */}
-            {/* <td colSpan={2}>
-              <IoMdArrowDropdown />
-            </td> */}
-          </tr>
-          <tr className="head">
-            <td colSpan={10}>no Active orders to show</td>
-          </tr>
+                <td colSpan={2}>
+                  <span>{i.offer.price}</span>{" "}
+                </td>
+                <td colSpan={2}>
+                  <span>{i.offer.describe_offer}</span>{" "}
+                </td>
+                <td colSpan={2}>
+                  {" "}
+                  <span>{i.status}</span>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr className="head">
+              <td colSpan={10}>Number of Active Orders: 0</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </Root>
@@ -108,7 +110,6 @@ const Root = styled.section`
   margin: -10px;
   table {
     width: 100%;
- 
   }
   .head td {
     font-size: 14px;
@@ -196,11 +197,9 @@ const Root = styled.section`
   }
 
   @media (max-width: 567px) {
-
- td {
-    padding: 5px 4px;
-    white-space: unset; 
-}
+    td {
+      padding: 5px 4px;
+      white-space: unset;
+    }
   }
- 
 `;

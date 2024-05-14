@@ -53,9 +53,9 @@ export default function Page1() {
     setShowMessageBox(!showMessageBox);
   };
 
-  const handleContactClick = (id) => {
-    navigate(`/user/${id}`);
-  };
+  // const handleContactClick = (id) => {
+  //   navigate(`/user/${id}`);
+  // };
 
   return (
     <Root>

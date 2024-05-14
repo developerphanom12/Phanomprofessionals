@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { GigButton, CreateButton } from "../../../../../GlobalStyles";
 import styled from "styled-components";
 import Active from "./Active";

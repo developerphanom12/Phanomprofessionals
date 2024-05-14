@@ -10,7 +10,6 @@ import { toast } from "react-toastify";
 import { EXCHANGE_URLS } from "../../Important/URLS";
 import { useForm } from "react-hook-form";
 import {
-  sellerLoginAction,
   userCheckAction,
   userDataAction,
 } from "../../../redux/users/action";
@@ -25,6 +24,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Helmet } from "react-helmet";
 
 const schema = yup.object().shape({
   username: yup.string().required("Username is required."),
@@ -32,10 +32,7 @@ const schema = yup.object().shape({
     .string()
     .required("Password is required.")
     .min(5, "Password should be at least 5 characters."),
-  // .matches(
-  //   /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/,
-  //   "Password should contain at least one uppercase letter, lowercase letter, digit, and special symbol."
-  // ),
+  
 });
 
 const defaultTheme = createTheme();
@@ -64,8 +61,6 @@ export default function LoginSeller() {
     }
   };
 
-  
-
   const {
     register,
     handleSubmit,
@@ -76,6 +71,13 @@ export default function LoginSeller() {
 
   return (
     <Root>
+      <Helmet>
+        <title>Sign in as Seller - Phanom Professionals</title>
+        <meta
+          name="description"
+          content="Sign in as a Seller to access exclusive features. Phanom Professionals provides a seamless Selling experience."
+        />
+      </Helmet>
       <form onSubmit={handleSubmit(onSubmit)}>
         <ThemeProvider theme={defaultTheme}>
           <Container component="main" maxWidth="xs">
@@ -152,6 +154,7 @@ export default function LoginSeller() {
                       {...register("password")}
                     />
                     <button
+                      type="button"
                       className="btn"
                       onClick={() => {
                         togglePasswordVisibility();

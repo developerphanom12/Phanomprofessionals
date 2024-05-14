@@ -115,11 +115,14 @@ export default function Profile() {
           <div className="portfolio_div">
             <div className="portfolio_box">
               <div className="descrip_head">
-                <h3 style={{color:"#404145"}}>My Portfolio</h3>
+                <h3 style={{ color: "#404145" }}>My Portfolio</h3>
               </div>
               <ul>
-                <li className="add_image" 
-                onClick={()=>{navigate("/createportfolio")}}
+                <li
+                  className="add_image"
+                  onClick={() => {
+                    navigate("/createportfolio");
+                  }}
                 >
                   <div>
                     {" "}
@@ -182,16 +185,6 @@ export default function Profile() {
               </div>
               <div className="descrip_body">
                 <span>Business-</span>
-                <span>Business</span>
-              </div>
-            </div>
-            <div className="descrip_box">
-              <div className="descrip_head">
-                <h3>Certification</h3>
-                <a href="/edit">Add New</a>
-              </div>
-              <div className="descrip_body">
-                <span>Add your Certification.-</span>
                 <span>Business</span>
               </div>
             </div>

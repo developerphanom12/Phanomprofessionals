@@ -8,8 +8,8 @@ import { IoSearch } from "react-icons/io5";
 
 export default function Orders() {
   const [active, setActive] = useState("active");
-  const [user, setUser] = useState();
-
+  
+ 
   return (
     <Root>
       <div className="order_header">
@@ -58,7 +58,7 @@ export default function Orders() {
           <div className="row">
             <div className="col-lg-12">
               {active === "active" ? (
-                <Active detail={user} />
+                <Active  />
               ) : active === "completed" ? (
                 <Completed />
               ) : active === "cancelled" ? (
@@ -82,7 +82,7 @@ const Root = styled.section`
     justify-content: space-between;
     padding-bottom: 20px;
     flex-wrap: wrap;
-    
+
     .input_div {
       border-bottom: 1px solid #dadbdd;
       input {
@@ -170,8 +170,8 @@ const Root = styled.section`
   }
 
   @media (max-width: 567px) {
- .order_header .input_div {
-    margin-top: 20px;
-}
+    .order_header .input_div {
+      margin-top: 20px;
+    }
   }
 `;

@@ -60,10 +60,7 @@ export default function SellerRegister() {
   React.useEffect(() => {
     const getCategoryApi = async () => {
       try {
-        const res = await axios.get(
-          `${EXCHANGE_URLS_CATEGORY}/liscategory`
-           
-        );
+        const res = await axios.get(`${EXCHANGE_URLS_CATEGORY}/liscategory`);
         if (res?.status === 201) {
           setGetCategory(res?.data?.message);
         }
@@ -84,6 +81,13 @@ export default function SellerRegister() {
 
   return (
     <Root>
+      <Helmet>
+        <title>Register as Seller - Phanom Professionals</title>
+        <meta
+          name="description"
+          content="Register as a Seller to access exclusive features. Phanom Professionals provides a seamless Selling experience."
+        />
+      </Helmet>
       <form onSubmit={handleSubmit(onSubmit)}>
         <ThemeProvider theme={defaultTheme}>
           <Container component="main" maxWidth="xs">
@@ -206,7 +210,9 @@ export default function SellerRegister() {
                             </MenuItem>
                           ))}
                       </Select>
-                      {errors.category_id && <p>{errors.category_name.message}</p>}
+                      {errors.category_id && (
+                        <p>{errors.category_name.message}</p>
+                      )}
                     </FormControl>
                   </Grid>
                 </Grid>
