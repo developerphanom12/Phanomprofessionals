@@ -81,7 +81,7 @@ export default function CreateOverview() {
         console.log("GigID", gigId);
         navigate("/pricing");
         toast.success("Updated");
-        validationSchema;
+      
       }
     } catch (err) {
       toast.error("error");

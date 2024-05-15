@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";
 import CreateSingMile from "./CreateSingMile";
 import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const token = localStorage.getItem("token");
 const socket = io("https://api-phanom.phanomprofessionals.com/", {

@@ -15,6 +15,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { EXCHANGE_URLS } from "../Important/URLS";
 import { useSelector } from "react-redux";
+import { Helmet } from "react-helmet";
 
 export default function CreateSingMile({ receiverId }) {
   const gigId = useSelector((state) => state.users.gigId);
